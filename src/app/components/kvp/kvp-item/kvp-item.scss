@@ -1,0 +1,81 @@
+@import '../../../../theme/_colors.scss';
+
+.kvp-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: thin solid $borderColor;
+  padding: 0 10px;
+  box-sizing: border-box;
+  height: auto;
+}
+
+:host:first-child .kvp-item .label {
+  font-weight: bold;
+  font-size: 14px;
+  color: black !important;
+}
+
+:host:last-child .kvp-item {
+  border-bottom: none;
+}
+
+:host:last-child {
+  border-bottom: none;
+}
+
+.kvp-item.inactive {
+  opacity: 0.6;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 0;
+  max-width: 100000px;
+  border: none;
+  padding: 10px 15px;
+  outline: none !important;
+  font-size: 12px;
+  color: $textMid !important;
+}
+
+.kvp-checkbox {
+  width: 5%;
+}
+
+.kvp-key {
+  width: 40%;
+  border-right: thin solid $borderColor;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.kvp-item .label,
+.kvp-value .label {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 10px 15px;
+  display: block;
+  color: $textMid;
+}
+
+.kvp-key .input {
+  border-right: none;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.kvp-value {
+  width: 40%;
+}
+
+.kvp-actions {
+  width: 20%;
+  height: auto;
+}
+
+.kvp-actions button {
+  width: 25px;
+  height: 25px;
+}

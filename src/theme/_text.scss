@@ -1,0 +1,106 @@
+@import './colors';
+
+.text-small {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.text-mutted {
+  @extend .text-small;
+  color: $sLight;
+}
+
+.title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  color: $textDark;
+}
+
+.title-lg {
+  @extend .title;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 8px 0;
+}
+
+.text-light {
+  @extend .text-mutted;
+  color: $textLight;
+}
+
+.text-mid {
+  @extend .text-mutted;
+  color: $textMid;
+}
+
+.text-subtitle {
+  @extend .text-mutted;
+  font-size: 14px;
+  color: $textMid;
+  font-weight: bold;
+}
+
+.text-dark {
+  @extend .text-mutted;
+  color: $textDark;
+}
+
+.table-title {
+  font-size: 14px;
+  line-height: 14px;
+  color: $textDark;
+}
+
+.link-mutted {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+
+  /* S Light */
+
+  color: $sLight;
+  &:visited {
+    color: darken($sLight, 10%);
+  }
+}
+
+.mat-form-field-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+
+  /* Secondary */
+
+  color: $textMid;
+}
+
+.admin-badge {
+  margin-top: 8px;
+  background: $colGreen;
+  border-radius: 2px;
+  padding: 4px 10px;
+  color: white;
+  width: 80px;
+  text-align: center;
+}
+
+.sidemenu-item.active {
+  color: $textDark;
+  &* {
+    color: $textDark;
+  }
+}
+
+.align-center {
+  text-align: center;
+}

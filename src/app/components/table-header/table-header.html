@@ -1,0 +1,19 @@
+<div class="row bordered-bottom center space-between padd-h-20" style="height: 45px; position: relative;">
+    <p class="no-margin no-padding table-title">
+        {{title|translate}}
+    </p>
+
+    <div class="flex-row center search-input-wrapper">
+        <input color="primary" style="margin: 0 15px" class="search-input" #search *ngIf="options.input"
+            placeholder="{{'SEARCH'|translate}}">
+        <button mat-icon-button (click)="clear();" *ngIf="query">
+            <mat-icon class="col-red">close</mat-icon>
+        </button>
+        <span *ngIf="!query"></span>
+    </div>
+
+    <div class="flex-row center">
+        <p class="text-mid marg-right-10">{{'SHOWING'|translate}}: <b>10</b> of <b>100</b></p>
+        <ng-content></ng-content>
+    </div>
+</div>

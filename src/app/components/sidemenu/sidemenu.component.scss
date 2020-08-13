@@ -1,0 +1,26 @@
+.sidemenu-container {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin-top: 50px;
+}
+
+.mat-drawer-content {
+  padding: 25px;
+}
+
+.sidemenu-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidemenu-sidenav {
+  min-width: 200px;
+  padding-top: 15px;
+}
+
+.sidemenu-item.active {
+  background: rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,53 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "debug-screen": [
+        "dist/debug-screen"
+      ],
+      "debug-screen/*": [
+        "dist/debug-screen/*"
+      ],
+      "hotkeys": [
+        "dist/hotkeys"
+      ],
+      "hotkeys/*": [
+        "dist/hotkeys/*"
+      ],
+      "qbitkit-ng": [
+        "dist/qbitkit-ng"
+      ],
+      "qbitkit-ng/*": [
+        "dist/qbitkit-ng/*"
+      ],
+      "qbit-auth": [
+        "dist/qbit-auth"
+      ],
+      "qbit-auth/*": [
+        "dist/qbit-auth/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

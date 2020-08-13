@@ -1,0 +1,82 @@
+<div class="header"></div>
+<div class="page-centered">
+    <div class="content" *ngIf="!signUpSuccess">
+        <mat-card class="padd-v-20 padd-h-15">
+            <h4 class="text-title align-center">
+                {{'SINGUP'|translate}}
+            </h4>
+            <p class="text-light align-center marg-bottom-20">
+                {{'WELCOME'|translate}}
+            </p>
+
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                <div class="centered">
+                    <div>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>{{'USERNAME' | translate}}</mat-label>
+                            <input id="username" matInput placeholder="Enter your username" formControlName="username">
+                            <mat-icon matSuffix>user</mat-icon>
+
+                            <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
+                                {{'USERNAME_REQUIRED' | translate}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="legacy" (keyup.enter)="onSubmit()">
+                            <mat-label>{{'PASSWORD' | translate}}</mat-label>
+                            <input id="password" matInput [type]="hidePass ? 'password' : 'text'"
+                                formControlName="password">
+                            <button mat-icon-button type="button" matSuffix (click)="hidePass = !hidePass"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+                                <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="password.invalid && (password.dirty) && password.errors.required">
+                                {{'PASSWORD_REQUIRED' | translate}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-error class="marg-top-15"
+                            *ngIf="signUpForm.invalid && signUpForm.errors && signUpForm.errors.invalidCredentials">
+                            <span class="text-small">{{signUpForm.errors.invalidCredentials | translate}}</span>
+                        </mat-error>
+                    </div>
+
+                    <app-loadable-button [id]="'signup'" [disabled]="signUpForm.invalid" [loading]="isLoading">
+                        {{(isLoading ? 'SINGING_UP': 'SINGUP') | translate}}
+                    </app-loadable-button>
+
+                    <p class="text-subtitle">{{'OR'|translate}}</p>
+
+                    <button mat-button color="primary" routerLink="/login">
+                        {{'LOGIN'|translate}}
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+
+    <div class="content" *ngIf="signUpSuccess === true">
+        <mat-card class="padd-v-20 padd-h-15">
+            <div class="centered">
+                <h4 class="text-title align-center col-green">
+                    {{'SIGNUP_SUCCESS'|translate}}
+                </h4>
+                <p class="text-subtitle align-center marg-bottom-20">
+                    {{'WELCOME'|translate}}
+                </p>
+
+                <p class="text-light align-center">
+                     {{'SIGNUP_SUCCESS_DESC'|translate}}
+                </p>
+
+                <button mat-button color="primary" routerLink="/login">
+                    {{'LOGIN'|translate}}
+                </button>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="float-top-right">
+        <app-lang-selector></app-lang-selector>
+    </div>
+</div>

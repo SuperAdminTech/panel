@@ -1,0 +1,87 @@
+hr {
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+.mat-icon-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-icon-button {
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+
+  .mat-icon {
+    width: 18px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+  }
+  .material-icons {
+    font-size: 18px !important;
+  }
+}
+
+.mat-icon-small {
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+}
+
+.mat-icon-mid {
+  width: 22px !important;
+  height: 22px !important;
+  line-height: 22px !important;
+}
+
+.material-icons {
+  font-size: 18px !important;
+}
+
+.mat-menu-item {
+  line-height: 40px !important;
+  height: 40px !important;
+}
+
+.mat-card {
+  overflow: hidden;
+}
+
+.mat-card-header-text {
+  margin-left: 20px !important;
+}
+
+.mat-card-header {
+  border-bottom: 1px solid #ddd;
+  margin: 0 -20px;
+  position: relative;
+}
+
+.mat-card-title {
+  font-size: 14px;
+  color: #757575;
+  font-weight: 400;
+}
+
+.mat-card-content {
+  padding-top: 16px;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 36px !important;
+}
+
+.mat-button-toggle-checked {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.mat-button-base {
+  line-height: 28px !important;
+}

@@ -1,0 +1,209 @@
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.page-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.row,
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  &.center {
+    align-items: center;
+  }
+  &.end {
+    align-items: flex-end;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.marg-top-0 {
+  margin-top: 0 !important;
+}
+.marg-top-15 {
+  margin-top: 15px !important;
+}
+.marg-top-20 {
+  margin-top: 20px !important;
+}
+.marg-top-40 {
+  margin-top: 40px !important;
+}
+.marg-bottom-10 {
+  margin-bottom: 10px !important;
+}
+
+.marg-bottom-15 {
+  margin-bottom: 15px !important;
+}
+
+.marg-bottom-20 {
+  margin-bottom: 20px !important;
+}
+
+.marg-left-10 {
+  margin-left: 10px !important;
+}
+.marg-left-15 {
+  margin-left: 15px !important;
+}
+
+.marg-left-20 {
+  margin-left: 20px !important;
+}
+
+.marg-right-10 {
+  margin-right: 10px !important;
+}
+
+.marg-right-15 {
+  margin-right: 15px !important;
+}
+
+.padd-15 {
+  padding: 15px !important;
+}
+
+.padd-20 {
+  padding: 20px !important;
+}
+
+.padd-v-10 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.padd-v-15 {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.padd-v-20 {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+.padd-v-30 {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.padd-h-40 {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+.padd-h-80 {
+  padding-left: 80px !important;
+  padding-right: 80px !important;
+}
+
+.padd-h-10 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.padd-h-15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.padd-h-20 {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.padd-h-30 {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+.float-top-right {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.avatar-lg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.hoverable tr:not(.tr-header):hover {
+  background: whitesmoke;
+  cursor: pointer;
+}
+
+.abs-bottom-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+
+.abs-center-center {
+  position: absolute !important;
+  right: 15px;
+  top: 5px;
+  // transform: translateY(-50%);
+}
+
+.card-header {
+  @extend .padd-h-15;
+  @extend .padd-v-15;
+  border-bottom: 1px solid $border;
+  position: relative;
+}

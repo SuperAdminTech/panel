@@ -1,0 +1,36 @@
+name: Test Master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtaining the code
+        uses: actions/checkout@v1
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: '12.x'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@QbitArtifacts'
+          
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Run tests (with coverage)
+        run: npm run test-ci
+
+      - name: Upload coverage result
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/coverage-summary.json
+

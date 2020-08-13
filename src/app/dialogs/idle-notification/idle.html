@@ -1,0 +1,16 @@
+<modal-header title="{{'ARE YOU THERE'|translate}}" (click)="close(false)"></modal-header>
+
+<div class="group-col-left padd-20">
+  <h4>{{'ARE YOU THERE'|translate}}? </h4>
+  <p class="small-text-2">
+    {{'Please click continue, to keep session active'|translate}}.
+    <b>{{utils.seconds}}</b> {{'Seconds Left'|translate}}
+  </p>
+
+  <div class="group-row-left center v"
+    style="margin-top: 15px; margin-left: 15px; width: 100%; justify-content: flex-end">
+    <button type="button" id="idleModalContinue" mat-raised-button name="button" color="primary" (click)="resetCounter()">
+      <span class="small-text"> {{'CONTINUE'|translate}} </span>
+    </button>
+  </div>
+</div>

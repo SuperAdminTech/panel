@@ -1,0 +1,7 @@
+<div class="aggregate flex-row space-between padd-h-20">
+    <div class="row center">
+        <mat-icon *ngIf="icon" class="mat-icon material-icons mat-icon-small marg-right-10 col-{{iconColor}}">{{icon}}</mat-icon>
+        <span class="aggregate-title col-{{titleColor}} text-mid">{{title|translate}}</span>
+    </div>
+    <span style="font-size: 20px;" class="aggregate-value col-{{valueColor}}">{{value}}</span>
+</div>

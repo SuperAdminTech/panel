@@ -1,0 +1,63 @@
+<div class="header"></div>
+<div class="page-centered">
+    <div class="content">
+        <mat-card class="padd-v-20 padd-h-15">
+            <h4 class="text-title align-center">
+                {{'LOGIN'|translate}}
+            </h4>
+            <p class="text-light align-center marg-bottom-20">
+                {{'WELCOME'|translate}}
+            </p>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="centered">
+                    <div>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>{{'USERNAME' | translate}}</mat-label>
+                            <input id="username" matInput placeholder="Enter your username" formControlName="username">
+                            <mat-icon matSuffix>user</mat-icon>
+
+                            <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
+                                {{'USERNAME_REQUIRED' | translate}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="legacy" (keyup.enter)="onSubmit()">
+                            <mat-label>{{'PASSWORD' | translate}}</mat-label>
+                            <input id="password" matInput [type]="hidePass ? 'password' : 'text'"
+                                formControlName="password">
+                            <button mat-icon-button type="button" matSuffix (click)="hidePass = !hidePass"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+                                <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="password.invalid && (password.dirty) && password.errors.required">
+                                {{'PASSWORD_REQUIRED' | translate}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <a routerLink="/forgot-password" class="link-mutted">{{'FORGOT_PASSWORD'|translate}}</a>
+
+                        <mat-error class="marg-top-15"
+                            *ngIf="loginForm.invalid && loginForm.errors && loginForm.errors.invalidCredentials">
+                            <span class="text-small">{{loginForm.errors.invalidCredentials | translate}}</span>
+                        </mat-error>
+                    </div>
+
+                    <app-loadable-button [id]="'login'" [disabled]="loginForm.invalid" [loading]="isLoading">
+                        {{(isLoading ? 'LOGIN_IN': 'LOGIN') |translate}}
+                    </app-loadable-button>
+
+                    <p class="text-subtitle">{{'OR'|translate}}</p>
+
+                    <button mat-button color="primary" routerLink="/signup">
+                        {{'SIGNUP'|translate}}
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+
+    <div class="float-top-right">
+        <app-lang-selector></app-lang-selector>
+    </div>
+</div>

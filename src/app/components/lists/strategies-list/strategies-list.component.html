@@ -1,0 +1,35 @@
+<mat-card class="no-padding">
+    <app-table-header title="STRATEGIES" [query]="query" (onSearch)="onSearch()" [searching]="isLoading">
+        <!-- <icon-btn (click)="export()" matTooltip="{{'EXPORT_AS_CSV'|translate}}" icon="fa-download"></icon-btn> -->
+    </app-table-header>
+
+    <table mat-table [dataSource]="dataSource" matSort class="hoverable">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'ID'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'NAME'|translate}} </th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'DESCRIPTION' | translate}} </th>
+            <td mat-cell *matCellDef="let row">{{row.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="updated">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'UPDATED'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> <i>{{row.updated_at | date}}</i></td>
+        </ng-container>
+
+        <tr class="tr-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/strategy/{{row.id}}">
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</mat-card>

@@ -1,0 +1,84 @@
+<div class="bootstrap-wrapper padd-v-20 padd-h-20 ">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12" style="padding: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="title">
+                        {{'STATISTICS'|translate}}
+                    </h4>
+                </div>
+                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="TOTAL_BALANCE" value="{{'10000'|number}} $" [valueColor]="'blue'">
+                        </app-aggregate>
+                    </mat-card>
+                </div>
+                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="WEEKLY_BENEFIT" value="15 %" [valueColor]="'green'"></app-aggregate>
+                    </mat-card>
+                </div>
+                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="YEARLY_BENEFIT" value="-15 %" [valueColor]="'red'"></app-aggregate>
+                    </mat-card>
+                </div>
+                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="TOTAL_INVESTMENT" value="{{'100000'|number}} $" [valueColor]="'purple'">
+                        </app-aggregate>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="title">
+                        {{'Account Info'|translate}}
+                    </h4>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="INSTANCES" value="10" icon="format_bold"></app-aggregate>
+                    </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="ACCOUNT_TYPE" [value]="userType" icon="face" valueColor="purple">
+                        </app-aggregate>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <div class="flex-row center">
+                <mat-icon class="mat-icon-mid" style="opacity: 0;">format_bold</mat-icon>
+                <span class="title text-mid">{{'EARNINGS'|translate}}</span>
+            </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div style="height: 300px;">
+            <dash-chart id="txChartEarnings" height="300px" type="spline" #txChartEarnings title="Weekly Earnings">
+            </dash-chart>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<!-- <mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <div class="flex-row center">
+                <mat-icon class="mat-icon-mid" style="opacity: 0;">format_bold</mat-icon>
+                <span class="title text-mid">{{'EARNINGS'|translate}}</span>
+            </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content> 
+        <div style="height: 500px;" id="trading-view"></div>
+    </mat-card-content>
+</mat-card> -->

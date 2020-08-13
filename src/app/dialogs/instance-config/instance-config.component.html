@@ -1,0 +1,102 @@
+<div class="card-header">
+    <div>
+        <div class="flex-row center">
+            <mat-icon class="mat-icon-mid">format_bold</mat-icon>
+            <span class="title text-mid">{{'My Bot 1'|translate}}</span>
+        </div>
+    </div>
+    <button mat-icon-button (click)="close()" class="abs-center-center text-mid">
+        <mat-icon class="mat-icon-mid">
+            close
+        </mat-icon>
+    </button>
+</div>
+
+<div class="bootstrap-wrapper">
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Details">
+            <div style="height: 300px" class="padd-v-15 padd-h-20">
+
+                <form class="padd-20" [formGroup]="instanceDetailsForm">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h4 class="title-lg marg-top-10">
+                                Instance Details
+                            </h4>
+                            <p class="text-mutted marg-bottom-20">Here you can change instance details</p>
+
+                            <mat-form-field>
+                                <mat-label>{{'NAME' | translate}}</mat-label>
+                                <input id="name" matInput placeholder="Enter your name" formControlName="name">
+                                <mat-error *ngIf="name.invalid && (name.dirty) && name.errors.required">
+                                    {{'NAME_REQUIRED' | translate}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>{{'DESCRIPTION' | translate}}</mat-label>
+                                <textarea id="description" matInput placeholder="Enter a description"
+                                    formControlName="description"></textarea>
+                                <mat-error
+                                    *ngIf="description.invalid && (description.dirty) && description.errors.required">
+                                    {{'DESCRIPTION_REQUIRED' | translate}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <h4 class="title-lg marg-top-10">
+                                Exchange API keys
+                            </h4>
+                            <p class="text-mutted marg-bottom-20">Here you can change instance details</p>
+
+                            <mat-form-field>
+                                <mat-label>{{'ACCESS_SECRET' | translate}}</mat-label>
+                                <input id="api_secret" matInput placeholder="Enter api ACCESS_SECRET"
+                                    formControlName="api_secret" [type]="hideSecret ? 'password' : 'text'">
+
+                                <mat-error
+                                    *ngIf="api_secret.invalid && (api_secret.dirty) && api_secret.errors.required">
+                                    {{'ACCESS_SECRET_REQUIRED' | translate}}
+                                </mat-error>
+
+                                <button mat-icon-button matSuffix (click)="hideSecret = !hideSecret"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideSecret">
+                                    <mat-icon>{{hideSecret ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>{{'ACCESS_KEY' | translate}}</mat-label>
+                                <input id="api_key" matInput placeholder="Enter api ACCESS_KEY"
+                                    formControlName="api_key" [type]="hideKey ? 'password' : 'text'">
+
+                                <mat-error *ngIf="api_key.invalid && (api_key.dirty) && api_key.errors.required">
+                                    {{'ACCESS_KEY_REQUIRED' | translate}}
+                                </mat-error>
+
+                                <button mat-icon-button matSuffix (click)="hideKey = !hideKey"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideKey">
+                                    <mat-icon>{{hideKey ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Configuration">
+            <div style="height: 300px" class="padd-v-15 padd-h-30">
+                <h4 class="title-lg marg-top-10">
+                    Instance Configuration
+                </h4>
+                <p class="text-mutted marg-bottom-20">Here you can specify key value pairs to configure this bot</p>
+
+                <div class="bordered">
+                    <kvp-list [editKeys]="false" [showHidding]="false" [showActions]="false" [showCheckboxes]="false"
+                        [items]="instanceConfig">
+                    </kvp-list>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

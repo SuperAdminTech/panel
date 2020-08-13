@@ -1,0 +1,58 @@
+@import './colors';
+
+status-launched,
+.status-created,
+.status-pending,
+.status-refunded,
+.status-draft,
+.amount {
+  color: #1976d2 !important;
+}
+.col-success,
+.col-completed,
+.status-success,
+.status-enabled,
+.status-running {
+  color: #66bb6a !important;
+}
+.col-teal {
+  color: #4db6ac !important;
+}
+
+.col-purple {
+  color: $colPurple;
+}
+
+.col-error,
+.col-cancelled,
+.status-error,
+.status-failed,
+.status-stopped,
+.status-disabled,
+.status-cancelled {
+  color: #ef5350;
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26) !important;
+  }
+}
+
+.mat-chip {
+  font-size: 12px;
+  min-height: 25px !important;
+}
+
+.mat-chip.bg-green {
+  background: $colGreen;
+  color: white;
+}
+
+.mat-chip.bg-blue {
+  background: $colBlue;
+  color: white;
+}
+
+.mat-chip.bg-purple {
+  background: $colPurple;
+  color: white;
+}

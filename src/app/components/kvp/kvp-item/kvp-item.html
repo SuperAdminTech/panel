@@ -1,0 +1,25 @@
+<div class="kvp-item" [ngClass]="{'inactive': !active}">
+  <div class="kvp-checkbox" *ngIf="showCheckbox">
+    <mat-checkbox [(ngModel)]="active" (change)="changedActive()" color="primary"></mat-checkbox>
+  </div>
+  <div class="kvp-key">
+    <input class="input" type="text" *ngIf="editKey" [(ngModel)]="key" (change)="changedKey()" autofocus>
+    <span class="label" *ngIf="!editKey">{{key}}</span>
+  </div>
+  <div class="kvp-value">
+    <input class="input" type="text" *ngIf="editValue" placeholder="{{'ENTER_VALUE'|translate}}" [(ngModel)]="value" (change)="changedValue()"
+      (keyup.enter)="newLine()">
+    <span class="label" *ngIf="!editValue">{{value}}</span>
+  </div>
+  <!-- <div class="kvp-actions">
+    <button mat-icon-button [disabled]="!canRemove" color="primary" (click)="remove()">
+      <span class="center h v"> <i class="fas fa-times col-error"></i></span>
+    </button>
+    <button mat-icon-button color="primary" (click)="up()" [disabled]="!canMoveUp">
+      <span class="center h v"> <i class="fas fa-arrow-up"></i></span>
+    </button>
+    <button mat-icon-button color="primary" (click)="down()" [disabled]="!canMoveDown">
+      <span class="center h v"> <i class="fas fa-arrow-down"></i></span>
+    </button>
+  </div> -->
+</div>

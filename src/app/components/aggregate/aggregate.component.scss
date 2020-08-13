@@ -1,0 +1,39 @@
+@import '../../../theme/colors';
+
+:host {
+  display: block;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.aggregate {
+  .aggregate-title {
+    font-size: 16px;
+  }
+
+  .aggregate-value {
+    font-size: 30px;
+    font-weight: 200;
+  }
+
+  &.green {
+    // background-color: $bgGreenLight;
+    color: $colGreen !important;
+  }
+
+  &.blue {
+    // background-color: $bgBlueLight;
+    color: $colBlue !important;
+  }
+
+  &.red {
+    // background-color: $bgRedLight;
+    color: $colRed !important;
+  }
+
+  &.purple {
+    // background-color: $bgPurpleLight;
+    color: $colPurple !important;
+  }
+}
