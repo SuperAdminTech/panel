@@ -96,6 +96,7 @@ export class LoginComponent extends PageBaseComponent
       expireDate: expireDateTimestampSec,
     });
     this.auth$.setSession(session);
+    this.qbitAuth.saveToken(resp.token);
 
     const user = new User()
       .fromJson({ name: resp.username })

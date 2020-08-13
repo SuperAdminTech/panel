@@ -30,12 +30,13 @@ export class DashboardComponent extends PageBaseComponent
   public txChartEarnings: DashChart;
 
   public userType = '';
+  obs;
 
   constructor(
     title: Title,
     public translate$: TranslateService,
     public app$: AppService,
-    public user$: UserService
+    public user$: UserService,
   ) {
     super(title, translate$);
   }
