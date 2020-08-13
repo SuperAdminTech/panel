@@ -10,15 +10,10 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TableHeaderComponent } from './table-header/table-header.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { UserAvatarMenuComponent } from './user-avatar-menu/user-avatar-menu.component';
-import { BotDetailsComponent } from './details/bot-details/bot-details.component';
 import { UserDetailsComponent } from './details/user-details/user-details.component';
-import { InstanceDetailsComponent } from './details/instance-details/instance-details.component';
 import { KeyValueItem } from './kvp/kvp-item/kvp-item';
 import { KeyValuePair } from './kvp/kvp-list/kvp-list';
-import { StrategyListComponent } from './lists/strategies-list/strategies-list.component';
 import { UsersListComponent } from './lists/users-list/users-list.component';
-import { BotsListComponent } from './lists/bots-list/bots-list.component';
-import { InstanceListComponent } from './lists/instance-list/instance-list.component';
 import { DashChart } from './dash-chart/dash-chart.component';
 import { SharedModule } from '../shared.module';
 
@@ -37,8 +32,6 @@ const components = [
   DashChart,
 
   // Details Components
-  BotDetailsComponent,
-  InstanceDetailsComponent,
   UserDetailsComponent,
 
   // Key value
@@ -46,9 +39,6 @@ const components = [
   KeyValuePair,
 
   // Lists
-  BotsListComponent,
-  InstanceListComponent,
-  StrategyListComponent,
   UsersListComponent,
 ];
 

@@ -6,14 +6,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthedGuard } from 'src/app/guards/authed.guard';
 
 @Component({
-  selector: 'caste-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
+  selector: 'caste-applications',
+  templateUrl: './applications.component.html',
+  styleUrls: ['./applications.component.scss'],
 })
-export class UsersComponent extends PageBaseComponent
+export class ApplicationsComponent extends PageBaseComponent
   implements AfterContentInit {
   static guards: any[] = [AuthedGuard, AdminGuard];
-  public title = 'USERS';
+  public title = 'APPLICATIONS';
 
   constructor(title: Title, translate$: TranslateService) {
     super(title, translate$);

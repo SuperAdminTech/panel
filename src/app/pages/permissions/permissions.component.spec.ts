@@ -1,11 +1,10 @@
-import { AppModule } from 'src/app/app.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
+import { PermissionsComponent } from './permissions.component';
 
-import { StrategyListComponent } from './strategies-list.component';
-
-describe('StrategyListComponent', () => {
-  let component: StrategyListComponent;
-  let fixture: ComponentFixture<StrategyListComponent>;
+describe('PermissionsComponent', () => {
+  let component: PermissionsComponent;
+  let fixture: ComponentFixture<PermissionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,7 +13,7 @@ describe('StrategyListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StrategyListComponent);
+    fixture = TestBed.createComponent(PermissionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,9 @@
 <!-- The following components only render if user is logged in and has User Permissions -->
 <div *ngIf="user$.hasUser()" style="height: calc(100vh - 50px)">
-    <app-toolbar *appPermissions="permissionUser"></app-toolbar>
-    <app-sidemenu *appPermissions="permissionUser">
+    <caste-toolbar *appPermissions="permissionUser"></caste-toolbar>
+    <caste-sidemenu *appPermissions="permissionUser">
         <router-outlet></router-outlet>
-    </app-sidemenu>
+    </caste-sidemenu>
 </div>
 
 <!-- This router outlet only used when user is not logged in (for public routes) -->

@@ -28,8 +28,6 @@ import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 import { DebugScreenModule } from '@qbitartifacts/qbit-debug-screen';
 import { QbitAuthModule, QBIT_AUTH_CONFIG } from '@qbitartifacts/qbit-auth';
-import { StrategiesService } from './services/CRUD/logic-traders/strategies.service';
-import { InstancesService } from './services/CRUD/logic-traders/instances.service';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
 import { PagesModule } from './pages/pages.module';
@@ -76,8 +74,6 @@ const qbitAuthConfigProvider = {
     QEventsService,
     SessionCheckerService,
     DialogsService,
-    StrategiesService,
-    InstancesService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     {
       provide: MatPaginatorIntl,

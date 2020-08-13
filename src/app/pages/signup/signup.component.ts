@@ -15,7 +15,7 @@ import { QbitAuthService } from '@qbitartifacts/qbit-auth';
 import { SignupResponse } from '@qbitartifacts/qbit-auth/lib/interfaces/signup_response.interface';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'caste-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })

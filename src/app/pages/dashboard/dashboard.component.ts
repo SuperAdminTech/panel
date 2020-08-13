@@ -12,14 +12,11 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { DashChart } from 'src/app/components/dash-chart/dash-chart.component';
 import { ChartTestData } from 'src/app/testing/mocks/chart.mock';
-import { StrategiesService } from 'src/app/services/CRUD/logic-traders/strategies.service';
 import { AppService } from 'src/app/services/app.service';
 import { UserService } from 'src/app/services/user.service';
 
-declare const TradingView;
-
 @Component({
-  selector: 'app-dashboard',
+  selector: 'caste-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
@@ -37,7 +34,6 @@ export class DashboardComponent extends PageBaseComponent
   constructor(
     title: Title,
     public translate$: TranslateService,
-    public strategies: StrategiesService,
     public app$: AppService,
     public user$: UserService
   ) {

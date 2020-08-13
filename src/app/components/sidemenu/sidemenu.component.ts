@@ -1,4 +1,3 @@
-import { SHORTCUTS } from 'src/config/shortcuts';
 import {
   Component,
   OnInit,
@@ -7,12 +6,13 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { SIDEMENU_ITEMS, SidemenuItem } from './sidemenu.items';
+import { SIDEMENU_ITEMS, SidemenuItem } from '../../../config/sidemenu.items';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
+import { SHORTCUTS } from 'src/config/shortcuts';
 
 @Component({
-  selector: 'app-sidemenu',
+  selector: 'caste-sidemenu',
   templateUrl: './sidemenu.component.html',
   styleUrls: ['./sidemenu.component.scss'],
 })

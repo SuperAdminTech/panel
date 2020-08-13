@@ -1,11 +1,10 @@
-import { AppModule } from 'src/app/app.module';
+import { ApplicationsComponent } from './applications.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
-import { BotsListComponent } from './bots-list.component';
-
-describe('BotsListComponent', () => {
-  let component: BotsListComponent;
-  let fixture: ComponentFixture<BotsListComponent>;
+describe('ApplicationsComponent', () => {
+  let component: ApplicationsComponent;
+  let fixture: ComponentFixture<ApplicationsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,7 +13,7 @@ describe('BotsListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BotsListComponent);
+    fixture = TestBed.createComponent(ApplicationsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

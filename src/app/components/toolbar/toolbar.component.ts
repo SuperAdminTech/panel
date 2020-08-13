@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
-  selector: 'app-toolbar',
+  selector: 'caste-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })

@@ -6,6 +6,9 @@ import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UserComponent } from './pages/user/user.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { AccountsComponent } from './pages/accounts/accounts.component';
+import { PermissionsComponent } from './pages/permissions/permissions.component';
+import { ApplicationsComponent } from './pages/applications/applications.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,6 +31,21 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: DashboardComponent.guards,
+  },
+  {
+    path: 'accounts',
+    component: AccountsComponent,
+    canActivate: AccountsComponent.guards,
+  },
+  {
+    path: 'permissions',
+    component: PermissionsComponent,
+    canActivate: PermissionsComponent.guards,
+  },
+  {
+    path: 'applications',
+    component: ApplicationsComponent,
+    canActivate: ApplicationsComponent.guards,
   },
   {
     path: 'users',

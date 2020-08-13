@@ -5,7 +5,7 @@ import { PublicGuard } from 'src/app/guards/public.guard';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-forgot-pass',
+  selector: 'caste-forgot-pass',
   templateUrl: './forgot-pass.component.html',
   styleUrls: ['./forgot-pass.component.scss'],
 })

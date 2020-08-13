@@ -18,7 +18,7 @@ import { User } from 'src/app/entities/user';
 import { castRoles } from 'src/app/roles';
 
 @Component({
-  selector: 'app-login',
+  selector: 'caste-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

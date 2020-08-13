@@ -1,4 +1,4 @@
-import { PermissionAdmin, PermissionUser } from './../../permissions/index';
+import { PermissionAdmin, PermissionUser } from '../app/permissions/index';
 import { Permission } from 'src/app/entities/permission';
 
 export interface SidemenuItem {
@@ -30,15 +30,27 @@ export const SIDEMENU_ITEMS: SidemenuItem[] = [
     permission: PermissionAdmin,
   },
   {
-    icon: 'group',
+    icon: 'person',
     label: 'USERS',
     route: '/users',
     permission: PermissionAdmin,
   },
   {
-    icon: 'format_bold',
-    label: 'BOTS',
-    route: '/bots',
+    icon: 'group',
+    label: 'ACCOUNTS',
+    route: '/accounts',
+    permission: PermissionAdmin,
+  },
+  {
+    icon: 'group',
+    label: 'APPLICATIONS',
+    route: '/applications',
+    permission: PermissionAdmin,
+  },
+  {
+    icon: 'lock',
+    label: 'PERMISSIONS',
+    route: '/permissions',
     permission: PermissionAdmin,
   },
 ];

@@ -8,6 +8,9 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ComponentsModule } from '../components/components.module';
+import { PermissionsComponent } from './permissions/permissions.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { AccountsComponent } from './accounts/accounts.component';
 
 const pages = [
   DashboardComponent,
@@ -17,6 +20,9 @@ const pages = [
   SignupComponent,
   UserComponent,
   UsersComponent,
+  PermissionsComponent,
+  ApplicationsComponent,
+  AccountsComponent,
 ];
 
 @NgModule({

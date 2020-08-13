@@ -17,7 +17,7 @@ import {
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
-export const TRANSLATED_STRING: string = '';
+export const TRANSLATED_STRING = '';
 
 export class TranslateServiceMock {
   onLangChangeSubject: Subject<LangChangeEvent> = new Subject();

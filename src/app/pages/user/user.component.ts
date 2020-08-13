@@ -8,7 +8,7 @@ import { ItemPageBaseComponent } from 'src/app/base/item.page.base';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user',
+  selector: 'caste-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
