@@ -15,6 +15,7 @@ export abstract class TableBase<T> implements LoadableComponent {
   abstract displayedColumns: string[] = [];
   public dataSource: MatTableDataSource<T>;
   public isLoading = false;
+  public query = '';
 
   constructor(public hotkeys: HotkeysService) {
     this.registerHotkeys();

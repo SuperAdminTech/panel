@@ -4,10 +4,10 @@
 import { version } from '../../package.json';
 
 export const environment = {
-  url: 'https://api.logic.qbitartifacts.com',
+  url: 'https://api.caste.qbitartifacts.com/',
   production: false,
   brand: {
-    title: 'Trading Bots',
+    title: 'Caste',
   },
   debug: true,
   version,

@@ -24,9 +24,7 @@ import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
 
-import {
-  HotkeysModule,
-} from '@qbitartifacts/qbit-hotkeys';
+import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 import { DebugScreenModule } from '@qbitartifacts/qbit-debug-screen';
 import { QbitAuthModule, QBIT_AUTH_CONFIG } from '@qbitartifacts/qbit-auth';
@@ -36,6 +34,7 @@ import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
 import { PagesModule } from './pages/pages.module';
 import { DialogsModule } from './dialogs/dialogs.module';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -59,7 +58,7 @@ const qbitAuthConfigProvider = {
   provide: QBIT_AUTH_CONFIG,
   useValue: {
     realm: 'default',
-    url: 'https://api.caste.qbitartifacts.com',
+    url: environment.url,
   },
 };
 

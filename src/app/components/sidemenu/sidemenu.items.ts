@@ -18,21 +18,9 @@ export const SIDEMENU_ITEMS: SidemenuItem[] = [
     permission: PermissionUser,
   },
   {
-    icon: 'format_bold',
-    label: 'INSTANCES',
-    route: '/instances',
-    permission: PermissionUser,
-  },
-  {
     icon: 'face',
     label: 'PROFILE',
     route: '/profile',
-    permission: PermissionUser,
-  },
-  {
-    icon: 'alt_route',
-    label: 'STRATEGIES',
-    route: '/strategies',
     permission: PermissionUser,
   },
   // Admin items after separator

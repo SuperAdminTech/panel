@@ -1,7 +1,6 @@
-# BaseNgPanel <!-- omit in toc -->
+# CastePanel <!-- omit in toc -->
 
-A base panel made with angular, with most common logic in place.
-
+Panel for managing [QbitArtifacts/caste](https://github.com/QbitArtifacts/caste)
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
@@ -9,7 +8,7 @@ A base panel made with angular, with most common logic in place.
 
 Tests:
 
-![Test Master](https://github.com/QbitArtifacts/trading-bots-panel/workflows/Test%20Master/badge.svg?branch=master)
+![Test Master](https://github.com/QbitArtifacts/caste-panel/workflows/Test%20Master/badge.svg?branch=master)
 
 Coverage reports:
 
@@ -29,7 +28,6 @@ Coverage reports:
 
 - [Status](#status)
 - [Table Of Content](#table-of-content)
-- [Design](#design)
 - [Usefull Commands & Scripts](#usefull-commands--scripts)
   - [Commands](#commands)
     - [`badges`](#badges)
@@ -38,10 +36,6 @@ Coverage reports:
     - [`scripts/coverage-badges.js`](#scriptscoverage-badgesjs)
     - [`scripts/add-translation.js`](#scriptsadd-translationjs)
   - [Commiting](#commiting)
-
-## Design
-
-Designed in Figma, [here](https://www.figma.com/file/VgAOHfouTCZijHjdOXOHDE/Bots-Panel-Prototype) is the figma link.
 
 ## Usefull Commands & Scripts
 
@@ -87,7 +81,6 @@ scripts/add-translation.js KEY <spanish_translation> <english_translation>
 
 Project uses [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages to autogenerate automatic CHANGELOG and auto increment version.
 
-
-****
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
