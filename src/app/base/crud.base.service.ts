@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from '../services/auth.service';
-import { BaseService, DEFAULT_CONFIG } from '@qbitartifacts/qbit-auth';
+import { BaseService, DEFAULT_CONFIG } from '@qbitartifacts/caste-client-ng';
 import { environment } from 'src/environments/environment';
 
 export interface CrudServiceOptions {

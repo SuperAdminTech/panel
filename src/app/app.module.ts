@@ -27,12 +27,16 @@ import { DialogsService } from './services/dialogs.service';
 import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 import { DebugScreenModule } from '@qbitartifacts/qbit-debug-screen';
-import { QbitAuthModule, QBIT_AUTH_CONFIG } from '@qbitartifacts/qbit-auth';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
 import { PagesModule } from './pages/pages.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { environment } from 'src/environments/environment';
+import {
+  CasteAuthModule,
+  CasteManagementModule,
+  CASTE_AUTH_CONFIG,
+} from '@qbitartifacts/caste-client-ng';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -45,17 +49,20 @@ const modules = [
   SharedModule,
   HttpClientModule,
   DebugScreenModule,
-  QbitAuthModule,
   ComponentsModule,
   PagesModule,
   TranslationsModule,
   DialogsModule,
+
+  // Caste modules
+  CasteAuthModule,
+  CasteManagementModule,
 ];
 
 const qbitAuthConfigProvider = {
-  provide: QBIT_AUTH_CONFIG,
+  provide: CASTE_AUTH_CONFIG,
   useValue: {
-    realm: 'default',
+    realm: environment.realm,
     url: environment.url,
   },
 };

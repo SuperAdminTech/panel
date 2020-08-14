@@ -1,9 +1,7 @@
 import { Router } from '@angular/router';
-import { MUserAdmin } from './../../testing/mocks/users.mock';
 import { UserService } from './../../services/user.service';
-import { MSessionActive } from './../../testing/mocks/session.mock';
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -11,8 +9,10 @@ import { PublicGuard } from './../../guards/public.guard';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { TranslateService } from '@ngx-translate/core';
-import { QbitAuthService } from '@qbitartifacts/qbit-auth';
-import { LoginResponse } from '@qbitartifacts/qbit-auth/lib/interfaces/login_response.interface';
+import {
+  CasteAuthService,
+  LoginResponse,
+} from '@qbitartifacts/caste-client-ng';
 import { Session } from 'src/app/entities/session';
 import { User } from 'src/app/entities/user';
 import { castRoles } from 'src/app/roles';
@@ -39,7 +39,7 @@ export class LoginComponent extends PageBaseComponent
     public auth$: AuthService,
     public user$: UserService,
     public router: Router,
-    public qbitAuth: QbitAuthService
+    public qbitAuth: CasteAuthService
   ) {
     super(title, translate$);
   }

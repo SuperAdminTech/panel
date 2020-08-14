@@ -17,12 +17,12 @@ import {
 } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 import { DebugScreenComponent } from '@qbitartifacts/qbit-debug-screen';
-import { QbitAuthService } from '@qbitartifacts/qbit-auth';
+import { CasteAuthService } from '@qbitartifacts/caste-client-ng';
 import { User } from './entities/user';
 import { castRoles } from './roles';
 
 @Component({
-  selector: 'app-root',
+  selector: 'caste-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public router: Router,
     public hotkeys: HotkeysService,
     public dialog: MatDialog,
-    public location: Location
+    public location: Location,
   ) {
     this.setupEvents();
     this.setupHotKeys();
@@ -150,7 +150,8 @@ export class AppComponent implements OnInit, OnDestroy {
     if (savedSession && savedSession.isActive()) {
       this.auth$.setSession(savedSession);
 
-      const tokenData = QbitAuthService.decodeToken(savedSession.token);
+      const tokenData = CasteAuthService.decodeToken(savedSession.token);
+
       const user = new User()
         .fromJson({ name: tokenData.username })
         .setRoles(castRoles(tokenData.roles));

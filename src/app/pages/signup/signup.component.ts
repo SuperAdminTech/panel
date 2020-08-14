@@ -1,18 +1,15 @@
 import { Router } from '@angular/router';
-import { MUserAdmin } from '../../testing/mocks/users.mock';
-import { UserService } from '../../services/user.service';
-import { MSessionActive } from '../../testing/mocks/session.mock';
-import { AuthService } from '../../services/auth.service';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { PublicGuard } from '../../guards/public.guard';
-import { PageBaseComponent } from 'src/app/base/page.base';
-import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { TranslateService } from '@ngx-translate/core';
-import { QbitAuthService } from '@qbitartifacts/qbit-auth';
-import { SignupResponse } from '@qbitartifacts/qbit-auth/lib/interfaces/signup_response.interface';
+
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { PublicGuard } from '../../guards/public.guard';
+import { PageBaseComponent } from '../../base/page.base';
+import { LoadablePageComponent } from '../../base/loadable.page';
+import { CasteAuthService, SignupResponse } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-signup',
@@ -37,7 +34,7 @@ export class SignupComponent extends PageBaseComponent
     public auth$: AuthService,
     public user$: UserService,
     public router: Router,
-    public qbitAuth: QbitAuthService
+    public qbitAuth: CasteAuthService
   ) {
     super(title, translate$);
   }
