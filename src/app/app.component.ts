@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public router: Router,
     public hotkeys: HotkeysService,
     public dialog: MatDialog,
-    public location: Location,
+    public location: Location
   ) {
     this.setupEvents();
     this.setupHotKeys();
@@ -97,12 +97,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private setupEvents() {
-    this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {
-      /* istanbul ignore else */
-      if (this.IDLE_CHECK_ENABLED) {
-        // this.sessionChecker.initCheckIdle();
-      }
-    });
+    this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {});
 
     this.events.on(AuthService.LOGOUT_EVENT).subscribe((resp) => {
       console.log('On logged out');
@@ -145,9 +140,9 @@ export class AppComponent implements OnInit, OnDestroy {
   /* istanbul ignore next */
   private recoverSessionAndUser() {
     const savedSession = this.auth$.recoverSession();
-    console.log(savedSession.token);
+    const validSession = savedSession && savedSession.isActive();
 
-    if (savedSession && savedSession.isActive()) {
+    if (validSession) {
       this.auth$.setSession(savedSession);
 
       const tokenData = CasteAuthService.decodeToken(savedSession.token);
