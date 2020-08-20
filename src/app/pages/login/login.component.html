@@ -6,7 +6,7 @@
                 {{'LOGIN'|translate}}
             </h4>
             <p class="text-light align-center marg-bottom-20">
-                {{'WELCOME'|translate}}
+                {{'WELCOME'|translate:({title: appName})}}
             </p>
 
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

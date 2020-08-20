@@ -1,4 +1,4 @@
-import { User } from './../../../entities/user';
+import { User } from '../../../entities/user';
 import { Component, OnInit } from '@angular/core';
 import {
   generateName,
@@ -8,20 +8,30 @@ import {
 } from 'src/app/testing/generators.mock';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
+import { CasteApplicationService } from '@qbitartifacts/caste-client-ng';
 
 @Component({
-  selector: 'caste-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss'],
+  selector: 'caste-applications-list',
+  templateUrl: './applications-list.component.html',
+  styleUrls: ['./applications-list.component.scss'],
 })
-export class UsersListComponent extends TableBase<User> implements OnInit {
+export class ApplicationsListComponent extends TableBase<User>
+  implements OnInit {
   public displayedColumns: string[] = ['name', 'lastnames', 'email', 'roles'];
 
-  constructor(public hotkeys: HotkeysService) {
+  constructor(
+    public hotkeys: HotkeysService,
+    private applications: CasteApplicationService
+  ) {
     super(hotkeys);
   }
 
-  public onSearch() {}
+  public onSearch() {
+    this.applications.listAll().subscribe((resp) => {
+      console.log(resp);
+      // this.setData(resp);
+    });
+  }
 
   ngOnInit() {
     const users = Array.from({ length: 100 }, (_, k) => createUser(k + 1 + ''));

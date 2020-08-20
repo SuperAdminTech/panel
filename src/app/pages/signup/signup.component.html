@@ -6,7 +6,7 @@
                 {{'SINGUP'|translate}}
             </h4>
             <p class="text-light align-center marg-bottom-20">
-                {{'WELCOME'|translate}}
+                {{'WELCOME'|translate:({title: appName})}}
             </p>
 
             <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -62,7 +62,7 @@
                     {{'SIGNUP_SUCCESS'|translate}}
                 </h4>
                 <p class="text-subtitle align-center marg-bottom-20">
-                    {{'WELCOME'|translate}}
+                    {{'WELCOME'|translate:({title: appName})}}
                 </p>
 
                 <p class="text-light align-center">

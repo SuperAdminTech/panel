@@ -5,7 +5,7 @@
   "PASSWORD_REQUIRED": "Contraseña requerida",
   "FORGOT_PASSWORD": "¿Olvidaste la contraseña?",
   "LOGIN": "Accede",
-  "WELCOME": "Bienvenido a QbitArtifacts Trading Platform",
+  "WELCOME": "Bienvenido a {{title}}",
   "SALUTE": "Hola de nuevo",
   "ESP": "Español",
   "ENG": "Ingles",
@@ -59,5 +59,8 @@
   "SINGUP": "Registrarse",
   "SIGNUP_SUCCESS_DESC": "Registro completado correctamente, ya puede acceder apretando el siguiente boton",
   "SIGNUP_SUCCESS": "Registro Completo",
-  "CREATE_INSTANCE": "Crear Nueva Instancia"
+  "CREATE_INSTANCE": "Crear Nueva Instancia",
+  "ACCOUNTS": "Cuentas",
+  "APPLICATIONS": "Aplicaciones",
+  "PERMISSIONS": "Permisos"
 }

@@ -9,6 +9,8 @@ export abstract class PageBaseComponent implements AfterContentInit {
   static permissions: Permission[] = [];
   abstract title: string;
   public environment = environment;
+  public appName = environment.brand.title;
+
 
   constructor(public title$: Title, public translate$: TranslateService) {}
 

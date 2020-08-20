@@ -9,7 +9,10 @@ import { AuthService } from '../../services/auth.service';
 import { PublicGuard } from '../../guards/public.guard';
 import { PageBaseComponent } from '../../base/page.base';
 import { LoadablePageComponent } from '../../base/loadable.page';
-import { CasteAuthService, SignupResponse } from '@qbitartifacts/caste-client-ng';
+import {
+  CasteAuthService,
+  SignupResponse,
+} from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-signup',

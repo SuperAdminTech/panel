@@ -16,6 +16,8 @@ import { KeyValuePair } from './kvp/kvp-list/kvp-list';
 import { UsersListComponent } from './lists/users-list/users-list.component';
 import { DashChart } from './dash-chart/dash-chart.component';
 import { SharedModule } from '../shared.module';
+import { ApplicationsListComponent } from './lists/applications-list/applications-list.component';
+import { PermissionsListComponent } from './lists/permissions-list/permissions-list.component';
 
 const components = [
   AddButtonComponent,
@@ -40,13 +42,13 @@ const components = [
 
   // Lists
   UsersListComponent,
+  ApplicationsListComponent,
+  PermissionsListComponent,
 ];
 
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [
-    SharedModule
-  ],
+  imports: [SharedModule],
 })
 export class ComponentsModule {}

@@ -33,7 +33,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public debugModal: MatDialogRef<DebugScreenComponent>;
   public hotkeysModal: MatDialogRef<HotkeysDialogComponent>;
   public IDLE_CHECK_ENABLED = IDLE_CHECK_ENABLED;
-  public activeRoute;
 
   constructor(
     public user$: UserService,
@@ -100,7 +99,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {});
 
     this.events.on(AuthService.LOGOUT_EVENT).subscribe((resp) => {
-      console.log('On logged out');
       this.auth$.removeSession();
       this.user$.setUser(null);
       this.router.navigate(['/login']);

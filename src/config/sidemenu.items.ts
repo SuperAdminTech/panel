@@ -42,7 +42,7 @@ export const SIDEMENU_ITEMS: SidemenuItem[] = [
     permission: PermissionAdmin,
   },
   {
-    icon: 'group',
+    icon: 'apps',
     label: 'APPLICATIONS',
     route: '/applications',
     permission: PermissionAdmin,
