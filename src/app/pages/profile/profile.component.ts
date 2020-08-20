@@ -29,7 +29,9 @@ export class ProfileComponent extends PageBaseComponent implements OnInit {
   ngOnInit() {
     if (this.user$.hasUser()) {
       this.users$.getOne(this.user$.user.id).subscribe(
-        (resp) => {},
+        (resp) => {
+          console.log(resp);
+        },
         (error) => {}
       );
     }

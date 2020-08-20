@@ -146,7 +146,7 @@ export class AppComponent implements OnInit, OnDestroy {
       const tokenData = CasteAuthService.decodeToken(savedSession.token);
 
       const user = new User()
-        .fromJson({ name: tokenData.username })
+        .fromJson({ name: tokenData.username, id: tokenData.id })
         .setRoles(castRoles(tokenData.roles));
 
       this.user$.setUser(user);

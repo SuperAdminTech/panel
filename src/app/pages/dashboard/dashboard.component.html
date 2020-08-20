@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <mat-card>
-                        <app-aggregate title="ACCOUNT_TYPE" [value]="userType" icon="face" valueColor="purple">
+                        <app-aggregate title="ACCOUNT" [value]="userType" icon="face" valueColor="purple">
                         </app-aggregate>
                     </mat-card>
                 </div>
@@ -51,34 +51,3 @@
         </div>
     </div>
 </div>
-
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            <div class="flex-row center">
-                <mat-icon class="mat-icon-mid" style="opacity: 0;">format_bold</mat-icon>
-                <span class="title text-mid">{{'EARNINGS'|translate}}</span>
-            </div>
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div style="height: 300px;">
-            <dash-chart id="txChartEarnings" height="300px" type="spline" #txChartEarnings title="Weekly Earnings">
-            </dash-chart>
-        </div>
-    </mat-card-content>
-</mat-card>
-
-<!-- <mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            <div class="flex-row center">
-                <mat-icon class="mat-icon-mid" style="opacity: 0;">format_bold</mat-icon>
-                <span class="title text-mid">{{'EARNINGS'|translate}}</span>
-            </div>
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content> 
-        <div style="height: 500px;" id="trading-view"></div>
-    </mat-card-content>
-</mat-card> -->
