@@ -1,0 +1,5 @@
+.list-no-items {
+  @extend .centered;
+  @extend .flex-row;
+  height: 48px;
+}

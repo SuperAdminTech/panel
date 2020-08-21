@@ -46,9 +46,8 @@
 
     <caste-list-loading *ngIf="isLoading && !hasData"></caste-list-loading>
 
-
-    <div class="centered flex-row" *ngIf="!hasData && !isLoading">
-        <p>{{'NO_ITEMS'|translate}}</p>
+    <div class="list-no-items" *ngIf="!hasData && !isLoading">
+        <p class="text-light">{{'NO_ITEMS'|translate}}</p>
     </div>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

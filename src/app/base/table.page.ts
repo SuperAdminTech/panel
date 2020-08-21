@@ -53,7 +53,10 @@ export abstract class TableBase<T> implements LoadableComponent {
         this.hasData = resp.length > 0;
         this.setIsLoading(false);
       },
-      (error) => {}
+      (error) => {
+        this.hasData = false;
+        this.setIsLoading(false);
+      }
     );
   }
 
@@ -94,7 +97,6 @@ export abstract class TableBase<T> implements LoadableComponent {
   /* istanbul ignore next*/
   public prevPage() {
     if (this.paginator.hasPreviousPage()) {
-      console.log('go to prev page');
       this.paginator.previousPage();
     }
   }
@@ -102,7 +104,6 @@ export abstract class TableBase<T> implements LoadableComponent {
   /* istanbul ignore next*/
   public nextPage() {
     if (this.paginator.hasNextPage()) {
-      console.log('go to next page');
       this.paginator.nextPage();
     }
   }
