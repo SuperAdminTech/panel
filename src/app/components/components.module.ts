@@ -20,6 +20,7 @@ import { ApplicationsListComponent } from './lists/applications-list/application
 import { PermissionsListComponent } from './lists/permissions-list/permissions-list.component';
 import { AccountsListComponent } from './lists/accounts-list/accounts-list.component';
 import { AccountDetailsComponent } from './details/account-details/account-details.component';
+import { ApplicationDetailsComponent } from './details/application-details/application-details.component';
 
 const components = [
   AddButtonComponent,
@@ -38,6 +39,7 @@ const components = [
   // Details Components
   UserDetailsComponent,
   AccountDetailsComponent,
+  ApplicationDetailsComponent,
 
   // Key value
   KeyValueItem,

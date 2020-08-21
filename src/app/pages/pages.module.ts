@@ -12,6 +12,7 @@ import { PermissionsComponent } from './permissions/permissions.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './account/account.component';
+import { ApplicationComponent } from './application/application.component';
 
 const pages = [
   DashboardComponent,
@@ -23,6 +24,7 @@ const pages = [
   UsersComponent,
   PermissionsComponent,
   ApplicationsComponent,
+  ApplicationComponent,
   AccountsComponent,
   AccountComponent,
 ];

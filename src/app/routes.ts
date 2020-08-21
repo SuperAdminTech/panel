@@ -10,6 +10,7 @@ import { AccountsComponent } from './pages/accounts/accounts.component';
 import { PermissionsComponent } from './pages/permissions/permissions.component';
 import { ApplicationsComponent } from './pages/applications/applications.component';
 import { AccountComponent } from './pages/account/account.component';
+import { ApplicationComponent } from './pages/application/application.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -52,6 +53,11 @@ export const routes: Routes = [
     path: 'applications',
     component: ApplicationsComponent,
     canActivate: ApplicationsComponent.guards,
+  },
+  {
+    path: 'applications/:id',
+    component: ApplicationComponent,
+    canActivate: ApplicationComponent.guards,
   },
   {
     path: 'users',
