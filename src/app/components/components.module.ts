@@ -21,6 +21,7 @@ import { PermissionsListComponent } from './lists/permissions-list/permissions-l
 import { AccountsListComponent } from './lists/accounts-list/accounts-list.component';
 import { AccountDetailsComponent } from './details/account-details/account-details.component';
 import { ApplicationDetailsComponent } from './details/application-details/application-details.component';
+import { PermissionsDetailsComponent } from './details/permission-details/permission-details.component';
 
 const components = [
   AddButtonComponent,
@@ -40,6 +41,7 @@ const components = [
   UserDetailsComponent,
   AccountDetailsComponent,
   ApplicationDetailsComponent,
+  PermissionsDetailsComponent,
 
   // Key value
   KeyValueItem,
