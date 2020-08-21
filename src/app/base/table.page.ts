@@ -18,6 +18,7 @@ export abstract class TableBase<T> implements LoadableComponent {
   public isLoading = false;
   public query = '';
   public searchPipes: any[] = [];
+  public hasData = false;
 
   constructor(public hotkeys: HotkeysService) {
     this.registerHotkeys();
@@ -49,6 +50,7 @@ export abstract class TableBase<T> implements LoadableComponent {
     searchObservable.subscribe(
       (resp) => {
         this.setData(resp);
+        this.hasData = resp.length > 0;
         this.setIsLoading(false);
       },
       (error) => {}

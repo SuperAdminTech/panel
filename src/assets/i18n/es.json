@@ -62,5 +62,7 @@
   "CREATE_INSTANCE": "Crear Nueva Instancia",
   "ACCOUNTS": "Cuentas",
   "APPLICATIONS": "Aplicaciones",
-  "PERMISSIONS": "Permisos"
+  "PERMISSIONS": "Permisos",
+  "LOADING": "Cargando",
+  "CREATED": "Creado"
 }

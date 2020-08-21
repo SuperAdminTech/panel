@@ -62,5 +62,7 @@
   "CREATE_INSTANCE": "Create New Instance",
   "ACCOUNTS": "Accounts",
   "APPLICATIONS": "Applications",
-  "PERMISSIONS": "Permissions"
+  "PERMISSIONS": "Permissions",
+  "LOADING": "Loading",
+  "CREATED": "Created"
 }

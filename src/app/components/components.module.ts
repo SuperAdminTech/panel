@@ -22,6 +22,7 @@ import { AccountsListComponent } from './lists/accounts-list/accounts-list.compo
 import { AccountDetailsComponent } from './details/account-details/account-details.component';
 import { ApplicationDetailsComponent } from './details/application-details/application-details.component';
 import { PermissionsDetailsComponent } from './details/permission-details/permission-details.component';
+import { ListLoadingComponent } from './list-loading/list-loading.component';
 
 const components = [
   AddButtonComponent,
@@ -36,6 +37,7 @@ const components = [
   ToolbarComponent,
   UserAvatarMenuComponent,
   DashChart,
+  ListLoadingComponent,
 
   // Details Components
   UserDetailsComponent,
