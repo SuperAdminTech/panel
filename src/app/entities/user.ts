@@ -9,6 +9,8 @@ export interface IUser {
   email?: string;
   birthDate?: string;
   roles?: Role[];
+  created_at?: string;
+  updated_at?: string;
 }
 export class User implements SerializableEntity, IUser {
   public name: string;
@@ -17,6 +19,8 @@ export class User implements SerializableEntity, IUser {
   public email: string;
   public birthDate: string;
   public roles: Role[] = [];
+  public created_at?: string;
+  public updated_at?: string;
 
   public hasRole(role: Role) {
     return this.roles.includes(role);
@@ -49,6 +53,8 @@ export class User implements SerializableEntity, IUser {
     user.email = data.email;
     user.roles = data.roles;
     user.birthDate = data.birthDate;
+    user.created_at = data.created_at;
+    user.updated_at = data.updated_at;
     return user;
   }
 }

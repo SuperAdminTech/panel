@@ -34,6 +34,10 @@
   color: $textLight;
 }
 
+.date {
+  font-size: 12px;
+}
+
 .text-mid {
   @extend .text-mutted;
   color: $textMid;
@@ -103,4 +107,12 @@
 
 .align-center {
   text-align: center;
+}
+
+code {
+  font-size: 12px !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: $colBlue;
+  padding: 3px 6px;
+  border-radius: 2px;
 }

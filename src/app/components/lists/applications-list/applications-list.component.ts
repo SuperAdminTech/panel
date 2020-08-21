@@ -8,16 +8,24 @@ import {
 } from 'src/app/testing/generators.mock';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
-import { CasteApplicationService } from '@qbitartifacts/caste-client-ng';
+import {
+  CasteApplicationService,
+  Application,
+} from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-applications-list',
   templateUrl: './applications-list.component.html',
   styleUrls: ['./applications-list.component.scss'],
 })
-export class ApplicationsListComponent extends TableBase<User>
+export class ApplicationsListComponent extends TableBase<Application>
   implements OnInit {
-  public displayedColumns: string[] = ['name', 'lastnames', 'email', 'roles'];
+  public displayedColumns: string[] = [
+    'id',
+    'name',
+    'created_at',
+    'updated_at',
+  ];
 
   constructor(
     public hotkeys: HotkeysService,
@@ -28,15 +36,11 @@ export class ApplicationsListComponent extends TableBase<User>
 
   public onSearch() {
     this.applications.listAll().subscribe((resp) => {
-      console.log(resp);
-      // this.setData(resp);
+      this.setData(resp);
     });
   }
 
-  ngOnInit() {
-    const users = Array.from({ length: 100 }, (_, k) => createUser(k + 1 + ''));
-    this.setData(users);
-  }
+  ngOnInit() {}
 }
 
 function createUser(id: string): User {

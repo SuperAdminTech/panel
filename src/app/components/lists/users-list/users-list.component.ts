@@ -1,13 +1,10 @@
 import { User } from './../../../entities/user';
 import { Component, OnInit } from '@angular/core';
-import {
-  generateName,
-  generateEmail,
-  generateLastName,
-  generateRole,
-} from 'src/app/testing/generators.mock';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
+import { map } from 'rxjs/internal/operators/map';
+import { castRoles } from 'src/app/roles';
 
 @Component({
   selector: 'caste-users-list',
@@ -15,28 +12,40 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent extends TableBase<User> implements OnInit {
-  public displayedColumns: string[] = ['name', 'lastnames', 'email', 'roles'];
+  public displayedColumns: string[] = [
+    'id',
+    'name',
+    'roles',
+    'created_at',
+    'updated_at',
+  ];
 
-  constructor(public hotkeys: HotkeysService) {
+  constructor(
+    public hotkeys: HotkeysService,
+    private users$: CasteUsersService
+  ) {
     super(hotkeys);
   }
 
-  public onSearch() {}
-
-  ngOnInit() {
-    const users = Array.from({ length: 100 }, (_, k) => createUser(k + 1 + ''));
-    this.setData(users);
+  public onSearch() {
+    this.users$
+      .listAll()
+      .pipe(
+        map((users) => {
+          return users.map((user) =>
+            new User()
+              .fromJson({
+                id: user.id,
+                name: user.username,
+                created_at: user.created_at,
+                updated_at: user.updated_at,
+              })
+              .setRoles(castRoles(user.roles))
+          );
+        })
+      )
+      .subscribe((resp) => this.setData(resp));
   }
-}
 
-function createUser(id: string): User {
-  const name = generateName();
-  return new User().fromJson({
-    id,
-    name,
-    lastnames: generateLastName(),
-    email: generateEmail(name),
-    birthDate: '',
-    roles: generateRole(),
-  });
+  ngOnInit() {}
 }

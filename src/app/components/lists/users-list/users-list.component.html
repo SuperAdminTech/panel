@@ -4,20 +4,14 @@
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable">
 
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'ID'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> <code>{{row.id}}</code> </td>
+        </ng-container>
+
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'NAME'|translate}} </th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="lastnames">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'LASTNAMES'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.lastnames}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMAIL'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
         </ng-container>
 
         <ng-container matColumnDef="roles">
@@ -28,6 +22,16 @@
                         *ngFor="let role of row.roles">{{role.name|translate}}</mat-chip>
                 </mat-chip-list>
             </td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'CREATED'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> <i class="date">{{row.created_at|date:'short'}}</i> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="updated_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'UPDATED'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> <i class="date">{{row.updated_at|date:'short'}}</i> </td>
         </ng-container>
 
         <tr class="tr-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
