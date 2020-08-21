@@ -31,6 +31,8 @@ export abstract class TableBase<T> implements LoadableComponent {
   }): Observable<any>;
 
   public onSearch(query?: string): void {
+    this.setIsLoading(true);
+
     const queryParams = this.getQueriesForColumns(
       query,
       this.searchableColumns
@@ -47,7 +49,7 @@ export abstract class TableBase<T> implements LoadableComponent {
     searchObservable.subscribe(
       (resp) => {
         this.setData(resp);
-        console.log(resp);
+        this.setIsLoading(false);
       },
       (error) => {}
     );

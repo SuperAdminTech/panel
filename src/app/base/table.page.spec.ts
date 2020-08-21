@@ -3,7 +3,6 @@ import { async, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { TableBase } from './table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
-import { MatPaginator } from '@angular/material/paginator';
 import { Observable, of } from 'rxjs';
 
 @Component({

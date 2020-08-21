@@ -39,5 +39,10 @@
         </tr>
     </table>
 
+    <div class="centered flex-row" *ngIf="isLoading">
+        <mat-spinner diameter="25" class="black-spinner marg-right-10"></mat-spinner>
+        <p>{{'LOADING'|translate}}</p>
+    </div>
+
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </mat-card>
