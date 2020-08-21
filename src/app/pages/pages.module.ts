@@ -11,6 +11,7 @@ import { ComponentsModule } from '../components/components.module';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { AccountComponent } from './account/account.component';
 
 const pages = [
   DashboardComponent,
@@ -23,6 +24,7 @@ const pages = [
   PermissionsComponent,
   ApplicationsComponent,
   AccountsComponent,
+  AccountComponent,
 ];
 
 @NgModule({

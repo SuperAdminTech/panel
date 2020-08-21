@@ -19,6 +19,7 @@ import { SharedModule } from '../shared.module';
 import { ApplicationsListComponent } from './lists/applications-list/applications-list.component';
 import { PermissionsListComponent } from './lists/permissions-list/permissions-list.component';
 import { AccountsListComponent } from './lists/accounts-list/accounts-list.component';
+import { AccountDetailsComponent } from './details/account-details/account-details.component';
 
 const components = [
   AddButtonComponent,
@@ -36,6 +37,7 @@ const components = [
 
   // Details Components
   UserDetailsComponent,
+  AccountDetailsComponent,
 
   // Key value
   KeyValueItem,
