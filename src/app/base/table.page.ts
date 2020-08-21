@@ -13,6 +13,7 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 // tslint:disable-next-line: component-class-suffix
 export abstract class TableBase<T> implements LoadableComponent {
   abstract displayedColumns: string[] = [];
+  public searchableColumns: string[] = [];
   public dataSource: MatTableDataSource<T>;
   public isLoading = false;
   public query = '';
@@ -34,6 +35,20 @@ export abstract class TableBase<T> implements LoadableComponent {
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  public getQueriesForColumns(
+    query: string | number | boolean,
+    columns: string[]
+  ) {
+    const params = {};
+
+    if (query) {
+      const addParam = (col) => (params[col] = query);
+      columns.forEach(addParam);
+    }
+
+    return params;
   }
 
   public registerHotkeys() {

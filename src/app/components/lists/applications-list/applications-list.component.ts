@@ -26,6 +26,7 @@ export class ApplicationsListComponent extends TableBase<Application>
     'created_at',
     'updated_at',
   ];
+  public searchableColumns = ['name', 'id'];
 
   constructor(
     public hotkeys: HotkeysService,
@@ -34,8 +35,12 @@ export class ApplicationsListComponent extends TableBase<Application>
     super(hotkeys);
   }
 
-  public onSearch() {
-    this.applications.listAll().subscribe((resp) => {
+  public onSearch(query?: string) {
+    const queryParams = this.getQueriesForColumns(
+      query,
+      this.searchableColumns
+    );
+    this.applications.listAll(queryParams).subscribe((resp) => {
       this.setData(resp);
     });
   }

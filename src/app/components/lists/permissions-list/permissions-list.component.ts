@@ -20,6 +20,7 @@ export class PermissionsListComponent extends TableBase<PermissionResponse>
     'grants',
     'updated_at',
   ];
+  public searchableColumns = ['id', 'user.username', 'account.name'];
 
   constructor(
     public hotkeys: HotkeysService,
@@ -28,8 +29,13 @@ export class PermissionsListComponent extends TableBase<PermissionResponse>
     super(hotkeys);
   }
 
-  public onSearch() {
-    this.permissions.listAll().subscribe((resp) => {
+  public onSearch(query?: string) {
+    const queryParams = this.getQueriesForColumns(
+      query,
+      this.searchableColumns
+    );
+
+    this.permissions.listAll(queryParams).subscribe((resp) => {
       console.log(resp);
       this.setData(resp);
     });

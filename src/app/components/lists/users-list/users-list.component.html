@@ -1,5 +1,6 @@
 <mat-card class="no-padding">
-    <app-table-header title="USERS" [query]="query" (onSearch)="onSearch()" [searching]="isLoading">
+    <app-table-header title="USERS" [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading"
+        [searchableColumns]="displayedColumns">
     </app-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable">

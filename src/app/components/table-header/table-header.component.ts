@@ -46,6 +46,7 @@ export class TableHeaderComponent implements OnInit {
   @Input() public newItemText = '';
   @Input() public newItemIcon = 'fa-plus';
   @Input() public searching = false;
+  @Input() public searchableColumns = [];
 
   @Output() public onSearch: EventEmitter<string>;
   @Output() public queryChange: EventEmitter<string>;
@@ -68,16 +69,6 @@ export class TableHeaderComponent implements OnInit {
 
   public ngOnInit() {
     setTimeout(() => {
-      // this.hotkeys
-      //   .addShortcut({
-      //     keys: 'shift.r',
-      //     description: 'Clears input',
-      //     element: this.searchElement.nativeElement,
-      //   })
-      //   .subscribe((resp) => {
-      //     console.log('clear input');
-      //   });
-
       if (this.options.input) {
         this.setupDebouncedSearch(this.searchElement.nativeElement);
       }

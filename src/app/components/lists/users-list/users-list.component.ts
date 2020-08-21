@@ -5,6 +5,7 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { map } from 'rxjs/internal/operators/map';
 import { castRoles } from 'src/app/roles';
+import { mapUsers } from 'src/app/pipes/map-users';
 
 @Component({
   selector: 'caste-users-list',
@@ -19,6 +20,7 @@ export class UsersListComponent extends TableBase<User> implements OnInit {
     'created_at',
     'updated_at',
   ];
+  public searchableColumns = ['name', 'id'];
 
   constructor(
     public hotkeys: HotkeysService,
@@ -27,23 +29,15 @@ export class UsersListComponent extends TableBase<User> implements OnInit {
     super(hotkeys);
   }
 
-  public onSearch() {
+  public onSearch(query?: string) {
+    const queryParams = this.getQueriesForColumns(
+      query,
+      this.searchableColumns
+    );
+
     this.users$
-      .listAll()
-      .pipe(
-        map((users) => {
-          return users.map((user) =>
-            new User()
-              .fromJson({
-                id: user.id,
-                name: user.username,
-                created_at: user.created_at,
-                updated_at: user.updated_at,
-              })
-              .setRoles(castRoles(user.roles))
-          );
-        })
-      )
+      .listAll(queryParams)
+      .pipe(mapUsers)
       .subscribe((resp) => this.setData(resp));
   }
 

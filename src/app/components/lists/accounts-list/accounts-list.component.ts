@@ -26,6 +26,7 @@ export class AccountsListComponent extends TableBase<AccountResponse>
     'created_at',
     'updated_at',
   ];
+  public searchableColumns = ['name', 'id'];
 
   constructor(
     public hotkeys: HotkeysService,
@@ -34,8 +35,13 @@ export class AccountsListComponent extends TableBase<AccountResponse>
     super(hotkeys);
   }
 
-  public onSearch() {
-    this.accounts$.listAll().subscribe(
+  public onSearch(query?: string) {
+    const queryParams = this.getQueriesForColumns(
+      query,
+      this.searchableColumns
+    );
+
+    this.accounts$.listAll(queryParams).subscribe(
       (resp) => {
         this.setData(resp);
         console.log(resp);
