@@ -20,7 +20,7 @@ const roleMap = {
   ROLE_USER: ROLES.User,
   ROLE_READONLY: ROLES.Readonly,
   ROLE_ADMIN: ROLES.Admin,
-  ROLE_SUPERADMIN: ROLES.Superadmin,
+  ROLE_SUPER_ADMIN: ROLES.Superadmin,
 };
 
 const roleHierarchy = [

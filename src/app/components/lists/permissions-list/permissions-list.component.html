@@ -40,7 +40,7 @@
         </ng-container>
 
         <tr class="tr-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/users/{{row.id}}">
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/permissions/{{row.id}}">
         </tr>
     </table>
 
