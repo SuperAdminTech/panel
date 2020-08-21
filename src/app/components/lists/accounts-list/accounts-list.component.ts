@@ -1,11 +1,4 @@
-import { User } from '../../../entities/user';
 import { Component, OnInit } from '@angular/core';
-import {
-  generateName,
-  generateEmail,
-  generateLastName,
-  generateRole,
-} from 'src/app/testing/generators.mock';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
@@ -35,19 +28,8 @@ export class AccountsListComponent extends TableBase<AccountResponse>
     super(hotkeys);
   }
 
-  public onSearch(query?: string) {
-    const queryParams = this.getQueriesForColumns(
-      query,
-      this.searchableColumns
-    );
-
-    this.accounts$.listAll(queryParams).subscribe(
-      (resp) => {
-        this.setData(resp);
-        console.log(resp);
-      },
-      (error) => {}
-    );
+  public getSearchObservable(queryParams) {
+    return this.accounts$.listAll(queryParams);
   }
 
   ngOnInit() {}

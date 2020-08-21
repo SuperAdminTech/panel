@@ -1,11 +1,4 @@
-import { User } from '../../../entities/user';
 import { Component, OnInit } from '@angular/core';
-import {
-  generateName,
-  generateEmail,
-  generateLastName,
-  generateRole,
-} from 'src/app/testing/generators.mock';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
@@ -30,32 +23,14 @@ export class ApplicationsListComponent extends TableBase<Application>
 
   constructor(
     public hotkeys: HotkeysService,
-    private applications: CasteApplicationService
+    private applications$: CasteApplicationService
   ) {
     super(hotkeys);
   }
 
-  public onSearch(query?: string) {
-    const queryParams = this.getQueriesForColumns(
-      query,
-      this.searchableColumns
-    );
-    this.applications.listAll(queryParams).subscribe((resp) => {
-      this.setData(resp);
-    });
+  public getSearchObservable(queryParams) {
+    return this.applications$.listAll(queryParams);
   }
 
   ngOnInit() {}
-}
-
-function createUser(id: string): User {
-  const name = generateName();
-  return new User().fromJson({
-    id,
-    name,
-    lastnames: generateLastName(),
-    email: generateEmail(name),
-    birthDate: '',
-    roles: generateRole(),
-  });
 }

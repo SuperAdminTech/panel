@@ -4,20 +4,24 @@ import { Component } from '@angular/core';
 import { TableBase } from './table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { MatPaginator } from '@angular/material/paginator';
+import { Observable, of } from 'rxjs';
 
 @Component({
   template: '',
 })
 class TestPage extends TableBase<any> {
+  public displayedColumns: string[];
+
   constructor(public hotkeys: HotkeysService) {
     super(hotkeys);
   }
 
-  displayedColumns: string[];
-
-  public onSearch(): void {
-    throw new Error('Method not implemented.');
+  public getSearchObservable(queryParams: {
+    [key: string]: string;
+  }): Observable<any> {
+    return of('test');
   }
+  public onSearch(): void {}
 }
 
 describe('PageBaseComponent', () => {

@@ -24,21 +24,13 @@ export class PermissionsListComponent extends TableBase<PermissionResponse>
 
   constructor(
     public hotkeys: HotkeysService,
-    private permissions: CastePermissionsService
+    public permissions$: CastePermissionsService
   ) {
     super(hotkeys);
   }
 
-  public onSearch(query?: string) {
-    const queryParams = this.getQueriesForColumns(
-      query,
-      this.searchableColumns
-    );
-
-    this.permissions.listAll(queryParams).subscribe((resp) => {
-      console.log(resp);
-      this.setData(resp);
-    });
+  public getSearchObservable(queryParams) {
+    return this.permissions$.listAll(queryParams);
   }
 
   ngOnInit() {}

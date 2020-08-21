@@ -1,11 +1,11 @@
 import { SHORTCUTS } from 'src/config/shortcuts';
-// import { HotkeysService } from 'projects/hotkeys/src/public-api';
 import { LoadableComponent } from './loadable.page';
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
+import { Observable } from 'rxjs';
 
 @Component({
   template: '',
@@ -17,6 +17,7 @@ export abstract class TableBase<T> implements LoadableComponent {
   public dataSource: MatTableDataSource<T>;
   public isLoading = false;
   public query = '';
+  public searchPipes: any[] = [];
 
   constructor(public hotkeys: HotkeysService) {
     this.registerHotkeys();
@@ -25,7 +26,32 @@ export abstract class TableBase<T> implements LoadableComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  public abstract onSearch(): void;
+  abstract getSearchObservable(queryParams: {
+    [key: string]: string;
+  }): Observable<any>;
+
+  public onSearch(query?: string): void {
+    const queryParams = this.getQueriesForColumns(
+      query,
+      this.searchableColumns
+    );
+
+    let searchObservable = this.getSearchObservable(queryParams);
+    const applyPipe = (pipe) =>
+      (searchObservable = searchObservable.pipe(pipe));
+
+    if (this.searchPipes && this.searchPipes.length) {
+      this.searchPipes.forEach(applyPipe);
+    }
+
+    searchObservable.subscribe(
+      (resp) => {
+        this.setData(resp);
+        console.log(resp);
+      },
+      (error) => {}
+    );
+  }
 
   public setIsLoading(loading: boolean): void {
     this.isLoading = loading;

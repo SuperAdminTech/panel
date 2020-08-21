@@ -1,10 +1,8 @@
 import { User } from './../../../entities/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
-import { map } from 'rxjs/internal/operators/map';
-import { castRoles } from 'src/app/roles';
 import { mapUsers } from 'src/app/pipes/map-users';
 
 @Component({
@@ -21,24 +19,17 @@ export class UsersListComponent extends TableBase<User> implements OnInit {
     'updated_at',
   ];
   public searchableColumns = ['name', 'id'];
+  public searchPipes = [mapUsers];
 
   constructor(
     public hotkeys: HotkeysService,
-    private users$: CasteUsersService
+    public users$: CasteUsersService
   ) {
     super(hotkeys);
   }
 
-  public onSearch(query?: string) {
-    const queryParams = this.getQueriesForColumns(
-      query,
-      this.searchableColumns
-    );
-
-    this.users$
-      .listAll(queryParams)
-      .pipe(mapUsers)
-      .subscribe((resp) => this.setData(resp));
+  public getSearchObservable(queryParams) {
+    return this.users$.listAll(queryParams);
   }
 
   ngOnInit() {}
