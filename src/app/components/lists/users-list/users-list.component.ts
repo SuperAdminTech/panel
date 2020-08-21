@@ -4,13 +4,14 @@ import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { mapUsers } from 'src/app/pipes/map-users';
+import { PermissionAdmin } from 'src/app/permissions';
 
 @Component({
   selector: 'caste-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
 })
-export class UsersListComponent extends TableBase<User> implements OnInit {
+export class UsersListComponent extends TableBase<User> {
   public displayedColumns: string[] = [
     'id',
     'name',
@@ -20,6 +21,7 @@ export class UsersListComponent extends TableBase<User> implements OnInit {
   ];
   public searchableColumns = ['name', 'id'];
   public searchPipes = [mapUsers];
+  public permissionForAdding = PermissionAdmin;
 
   constructor(
     public hotkeys: HotkeysService,
@@ -32,5 +34,5 @@ export class UsersListComponent extends TableBase<User> implements OnInit {
     return this.users$.listAll(queryParams);
   }
 
-  ngOnInit() {}
+  addUser() {}
 }

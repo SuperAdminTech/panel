@@ -1,5 +1,6 @@
 <mat-card class="no-padding">
     <app-table-header title="PERMISSIONS" [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading">
+        <add-button (add)="addNewPermission()" *appPermissions="permissionForAdding"></add-button>
     </app-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable">

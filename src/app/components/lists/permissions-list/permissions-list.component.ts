@@ -5,14 +5,14 @@ import {
   CastePermissionsService,
   PermissionResponse,
 } from '@qbitartifacts/caste-client-ng';
+import { PermissionAdmin } from 'src/app/permissions';
 
 @Component({
   selector: 'caste-permissions-list',
   templateUrl: './permissions-list.component.html',
   styleUrls: ['./permissions-list.component.scss'],
 })
-export class PermissionsListComponent extends TableBase<PermissionResponse>
-  implements OnInit {
+export class PermissionsListComponent extends TableBase<PermissionResponse> {
   public displayedColumns: string[] = [
     'id',
     'user',
@@ -21,6 +21,7 @@ export class PermissionsListComponent extends TableBase<PermissionResponse>
     'updated_at',
   ];
   public searchableColumns = ['id', 'user.username', 'account.name'];
+  public permissionForAdding = PermissionAdmin;
 
   constructor(
     public hotkeys: HotkeysService,
@@ -33,5 +34,5 @@ export class PermissionsListComponent extends TableBase<PermissionResponse>
     return this.permissions$.listAll(queryParams);
   }
 
-  ngOnInit() {}
+  addPermission() {}
 }

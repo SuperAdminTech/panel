@@ -5,14 +5,14 @@ import {
   CasteAccountsService,
   AccountResponse,
 } from '@qbitartifacts/caste-client-ng';
+import { PermissionAdmin } from 'src/app/permissions';
 
 @Component({
   selector: 'caste-accounts-list',
   templateUrl: './accounts-list.component.html',
   styleUrls: ['./accounts-list.component.scss'],
 })
-export class AccountsListComponent extends TableBase<AccountResponse>
-  implements OnInit {
+export class AccountsListComponent extends TableBase<AccountResponse> {
   public displayedColumns: string[] = [
     'id',
     'name',
@@ -20,6 +20,7 @@ export class AccountsListComponent extends TableBase<AccountResponse>
     'updated_at',
   ];
   public searchableColumns = ['name', 'id'];
+  public permissionForAdding = PermissionAdmin;
 
   constructor(
     public hotkeys: HotkeysService,
@@ -32,5 +33,5 @@ export class AccountsListComponent extends TableBase<AccountResponse>
     return this.accounts$.listAll(queryParams);
   }
 
-  ngOnInit() {}
+  addAccount() {}
 }
