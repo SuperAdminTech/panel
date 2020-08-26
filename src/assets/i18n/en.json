@@ -64,5 +64,9 @@
   "APPLICATIONS": "Applications",
   "PERMISSIONS": "Permissions",
   "LOADING": "Loading",
-  "CREATED": "Created"
+  "CREATED": "Created",
+  "CREATE_APPLICATION": "Create Application",
+  "REALM": "Realm",
+  "ADD": "Add",
+  "NEW_APPLICATION": "New Application"
 }

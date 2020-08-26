@@ -6,6 +6,7 @@ import {
   Application,
 } from '@qbitartifacts/caste-client-ng';
 import { PermissionAdmin } from 'src/app/permissions';
+import { DialogsService } from 'src/app/services/dialogs.service';
 
 @Component({
   selector: 'caste-applications-list',
@@ -24,7 +25,8 @@ export class ApplicationsListComponent extends TableBase<Application> {
 
   constructor(
     public hotkeys: HotkeysService,
-    private applications$: CasteApplicationService
+    private applications$: CasteApplicationService,
+    public dialogs: DialogsService
   ) {
     super(hotkeys);
   }
@@ -33,5 +35,7 @@ export class ApplicationsListComponent extends TableBase<Application> {
     return this.applications$.listAll(queryParams);
   }
 
-  addApplication() {}
+  addApplication() {
+    this.dialogs.openAddApplication();
+  }
 }
