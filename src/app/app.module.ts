@@ -38,6 +38,7 @@ import {
   CASTE_AUTH_CONFIG,
 } from '@qbitartifacts/caste-client-ng';
 import { MySnackBarService } from './services/mysnackbar.service';
+import { DetailsBaseComponent } from './base/details.base';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -73,6 +74,7 @@ const qbitAuthConfigProvider = {
     AppComponent,
     PageBaseComponent as any,
     ItemPageBaseComponent as any,
+    DetailsBaseComponent as any,
     TableBase as any,
   ],
   imports: modules,

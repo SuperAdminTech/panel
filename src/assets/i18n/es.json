@@ -70,5 +70,6 @@
   "ADD": "Añadir",
   "NEW_APPLICATION": "Nueva applicacion",
   "APPLICATION": "Applicacion",
-  "USER_DETAILS": "Detalles de usuario"
+  "USER_DETAILS": "Detalles de usuario",
+  "ACCOUNT_DETAILS": "Detalles de la cuenta"
 }

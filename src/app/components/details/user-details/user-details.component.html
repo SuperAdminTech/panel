@@ -11,23 +11,23 @@
     </mat-card-header>
 
     <mat-card-content class="padd-15">
-        <div *ngIf="!isLoading && user">
+        <div *ngIf="!isLoading && item">
             <div class="text-mid flex-row center space-between marg-bottom-15">
-                <span>{{'NAME'|translate}}</span> <b>{{user.name}}</b>
+                <span>{{'NAME'|translate}}</span> <b>{{item.name}}</b>
             </div>
             <div class="text-mid flex-row center space-between marg-bottom-15">
-                <span>{{'ID'|translate}}</span> <code>{{user.id}}</code>
+                <span>{{'ID'|translate}}</span> <code>{{item.id}}</code>
             </div>
             <div class="text-mid flex-row center space-between marg-bottom-15">
                 <span>{{'APPLICATION'|translate}}</span> <a
-                    routerLink="/applications/{{user.application.id}}"><code>{{user.application.id}}</code></a>
+                    routerLink="/applications/{{item.application.id}}"><code>{{item.application.id}}</code></a>
             </div>
             <div class="text-mid flex-row center space-between marg-bottom-15">
                 <span>{{'ROLES'|translate}}</span>
                 <div>
                     <mat-chip-list>
                         <mat-chip class="mat-chip mat-primary mat-standard-chip {{role.className}}"
-                            *ngFor="let role of user.roles">{{role.name|translate}}</mat-chip>
+                            *ngFor="let role of item.roles">{{role.name|translate}}</mat-chip>
                     </mat-chip-list>
                 </div>
             </div>

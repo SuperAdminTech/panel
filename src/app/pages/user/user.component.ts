@@ -12,8 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
-export class UserComponent extends ItemPageBaseComponent
-  implements AfterContentInit, OnInit {
+export class UserComponent extends ItemPageBaseComponent {
   static guards: any[] = [AuthedGuard, AdminGuard];
   public title = 'USER';
 
@@ -23,9 +22,5 @@ export class UserComponent extends ItemPageBaseComponent
     public route: ActivatedRoute
   ) {
     super(title$, translate$, route);
-  }
-
-  ngOnInit() {
-    console.log('Bot id: ', this.itemId);
   }
 }
