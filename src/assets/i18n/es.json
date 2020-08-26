@@ -68,5 +68,7 @@
   "CREATE_APPLICATION": "Crear Applicacion",
   "REALM": "Realm",
   "ADD": "Añadir",
-  "NEW_APPLICATION": "Nueva applicacion"
+  "NEW_APPLICATION": "Nueva applicacion",
+  "APPLICATION": "Applicacion",
+  "USER_DETAILS": "Detalles de usuario"
 }

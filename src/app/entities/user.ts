@@ -1,6 +1,7 @@
 import { Role } from './role';
 import { SerializableEntity } from '../base/serializable-entity.base';
 import { getHighestRole } from '../roles';
+import { Application } from '@qbitartifacts/caste-client-ng';
 
 export interface IUser {
   id?: string;
@@ -11,6 +12,7 @@ export interface IUser {
   roles?: Role[];
   created_at?: string;
   updated_at?: string;
+  application?: Application;
 }
 export class User implements SerializableEntity, IUser {
   public name: string;
@@ -21,6 +23,7 @@ export class User implements SerializableEntity, IUser {
   public roles: Role[] = [];
   public created_at?: string;
   public updated_at?: string;
+  public application?: Application;
 
   public hasRole(role: Role) {
     return this.roles.includes(role);
@@ -55,6 +58,7 @@ export class User implements SerializableEntity, IUser {
     user.birthDate = data.birthDate;
     user.created_at = data.created_at;
     user.updated_at = data.updated_at;
+    user.application = data.application;
     return user;
   }
 }
