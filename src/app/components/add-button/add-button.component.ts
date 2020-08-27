@@ -10,7 +10,7 @@ import { ValidColors } from './../../types/index';
 export class AddButtonComponent {
   @Input() color: ValidColors = 'primary';
   @Input() icon = 'add';
-  @Input() text = 'Add';
+  @Input() text = 'ADD';
 
   @Output() add: EventEmitter<any> = new EventEmitter();
 }

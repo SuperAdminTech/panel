@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateApplicationComponent } from '../dialogs/create-application/create-application.component';
+import { DeleteConfirmationComponent } from '../dialogs/delete-confirmation/delete-confirmation.component';
 
 @Injectable({
   providedIn: 'root',
@@ -9,18 +10,30 @@ export class DialogsService {
   constructor(public dialog: MatDialog) {}
 
   /* istanbul ignore next */
-  openDialog<T = any>(component, data = {}, options: any = { width: '60%' }) {
+  openDialog<T = any>(
+    component,
+    data = {},
+    options: Partial<MatDialogConfig> = { width: '60%' }
+  ) {
     return this.dialog.open<T>(component, {
       ...options,
       data,
     });
   }
 
-  openAddApplication(options?: any) {
+  openAddApplication(options?: Partial<MatDialogConfig>) {
     return this.openDialog(
       CreateApplicationComponent,
       {},
       { ...options, width: '300px' }
+    );
+  }
+
+  openConfirmDelete(options?: Partial<MatDialogConfig>) {
+    return this.openDialog(
+      DeleteConfirmationComponent,
+      {},
+      { ...options, width: '400px' }
     );
   }
 }

@@ -1,7 +1,7 @@
 import { Role } from './role';
 import { SerializableEntity } from '../base/serializable-entity.base';
 import { getHighestRole } from '../roles';
-import { Application } from '@qbitartifacts/caste-client-ng';
+import { ApplicationResponse } from '@qbitartifacts/caste-client-ng';
 
 export interface IUser {
   id?: string;
@@ -12,7 +12,7 @@ export interface IUser {
   roles?: Role[];
   created_at?: string;
   updated_at?: string;
-  application?: Application;
+  application?: ApplicationResponse;
 }
 export class User implements SerializableEntity, IUser {
   public name: string;
@@ -23,7 +23,7 @@ export class User implements SerializableEntity, IUser {
   public roles: Role[] = [];
   public created_at?: string;
   public updated_at?: string;
-  public application?: Application;
+  public application?: ApplicationResponse;
 
   public hasRole(role: Role) {
     return this.roles.includes(role);

@@ -1,0 +1,28 @@
+<div class="card-header">
+    <div>
+        <div class="flex-row center">
+            <span class="title text-mid">{{'DELETE_ITEM'|translate}}</span>
+        </div>
+    </div>
+    <button mat-icon-button (click)="close()" class="abs-center-center text-mid">
+        <mat-icon class="mat-icon-mid">
+            close
+        </mat-icon>
+    </button>
+</div>
+
+<div class="bootstrap-wrapper">
+    <div class="padd-20">
+        <p class="subhead no-margin">{{'DELETE_ITEM_CONFIRM'|translate}}</p>
+        <p class="text-mid">{{'DELETE_ITEM_CONFIRM_DESC'|translate}}</p>
+
+        <div class="flex-row center justify-end marg-top-30 dialog-actions">
+            <button mat-button (click)="close()">
+                {{'CANCEL'|translate}}
+            </button>
+            <button mat-raised-button (click)="proceed()" color="warn">
+                {{'DELETE'|translate}}
+            </button>
+        </div>
+    </div>
+</div>

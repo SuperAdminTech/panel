@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
 import { CasteApplicationService } from '@qbitartifacts/caste-client-ng';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
+import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
   selector: 'caste-create-application',
@@ -39,7 +40,8 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
       })
       .subscribe(
         (resp) => {
-          console.log(resp);
+          this.snackbar.open('CREATED_APP_OK');
+          this.close(CreateDialogStatus.CREATED);
         },
         (err) => {
           this.snackbar.open(err.message || err.detail);
@@ -67,7 +69,7 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
     this.isLoading = loading;
   }
 
-  close() {
-    this.dialogRef.close();
+  close(status: CreateDialogStatus = CreateDialogStatus.CANCELED) {
+    this.dialogRef.close(status);
   }
 }

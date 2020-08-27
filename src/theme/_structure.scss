@@ -22,6 +22,9 @@
   &.end {
     align-items: flex-end;
   }
+  &.justify-end {
+    justify-content: flex-end;
+  }
 }
 
 .column {
@@ -54,6 +57,9 @@
 .marg-top-20 {
   margin-top: 20px !important;
 }
+.marg-top-30 {
+  margin-top: 30px !important;
+}
 .marg-top-40 {
   margin-top: 40px !important;
 }
@@ -67,6 +73,10 @@
 
 .marg-bottom-20 {
   margin-bottom: 20px !important;
+}
+
+.marg-bottom-30 {
+  margin-bottom: 30px !important;
 }
 
 .marg-left-10 {
@@ -216,4 +226,10 @@ th {
   @extend .padd-v-15;
   border-bottom: 1px solid $border;
   position: relative;
+}
+
+.dialog-actions {
+  .mat-button:not(:last-child) {
+    margin-right: 15px;
+  }
 }
