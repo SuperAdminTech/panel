@@ -4,12 +4,6 @@
     </app-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable">
-
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'ID'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> <code>{{row.id}}</code> </td>
-        </ng-container>
-
         <ng-container matColumnDef="user">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'USER'|translate}} </th>
             <td mat-cell *matCellDef="let row">

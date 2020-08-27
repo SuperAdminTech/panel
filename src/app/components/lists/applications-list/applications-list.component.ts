@@ -18,7 +18,6 @@ import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 })
 export class ApplicationsListComponent extends TableBase<Application> {
   public displayedColumns: string[] = [
-    'id',
     'name',
     'created_at',
     'updated_at',

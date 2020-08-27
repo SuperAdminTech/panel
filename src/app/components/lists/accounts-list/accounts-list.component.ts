@@ -14,7 +14,6 @@ import { PermissionAdmin } from 'src/app/permissions';
 })
 export class AccountsListComponent extends TableBase<AccountResponse> {
   public displayedColumns: string[] = [
-    'id',
     'name',
     'created_at',
     'updated_at',

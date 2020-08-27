@@ -16,17 +16,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h4 class="title-lg marg-bottom-20">
-                    {{'NEW_PERMISSION' | translate}}
+                    {{'CREATE_PERMISSION' | translate}}
                 </h4>
+                <p class="text-mid">{{'CREATE_PERMISSION_DESC'|translate}}</p>
 
-                <mat-form-field>
-                    <mat-label>{{'USERNAME' | translate}}</mat-label>
-                    <input id="username" matInput placeholder="Enter the user's username" formControlName="username">
-                    <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
-                        {{'USERNAME_REQUIRED' | translate}}
-                    </mat-error>
-                </mat-form-field>
-
+                <caste-user-selector [(user)]="user"></caste-user-selector>
                 <caste-account-selector [(account)]="account"></caste-account-selector>
 
                 <mat-form-field>

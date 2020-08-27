@@ -75,5 +75,8 @@
 
   "DELETE_ITEM": "Delete Item",
   "DELETE_ITEM_CONFIRM": "Are you sure you want to delete that?",
-  "DELETE_ITEM_CONFIRM_DESC": "Once deleted you can't go back."
+  "DELETE_ITEM_CONFIRM_DESC": "Once deleted you can't go back.",
+
+  "CREATE_PERMISSION": "Create new Permission",
+  "CREATE_PERMISSION_DESC": "Give a user permission over an account"
 }

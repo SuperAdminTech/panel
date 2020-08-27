@@ -17,7 +17,6 @@ import { DeleteDialogStatus } from 'src/app/enums/delete-dialog-status';
 })
 export class PermissionsListComponent extends TableBase<PermissionResponse> {
   public displayedColumns: string[] = [
-    'id',
     'user',
     'account',
     'grants',
