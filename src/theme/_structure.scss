@@ -208,6 +208,14 @@ th {
   bottom: 20px;
 }
 
+.abs-top-center {
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+
 .abs-center-center {
   position: absolute !important;
   right: 15px;
@@ -219,6 +227,13 @@ th {
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.sticky-top-center {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 9;
 }
 
 .card-header {

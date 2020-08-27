@@ -12,12 +12,16 @@
 
         <ng-container matColumnDef="user">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'USER'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.user.username}} </td>
+            <td mat-cell *matCellDef="let row">
+                <a routerLink="/users/{{row.user.id}}">{{row.user.username || 'not-set'}}</a>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="account">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'ACCOUNT'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.account.name || 'not-set'}} </td>
+            <td mat-cell *matCellDef="let row">
+                <a routerLink="/accounts/{{row.account.id}}">{{row.account.name || 'not-set'}}</a>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="grants">
@@ -30,14 +34,25 @@
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="created_at">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'CREATED'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> <i class="date">{{row.created_at|date:'short'}}</i> </td>
-        </ng-container>
-
         <ng-container matColumnDef="updated_at">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'UPDATED'|translate}} </th>
             <td mat-cell *matCellDef="let row"> <i class="date">{{row.updated_at|date:'short'}}</i> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="options" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Item options menu"
+                    (click)="$event.preventDefault(); $event.stopPropagation()">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item class="col-error" (click)="removePermission(row.id)">
+                        <mat-icon class="mat-icon material-icons mat-icon-small">delete</mat-icon>
+                        <span>{{'REMOVE'|translate}}</span>
+                    </button>
+                </mat-menu>
+            </td>
         </ng-container>
 
         <tr class="tr-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,0 +1,26 @@
+<mat-form-field>
+    <mat-label>Choose an account</mat-label>
+    <mat-select [ngModel]="account" (ngModelChange)="accountChange.emit($event)">
+        <div class="padd-10 bordered-bottom sticky-top-center bg-white">
+            <input #search color="primary" style="margin: 0 15px" class="search-input" [(ngModel)]="accountQuery"
+                placeholder="{{'SEARCH'|translate}}">
+        </div>
+        <mat-option *ngFor="let account of accounts" [value]="account.id">
+            {{account.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<!-- <button mat-button [matMenuTriggerFor]="menu" aria-label="Account Selector">
+    <div *ngIf="account">
+        <span>{{account.name || 'no-name'}}</span>
+    </div>
+    <div *ngIf="!account">
+        <span>Select account</span>
+    </div>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let account of accounts" (click)="selectAccount(account)">
+        <span>{{account.name}}</span>
+    </button>
+</mat-menu> -->

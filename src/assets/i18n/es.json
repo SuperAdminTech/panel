@@ -71,5 +71,9 @@
   "NEW_APPLICATION": "Nueva applicacion",
   "APPLICATION": "Applicacion",
   "USER_DETAILS": "Detalles de usuario",
-  "ACCOUNT_DETAILS": "Detalles de la cuenta"
+  "ACCOUNT_DETAILS": "Detalles de la cuenta",
+
+  "DELETE_ITEM": "Eliminar elemento",
+  "DELETE_ITEM_CONFIRM": "¿Estás seguro de que quieres eliminar eso?",
+  "DELETE_ITEM_CONFIRM_DESC": "Una vez eliminado, no puedes volver atrás"
 }

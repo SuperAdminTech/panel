@@ -37,7 +37,7 @@ export class ApplicationsListComponent extends TableBase<Application> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(queryParams);
+    return this.applications$.listAll(queryParams, 'sadmin');
   }
 
   addApplication() {

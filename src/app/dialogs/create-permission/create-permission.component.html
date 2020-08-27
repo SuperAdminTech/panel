@@ -1,0 +1,48 @@
+<div class="card-header">
+    <div>
+        <div class="flex-row center">
+            <span class="title text-mid">{{'CREATE_PERMISSION'|translate}}</span>
+        </div>
+    </div>
+    <button mat-icon-button (click)="close()" class="abs-center-center text-mid">
+        <mat-icon class="mat-icon-mid">
+            close
+        </mat-icon>
+    </button>
+</div>
+
+<div class="bootstrap-wrapper">
+    <form class="padd-20" [formGroup]="permissionDetailsForm" (ngSubmit)="addPermission()">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="title-lg marg-bottom-20">
+                    {{'NEW_PERMISSION' | translate}}
+                </h4>
+
+                <mat-form-field>
+                    <mat-label>{{'USERNAME' | translate}}</mat-label>
+                    <input id="username" matInput placeholder="Enter the user's username" formControlName="username">
+                    <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
+                        {{'USERNAME_REQUIRED' | translate}}
+                    </mat-error>
+                </mat-form-field>
+
+                <caste-account-selector [(account)]="account"></caste-account-selector>
+
+                <mat-form-field>
+                    <mat-label>{{'GRANTS'|translate}}</mat-label>
+                    <mat-select formControlName="grants" multiple>
+                        <mat-option *ngFor="let grant of availableGrants" [value]="grant">{{grant}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="flex-row end">
+                    <app-loadable-button [id]="'createPermission'" [disabled]="permissionDetailsForm.invalid"
+                        [loading]="isLoading">
+                        {{(isLoading ? 'ADDING': 'ADD') |translate}}
+                    </app-loadable-button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

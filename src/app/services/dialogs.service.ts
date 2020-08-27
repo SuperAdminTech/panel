@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateApplicationComponent } from '../dialogs/create-application/create-application.component';
 import { DeleteConfirmationComponent } from '../dialogs/delete-confirmation/delete-confirmation.component';
+import { CreatePermissionComponent } from '../dialogs/create-permission/create-permission.component';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,14 @@ export class DialogsService {
       DeleteConfirmationComponent,
       {},
       { ...options, width: '400px' }
+    );
+  }
+
+  openAddPermission(options?: Partial<MatDialogConfig>) {
+    return this.openDialog(
+      CreatePermissionComponent,
+      {},
+      { ...options, width: '300px' }
     );
   }
 }

@@ -76,7 +76,8 @@ body {
   border-radius: 3px;
 }
 
-.toolbar-white {
+.toolbar-white,
+.bg-white {
   background: white;
 }
 
@@ -90,5 +91,3 @@ body {
 @import './inputs';
 @import './lists';
 @import './overrides';
-
-

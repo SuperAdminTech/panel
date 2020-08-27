@@ -71,5 +71,9 @@
   "NEW_APPLICATION": "New Application",
   "APPLICATION": "Application",
   "USER_DETAILS": "User details",
-  "ACCOUNT_DETAILS": "Account details"
+  "ACCOUNT_DETAILS": "Account details",
+
+  "DELETE_ITEM": "Delete Item",
+  "DELETE_ITEM_CONFIRM": "Are you sure you want to delete that?",
+  "DELETE_ITEM_CONFIRM_DESC": "Once deleted you can't go back."
 }

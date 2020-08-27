@@ -17,6 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 const modules = [
   MatIconModule,
@@ -37,6 +38,7 @@ const modules = [
   MatDialogModule,
   MatTabsModule,
   MatCheckboxModule,
+  MatSelectModule,
 ];
 
 @NgModule({

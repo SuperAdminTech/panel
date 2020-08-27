@@ -31,7 +31,7 @@ export class UsersListComponent extends TableBase<User> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.users$.listAll(queryParams);
+    return this.users$.listAll(queryParams, 'admin');
   }
 
   addUser() {}

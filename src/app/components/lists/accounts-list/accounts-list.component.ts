@@ -30,7 +30,7 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.accounts$.listAll(queryParams);
+    return this.accounts$.listAll(queryParams, 'sadmin');
   }
 
   addAccount() {}
