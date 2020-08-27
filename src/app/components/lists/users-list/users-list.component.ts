@@ -32,39 +32,16 @@ export class UsersListComponent extends TableBase<User> {
     public dialogs: DialogsService,
     public snackbar: MySnackBarService
   ) {
-    super(hotkeys);
+    super(hotkeys, snackbar, dialogs);
   }
 
   public getSearchObservable(queryParams) {
     return this.users$.listAll(queryParams, 'admin');
   }
 
+  public getRemoveItemObservable(id: string) {
+    return this.users$.remove(id, 'sadmin');
+  }
+
   addUser() {}
-
-  removeUser(id: string) {
-    this.dialogs
-      .openConfirmDelete()
-      .afterClosed()
-      .subscribe((resp) => {
-        if (resp === DeleteDialogStatus.DELETE) {
-          this.removeItem(id);
-        }
-      });
-  }
-
-  removeItem(id: string) {
-    this.users$.remove(id, 'sadmin').subscribe({
-      next: this.onItemRemoved.bind(this),
-      error: this.onItemRemoveError.bind(this),
-    });
-  }
-
-  onItemRemoved() {
-    this.snackbar.open('REMOVED_ITEM');
-    this.onSearch(this.query);
-  }
-
-  onItemRemoveError(err) {
-    this.snackbar.open(err.message || err.detail);
-  }
 }

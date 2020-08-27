@@ -32,13 +32,18 @@ export class ApplicationsListComponent extends TableBase<Application> {
     public dialogs: DialogsService,
     public snackbar: MySnackBarService
   ) {
-    super(hotkeys);
+    super(hotkeys, snackbar, dialogs);
   }
 
   public getSearchObservable(queryParams) {
     return this.applications$.listAll(queryParams, 'sadmin');
   }
 
+  public getRemoveItemObservable(id: string) {
+    return this.applications$.remove(id, 'sadmin');
+  }
+
+  /* istanbul ignore next */
   addApplication() {
     this.dialogs
       .openAddApplication()
@@ -48,32 +53,5 @@ export class ApplicationsListComponent extends TableBase<Application> {
           this.onSearch(this.query);
         }
       });
-  }
-
-  removeApplication(id: string) {
-    this.dialogs
-      .openConfirmDelete()
-      .afterClosed()
-      .subscribe((resp) => {
-        if (resp === DeleteDialogStatus.DELETE) {
-          this.removeItem(id);
-        }
-      });
-  }
-
-  removeItem(id: string) {
-    this.applications$.remove(id).subscribe({
-      next: this.onItemRemoved.bind(this),
-      error: this.onItemRemoveError.bind(this),
-    });
-  }
-
-  onItemRemoved() {
-    this.snackbar.open('REMOVED_ITEM');
-    this.onSearch(this.query);
-  }
-
-  onItemRemoveError(err) {
-    this.snackbar.open(err.message || err.detail);
   }
 }

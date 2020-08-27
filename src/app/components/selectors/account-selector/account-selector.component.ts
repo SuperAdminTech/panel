@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CasteAccountsService } from '@qbitartifacts/caste-client-ng';
 import { fromEvent } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -18,11 +26,13 @@ export class AccountSelectorComponent implements OnInit {
 
   constructor(public accounts$: CasteAccountsService) {}
 
+  /* istanbul ignore next */
   selectAccount(account) {
     this.account = account;
     this.accountChange.emit(account);
   }
 
+  /* istanbul ignore next */
   ngOnInit() {
     setTimeout(() => {
       this.setupDebouncedSearch(this.searchElement.nativeElement);
@@ -30,6 +40,7 @@ export class AccountSelectorComponent implements OnInit {
     this.search();
   }
 
+  /* istanbul ignore next */
   public search(query?: string) {
     this.accounts$.listAll({ name: query }, 'sadmin').subscribe({
       next: (accounts) => {

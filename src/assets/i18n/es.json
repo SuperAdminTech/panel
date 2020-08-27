@@ -78,5 +78,7 @@
   "DELETE_ITEM_CONFIRM_DESC": "Una vez eliminado, no puedes volver atrás",
 
   "CREATE_PERMISSION": "Crear un nuevo permiso",
-  "CREATE_PERMISSION_DESC": "Darle a un usuario permiso sobre una cuenta"
+  "CREATE_PERMISSION_DESC": "Darle a un usuario permiso sobre una cuenta",
+
+  "CREATED_APP_OK": "Applicacion creada correctamente"
 }

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { TableBase } from './table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable, of } from 'rxjs';
+import { DialogsService } from '../services/dialogs.service';
+import { MySnackBarService } from '../services/mysnackbar.service';
 
 @Component({
   template: '',
@@ -11,8 +13,12 @@ import { Observable, of } from 'rxjs';
 class TestPage extends TableBase<any> {
   public displayedColumns: string[];
 
-  constructor(public hotkeys: HotkeysService) {
-    super(hotkeys);
+  constructor(
+    public hotkeys: HotkeysService,
+    public dialogs: DialogsService,
+    public snackbar: MySnackBarService
+  ) {
+    super(hotkeys, snackbar, dialogs);
   }
 
   public getSearchObservable(queryParams: {
@@ -20,6 +26,11 @@ class TestPage extends TableBase<any> {
   }): Observable<any> {
     return of('test');
   }
+
+  getRemoveItemObservable(id: string): Observable<any> {
+    return of('test');
+  }
+
   public onSearch(): void {}
 }
 

@@ -66,9 +66,6 @@ const qbitAuthConfigProvider = {
   useValue: {
     realm: environment.realm,
     url: environment.url,
-    baseHeaders: {
-      // accept: 'application/ld+json',
-    },
   },
 };
 

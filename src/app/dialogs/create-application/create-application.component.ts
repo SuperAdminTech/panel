@@ -34,10 +34,13 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
 
     console.log('Data', this.applicationDetailsForm.value);
     this.applications$
-      .create({
-        name: this.name.value,
-        realm: this.realm.value,
-      })
+      .create(
+        {
+          name: this.name.value,
+          realm: this.realm.value,
+        },
+        'sadmin'
+      )
       .subscribe(
         (resp) => {
           this.snackbar.open('CREATED_APP_OK');

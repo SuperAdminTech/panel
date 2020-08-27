@@ -1,3 +1,4 @@
+import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { LoadableComponent } from './loadable.page';
 import { Component, ViewChild } from '@angular/core';
@@ -6,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable } from 'rxjs';
+import { DialogsService } from '../services/dialogs.service';
+import { DeleteDialogStatus } from '../enums/delete-dialog-status';
 
 @Component({
   template: '',
@@ -20,7 +23,11 @@ export abstract class TableBase<T> implements LoadableComponent {
   public searchPipes: any[] = [];
   public hasData = false;
 
-  constructor(public hotkeys: HotkeysService) {
+  constructor(
+    public hotkeys: HotkeysService,
+    public snackbar: MySnackBarService,
+    public dialogs: DialogsService
+  ) {
     this.registerHotkeys();
   }
 
@@ -30,6 +37,8 @@ export abstract class TableBase<T> implements LoadableComponent {
   abstract getSearchObservable(queryParams: {
     [key: string]: string;
   }): Observable<any>;
+
+  abstract getRemoveItemObservable(id: string): Observable<any>;
 
   public onSearch(query?: string): void {
     this.setIsLoading(true);
@@ -58,6 +67,24 @@ export abstract class TableBase<T> implements LoadableComponent {
         this.setIsLoading(false);
       }
     );
+  }
+
+  public openRemoveConfirmation(id: string) {
+    this.dialogs
+      .openConfirmDelete()
+      .afterClosed()
+      .subscribe((resp) => {
+        if (resp === DeleteDialogStatus.DELETE) {
+          this.removeItem(id);
+        }
+      });
+  }
+
+  private removeItem(id: string) {
+    this.getRemoveItemObservable(id).subscribe({
+      next: this.onItemRemoved.bind(this),
+      error: this.onItemRemoveError.bind(this),
+    });
   }
 
   public setIsLoading(loading: boolean): void {
@@ -106,5 +133,16 @@ export abstract class TableBase<T> implements LoadableComponent {
     if (this.paginator.hasNextPage()) {
       this.paginator.nextPage();
     }
+  }
+
+  /* istanbul ignore next */
+  onItemRemoved() {
+    this.snackbar.open('REMOVED_ITEM');
+    this.onSearch(this.query);
+  }
+
+  /* istanbul ignore next */
+  onItemRemoveError(err) {
+    this.snackbar.open(err.message || err.detail);
   }
 }

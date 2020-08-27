@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountSelectorComponent } from './account-selector.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('AccountSelectorComponent', () => {
   let component: AccountSelectorComponent;
@@ -8,9 +9,8 @@ describe('AccountSelectorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountSelectorComponent ]
-    })
-    .compileComponents();
+      imports: [AppModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

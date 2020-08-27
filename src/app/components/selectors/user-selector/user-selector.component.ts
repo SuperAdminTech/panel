@@ -26,6 +26,7 @@ export class UserSelectorComponent implements OnInit {
 
   constructor(public users$: CasteAccountsService) {}
 
+  /* istanbul ignore next */
   selectUser(user) {
     this.user = user;
     this.userChange.emit(user);
@@ -39,6 +40,7 @@ export class UserSelectorComponent implements OnInit {
     this.search();
   }
 
+  /* istanbul ignore next */
   public search(query?: string) {
     this.users$.listAll({ name: query }, 'sadmin').subscribe({
       next: (users) => {
@@ -48,6 +50,7 @@ export class UserSelectorComponent implements OnInit {
     });
   }
 
+  /* istanbul ignore next */
   public setupDebouncedSearch(element) {
     console.log('setupDebouncedSearch');
     fromEvent(element, 'keyup')

@@ -5,10 +5,10 @@ import {
   PermissionResponse,
 } from '@qbitartifacts/caste-client-ng';
 import { TableBase } from 'src/app/base/table.page';
-import { PermissionAdmin } from 'src/app/permissions';
+import { PermissionAdmin, PermissionSuperAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { DeleteDialogStatus } from 'src/app/enums/delete-dialog-status';
+import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
   selector: 'caste-permissions-list',
@@ -25,6 +25,7 @@ export class PermissionsListComponent extends TableBase<PermissionResponse> {
   ];
   public searchableColumns = ['id', 'user.username', 'account.name'];
   public permissionForAdding = PermissionAdmin;
+  public permissionForRemoving = PermissionSuperAdmin;
 
   constructor(
     public hotkeys: HotkeysService,
@@ -32,41 +33,26 @@ export class PermissionsListComponent extends TableBase<PermissionResponse> {
     public dialogs: DialogsService,
     public snackbar: MySnackBarService
   ) {
-    super(hotkeys);
+    super(hotkeys, snackbar, dialogs);
   }
 
   public getSearchObservable(queryParams) {
     return this.permissions$.listAll(queryParams, 'sadmin');
   }
 
-  addPermission() {
-    this.dialogs.openAddPermission();
+  public getRemoveItemObservable(id: string) {
+    return this.permissions$.remove(id, 'sadmin');
   }
 
-  removePermission(id: string) {
+  /* istanbul ignore next */
+  addPermission() {
     this.dialogs
-      .openConfirmDelete()
+      .openAddPermission()
       .afterClosed()
       .subscribe((resp) => {
-        if (resp === DeleteDialogStatus.DELETE) {
-          this.removeItem(id);
+        if (resp === CreateDialogStatus.CREATED) {
+          this.onSearch(this.query);
         }
       });
-  }
-
-  removeItem(id: string) {
-    this.permissions$.remove(id).subscribe({
-      next: this.onItemRemoved.bind(this),
-      error: this.onItemRemoveError.bind(this),
-    });
-  }
-
-  onItemRemoved() {
-    this.snackbar.open('REMOVED_ITEM');
-    this.onSearch(this.query);
-  }
-
-  onItemRemoveError(err) {
-    this.snackbar.open(err.message || err.detail);
   }
 }

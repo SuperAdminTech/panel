@@ -37,7 +37,7 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item class="col-error" (click)="removeApplication(row.id)">
+                    <button mat-menu-item class="col-error" (click)="openRemoveConfirmation(row.id)">
                         <mat-icon class="mat-icon material-icons mat-icon-small">delete</mat-icon>
                         <span>{{'REMOVE'|translate}}</span>
                     </button>
