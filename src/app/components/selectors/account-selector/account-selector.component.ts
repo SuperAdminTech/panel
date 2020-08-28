@@ -50,6 +50,7 @@ export class AccountSelectorComponent implements OnInit {
     });
   }
 
+  /* istanbul ignore next */
   public setupDebouncedSearch(element) {
     console.log('setupDebouncedSearch');
     fromEvent(element, 'keyup')

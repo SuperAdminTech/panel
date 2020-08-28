@@ -110,17 +110,6 @@ export class TableHeaderComponent implements OnInit {
         this.query = text;
         this.onSearch.emit(text);
         this.queryChange.emit(text);
-
-        // Add query params for deeplinking
-        if (this.options.deepLinkQuery) {
-          this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: {
-              query: this.query,
-            },
-            queryParamsHandling: 'merge',
-          });
-        }
       });
   }
 }
