@@ -49,6 +49,7 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
         (err) => {
           this.snackbar.open(err.message || err.detail);
           this.setIsLoading(false);
+          this.dialogRef.disableClose = false;
         }
       );
   }

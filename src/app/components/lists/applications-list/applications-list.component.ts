@@ -28,7 +28,7 @@ export class ApplicationsListComponent extends TableBase<Application> {
 
   constructor(
     public hotkeys: HotkeysService,
-    private applications$: CasteApplicationService,
+    public applications$: CasteApplicationService,
     public dialogs: DialogsService,
     public snackbar: MySnackBarService
   ) {
@@ -43,15 +43,10 @@ export class ApplicationsListComponent extends TableBase<Application> {
     return this.applications$.remove(id, 'sadmin');
   }
 
-  /* istanbul ignore next */
   addApplication() {
     this.dialogs
       .openAddApplication()
       .afterClosed()
-      .subscribe((resp) => {
-        if (resp === CreateDialogStatus.CREATED) {
-          this.onSearch(this.query);
-        }
-      });
+      .subscribe(this.onNewItemAdded.bind(this));
   }
 }

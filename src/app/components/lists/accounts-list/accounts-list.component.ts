@@ -8,6 +8,7 @@ import {
 import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
+import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
   selector: 'caste-accounts-list',
@@ -15,13 +16,18 @@ import { MySnackBarService } from 'src/app/services/mysnackbar.service';
   styleUrls: ['./accounts-list.component.scss'],
 })
 export class AccountsListComponent extends TableBase<AccountResponse> {
-  public displayedColumns: string[] = ['name', 'created_at', 'updated_at'];
+  public displayedColumns: string[] = [
+    'name',
+    'created_at',
+    'updated_at',
+    'options',
+  ];
   public searchableColumns = ['name', 'id'];
   public permissionForAdding = PermissionAdmin;
 
   constructor(
     public hotkeys: HotkeysService,
-    private accounts$: CasteAccountsService,
+    public accounts$: CasteAccountsService,
     public dialogs: DialogsService,
     public snackbar: MySnackBarService
   ) {
@@ -29,12 +35,23 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.accounts$.listAll(queryParams, 'sadmin');
+    return this.accounts$.listAll(
+      {
+        'sort[created_at]': 'asc',
+        ...queryParams,
+      },
+      'sadmin'
+    );
   }
 
   public getRemoveItemObservable(id: string) {
-    return this.accounts$.remove(id, 'sadmin');
+    return this.accounts$.remove(id, 'user');
   }
 
-  addAccount() {}
+  public addAccount() {
+    this.dialogs
+      .openAddAccount()
+      .afterClosed()
+      .subscribe(this.onNewItemAdded.bind(this));
+  }
 }

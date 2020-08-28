@@ -2,53 +2,47 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
-import { CastePermissionsService } from '@qbitartifacts/caste-client-ng';
+import { CasteAccountsService } from '@qbitartifacts/caste-client-ng';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
-  selector: 'caste-create-permission',
-  templateUrl: './create-permission.component.html',
-  styleUrls: ['./create-permission.component.scss'],
+  selector: 'caste-create-account',
+  templateUrl: './create-account.component.html',
+  styleUrls: ['./create-account.component.scss'],
 })
-export class CreatePermissionComponent implements OnInit, LoadableComponent {
-  public permissionDetailsForm: FormGroup;
+export class CreateAccountComponent implements OnInit, LoadableComponent {
+  public accountDetailsForm: FormGroup;
   public isLoading: boolean;
-  public availableGrants = ['ACCOUNT_WORKER', 'ACCOUNT_MANAGER'];
-  public account = null;
-  public user = null;
 
   constructor(
-    public dialogRef: MatDialogRef<CreatePermissionComponent>,
+    public dialogRef: MatDialogRef<CreateAccountComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private permissions$: CastePermissionsService,
+    private accounts$: CasteAccountsService,
     private snackbar: MySnackBarService
   ) {}
 
   /* istanbul ignore next */
-  addPermission() {
-    if (this.permissionDetailsForm.invalid || this.isLoading) {
+  addAccount() {
+    if (this.accountDetailsForm.invalid || this.isLoading) {
       return false;
     }
 
     this.setIsLoading(true);
     this.dialogRef.disableClose = true;
 
-    console.log('Data', this.permissionDetailsForm.value);
-    this.permissions$
+    this.accounts$
       .create(
         {
-          account: `/user/accounts/${this.account.id}`,
-          user: `/user/users/${this.user.id}`,
-          grants: this.grants.value,
+          name: this.name.value,
+          permissions: [],
         },
-        'sadmin'
+        'admin'
       )
       .subscribe(
         (resp) => {
-          this.snackbar.open('CREATED_APP_OK');
-          this.dialogRef.disableClose = false;
+          this.snackbar.open('CREATED_ACCOUNT_OK');
           this.close(CreateDialogStatus.CREATED);
         },
         (err) => {
@@ -60,13 +54,13 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   }
 
   ngOnInit() {
-    this.permissionDetailsForm = this.formBuilder.group({
-      grants: ['', Validators.required],
+    this.accountDetailsForm = this.formBuilder.group({
+      name: ['', Validators.required],
     });
   }
 
-  get grants() {
-    return this.permissionDetailsForm.get('grants');
+  get name() {
+    return this.accountDetailsForm.get('name');
   }
 
   setIsLoading(loading: boolean): void {

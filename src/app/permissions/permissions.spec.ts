@@ -4,6 +4,7 @@ import {
   PermissionAdmin,
   PermissionUser,
   PermissionPublic,
+  PermissionSuperAdmin,
 } from './index';
 import { MUserAdmin } from '../testing/mocks/users.mock';
 
@@ -74,6 +75,16 @@ describe('Permissions tests', () => {
 
   it('UserPermission .canActivate(! User) => false', () => {
     const includes = PermissionUser.canActivate();
+    expect(includes).toEqual(false);
+  });
+
+  it('SuperadminPermission .canActivate(User[USER]) => false', () => {
+    const includes = PermissionSuperAdmin.canActivate(MUserUser);
+    expect(includes).toEqual(false);
+  });
+
+  it('SuperadminPermission .canActivate(! User) => false', () => {
+    const includes = PermissionSuperAdmin.canActivate();
     expect(includes).toEqual(false);
   });
 });

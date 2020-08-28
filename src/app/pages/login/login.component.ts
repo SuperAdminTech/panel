@@ -22,7 +22,8 @@ import { castRoles } from 'src/app/roles';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent extends PageBaseComponent
+export class LoginComponent
+  extends PageBaseComponent
   implements AfterContentInit, LoadablePageComponent {
   static guards: any[] = [PublicGuard];
   public title = 'Login';
@@ -87,6 +88,7 @@ export class LoginComponent extends PageBaseComponent
     return true;
   }
 
+  /* istanbul ignore next */
   private loginSuccess(resp: LoginResponse) {
     this.setIsLoading(false);
 

@@ -1,11 +1,11 @@
-<caste-dialog-header title="{{'CREATE_APPLICATION'|translate}}" (click)="close()"></caste-dialog-header>
+<caste-dialog-header title="{{'CREATE_ACCOUNT'|translate}}" (click)="close()"></caste-dialog-header>
 
 <div class="bootstrap-wrapper">
-    <form class="padd-20" [formGroup]="applicationDetailsForm" (ngSubmit)="addApplication()">
+    <form class="padd-20" [formGroup]="accountDetailsForm" (ngSubmit)="addAccount()">
         <div class="row">
             <div class="col-lg-12">
                 <h4 class="title-lg marg-bottom-20">
-                    {{'NEW_APPLICATION' | translate}}
+                    {{'CREATE_ACCOUNT' | translate}}
                 </h4>
 
                 <mat-form-field>
@@ -16,17 +16,8 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'REALM' | translate}}</mat-label>
-                    <input id="realm" matInput placeholder="Enter the realm for the application"
-                        formControlName="realm">
-                    <mat-error *ngIf="realm.invalid && (realm.dirty) && realm.errors.required">
-                        {{'REALM_REQUIRED' | translate}}
-                    </mat-error>
-                </mat-form-field>
-
                 <div class="flex-row end">
-                    <app-loadable-button [id]="'createApplication'" [disabled]="applicationDetailsForm.invalid || isLoading"
+                    <app-loadable-button [id]="'createAccount'" [disabled]="accountDetailsForm.invalid || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </app-loadable-button>

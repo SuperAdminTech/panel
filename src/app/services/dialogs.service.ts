@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateApplicationComponent } from '../dialogs/create-application/create-application.component';
 import { DeleteConfirmationComponent } from '../dialogs/delete-confirmation/delete-confirmation.component';
 import { CreatePermissionComponent } from '../dialogs/create-permission/create-permission.component';
+import { CreateAccountComponent } from '../dialogs/create-account/create-account.component';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,14 @@ export class DialogsService {
   openAddPermission(options?: Partial<MatDialogConfig>) {
     return this.openDialog(
       CreatePermissionComponent,
+      {},
+      { ...options, width: '300px' }
+    );
+  }
+
+  openAddAccount(options?: Partial<MatDialogConfig>) {
+    return this.openDialog(
+      CreateAccountComponent,
       {},
       { ...options, width: '300px' }
     );

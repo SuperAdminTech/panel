@@ -9,6 +9,7 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable } from 'rxjs';
 import { DialogsService } from '../services/dialogs.service';
 import { DeleteDialogStatus } from '../enums/delete-dialog-status';
+import { CreateDialogStatus } from '../enums/create-dialog-status';
 
 @Component({
   template: '',
@@ -136,13 +137,19 @@ export abstract class TableBase<T> implements LoadableComponent {
   }
 
   /* istanbul ignore next */
-  onItemRemoved() {
+  public onItemRemoved() {
     this.snackbar.open('REMOVED_ITEM');
     this.onSearch(this.query);
   }
 
   /* istanbul ignore next */
-  onItemRemoveError(err) {
+  public onItemRemoveError(err) {
     this.snackbar.open(err.message || err.detail);
+  }
+
+  public onNewItemAdded(resp) {
+    if (resp === CreateDialogStatus.CREATED) {
+      this.onSearch(this.query);
+    }
   }
 }

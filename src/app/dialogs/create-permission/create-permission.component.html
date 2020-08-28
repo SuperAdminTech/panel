@@ -1,15 +1,4 @@
-<div class="card-header">
-    <div>
-        <div class="flex-row center">
-            <span class="title text-mid">{{'CREATE_PERMISSION'|translate}}</span>
-        </div>
-    </div>
-    <button mat-icon-button (click)="close()" class="abs-center-center text-mid">
-        <mat-icon class="mat-icon-mid">
-            close
-        </mat-icon>
-    </button>
-</div>
+<caste-dialog-header title="{{'CREATE_PERMISSION'|translate}}" (click)="close()"></caste-dialog-header>
 
 <div class="bootstrap-wrapper">
     <form class="padd-20" [formGroup]="permissionDetailsForm" (ngSubmit)="addPermission()">
@@ -31,7 +20,7 @@
                 </mat-form-field>
 
                 <div class="flex-row end">
-                    <app-loadable-button [id]="'createPermission'" [disabled]="permissionDetailsForm.invalid"
+                    <app-loadable-button [id]="'createPermission'" [disabled]="permissionDetailsForm.invalid || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </app-loadable-button>

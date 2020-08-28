@@ -19,7 +19,8 @@ import {
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent extends PageBaseComponent
+export class SignupComponent
+  extends PageBaseComponent
   implements AfterContentInit, LoadablePageComponent {
   static guards: any[] = [PublicGuard];
   public title = 'Signup';
@@ -63,6 +64,7 @@ export class SignupComponent extends PageBaseComponent
     this.isLoading = loading;
   }
 
+  /* istanbul ignore next */
   public onSubmit(): boolean {
     this.submitted = true;
 

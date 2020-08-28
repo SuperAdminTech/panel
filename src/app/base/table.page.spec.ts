@@ -6,6 +6,7 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable, of } from 'rxjs';
 import { DialogsService } from '../services/dialogs.service';
 import { MySnackBarService } from '../services/mysnackbar.service';
+import { CreateDialogStatus } from '../enums/create-dialog-status';
 
 @Component({
   template: '',
@@ -66,5 +67,31 @@ describe('PageBaseComponent', () => {
     component.setData([]);
 
     expect(component.dataSource.data).toEqual([]);
+  });
+
+  it('addAccountNext should search after CreateDialogStatus is CREATED', () => {
+    const fixture = TestBed.createComponent(TestPage);
+    const component = fixture.componentInstance;
+
+    component.onSearch = () => {};
+
+    spyOn(component, 'onSearch');
+
+    component.onNewItemAdded(CreateDialogStatus.CREATED);
+
+    expect(component.onSearch).toHaveBeenCalled();
+  });
+
+  it('addAccountNext should not search if CreateDialogStatus is not CREATED', () => {
+    const fixture = TestBed.createComponent(TestPage);
+    const component = fixture.componentInstance;
+
+    component.onSearch = () => {};
+
+    spyOn(component, 'onSearch');
+
+    component.onNewItemAdded(CreateDialogStatus.CANCELED);
+
+    expect(component.onSearch).not.toHaveBeenCalled();
   });
 });

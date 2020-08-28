@@ -28,7 +28,7 @@
     "@angular/router": "~8.2.14",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@qbitartifacts/caste-client-ng": "^0.1.1",
+    "@qbitartifacts/caste-client-ng": "^0.1.3",
     "@qbitartifacts/qbit-debug-screen": "^0.0.1",
     "@qbitartifacts/qbit-hotkeys": "^0.0.13",
     "@qbitartifacts/qbit-kit-ng": "^0.0.4",

@@ -4,7 +4,7 @@ import { AggregateComponent } from './aggregate/aggregate.component';
 import { LangSelectorComponent } from './lang-selector/lang.selector';
 import { LoadableButtonComponent } from './loadable-button/loadable-button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ModalHeaderComponent } from './modal-header/modal-header.component';
+import { DialogHeaderComponent } from './dialog-header/dialog-header.component';
 import { PlayStopComponent } from './play-stop/play-stop.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TableHeaderComponent } from './table-header/table-header.component';
@@ -31,7 +31,7 @@ const components = [
   AggregateComponent,
   LangSelectorComponent,
   LoadableButtonComponent,
-  ModalHeaderComponent,
+  DialogHeaderComponent,
   NotFoundComponent,
   PlayStopComponent,
   SidemenuComponent,

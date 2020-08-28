@@ -44,15 +44,10 @@ export class PermissionsListComponent extends TableBase<PermissionResponse> {
     return this.permissions$.remove(id, 'sadmin');
   }
 
-  /* istanbul ignore next */
   addPermission() {
     this.dialogs
       .openAddPermission()
       .afterClosed()
-      .subscribe((resp) => {
-        if (resp === CreateDialogStatus.CREATED) {
-          this.onSearch(this.query);
-        }
-      });
+      .subscribe(this.onNewItemAdded.bind(this));
   }
 }

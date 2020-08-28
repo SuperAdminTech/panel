@@ -1,15 +1,4 @@
-<div class="card-header">
-    <div>
-        <div class="flex-row center">
-            <span class="title text-mid">{{'DELETE_ITEM'|translate}}</span>
-        </div>
-    </div>
-    <button mat-icon-button (click)="close()" class="abs-center-center text-mid">
-        <mat-icon class="mat-icon-mid">
-            close
-        </mat-icon>
-    </button>
-</div>
+<caste-dialog-header title="{{'DELETE_ITEM'|translate}}" (click)="close(false)"></caste-dialog-header>
 
 <div class="bootstrap-wrapper">
     <div class="padd-20">
@@ -20,7 +9,7 @@
             <button mat-button (click)="close()">
                 {{'CANCEL'|translate}}
             </button>
-            <button mat-raised-button (click)="proceed()" color="warn">
+            <button mat-raised-button cdkFocusInitial (click)="proceed()" color="warn">
                 {{'DELETE'|translate}}
             </button>
         </div>

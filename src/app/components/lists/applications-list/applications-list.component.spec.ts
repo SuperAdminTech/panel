@@ -22,4 +22,26 @@ describe('ApplicationsListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get remove observable', () => {
+    spyOn(component.applications$, 'remove');
+
+    component.getRemoveItemObservable('test');
+    expect(component.applications$.remove).toHaveBeenCalled();
+  });
+
+  it('should get list observable', () => {
+    spyOn(component.applications$, 'listAll');
+
+    component.getSearchObservable({});
+    expect(component.applications$.listAll).toHaveBeenCalled();
+  });
+
+  it('addApplication should work', () => {
+    spyOn(component.dialogs, 'openAddApplication').and.callThrough();
+
+    component.addApplication();
+
+    expect(component.dialogs.openAddApplication).toHaveBeenCalled();
+  });
 });

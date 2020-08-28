@@ -80,5 +80,7 @@
   "CREATE_PERMISSION": "Crear un nuevo permiso",
   "CREATE_PERMISSION_DESC": "Darle a un usuario permiso sobre una cuenta",
 
-  "CREATED_APP_OK": "Applicacion creada correctamente"
+  "CREATED_APP_OK": "Applicacion creada correctamente",
+  "CREATE_ACCOUNT": "Crear una nueva Cuenta"
+
 }

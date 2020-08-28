@@ -53,6 +53,13 @@ describe('SignupComponent', () => {
     });
   });
 
+  it('isLoading works', () => {
+    fixture = TestBed.createComponent(SignupComponent);
+    component = fixture.componentInstance;
+    component.setIsLoading(true);
+    expect(component.isLoading).toEqual(true);
+  });
+
   // it('On submit works with data', async () => {
   //   fixture = TestBed.createComponent(SignupComponent);
   //   component = fixture.componentInstance;

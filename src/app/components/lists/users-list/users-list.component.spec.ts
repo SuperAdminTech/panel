@@ -22,4 +22,18 @@ describe('UsersListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get remove observable', () => {
+    spyOn(component.users$, 'remove');
+
+    component.getRemoveItemObservable('test');
+    expect(component.users$.remove).toHaveBeenCalled();
+  });
+
+  it('should get list observable', () => {
+    spyOn(component.users$, 'listAll');
+
+    component.getSearchObservable({});
+    expect(component.users$.listAll).toHaveBeenCalled();
+  });
 });
