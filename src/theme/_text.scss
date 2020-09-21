@@ -112,12 +112,16 @@
 code {
   font-size: 12px !important;
   background: rgba(0, 0, 0, 0.05) !important;
-  color: $colBlue;
+  color: $colPurple;
   padding: 3px 6px;
   border-radius: 2px;
 }
 
 a {
-  color: $colBlue;
+  color: $colPurple;
   text-decoration: none;
+}
+
+a.mat-chip {
+  color: $colPurple !important;
 }

@@ -22,7 +22,7 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
     'updated_at',
     'options',
   ];
-  public searchableColumns = ['name', 'id'];
+  public searchableColumns = ['name'];
   public permissionForAdding = PermissionAdmin;
 
   constructor(
