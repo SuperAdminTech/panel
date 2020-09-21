@@ -1,7 +1,7 @@
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { LoadableComponent } from './loadable.page';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +23,9 @@ export abstract class TableBase<T> implements LoadableComponent {
   public query = '';
   public searchPipes: any[] = [];
   public hasData = false;
+
+  // Input properties
+  @Input() searchFilters: any = {};
 
   constructor(
     public hotkeys: HotkeysService,
@@ -49,7 +52,10 @@ export abstract class TableBase<T> implements LoadableComponent {
       this.searchableColumns
     );
 
-    let searchObservable = this.getSearchObservable(queryParams);
+    let searchObservable = this.getSearchObservable({
+      ...queryParams,
+      ...this.searchFilters,
+    });
     const applyPipe = (pipe) =>
       (searchObservable = searchObservable.pipe(pipe));
 

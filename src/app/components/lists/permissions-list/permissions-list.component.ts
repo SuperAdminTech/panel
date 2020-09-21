@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CastePermissionsService,
@@ -23,7 +23,7 @@ export class PermissionsListComponent extends TableBase<PermissionResponse> {
     'updated_at',
     'options',
   ];
-  public searchableColumns = ['id', 'user.username', 'account.name'];
+  public searchableColumns = [];
   public permissionForAdding = PermissionAdmin;
   public permissionForRemoving = PermissionSuperAdmin;
 
