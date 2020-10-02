@@ -113,11 +113,17 @@ export class LoginComponent
       .setRoles(castRoles(resp.roles));
 
     this.user$.setUser(user);
-    this.router.navigate(['/dashboard']);
+
+    console.log('on login', this.auth$.redirectUrl);
+    if (this.auth$.redirectUrl) {
+      this.router.navigate([this.auth$.redirectUrl]);
+      this.auth$.redirectUrl = null;
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   private loginError(error) {
-    console.log('error: ', error);
     this.loginForm.setErrors({
       invalidCredentials: error.message,
     });

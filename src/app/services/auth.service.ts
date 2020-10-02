@@ -11,6 +11,8 @@ export class AuthService {
   static SESSION_KEY = 'session';
   public session: Session;
 
+  public redirectUrl: string;
+
   constructor(public events: QEventsService) {}
 
   public setSession(session: Session) {

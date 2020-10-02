@@ -17,14 +17,20 @@ export class AuthedGuard implements CanActivate {
     public router: Router
   ) {}
 
-  canActivate(): boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
     const userIsPresent = this.user$.hasUser();
     const hasSession = this.auth$.hasSession();
     const sessionActive = this.auth$.sessionActive();
 
+    console.log('canActivate', state.url);
+
     if (hasSession && sessionActive && userIsPresent) {
       return true;
     } else {
+      this.auth$.redirectUrl = state.url;
       return this.router.parseUrl('login');
     }
   }
