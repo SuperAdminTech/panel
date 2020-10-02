@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PermissionUser } from './permissions/index';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth.service';
@@ -41,12 +41,15 @@ export class AppComponent implements OnInit, OnDestroy {
     public sessionChecker: SessionCheckerService,
     public events: QEventsService,
     public router: Router,
+    public route: ActivatedRoute,
     public hotkeys: HotkeysService,
     public dialog: MatDialog,
     public location: Location
   ) {
     this.setupEvents();
     this.setupHotKeys();
+
+    route.queryParams.subscribe(this.onParams);
   }
 
   /* istanbul ignore next */
@@ -63,6 +66,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Setup locales and language
     this.app$.setUpLang();
+  }
+
+  private onParams(params) {
+    console.log(params);
+    if (params.realm) {
+      localStorage.setItem('realm', params.realm);
+    }
   }
 
   private setupHotKeys() {

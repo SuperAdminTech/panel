@@ -47,11 +47,19 @@ export class LoginComponent
 
   public ngAfterContentInit() {
     super.ngAfterContentInit();
+    this.setRealm();
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+
+  public setRealm() {
+    const realmSaved = localStorage.getItem('realm');
+    if (realmSaved) {
+      this.qbitAuth.addConfig('realm', realmSaved);
+    }
   }
 
   get username() {

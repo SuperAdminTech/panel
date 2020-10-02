@@ -2,7 +2,7 @@ import { version } from '../../package.json';
 
 export const environment = {
   url: 'https://api.caste.qbitartifacts.com',
-  realm: 'caste',
+  realm: 'default',
   production: true,
   brand: {
     title: 'Caste',

@@ -72,15 +72,12 @@
   "APPLICATION": "Applicacion",
   "USER_DETAILS": "Detalles de usuario",
   "ACCOUNT_DETAILS": "Detalles de la cuenta",
-
   "DELETE_ITEM": "Eliminar elemento",
   "DELETE_ITEM_CONFIRM": "¿Estás seguro de que quieres eliminar eso?",
   "DELETE_ITEM_CONFIRM_DESC": "Una vez eliminado, no puedes volver atrás",
-
   "CREATE_PERMISSION": "Crear un nuevo permiso",
   "CREATE_PERMISSION_DESC": "Darle a un usuario permiso sobre una cuenta",
-
   "CREATED_APP_OK": "Applicacion creada correctamente",
-  "CREATE_ACCOUNT": "Crear una nueva Cuenta"
-
+  "CREATE_ACCOUNT": "Crear una nueva Cuenta",
+  "BILLING": "Facturación"
 }
