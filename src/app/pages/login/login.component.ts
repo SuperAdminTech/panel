@@ -114,7 +114,6 @@ export class LoginComponent
 
     this.user$.setUser(user);
 
-    console.log('on login', this.auth$.redirectUrl);
     if (this.auth$.redirectUrl) {
       this.router.navigate([this.auth$.redirectUrl]);
       this.auth$.redirectUrl = null;

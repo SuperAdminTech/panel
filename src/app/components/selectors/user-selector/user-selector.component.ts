@@ -7,7 +7,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { CasteAccountsService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { fromEvent } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ export class UserSelectorComponent implements OnInit {
 
   public userQuery: string;
 
-  constructor(public users$: CasteAccountsService) {}
+  constructor(public users$: CasteUsersService) {}
 
   /* istanbul ignore next */
   selectUser(user) {
@@ -42,7 +42,7 @@ export class UserSelectorComponent implements OnInit {
 
   /* istanbul ignore next */
   public search(query?: string) {
-    this.users$.listAll({ name: query }, 'sadmin').subscribe({
+    this.users$.listAll({ name: query }, 'admin').subscribe({
       next: (users) => {
         this.users = users;
       },
