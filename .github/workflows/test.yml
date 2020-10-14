@@ -22,5 +22,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Run tests (with coverage)
+      - name: Run unit tests (with coverage)
         run: npm run test-ci

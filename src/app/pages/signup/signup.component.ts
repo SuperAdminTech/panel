@@ -53,6 +53,7 @@ export class SignupComponent
     });
   }
 
+  /* istanbul ignore next */
   public setRealm() {
     const realmSaved = localStorage.getItem('realm');
     if (realmSaved) {

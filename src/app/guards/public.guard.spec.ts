@@ -23,7 +23,7 @@ describe('PublicGuard', () => {
 
   it('should activate by default (if no session and user are present)', () => {
     const guard: PublicGuard = TestBed.get(PublicGuard);
-    expect(guard.canActivate()).toEqual(true);
+    expect(guard.canActivate(null, {} as any)).toEqual(true);
   });
 
   it('should not activate if session present', () => {
@@ -33,10 +33,10 @@ describe('PublicGuard', () => {
     user$.user = new User();
 
     const mockSession = new Session();
-    mockSession.expireDate = new Date('10/6/2020');
+    mockSession.expireDate = new Date('10/6/3020');
     auth$.setSession(mockSession);
 
     const guard: PublicGuard = TestBed.get(PublicGuard);
-    expect(guard.canActivate() instanceof UrlTree).toBeTruthy();
+    expect(guard.canActivate(null, {} as any) instanceof UrlTree).toBeTruthy();
   });
 });

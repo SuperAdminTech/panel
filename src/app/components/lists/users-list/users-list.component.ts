@@ -42,5 +42,6 @@ export class UsersListComponent extends TableBase<User> {
     return this.users$.remove(id, 'sadmin');
   }
 
+  /* istanbul ignore next */
   addUser() {}
 }

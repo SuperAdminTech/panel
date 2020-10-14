@@ -94,16 +94,6 @@ describe('AuthService', () => {
     expect(auth$.recoverSession().toJson()).toEqual(MSessionActive.toJson());
   });
 
-  it('.setSession if active, should emit event', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
-    const events$: QEventsService = TestBed.get(QEventsService);
-
-    spyOn(events$, 'fire');
-
-    auth$.setSession(MSessionActive);
-    expect(events$.fire).toHaveBeenCalledWith(AuthService.LOGIN_EVENT);
-  });
-
   it('.removeSession', () => {
     const auth$: AuthService = TestBed.get(AuthService);
     auth$.setSession(MSessionActive);

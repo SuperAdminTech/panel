@@ -23,7 +23,7 @@ describe('AuthedGuard', () => {
 
   it('should not activate by default (if no session and user are present)', () => {
     const guard: AuthedGuard = TestBed.get(AuthedGuard);
-    expect(guard.canActivate() instanceof UrlTree).toEqual(true);
+    expect(guard.canActivate(null, {} as any) instanceof UrlTree).toEqual(true);
   });
 
   it('should activate if session present', () => {
@@ -33,10 +33,10 @@ describe('AuthedGuard', () => {
     user$.user = new User();
 
     const mockSession = new Session();
-    mockSession.expireDate = new Date('10/6/2020');
+    mockSession.expireDate = new Date('10/6/3020');
     auth$.setSession(mockSession);
 
     const guard: AuthedGuard = TestBed.get(AuthedGuard);
-    expect(guard.canActivate()).toEqual(true);
+    expect(guard.canActivate(null, {} as any)).toEqual(true);
   });
 });

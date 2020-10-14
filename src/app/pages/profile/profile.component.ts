@@ -26,6 +26,7 @@ export class ProfileComponent extends PageBaseComponent implements OnInit {
     console.log(user$.user);
   }
 
+  /* istanbul ignore next */
   ngOnInit() {
     if (this.user$.hasUser()) {
       this.users$.getOne(this.user$.user.id).subscribe(

@@ -7,7 +7,7 @@ describe('Session', () => {
 
   it('should handle not expired correctly', () => {
     const session = new Session();
-    session.expireDate = new Date('10/6/2020');
+    session.expireDate = new Date('10/6/3020');
 
     expect(session.isActive()).toBeTruthy();
   });
