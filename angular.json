@@ -123,7 +123,7 @@
         "deploy": {
           "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "outputPath": "dist/caste-panel",
+            "outputPath": "dist",
             "netlifyToken": "a1c2483dfecbd44fe4b1c4d09ea87420cfff0df09c007822b8f4107169e89698",
             "siteId": "59e0259c-2dfa-4e24-9ca1-fd655dc38d78"
           }

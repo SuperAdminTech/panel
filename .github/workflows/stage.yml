@@ -1,0 +1,48 @@
+name: Test, Build and Deploy [STAGE]
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Obtaining the code
+        uses: actions/checkout@v1
+    
+      - name: Login to Docker
+        env:
+          REGISTRY: reg.rallf.com:8443
+          USER: ${{secrets.DOCKER_USERNAME}}
+          PASS: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u ${USER} -p ${PASS} reg.rallf.com:8443
+
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: '12.x'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@QbitArtifacts'
+          
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Build Docker image
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: docker build . -t reg.rallf.com:8443/caste-panel:master
+
+      - name: Push Docker image
+        run: docker push reg.rallf.com:8443/caste-panel:master
+
+      - name: Deploy
+        uses: joelwmale/webhook-action@1.0.1
+        env:
+          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_STAGE }}
+          data: "Hello from github actions!"
