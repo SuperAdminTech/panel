@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Session } from '../entities/session';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 @Injectable({
   providedIn: 'root',

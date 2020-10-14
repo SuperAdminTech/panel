@@ -8,7 +8,6 @@ import {
 import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
   selector: 'caste-accounts-list',
@@ -40,7 +39,7 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
         'sort[created_at]': 'asc',
         ...queryParams,
       },
-      'sadmin'
+      'admin'
     );
   }
 

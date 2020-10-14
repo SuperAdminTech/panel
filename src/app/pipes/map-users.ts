@@ -1,10 +1,12 @@
 import { map } from 'rxjs/internal/operators/map';
 import { User } from '../entities/user';
 import { castRoles } from '../roles';
-import { UserResponse } from '@qbitartifacts/caste-client-ng';
 
-export const mapUsers = map((users: UserResponse[]) => {
-  return users.map((user) =>
+export const mapUsers = map((resp: any) => {
+  console.log('resp', resp);
+  const users = resp.data;
+
+  resp.data = users.map((user) =>
     new User()
       .fromJson({
         id: user.id,
@@ -14,4 +16,6 @@ export const mapUsers = map((users: UserResponse[]) => {
       })
       .setRoles(castRoles(user.roles))
   );
+
+  return resp;
 });

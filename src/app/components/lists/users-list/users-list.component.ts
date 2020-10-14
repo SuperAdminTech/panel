@@ -1,13 +1,12 @@
-import { User } from './../../../entities/user';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
-import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { mapUsers } from 'src/app/pipes/map-users';
 import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { DeleteDialogStatus } from 'src/app/enums/delete-dialog-status';
+import { User } from 'src/app/entities/user';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-users-list',
@@ -36,7 +35,7 @@ export class UsersListComponent extends TableBase<User> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.users$.listAll(queryParams, 'admin');
+    return this.users$.listAll(queryParams, 'sadmin');
   }
 
   public getRemoveItemObservable(id: string) {

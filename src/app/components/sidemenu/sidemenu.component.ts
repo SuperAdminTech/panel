@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SIDEMENU_ITEMS, SidemenuItem } from '../../../config/sidemenu.items';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { SHORTCUTS } from 'src/config/shortcuts';
 

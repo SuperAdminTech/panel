@@ -4,7 +4,7 @@ import { MSessionActive } from './../testing/mocks/session.mock';
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 describe('AuthService', () => {
   beforeEach(() => {

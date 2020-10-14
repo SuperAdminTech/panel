@@ -6,7 +6,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { AppModule } from 'src/app/app.module';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { By } from '@angular/platform-browser';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;

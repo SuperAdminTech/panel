@@ -36,11 +36,11 @@ export class ApplicationsListComponent extends TableBase<Application> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(queryParams, 'sadmin');
+    return this.applications$.listAll(queryParams, 'admin');
   }
 
   public getRemoveItemObservable(id: string) {
-    return this.applications$.remove(id, 'sadmin');
+    return this.applications$.remove(id, 'admin');
   }
 
   addApplication() {

@@ -25,7 +25,7 @@ import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
 
 import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 import { DebugScreenModule } from '@qbitartifacts/qbit-debug-screen';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
@@ -66,6 +66,9 @@ const qbitAuthConfigProvider = {
   useValue: {
     realm: environment.realm,
     url: environment.url,
+    baseHeaders: {
+      accept: 'application/ld+json',
+    },
   },
 };
 

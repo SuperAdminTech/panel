@@ -15,7 +15,7 @@ import {
   HotkeysService,
   HotkeysDialogComponent,
 } from '@qbitartifacts/qbit-hotkeys';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 import { DebugScreenComponent } from '@qbitartifacts/qbit-debug-screen';
 import { CasteAuthService } from '@qbitartifacts/caste-client-ng';
 import { User } from './entities/user';

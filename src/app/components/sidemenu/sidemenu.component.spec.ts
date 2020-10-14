@@ -2,7 +2,7 @@ import { AppModule } from 'src/app/app.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidemenuComponent } from './sidemenu.component';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 describe('SidemenuComponent', () => {
   let component: SidemenuComponent;

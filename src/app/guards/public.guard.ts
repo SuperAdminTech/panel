@@ -16,10 +16,13 @@ export class PublicGuard implements CanActivate {
   constructor(
     private user$: UserService,
     public auth$: AuthService,
-    public router: Router,
+    public router: Router
   ) {}
 
-  canActivate(): boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
     const userIsPresent = this.user$.hasUser();
     const hasSession = this.auth$.hasSession();
     const sessionActive = this.auth$.sessionActive();

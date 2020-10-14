@@ -7,7 +7,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 import { MSessionActive, MSessionExpired } from './testing/mocks/session.mock';
 
 const SessionCheckerMock = {

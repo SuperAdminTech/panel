@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../entities/user';
 import { Session } from '../entities/session';
 import { UrlTree } from '@angular/router';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 describe('PublicGuard', () => {
   beforeEach(() =>

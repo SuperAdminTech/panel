@@ -3,7 +3,7 @@ import { SHORTCUTS } from 'src/config/shortcuts';
 import { LoadableComponent } from './loadable.page';
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable } from 'rxjs';
@@ -27,6 +27,12 @@ export abstract class TableBase<T> implements LoadableComponent {
   // Input properties
   @Input() searchFilters: any = {};
 
+  // Paginator inputs
+  public totalItems = 10;
+  public pageSize = 10;
+  public pageIndex = 0;
+  public pageSizeOptions: number[] = [5, 10, 25, 100];
+
   constructor(
     public hotkeys: HotkeysService,
     public snackbar: MySnackBarService,
@@ -44,6 +50,7 @@ export abstract class TableBase<T> implements LoadableComponent {
 
   abstract getRemoveItemObservable(id: string): Observable<any>;
 
+  /* istanbul ignore next */
   public onSearch(query?: string): void {
     this.setIsLoading(true);
 
@@ -52,10 +59,9 @@ export abstract class TableBase<T> implements LoadableComponent {
       this.searchableColumns
     );
 
-    let searchObservable = this.getSearchObservable({
-      ...queryParams,
-      ...this.searchFilters,
-    });
+    const params: any = { ...queryParams, ...this.getPaginationParams() };
+
+    let searchObservable = this.getSearchObservable(params);
     const applyPipe = (pipe) =>
       (searchObservable = searchObservable.pipe(pipe));
 
@@ -65,11 +71,14 @@ export abstract class TableBase<T> implements LoadableComponent {
 
     searchObservable.subscribe(
       (resp) => {
-        this.setData(resp);
-        this.hasData = resp.length > 0;
+        console.log('data', resp);
+        this.setData(resp.data);
+        this.totalItems = resp.total;
+        this.hasData = resp.total > 0;
         this.setIsLoading(false);
       },
       (error) => {
+        console.log('err', error);
         this.hasData = false;
         this.setIsLoading(false);
       }
@@ -157,5 +166,20 @@ export abstract class TableBase<T> implements LoadableComponent {
     if (resp === CreateDialogStatus.CREATED) {
       this.onSearch(this.query);
     }
+  }
+
+  /* istanbul ignore next */
+  public pageChanged($event: PageEvent) {
+    this.pageSize = $event.pageSize;
+    this.pageIndex = $event.pageIndex;
+    this.onSearch();
+  }
+
+  /* istanbul ignore next */
+  public getPaginationParams() {
+    return {
+      itemsPerPage: this.pageSize,
+      page: this.pageIndex + 1,
+    };
   }
 }

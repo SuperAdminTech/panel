@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { UrlTree } from '@angular/router';
-import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService } from 'src/app/services/events.service';
 
 describe('AdminGuard', () => {
   beforeEach(() =>
