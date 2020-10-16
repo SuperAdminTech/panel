@@ -48,7 +48,7 @@ export class SignupComponent
     this.setRealm();
 
     this.signUpForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -61,8 +61,8 @@ export class SignupComponent
     }
   }
 
-  get username() {
-    return this.signUpForm.get('username');
+  get email() {
+    return this.signUpForm.get('email');
   }
 
   get password() {
@@ -85,7 +85,7 @@ export class SignupComponent
 
     this.qbitAuth
       .signUp({
-        username: this.username.value,
+        username: this.email.value,
         password: this.password.value,
       })
       .subscribe({

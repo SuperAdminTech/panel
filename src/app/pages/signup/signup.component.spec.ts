@@ -48,7 +48,7 @@ describe('SignupComponent', () => {
       fixture.detectChanges();
 
       expect(btn.attributes.disabled).not.toBeTruthy();
-      expect(component.username.value).toBe('Test User');
+      expect(component.email.value).toBe('Test User');
       expect(component.password.value).toBe('Test Pass');
     });
   });

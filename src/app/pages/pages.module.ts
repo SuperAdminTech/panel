@@ -1,3 +1,4 @@
+import { VerifyComponent } from './verify/verify.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared.module';
 import { UserComponent } from './user/user.component';
@@ -27,6 +28,7 @@ const pages = [
   ApplicationComponent,
   AccountsComponent,
   AccountComponent,
+  VerifyComponent,
 ];
 
 @NgModule({
