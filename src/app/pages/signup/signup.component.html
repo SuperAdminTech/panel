@@ -13,12 +13,13 @@
                 <div class="centered">
                     <div>
                         <mat-form-field appearance="legacy">
-                            <mat-label>{{'USERNAME' | translate}}</mat-label>
-                            <input id="username" matInput placeholder="Enter your username" formControlName="username">
-                            <mat-icon matSuffix>user</mat-icon>
+                            <mat-label>{{'EMAIL' | translate}}</mat-label>
+                            <input id="email" type="email" matInput placeholder="Enter your email"
+                                formControlName="email">
+                            <mat-icon matSuffix>email</mat-icon>
 
-                            <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
-                                {{'USERNAME_REQUIRED' | translate}}
+                            <mat-error *ngIf="email.invalid && (email.dirty) && email.errors.required">
+                                {{'EMAIL_REQUIRED' | translate}}
                             </mat-error>
                         </mat-form-field>
 

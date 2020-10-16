@@ -1,0 +1,27 @@
+<div class="page-centered">
+    <mat-card style="width: 40%; height:auto">
+        <div class="center h v column" *ngIf="!verified && !error">
+            <h4>{{'VALIDATING_EMAIL'|translate}}</h4>
+            <mat-progress-spinner [diameter]="20" color="primary" mode="indeterminate" *ngIf="isLoading">
+            </mat-progress-spinner>
+        </div>
+
+        <div class="center h v column" *ngIf="verified && !error">
+            <h4>{{'VALIDATE_EMAIL'|translate}}</h4>
+            <p class="col-success">
+                <mat-icon class="mat-icon material-icons mat-icon-small">check</mat-icon> {{'VERIFIED'|translate}}
+            </p>
+
+            <a routerLink="/login" class="marg-top-20">{{'BACK_TO_LOGIN'|translate}}</a>
+        </div>
+
+        <div class="center h v column" *ngIf="error">
+            <h4>{{'VALIDATE_EMAIL'|translate}}</h4>
+            <p class="col-error">
+                <mat-icon class="mat-icon material-icons mat-icon-small">warning</mat-icon> {{error}}
+            </p>
+
+            <a routerLink="/login" class="marg-top-20">{{'BACK_TO_LOGIN'|translate}}</a>
+        </div>
+    </mat-card>
+</div>

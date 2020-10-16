@@ -11,6 +11,7 @@ import { PermissionsComponent } from './pages/permissions/permissions.component'
 import { ApplicationsComponent } from './pages/applications/applications.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ApplicationComponent } from './pages/application/application.component';
+import { VerifyComponent } from './pages/verify/verify.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,6 +24,11 @@ export const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     canActivate: SignupComponent.guards,
+  },
+  {
+    path: 'verify/:user_id',
+    component: VerifyComponent,
+    canActivate: VerifyComponent.guards,
   },
   {
     path: 'forgot-password',

@@ -79,5 +79,11 @@
   "CREATE_PERMISSION_DESC": "Darle a un usuario permiso sobre una cuenta",
   "CREATED_APP_OK": "Applicacion creada correctamente",
   "CREATE_ACCOUNT": "Crear una nueva Cuenta",
-  "BILLING": "Facturación"
+  "BILLING": "Facturación",
+  "EMAIL_REQUIRED": "Correo Requerido",
+  "EMAIL_ERROR": "Correo invalido",
+  "VALIDATE_EMAIL": "Verificar Correo",
+  "VERIFIED": "Verificado",
+  "VALIDATING_EMAIL": "Verificando Correo",
+  "BACK_TO_LOGIN": "Volver al login"
 }
