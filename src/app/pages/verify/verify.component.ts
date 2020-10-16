@@ -34,7 +34,7 @@ export class VerifyComponent
 
     zip(this.activeRoute.queryParams, this.activeRoute.params).subscribe(
       ([queryParams, params]) => {
-        this.verify(params.user_id, queryParams.token);
+        this.verify(params.user_id, queryParams.code);
       }
     );
   }
