@@ -1,10 +1,10 @@
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { LoadableComponent } from './loadable.page';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { Observable } from 'rxjs';
 import { DialogsService } from '../services/dialogs.service';
@@ -17,7 +17,6 @@ import { CreateDialogStatus } from '../enums/create-dialog-status';
 // tslint:disable-next-line: component-class-suffix
 export abstract class TableBase<T> implements LoadableComponent {
   abstract displayedColumns: string[] = [];
-  public searchableColumns: string[] = [];
   public dataSource: MatTableDataSource<T>;
   public isLoading = false;
   public query = '';
@@ -32,6 +31,10 @@ export abstract class TableBase<T> implements LoadableComponent {
   public pageSize = 10;
   public pageIndex = 0;
   public pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // Sort params
+  public sortId = '';
+  public sortDir = 'asc';
 
   constructor(
     public hotkeys: HotkeysService,
@@ -54,12 +57,10 @@ export abstract class TableBase<T> implements LoadableComponent {
   public onSearch(query?: string): void {
     this.setIsLoading(true);
 
-    const queryParams = this.getQueriesForColumns(
-      query,
-      this.searchableColumns
-    );
-
-    const params: any = { ...queryParams, ...this.getPaginationParams() };
+    const params: any = {
+      ...this.getPaginationParams(),
+      ...this.getSortParams(),
+    };
 
     let searchObservable = this.getSearchObservable(params);
     const applyPipe = (pipe) =>
@@ -109,22 +110,6 @@ export abstract class TableBase<T> implements LoadableComponent {
 
   public setData(data: T[]) {
     this.dataSource = new MatTableDataSource(data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  public getQueriesForColumns(
-    query: string | number | boolean,
-    columns: string[]
-  ) {
-    const params = {};
-
-    if (query) {
-      const addParam = (col) => (params[col] = query);
-      columns.forEach(addParam);
-    }
-
-    return params;
   }
 
   public registerHotkeys() {
@@ -181,5 +166,22 @@ export abstract class TableBase<T> implements LoadableComponent {
       itemsPerPage: this.pageSize,
       page: this.pageIndex + 1,
     };
+  }
+
+  public getSortParams() {
+    if (this.sortId) {
+      const sortIdKey = `order[${this.sortId}]`;
+      return {
+        [sortIdKey]: this.sortDir,
+      };
+    }
+
+    return {};
+  }
+
+  public sortChanged($event: Sort) {
+    this.sortId = $event.active;
+    this.sortDir = $event.direction;
+    this.onSearch();
   }
 }

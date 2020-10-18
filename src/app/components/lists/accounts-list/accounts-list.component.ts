@@ -21,7 +21,6 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
     'updated_at',
     'options',
   ];
-  public searchableColumns = ['name'];
   public permissionForAdding = PermissionAdmin;
 
   constructor(
@@ -34,13 +33,7 @@ export class AccountsListComponent extends TableBase<AccountResponse> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.accounts$.listAll(
-      {
-        'sort[created_at]': 'asc',
-        ...queryParams,
-      },
-      'admin'
-    );
+    return this.accounts$.listAll(queryParams, 'admin');
   }
 
   public getRemoveItemObservable(id: string) {

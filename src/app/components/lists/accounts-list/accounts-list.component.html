@@ -3,7 +3,8 @@
         <add-button (add)="addAccount()" *appPermissions="permissionForAdding"></add-button>
     </app-table-header>
 
-    <table mat-table [dataSource]="dataSource" matSort class="hoverable">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChanged($event)"
+        [matSortDirection]="sortDir" [matSortActive]="sortId" class="hoverable">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'NAME'|translate}} </th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
