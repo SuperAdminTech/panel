@@ -1,7 +1,8 @@
 <mat-card class="no-padding">
-    <app-table-header title="ACCOUNTS" [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading">
+    <caste-table-header title="ACCOUNTS" [searchMapping]="searchMapping" [query]="query" (onSearch)="onSearch($event)"
+        [searching]="isLoading">
         <add-button (add)="addAccount()" *appPermissions="permissionForAdding"></add-button>
-    </app-table-header>
+    </caste-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChanged($event)"
         [matSortDirection]="sortDir" [matSortActive]="sortId" class="hoverable">

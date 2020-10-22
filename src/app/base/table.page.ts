@@ -22,6 +22,7 @@ export abstract class TableBase<T> implements LoadableComponent {
   public query = '';
   public searchPipes: any[] = [];
   public hasData = false;
+  public searchMapping = [];
 
   // Input properties
   @Input() searchFilters: any = {};
@@ -54,12 +55,13 @@ export abstract class TableBase<T> implements LoadableComponent {
   abstract getRemoveItemObservable(id: string): Observable<any>;
 
   /* istanbul ignore next */
-  public onSearch(query?: string): void {
+  public onSearch(searchParams?: any): void {
     this.setIsLoading(true);
 
     const params: any = {
       ...this.getPaginationParams(),
       ...this.getSortParams(),
+      ...searchParams,
     };
 
     let searchObservable = this.getSearchObservable(params);
@@ -76,6 +78,12 @@ export abstract class TableBase<T> implements LoadableComponent {
         this.setData(resp.data);
         this.totalItems = resp.total;
         this.hasData = resp.total > 0;
+
+        // Only set mapping on first load
+        if (!this.searchMapping.length) {
+          this.searchMapping = resp.search;
+        }
+
         this.setIsLoading(false);
       },
       (error) => {

@@ -85,5 +85,7 @@
   "VALIDATE_EMAIL": "Verificar Correo",
   "VERIFIED": "Verificado",
   "VALIDATING_EMAIL": "Verificando Correo",
-  "BACK_TO_LOGIN": "Volver al login"
+  "BACK_TO_LOGIN": "Volver al login",
+  "SEARCH_BY": "Buscar Por",
+  "BY": "Por"
 }

@@ -12,7 +12,6 @@ import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 
 export interface TableListHeaderOptions {
   input?: boolean;
@@ -33,7 +32,7 @@ const defaultOptions: TableListHeaderOptions = {
 };
 
 @Component({
-  selector: 'app-table-header',
+  selector: 'caste-table-header',
   templateUrl: './table-header.html',
 })
 export class TableHeaderComponent implements OnInit {
@@ -46,18 +45,17 @@ export class TableHeaderComponent implements OnInit {
   @Input() public newItemText = '';
   @Input() public newItemIcon = 'fa-plus';
   @Input() public searching = false;
-  @Input() public searchableColumns = [];
 
-  @Output() public onSearch: EventEmitter<string>;
-  @Output() public queryChange: EventEmitter<string>;
+  @Input() public searchMapping = [];
+
+  @Output() public onSearch: EventEmitter<any>;
+  @Output() public queryChange: EventEmitter<any>;
 
   @ViewChild('search', { static: false }) public searchElement: ElementRef;
 
-  constructor(
-    public router: Router,
-    public route: ActivatedRoute,
-    public hotkeys: HotkeysService
-  ) {
+  public queryId: any = '';
+
+  constructor(public router: Router, public route: ActivatedRoute) {
     this.onSearch = new EventEmitter<string>();
     this.queryChange = new EventEmitter<string>();
 
@@ -68,29 +66,25 @@ export class TableHeaderComponent implements OnInit {
   }
 
   public ngOnInit() {
+    // Setup debound and params
     setTimeout(() => {
       if (this.options.input) {
         this.setupDebouncedSearch(this.searchElement.nativeElement);
       }
 
-      this.route.queryParams.subscribe((params) => {
-        if (params.query) {
-          this.query = params.query;
-          /* istanbul ignore else */
-          if (this.searchElement.nativeElement.value !== this.query) {
-            this.searchElement.nativeElement.value = this.query;
-            this.searchElement.nativeElement.dispatchEvent(new Event('keyup'));
-          }
-        } else {
-          this.search();
-        }
-      });
+      this.search();
     });
   }
 
   public search() {
     this.queryChange.emit(this.query || '');
-    this.onSearch.emit(this.query || '');
+    if (this.queryId && this.query) {
+      this.onSearch.emit({
+        [this.queryId.property]: this.query,
+      });
+    } else {
+      this.onSearch.emit();
+    }
   }
 
   public clear() {
@@ -98,8 +92,12 @@ export class TableHeaderComponent implements OnInit {
     this.search();
   }
 
+  public queryTypeChanged($event) {
+    this.queryId = $event;
+    this.search();
+  }
+
   public setupDebouncedSearch(element) {
-    console.log('setupDebouncedSearch');
     fromEvent(element, 'keyup')
       .pipe(
         map((event: any) => event.target.value),
@@ -108,8 +106,7 @@ export class TableHeaderComponent implements OnInit {
       )
       .subscribe((text: string) => {
         this.query = text;
-        this.onSearch.emit(text);
-        this.queryChange.emit(text);
+        this.search();
       });
   }
 }
