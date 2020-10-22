@@ -1,5 +1,5 @@
 .search-input-wrapper {
-  width: 300px;
+  width: 400px;
   min-width: 300px;
 }
 
@@ -19,4 +19,9 @@
   &:focus {
     border-bottom: 2px solid mat-color($caste-app-primary);
   }
+}
+
+.mat-select.small-text .mat-select-value-text {
+  font-size: 12px;
+  color: #666;
 }
