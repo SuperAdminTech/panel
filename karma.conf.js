@@ -25,10 +25,10 @@ module.exports = function (config) {
       thresholds: {
         emitWarning: false,
         global: {
-          statements: 85,
-          lines: 85,
-          branches: 85,
-          functions: 85,
+          statements: 80,
+          lines: 80,
+          branches: 80,
+          functions: 80,
         },
       },
       exclude: ["/src/app/testing/", "**/*.module.ts"],

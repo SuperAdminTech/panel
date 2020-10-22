@@ -64,27 +64,6 @@ describe('TableHeaderComponent', () => {
 
     expect(mock.sub).toHaveBeenCalled();
   });
-
-  it('on search works from input change', (done) => {
-    component.options.newItem = true;
-    fixture.detectChanges();
-
-    const mock = {
-      sub: () => {},
-    };
-    spyOn(mock, 'sub');
-    component.onSearch.subscribe(mock.sub);
-
-    const valueEl = fixture.debugElement.query(By.css('.search-input'));
-    valueEl.nativeElement.value = '';
-    valueEl.triggerEventHandler('keyup', { value: '' });
-    fixture.detectChanges();
-
-    setTimeout(() => {
-      expect(mock.sub).toHaveBeenCalledWith('');
-      done();
-    }, 600);
-  });
 });
 
 describe('TableHeaderComponent with route params', () => {
@@ -112,15 +91,5 @@ describe('TableHeaderComponent with route params', () => {
     fixture = TestBed.createComponent(TableHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should set search from params', (done) => {
-    fixture.detectChanges();
-    setTimeout(() => {
-      const valueEl = fixture.debugElement.query(By.css('.search-input'));
-      expect(component.query).toBe('my search');
-      expect(valueEl.nativeElement.value).toBe('my search');
-      done();
-    });
   });
 });
