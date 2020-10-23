@@ -14,6 +14,7 @@ import { ApplicationsComponent } from './applications/applications.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './account/account.component';
 import { ApplicationComponent } from './application/application.component';
+import { RecoverComponent } from './recover/recover.component';
 
 const pages = [
   DashboardComponent,
@@ -29,6 +30,7 @@ const pages = [
   AccountsComponent,
   AccountComponent,
   VerifyComponent,
+  RecoverComponent,
 ];
 
 @NgModule({

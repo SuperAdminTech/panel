@@ -1,0 +1,49 @@
+<div class="page-centered">
+    <mat-card class="padd-v-20 padd-h-15" *ngIf="!recovered" style="min-width: 400px">
+        <h4 class="text-title align-center">
+            {{'RECOVER_PASSWORD'|translate}}
+        </h4>
+        <p class="text-light align-center marg-bottom-20">
+            {{'RECOVER_PASSWORD_DESC'|translate}}
+        </p>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="centered">
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'PASSWORD' | translate}}</mat-label>
+                    <input id="password" type="password" matInput placeholder="{{'ENTER_NEW_PASSWORD' | translate}}"
+                        formControlName="password">
+                    <mat-icon matSuffix>user</mat-icon>
+
+                    <mat-error *ngIf="password.invalid && (password.dirty) && password.errors.required">
+                        {{'PASSWORD_REQUIRED' | translate}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error class="marg-top-15" *ngIf="form.invalid && form.errors && form.errors.error">
+                    <span class="text-small">{{form.errors.error | translate}}</span>
+                </mat-error>
+
+                <app-loadable-button [id]="'proceed'" [disabled]="form.invalid" [loading]="isLoading">
+                    {{'RECOVER' |translate}}
+                </app-loadable-button>
+
+                <a routerLink="/login" class="link-mutted marg-top-15">{{'BACK_TO_LOGIN'|translate}}</a>
+            </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="padd-v-20 padd-h-15" *ngIf="recovered" style="min-width: 400px">
+        <div class="centered">
+            <h4 class="text-title align-center">
+                {{'RECOVER_PASSWORD_OK'|translate}}
+            </h4>
+
+            <p class="text-light align-center marg-bottom-20">
+                {{'RECOVER_PASSWORD_OK_DESC'|translate}}
+            </p>
+
+            <a routerLink="/login" class="link-mutted">{{'BACK_TO_LOGIN'|translate}}</a>
+        </div>
+    </mat-card>
+</div>

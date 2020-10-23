@@ -87,5 +87,15 @@
   "VALIDATING_EMAIL": "Verificando Correo",
   "BACK_TO_LOGIN": "Volver al login",
   "SEARCH_BY": "Buscar Por",
-  "BY": "Por"
+  "BY": "Por",
+  "PROCEED": "Proceder",
+  "FORGOT_PASSWORD_DESC": "Se enviara un correo con instrucciones para recuperar la contraseña",
+  "ENTER_NEW_PASSWORD": "Introduce la nueva contraseña",
+  "RECOVER_PASSWORD": "Recuperar Contraseña",
+  "RECOVER_PASSWORD_DESC": "Introduzca la nueva contraseña",
+  "RECOVER": "Recuperar",
+  "RECOVERY_MAIL_SENT": "Correo enviado",
+  "CHECK_EMAIL": "Compruebe su correo y siga las intrucciones",
+  "RECOVER_PASSWORD_OK": "Contraseña Cambiada",
+  "RECOVER_PASSWORD_OK_DESC": "Contraseña cambiada correctamente, puede acceded"
 }
