@@ -1,1 +1,55 @@
-<p>bots works!</p>
+<div class="header"></div>
+<div class="page-centered">
+    <div class="content">
+        <mat-card class="padd-v-20 padd-h-15" *ngIf="!sentRecoveryMail" style="min-width: 400px">
+            <h4 class="text-title align-center">
+                {{'FORGOT_PASSWORD'|translate}}
+            </h4>
+            <p class="text-light align-center marg-bottom-20" style="max-width: 300px;">
+                {{'FORGOT_PASSWORD_DESC'|translate}}
+            </p>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="centered">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>{{'USERNAME' | translate}}</mat-label>
+                        <input id="username" matInput placeholder="Enter your username" formControlName="username">
+                        <mat-icon matSuffix>user</mat-icon>
+
+                        <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
+                            {{'USERNAME_REQUIRED' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-error class="marg-top-15" *ngIf="form.invalid && form.errors && form.errors.error">
+                        <span class="text-small">{{form.errors.error | translate}}</span>
+                    </mat-error>
+
+                    <app-loadable-button [id]="'proceed'" [disabled]="form.invalid" [loading]="isLoading">
+                        {{'PROCEED' |translate}}
+                    </app-loadable-button>
+
+                    <a routerLink="/login" class="link-mutted marg-top-15">{{'BACK_TO_LOGIN'|translate}}</a>
+                </div>
+            </form>
+        </mat-card>
+
+        <mat-card class="padd-v-20 padd-h-15" *ngIf="sentRecoveryMail" style="min-width: 400px">
+            <div class="centered">
+                <h4 class="text-title align-center">
+                    {{'RECOVERY_MAIL_SENT'|translate}}
+                </h4>
+
+                <p class="text-light align-center marg-bottom-20">
+                    {{'CHECK_EMAIL'|translate}}
+                </p>
+
+                <a routerLink="/login" class="link-mutted">{{'BACK_TO_LOGIN'|translate}}</a>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="float-top-right">
+        <app-lang-selector></app-lang-selector>
+    </div>
+</div>

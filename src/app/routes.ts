@@ -12,6 +12,7 @@ import { ApplicationsComponent } from './pages/applications/applications.compone
 import { AccountComponent } from './pages/account/account.component';
 import { ApplicationComponent } from './pages/application/application.component';
 import { VerifyComponent } from './pages/verify/verify.component';
+import { RecoverComponent } from './pages/recover/recover.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,6 +30,11 @@ export const routes: Routes = [
     path: 'verify/:user_id',
     component: VerifyComponent,
     canActivate: VerifyComponent.guards,
+  },
+  {
+    path: 'recover/:user_id',
+    component: RecoverComponent,
+    canActivate: RecoverComponent.guards,
   },
   {
     path: 'forgot-password',

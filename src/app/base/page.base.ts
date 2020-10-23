@@ -30,4 +30,5 @@ export abstract class PageBaseComponent implements AfterContentInit {
       this.translate$.instant(this.title) + ' | ' + this.environment.brand.title
     );
   }
+  
 }

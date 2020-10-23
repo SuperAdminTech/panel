@@ -9,7 +9,7 @@
   "SALUTE": "Hey There, welcome back",
   "ESP": "Spanish",
   "ENG": "English",
-  "LOGIN_IN": "Login",
+  "LOGIN_IN": "Loging In",
   "LOGOUT": "Logout",
   "PROFILE": "Profile",
   "DASHBOARD": "Dashboard",
@@ -87,5 +87,15 @@
   "VALIDATING_EMAIL": "Verifying Email",
   "BACK_TO_LOGIN": "Return to login",
   "SEARCH_BY": "Search By",
-  "BY": "By"
+  "BY": "By",
+  "PROCEED": "Proceed",
+  "FORGOT_PASSWORD_DESC": "An email will be sent with instructions to recover the password",
+  "ENTER_NEW_PASSWORD": "Enter the new password",
+  "RECOVER_PASSWORD": "Recover Password",
+  "RECOVER_PASSWORD_DESC": "Enter the new password",
+  "RECOVER": "Recover",
+  "RECOVERY_MAIL_SENT": "Email sent",
+  "CHECK_EMAIL": "Check your email, and follow the instructions",
+  "RECOVER_PASSWORD_OK": "Password Changed",
+  "RECOVER_PASSWORD_OK_DESC": "Password changed correctly, you can now login"
 }
