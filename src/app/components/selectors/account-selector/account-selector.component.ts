@@ -42,9 +42,9 @@ export class AccountSelectorComponent implements OnInit {
 
   /* istanbul ignore next */
   public search(query?: string) {
-    this.accounts$.listAll({ name: query }, 'sadmin').subscribe({
-      next: (accounts) => {
-        this.accounts = accounts;
+    this.accounts$.listAll({ name: query }, 'admin').subscribe({
+      next: (resp: any) => {
+        this.accounts = resp.data;
       },
       error: (err) => {},
     });

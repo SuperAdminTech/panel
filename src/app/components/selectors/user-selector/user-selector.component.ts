@@ -42,9 +42,9 @@ export class UserSelectorComponent implements OnInit {
 
   /* istanbul ignore next */
   public search(query?: string) {
-    this.users$.listAll({ name: query }, 'admin').subscribe({
-      next: (users) => {
-        this.users = users;
+    this.users$.listAll({ name: query }, 'sadmin').subscribe({
+      next: (resp: any) => {
+        this.users = resp.data;
       },
       error: (err) => {},
     });

@@ -14,7 +14,12 @@ import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 export class CreatePermissionComponent implements OnInit, LoadableComponent {
   public permissionDetailsForm: FormGroup;
   public isLoading: boolean;
-  public availableGrants = ['ACCOUNT_WORKER', 'ACCOUNT_MANAGER'];
+  public availableGrants = [
+    'ACCOUNT_WORKER',
+    'ACCOUNT_MANAGER',
+    'ACCOUNT_INVESTOR',
+    'ACCOUNT_TRADER',
+  ];
   public account = null;
   public user = null;
 
