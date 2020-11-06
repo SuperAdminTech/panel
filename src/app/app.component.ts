@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.setupEvents();
     this.setupHotKeys();
 
-    route.queryParams.subscribe(this.onParams);
+    route.queryParams.subscribe(this.onParams.bind(this));
   }
 
   /* istanbul ignore next */

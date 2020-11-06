@@ -4,6 +4,8 @@ import {
   CanActivate,
   UrlTree,
   Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
 } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
@@ -15,11 +17,17 @@ export class AdminGuard implements CanActivate {
   constructor(
     private user$: UserService,
     public auth$: AuthService,
-    public router: Router,
+    public router: Router
   ) {}
 
-  canActivate(): boolean | UrlTree {
-    console.log('ADMIN_GUARD');
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    console.log('adminGuard');
+    if (route.queryParams.realm) {
+      localStorage.setItem('realm', route.queryParams.realm);
+    }
     const hasPermission = PermissionAdmin.canActivate(this.user$.user);
 
     if (hasPermission) {

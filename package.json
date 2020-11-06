@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "test-with-coverage": "ng test --codeCoverage --noWatch --browsers ChromeHeadless",
     "badges": "node scripts/coverage-badges.js",
-    "push": "npm run badges && git commit --amend -an && git push"
+    "push": "npm run badges && git commit --amend -an && git push",
+    "version": "standard-version"
   },
   "private": true,
   "dependencies": {

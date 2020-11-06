@@ -21,9 +21,15 @@ export class AuthedGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
+    console.log('authedGuard');
     const userIsPresent = this.user$.hasUser();
     const hasSession = this.auth$.hasSession();
     const sessionActive = this.auth$.sessionActive();
+
+    console.log('authedGuard', route.queryParams);
+    if (route.queryParams.realm) {
+      localStorage.setItem('realm', route.queryParams.realm);
+    }
 
     console.log('canActivate', state.url);
 
