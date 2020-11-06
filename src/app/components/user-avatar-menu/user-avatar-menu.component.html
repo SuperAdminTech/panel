@@ -2,7 +2,7 @@
     <img src="https://avatars1.githubusercontent.com/u/17043260?s=60&v=4" aria-label="User avatar" class="avatar">
 </button>
 <mat-menu #menu="matMenu">
-    <div class="padd-h-20 padd-v-15 column center" style="width: 160px" *ngIf="user$.user">
+    <div class="padd-h-20 padd-v-15 column center" *ngIf="user$.user">
         <h3 class="no-margin">{{user$.user.name}}</h3>
         <p class="no-margin">{{user$.user.lastnames}}</p>
         <code *appPermissions="adminPermission" class="admin-badge">ADMIN</code>

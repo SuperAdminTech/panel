@@ -1,5 +1,6 @@
 <mat-card class="no-padding">
-    <caste-table-header title="PERMISSIONS" [searchMapping]="searchMapping" [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading">
+    <caste-table-header title="PERMISSIONS" [searchMapping]="searchMapping" [query]="query"
+        (onSearch)="onSearch($event)" [searching]="isLoading">
         <add-button (add)="addPermission()" *appPermissions="permissionForAdding"></add-button>
     </caste-table-header>
 
@@ -64,5 +65,7 @@
         <p class="text-light">{{'NO_ITEMS'|translate}}</p>
     </div>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pageChanged($event)"></mat-paginator>
 </mat-card>
