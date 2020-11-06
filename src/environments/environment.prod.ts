@@ -1,7 +1,7 @@
 import { version } from '../../package.json';
 
 export const environment = {
-  url: 'https://api.caste.qbitartifacts.com',
+  url: 'https://api.superadmin.org',
   realm: 'default',
   production: true,
   brand: {
