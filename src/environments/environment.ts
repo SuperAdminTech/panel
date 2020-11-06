@@ -8,7 +8,7 @@ export const environment = {
   realm: 'default',
   production: false,
   brand: {
-    title: 'Caste',
+    title: 'Superadmin',
   },
   debug: true,
   version,
