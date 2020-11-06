@@ -1,4 +1,4 @@
-import { PermissionAdmin, PermissionUser } from '../app/permissions/index';
+import { PermissionAdmin, PermissionSuperAdmin, PermissionUser } from '../app/permissions/index';
 import { Permission } from 'src/app/entities/permission';
 
 export interface SidemenuItem {
@@ -33,7 +33,7 @@ export const SIDEMENU_ITEMS: SidemenuItem[] = [
     icon: 'person',
     label: 'USERS',
     route: '/users',
-    permission: PermissionAdmin,
+    permission: PermissionSuperAdmin,
   },
   {
     icon: 'group',
