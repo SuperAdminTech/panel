@@ -25,7 +25,7 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     console.log('adminGuard');
-    if (route.queryParams.realm) {
+    if (route && route.queryParams && route.queryParams.realm) {
       localStorage.setItem('realm', route.queryParams.realm);
     }
     const hasPermission = PermissionAdmin.canActivate(this.user$.user);

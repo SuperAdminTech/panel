@@ -23,7 +23,7 @@ describe('AdminGuard', () => {
 
   it('should not activate by default (if no session and user are present)', () => {
     const guard: AdminGuard = TestBed.get(AdminGuard);
-    const result = guard.canActivate(null, null);
+    const result = guard.canActivate({} as any, {} as any);
 
     expect(result instanceof UrlTree).toEqual(true);
     expect((result as UrlTree).toString()).toEqual('/dashboard');
@@ -37,7 +37,7 @@ describe('AdminGuard', () => {
     auth$.setSession(MSessionActive);
 
     const guard: AdminGuard = TestBed.get(AdminGuard);
-    expect(guard.canActivate(null, null)).toEqual(true);
+    expect(guard.canActivate({} as any, {} as any)).toEqual(true);
   });
 
   it('should not activate if user is not admin', () => {
@@ -48,7 +48,7 @@ describe('AdminGuard', () => {
     auth$.setSession(MSessionActive);
 
     const guard: AdminGuard = TestBed.get(AdminGuard);
-    const result = guard.canActivate(null, null);
+    const result = guard.canActivate({} as any, {} as any);
 
     expect(result instanceof UrlTree).toEqual(true);
     expect((result as UrlTree).toString()).toEqual('/dashboard');

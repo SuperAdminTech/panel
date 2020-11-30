@@ -23,7 +23,7 @@ describe('AuthedGuard', () => {
 
   it('should not activate by default (if no session and user are present)', () => {
     const guard: AuthedGuard = TestBed.get(AuthedGuard);
-    expect(guard.canActivate(null, {} as any) instanceof UrlTree).toEqual(true);
+    expect(guard.canActivate({} as any, {} as any) instanceof UrlTree).toEqual(true);
   });
 
   it('should activate if session present', () => {
@@ -37,6 +37,6 @@ describe('AuthedGuard', () => {
     auth$.setSession(mockSession);
 
     const guard: AuthedGuard = TestBed.get(AuthedGuard);
-    expect(guard.canActivate(null, {} as any)).toEqual(true);
+    expect(guard.canActivate({} as any, {} as any)).toEqual(true);
   });
 });
