@@ -7,28 +7,39 @@
                         {{'STATISTICS'|translate}}
                     </h4>
                 </div>
-                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12" *appPermissions="permissionShowUsers">
                     <mat-card>
-                        <app-aggregate title="TOTAL_ACCOUNTS" value="{{'10000'|number}}" [valueColor]="'blue'">
+                        <app-aggregate icon="group" title="ACCOUNTS" [value]="stats.totalAccounts"
+                            [valueColor]="'blue'">
                         </app-aggregate>
                     </mat-card>
                 </div>
                 <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
                     <mat-card>
-                        <app-aggregate title="TOTAL_APPLICATIONS" value="15" [valueColor]="'blue'"></app-aggregate>
+                        <app-aggregate icon="apps" title="APPLICATIONS" [value]="stats.totalApps"
+                            [valueColor]="'blue'"></app-aggregate>
                     </mat-card>
                 </div>
                 <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
                     <mat-card>
-                        <app-aggregate title="TOTAL_USERS" value="15" [valueColor]="'blue'"></app-aggregate>
-                    </mat-card>
-                </div>
-                <!-- <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <mat-card>
-                        <app-aggregate title="TOTAL_INVESTMENT" value="{{'100000'|number}} $" [valueColor]="'blue'">
+                        <app-aggregate icon="person" title="USERS" [value]="stats.totalUsers" [valueColor]="'blue'">
                         </app-aggregate>
                     </mat-card>
-                </div> -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="title">
+                        {{'Account Info'|translate}}
+                    </h4>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <mat-card>
+                        <app-aggregate title="ACCOUNT" [value]="userType" icon="face" valueColor="purple">
+                        </app-aggregate>
+                    </mat-card>
+                </div>
             </div>
         </div>
     </div>
