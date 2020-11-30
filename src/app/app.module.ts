@@ -39,6 +39,7 @@ import {
 } from '@qbitartifacts/caste-client-ng';
 import { MySnackBarService } from './services/mysnackbar.service';
 import { DetailsBaseComponent } from './base/details.base';
+import { StatsService } from './services/stats.service';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -88,6 +89,7 @@ const qbitAuthConfigProvider = {
     SessionCheckerService,
     DialogsService,
     MySnackBarService,
+    StatsService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     {
       provide: MatPaginatorIntl,
