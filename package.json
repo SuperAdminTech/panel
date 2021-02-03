@@ -29,7 +29,7 @@
     "@angular/router": "~10.2.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
-    "@qbitartifacts/caste-client-ng": "^1.0.3",
+    "@qbitartifacts/caste-client-ng": "^1.0.4",
     "@qbitartifacts/qbit-debug-screen": "^0.0.1",
     "@qbitartifacts/qbit-hotkeys": "^0.0.13",
     "bootstrap-grid-only-css": "^4.1.3",
