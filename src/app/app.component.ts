@@ -1,3 +1,4 @@
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PermissionUser } from './permissions/index';
@@ -8,7 +9,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from './services/app.service';
 import { SessionCheckerService } from './services/session-checker.service';
 import { IDLE_CHECK_ENABLED } from './consts';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import {

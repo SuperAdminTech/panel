@@ -12,7 +12,7 @@ import { DetailsBaseComponent } from 'src/app/base/details.base';
   templateUrl: './application-details.component.html',
   styleUrls: ['./application-details.component.scss'],
 })
-export class ApplicationDetailsComponent extends DetailsBaseComponent<Application> {
+export class ApplicationDetailsComponent extends DetailsBaseComponent<any> {
   constructor(public applications$: CasteApplicationService) {
     super();
   }
