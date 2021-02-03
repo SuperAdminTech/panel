@@ -9,6 +9,7 @@ import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { QEventsService } from 'src/app/services/events.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'caste-recover',
