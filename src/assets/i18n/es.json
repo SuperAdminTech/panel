@@ -98,5 +98,9 @@
   "CHECK_EMAIL": "Compruebe su correo y siga las intrucciones",
   "RECOVER_PASSWORD_OK": "Contraseña Cambiada",
   "RECOVER_PASSWORD_OK_DESC": "Contraseña cambiada correctamente, puede acceded",
-  "SIGNUP": "Registro"
+  "SIGNUP": "Registro",
+  "APPLICATION_DETAILS": "Detalles de la Aplicacion",
+  "LIST_OF_DEFAULT_GRANTS": "Lista de concesiones por defecto",
+  "DEFAULT_GRANTS": "Grants Por Defecto",
+  "GRANTS": "Grants"
 }

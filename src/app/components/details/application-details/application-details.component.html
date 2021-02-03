@@ -1,12 +1,44 @@
-<mat-card class="no-padding">
-    <mat-card-header class="padd-15" style="margin: 0">
-        <mat-card-title style="margin: 0">
-            <div class="flex-row center">
-                <span class="title text-mid">{{'APPLICATION_DETAILS'|translate}}</span>
-            </div>
-        </mat-card-title>
-        <button mat-icon-button class="abs-center-right">
-            <mat-icon>edit</mat-icon>
-        </button>
-    </mat-card-header>
-</mat-card>
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <mat-card class="no-padding" style="height:auto; min-height: 150px">
+                <mat-card-header style="margin: 0; height: 45px;">
+                    <mat-card-title style="margin: 0 0 0 15px;">
+                        <div class="flex-row center" style="height: 45px;">
+                            <span class="table-title">{{item ? item.name: '...'}}</span> <code title="Realm"
+                                class="marg-left-10">{{item ? item.realm: '...'}}</code>
+                        </div>
+                    </mat-card-title>
+                    <button mat-icon-button class="abs-center-right">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-card-header>
+
+                <mat-card-content class="no-padding">
+                    <div class="padd-15 column">
+                        <div class="flex-row space-between center marg-bottom-10 ">
+                            <b class="title">{{'DEFAULT_GRANTS'|translate}}</b>
+                            <button class="small-icon-button" mat-icon-button>
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                        <mat-chip-list *ngIf="item">
+                            <mat-chip *ngFor="let grant of item.default_grants" [removable]="true">
+                                <span class="text-extra-small">
+                                    {{grant}}
+                                </span>
+
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="col-lg-8 col-md-6 col-sm-12">
+            <caste-accounts-list *ngIf="item" [showAdd]="false" [searchFilters]="{application: item['@id']}">
+            </caste-accounts-list>
+        </div>
+    </div>
+</div>

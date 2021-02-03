@@ -1,13 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  CasteUsersService,
-  UserResponse,
-} from '@qbitartifacts/caste-client-ng';
+import { Component, Input } from '@angular/core';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { mapUser } from 'src/app/pipes/map-user';
 import { User } from 'src/app/entities/user';
-import { Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
 import { DetailsBaseComponent } from 'src/app/base/details.base';
 
 @Component({
@@ -22,7 +16,7 @@ export class UserDetailsComponent extends DetailsBaseComponent<User> {
     super();
   }
 
-  getDetailsObservable() {
+  getDetailsObservable(){
     return this.users$.getOne(this.id).pipe(mapUser);
   }
 }

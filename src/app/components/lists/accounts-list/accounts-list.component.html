@@ -1,7 +1,9 @@
 <mat-card class="no-padding">
     <caste-table-header title="ACCOUNTS" [searchMapping]="searchMapping" [query]="query" (onSearch)="onSearch($event)"
         [searching]="isLoading">
-        <add-button (add)="addAccount()" *appPermissions="permissionForAdding"></add-button>
+        <ng-container *ngIf="showAdd">
+            <add-button (add)="addAccount()" *appPermissions="permissionForAdding"></add-button>
+        </ng-container>
     </caste-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChanged($event)"

@@ -26,6 +26,7 @@ export abstract class TableBase<T> implements LoadableComponent {
 
   // Input properties
   @Input() searchFilters: any = {};
+  @Input() showAdd: boolean = true;
 
   // Paginator inputs
   public totalItems = 10;
@@ -62,6 +63,7 @@ export abstract class TableBase<T> implements LoadableComponent {
       ...this.getPaginationParams(),
       ...this.getSortParams(),
       ...searchParams,
+      ...this.searchFilters,
     };
 
     let searchObservable = this.getSearchObservable(params);

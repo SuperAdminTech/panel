@@ -98,5 +98,9 @@
   "CHECK_EMAIL": "Check your email, and follow the instructions",
   "RECOVER_PASSWORD_OK": "Password Changed",
   "RECOVER_PASSWORD_OK_DESC": "Password changed correctly, you can now login",
-  "SIGNUP": "Signup"
+  "SIGNUP": "Signup",
+  "APPLICATION_DETAILS": "Application Details",
+  "LIST_OF_DEFAULT_GRANTS": "Default grants",
+  "DEFAULT_GRANTS": "Default Grants",
+  "GRANTS": "Grants"
 }

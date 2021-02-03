@@ -1,13 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { CasteApplicationService } from '@qbitartifacts/caste-client-ng';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import {
+  Application,
+  CasteApplicationService,
+} from '@qbitartifacts/caste-client-ng';
+import { DetailsBaseComponent } from 'src/app/base/details.base';
 
 @Component({
   selector: 'caste-application-details',
   templateUrl: './application-details.component.html',
   styleUrls: ['./application-details.component.scss'],
 })
-export class ApplicationDetailsComponent implements OnInit {
-  constructor(public applications$: CasteApplicationService) {}
+export class ApplicationDetailsComponent extends DetailsBaseComponent<Application> {
+  constructor(public applications$: CasteApplicationService) {
+    super();
+  }
 
-  ngOnInit() {}
+  getDetailsObservable(): Observable<Application> {
+    return this.applications$.getOne(this.id, 'admin');
+  }
 }
