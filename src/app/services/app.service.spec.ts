@@ -5,7 +5,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppService } from './app.service';
 
 describe('AppService', () => {
-  beforeEach(() =>
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [AppModule],
     })

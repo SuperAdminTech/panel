@@ -6,7 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LOCALES, LANG_METADATA } from 'src/app/consts';
 
 describe('LangSelectorComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MaterialModule, TranslateModule.forRoot()],
       declarations: [LangSelectorComponent],

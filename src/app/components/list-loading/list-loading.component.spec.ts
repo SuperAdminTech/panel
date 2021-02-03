@@ -7,13 +7,17 @@ describe('ListLoadingComponent', () => {
   let component: ListLoadingComponent;
   let fixture: ComponentFixture<ListLoadingComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(ListLoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

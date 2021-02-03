@@ -97,5 +97,6 @@
   "RECOVERY_MAIL_SENT": "Correo enviado",
   "CHECK_EMAIL": "Compruebe su correo y siga las intrucciones",
   "RECOVER_PASSWORD_OK": "Contraseña Cambiada",
-  "RECOVER_PASSWORD_OK_DESC": "Contraseña cambiada correctamente, puede acceded"
+  "RECOVER_PASSWORD_OK_DESC": "Contraseña cambiada correctamente, puede acceded",
+  "SIGNUP": "Registro"
 }

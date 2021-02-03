@@ -9,14 +9,18 @@ describe('CreatePermissionComponent', () => {
   let component: CreatePermissionComponent;
   let fixture: ComponentFixture<CreatePermissionComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(CreatePermissionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

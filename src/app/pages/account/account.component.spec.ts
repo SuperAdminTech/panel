@@ -7,13 +7,17 @@ describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

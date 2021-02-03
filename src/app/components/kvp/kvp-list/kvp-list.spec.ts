@@ -3,7 +3,9 @@ import { async, TestBed } from '@angular/core/testing';
 import { KeyValuePair, array_move } from './kvp-list';
 
 describe('KeyValuePair', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();

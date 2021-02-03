@@ -10,14 +10,18 @@ describe('DeleteConfirmationComponent', () => {
   let component: DeleteConfirmationComponent;
   let fixture: ComponentFixture<DeleteConfirmationComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(DeleteConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

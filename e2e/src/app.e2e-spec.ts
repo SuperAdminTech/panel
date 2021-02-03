@@ -4,7 +4,9 @@ import { browser, logging } from 'protractor';
 describe('workspace-project App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     page = new AppPage();
   });
 

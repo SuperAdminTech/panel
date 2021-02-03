@@ -1,6 +1,6 @@
 <mat-card class="no-padding">
-    <caste-table-header title="APPLICATIONS" [searchMapping]="searchMapping" [query]=" query" (onSearch)="onSearch($event)"
-        [searching]="isLoading">
+    <caste-table-header title="APPLICATIONS" [searchMapping]="searchMapping" [query]=" query"
+        (onSearch)="onSearch($event)" [searching]="isLoading">
         <add-button (add)="addApplication()" *appPermissions="permissionForAdding"></add-button>
     </caste-table-header>
 
@@ -19,6 +19,11 @@
                         *ngFor="let role of row.roles">{{role.name|translate}}</mat-chip>
                 </mat-chip-list>
             </td>
+        </ng-container>
+
+        <ng-container matColumnDef="realm">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'REALM'|translate}} </th>
+            <td mat-cell *matCellDef="let row"> {{row.realm}} </td>
         </ng-container>
 
         <ng-container matColumnDef="created_at">

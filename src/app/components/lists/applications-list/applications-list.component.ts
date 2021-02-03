@@ -7,8 +7,6 @@ import {
 import { TableBase } from 'src/app/base/table.page';
 import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
-import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
-import { DeleteDialogStatus } from 'src/app/enums/delete-dialog-status';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 
 @Component({
@@ -19,6 +17,7 @@ import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 export class ApplicationsListComponent extends TableBase<Application> {
   public displayedColumns: string[] = [
     'name',
+    'realm',
     'created_at',
     'updated_at',
     'options',

@@ -11,7 +11,9 @@ import { By } from '@angular/platform-browser';
 class TestLoadableButtonComponent {}
 
 describe('LoadableButtonComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoadableButtonComponent, TestLoadableButtonComponent],
       imports: [MaterialModule],

@@ -1,9 +1,14 @@
 import { RoleReadonly } from './../roles/index';
 import { User } from './user';
 import { ROLES } from '../roles';
+import { TestBed } from '@angular/core/testing';
 
 describe('User', () => {
   const roles = [ROLES.Admin];
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); 
 
   it('should create an instance', () => {
     expect(new User()).toBeTruthy();

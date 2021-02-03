@@ -4,7 +4,9 @@ import { AppModule } from '../app.module';
 import { StatsService } from './stats.service';
 
 describe('StatsService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => TestBed.configureTestingModule({
     imports: [AppModule]
   }));
 

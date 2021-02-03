@@ -1,6 +1,12 @@
+import { TestBed } from '@angular/core/testing';
 import { Session, ISession } from './session';
 
 describe('Session', () => {
+
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); 
+
   it('should create an instance', () => {
     expect(new Session()).toBeTruthy();
   });

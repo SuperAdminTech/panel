@@ -43,7 +43,9 @@ class FakeHttpClient {
 }
 
 describe('PageBaseComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [

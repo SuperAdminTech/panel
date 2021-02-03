@@ -5,7 +5,9 @@ import { AppModule } from '../app.module';
 describe('SessionCheckerService', () => {
   let service: SessionCheckerService;
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     });

@@ -9,14 +9,18 @@ describe('CreateApplicationComponent', () => {
   let component: CreateApplicationComponent;
   let fixture: ComponentFixture<CreateApplicationComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(CreateApplicationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

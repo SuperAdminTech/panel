@@ -6,13 +6,17 @@ describe('AddButtonComponent', () => {
   let component: AddButtonComponent;
   let fixture: ComponentFixture<AddButtonComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(AddButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

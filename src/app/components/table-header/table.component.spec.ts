@@ -9,13 +9,17 @@ describe('TableHeaderComponent', () => {
   let component: TableHeaderComponent;
   let fixture: ComponentFixture<TableHeaderComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(TableHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -70,7 +74,9 @@ describe('TableHeaderComponent with route params', () => {
   let component: TableHeaderComponent;
   let fixture: ComponentFixture<TableHeaderComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [
@@ -87,7 +93,9 @@ describe('TableHeaderComponent with route params', () => {
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(TableHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

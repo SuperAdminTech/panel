@@ -7,7 +7,9 @@ describe('RecoverComponent', () => {
   let component: RecoverComponent;
   let fixture: ComponentFixture<RecoverComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [{ provide: Title, useClass: Title }],

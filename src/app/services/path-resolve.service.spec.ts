@@ -4,7 +4,9 @@ import { TestBed } from '@angular/core/testing';
 import { PathResolveService } from './path-resolve.service';
 
 describe('PathResolveService', () => {
-  beforeEach(() =>
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [AppModule],
     })

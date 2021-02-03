@@ -3,7 +3,9 @@ import { TestBed, async } from '@angular/core/testing';
 import { getLocale } from './utils';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({}).compileComponents();
   }));
 

@@ -9,7 +9,9 @@ import { UrlTree } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
 
 describe('PublicGuard', () => {
-  beforeEach(() =>
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [AuthService, UserService, QEventsService, PublicGuard],

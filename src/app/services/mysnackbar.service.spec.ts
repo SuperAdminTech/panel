@@ -3,7 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { MySnackBarService } from './mysnackbar.service';
 
 describe('MySnackBarService', () => {
-  beforeEach(() =>
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [MySnackBarService],

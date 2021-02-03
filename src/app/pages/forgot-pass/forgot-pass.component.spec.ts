@@ -8,13 +8,17 @@ describe('ForgotPassComponent', () => {
   let component: ForgotPassComponent;
   let fixture: ComponentFixture<ForgotPassComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(ForgotPassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
