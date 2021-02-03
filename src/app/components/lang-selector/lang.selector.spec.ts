@@ -4,17 +4,18 @@ import { LangSelectorComponent } from './lang.selector';
 import { async, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { LOCALES, LANG_METADATA } from 'src/app/consts';
+import { AppModule } from 'src/app/app.module';
 
 describe('LangSelectorComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, TranslateModule.forRoot()],
-      declarations: [LangSelectorComponent],
-      providers: [AppService],
+      imports: [AppModule],
     }).compileComponents();
-  }));
+  });
 
   it('should create', () => {
     const fixture = TestBed.createComponent(LangSelectorComponent);
@@ -48,6 +49,5 @@ describe('LangSelectorComponent', () => {
     componentInstance.selectLang(LANG_METADATA[langString]);
 
     expect(componentInstance.lang).toEqual(LANG_METADATA[langString]);
-    expect(componentInstance.translate.defaultLang).toEqual(langString);
   });
 });
