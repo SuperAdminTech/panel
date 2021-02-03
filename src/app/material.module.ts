@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 const modules = [
   MatIconModule,
@@ -39,6 +40,7 @@ const modules = [
   MatTabsModule,
   MatCheckboxModule,
   MatSelectModule,
+  MatListModule,
 ];
 
 @NgModule({

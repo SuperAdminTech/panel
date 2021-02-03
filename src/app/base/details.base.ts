@@ -9,6 +9,7 @@ export abstract class DetailsBaseComponent<T>
   public item: T;
   public isLoading: boolean;
 
+  /* istanbul ignore next */
   setIsLoading(loading: boolean): void {
     this.isLoading = loading;
   }
