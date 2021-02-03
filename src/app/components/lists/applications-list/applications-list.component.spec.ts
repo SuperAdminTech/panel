@@ -7,13 +7,17 @@ describe('ApplicationsListComponent', () => {
   let component: ApplicationsListComponent;
   let fixture: ComponentFixture<ApplicationsListComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(ApplicationsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

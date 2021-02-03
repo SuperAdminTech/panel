@@ -15,7 +15,9 @@ const SessionCheckerMock = {
 };
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, AppModule],
       providers: [
@@ -27,7 +29,9 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  // beforeEach(() => {
+  // afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
   //   localStorage.removeItem(AuthService.SESSION_KEY);
   // });
 

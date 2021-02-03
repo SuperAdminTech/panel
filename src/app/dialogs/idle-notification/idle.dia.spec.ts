@@ -12,14 +12,18 @@ describe('IdleNotificationComponent', () => {
   let component: IdleNotificationComponent;
   let fixture: ComponentFixture<IdleNotificationComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(IdleNotificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

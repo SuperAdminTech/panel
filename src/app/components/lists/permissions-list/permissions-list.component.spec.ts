@@ -6,13 +6,17 @@ describe('PermissionsListComponent', () => {
   let component: PermissionsListComponent;
   let fixture: ComponentFixture<PermissionsListComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(PermissionsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

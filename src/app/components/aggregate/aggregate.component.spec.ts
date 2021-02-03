@@ -5,7 +5,9 @@ import { AggregateComponent } from './aggregate.component';
 import { By } from '@angular/platform-browser';
 
 describe('AggregateComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       // declarations: [AggregateComponent],
       imports: [AppModule]

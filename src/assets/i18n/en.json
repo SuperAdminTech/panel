@@ -97,5 +97,6 @@
   "RECOVERY_MAIL_SENT": "Email sent",
   "CHECK_EMAIL": "Check your email, and follow the instructions",
   "RECOVER_PASSWORD_OK": "Password Changed",
-  "RECOVER_PASSWORD_OK_DESC": "Password changed correctly, you can now login"
+  "RECOVER_PASSWORD_OK_DESC": "Password changed correctly, you can now login",
+  "SIGNUP": "Signup"
 }

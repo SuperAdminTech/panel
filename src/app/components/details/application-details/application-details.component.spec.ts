@@ -7,14 +7,18 @@ describe('ApplicationDetailsComponent', () => {
   let component: ApplicationDetailsComponent;
   let fixture: ComponentFixture<ApplicationDetailsComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(ApplicationDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

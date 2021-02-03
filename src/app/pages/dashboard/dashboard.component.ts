@@ -21,7 +21,10 @@ export class DashboardComponent extends PageBaseComponent
   public permissionShowUsers = PermissionSuperAdmin
 
   public userType = '';
-  public stats: { totalUsers?: any; totalAccounts?: any; totalApps?: any; } = {};
+
+  public usersCount;
+  public accountsCount;
+  public applicationsCount;
 
   constructor(
     title: Title,
@@ -35,9 +38,9 @@ export class DashboardComponent extends PageBaseComponent
 
   ngOnInit() {
     this.userType = this.user$.user ? this.user$.user.getType() : '...';
-    this.stats$.getStats().subscribe(res => {
-      this.stats = res;
-    });
+    this.usersCount = this.stats$.getTotalUsers();
+    this.accountsCount = this.stats$.getTotalAccounts();
+    this.applicationsCount = this.stats$.getTotalApplications();
   }
 
   ngAfterContentInit() {

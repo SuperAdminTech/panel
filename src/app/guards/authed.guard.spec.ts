@@ -9,7 +9,9 @@ import { UrlTree } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
 
 describe('AuthedGuard', () => {
-  beforeEach(() =>
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [AuthedGuard, AuthService, UserService, QEventsService],

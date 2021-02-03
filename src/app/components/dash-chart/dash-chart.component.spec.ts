@@ -4,7 +4,9 @@ import { DashChart } from './dash-chart.component';
 import { TranslateService } from '@ngx-translate/core';
 
 describe('DashChart', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [DashChart],
       providers: [

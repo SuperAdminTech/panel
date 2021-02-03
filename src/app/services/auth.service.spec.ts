@@ -7,7 +7,9 @@ import { AuthService } from './auth.service';
 import { QEventsService } from 'src/app/services/events.service';
 
 describe('AuthService', () => {
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     });

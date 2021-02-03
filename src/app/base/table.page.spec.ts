@@ -36,7 +36,9 @@ class TestPage extends TableBase<any> {
 }
 
 describe('PageBaseComponent', () => {
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       declarations: [TestPage],

@@ -32,7 +32,9 @@ describe('PermissionsDirective', () => {
   let fixtureUser: ComponentFixture<TestPermissionsUserComponent>;
   let fixtureAdmin: ComponentFixture<TestPermissionsAdminComponent>;
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         PermissionsDirective,

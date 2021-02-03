@@ -8,14 +8,18 @@ describe('PlayStopComponent', () => {
   let component: PlayStopComponent;
   let fixture: ComponentFixture<PlayStopComponent>;
 
-  beforeEach(async(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PlayStopComponent],
       imports: [MaterialModule],
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); beforeEach(() => {
     fixture = TestBed.createComponent(PlayStopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
