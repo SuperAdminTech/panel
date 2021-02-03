@@ -10,6 +10,8 @@ import { SIDEMENU_ITEMS, SidemenuItem } from '../../../config/sidemenu.items';
 import { QEventsService } from 'src/app/services/events.service';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { SHORTCUTS } from 'src/config/shortcuts';
+import { AppService } from 'src/app/services/app.service';
+import { PermissionUser } from 'src/app/permissions';
 
 @Component({
   selector: 'caste-sidemenu',
@@ -27,7 +29,11 @@ export class SidemenuComponent implements OnInit, OnDestroy {
 
   @ViewChild('drawer', { static: true }) drawer: MatDrawer;
 
-  constructor(public events: QEventsService, public hotkeys: HotkeysService) {
+  constructor(
+    public events: QEventsService,
+    public hotkeys: HotkeysService,
+    public app$: AppService
+  ) {
     this.recoverStateFromStorage();
     this.toggleEvent = events.on<boolean>(
       SidemenuComponent.EVT_TOGGLE_SIDEMENU
@@ -61,6 +67,22 @@ export class SidemenuComponent implements OnInit, OnDestroy {
       this.drawer.toggle();
       this.saveStateToStorage();
     });
+
+    this.app$.getApiVersion().subscribe({
+      next: this.addApiVersionItem.bind(this),
+    });
+  }
+
+  private addApiVersionItem(resp) {
+    const apiVersionAlreadyAdded = this.items.find((el) => el.label === 'API');
+    if (!apiVersionAlreadyAdded) {
+      this.items.push({
+        keyValue: true,
+        label: 'API',
+        value: resp.code,
+        permission: PermissionUser,
+      });
+    }
   }
 
   /* istanbul ignore next */

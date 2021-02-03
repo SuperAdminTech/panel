@@ -1,5 +1,10 @@
-import { PermissionAdmin, PermissionSuperAdmin, PermissionUser } from '../app/permissions/index';
+import {
+  PermissionAdmin,
+  PermissionSuperAdmin,
+  PermissionUser,
+} from '../app/permissions/index';
 import { Permission } from 'src/app/entities/permission';
+import { environment } from 'src/environments/environment';
 
 export interface SidemenuItem {
   icon?: string;
@@ -8,6 +13,9 @@ export interface SidemenuItem {
   separator?: boolean;
   action?: (...args: any[]) => any;
   permission: Permission;
+  isExternal?: boolean;
+  keyValue?: boolean;
+  value?: any;
 }
 
 export const SIDEMENU_ITEMS: SidemenuItem[] = [
@@ -52,5 +60,18 @@ export const SIDEMENU_ITEMS: SidemenuItem[] = [
     label: 'PERMISSIONS',
     route: '/permissions',
     permission: PermissionAdmin,
+  },
+
+  // Versions
+  {
+    separator: true,
+    label: 'VERSION',
+    permission: PermissionUser,
+  },
+  {
+    keyValue: true,
+    label: 'PANEL',
+    value: environment.version,
+    permission: PermissionUser,
   },
 ];

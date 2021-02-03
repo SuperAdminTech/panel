@@ -20,7 +20,9 @@
   min-width: 200px;
   padding-top: 15px;
 }
-
+.sidemenu-item {
+  opacity: 0.75;
+}
 .sidemenu-item.active {
-  background: rgba(0, 0, 0, 0.05);
+  opacity: 1;
 }

@@ -18,7 +18,7 @@
             <td mat-cell *matCellDef="let row">
                 <mat-chip-list>
                     <mat-chip class="mat-chip mat-primary mat-standard-chip {{role.className}}"
-                        *ngFor="let role of row.roles"><span class="text-extra-small">{{role.name|translate}}</span></mat-chip>
+                        *ngFor="let role of row.roles">{{role.name|translate}}</mat-chip>
                 </mat-chip-list>
             </td>
         </ng-container>

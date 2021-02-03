@@ -1,9 +1,8 @@
 <mat-drawer-container class="sidemenu-container">
     <mat-drawer #drawer class="sidemenu-sidenav mat-elevation-z1" mode="side" [opened]="opened">
         <ng-template ngFor let-item [ngForOf]="items">
-
             <!-- If item is not a separator -->
-            <div *ngIf="!item.separator">
+            <div *ngIf="!item.separator && !item.isExternal && !item.keyValue">
                 <button routerLinkActive="active text-dark" class="sidemenu-item row center text-mid"
                     *appPermissions="item.permission" [routerLink]="item.route" mat-menu-item>
                     <mat-icon class="mat-icon-small">{{item.icon}}</mat-icon>
@@ -11,16 +10,34 @@
                 </button>
             </div>
 
+            <!-- If item is not a separator and is external link -->
+            <div *ngIf="!item.separator && item.isExternal && !item.keyValue">
+                <a routerLinkActive="active text-dark" class="sidemenu-item row center text-mid"
+                    *appPermissions="item.permission" href="{{item.route}}" target="_blank" mat-menu-item>
+                    <mat-icon class="mat-icon-small">{{item.icon}}</mat-icon>
+                    <span>{{item.label | translate}}</span>
+
+                    <mat-icon class="mat-icon-small marg-left-10">launch</mat-icon>
+                </a>
+            </div>
+
             <!-- If item is a separator -->
-            <div *ngIf="item.separator">
+            <div *ngIf="item.separator && !item.keyValue">
                 <h4 class="title marg-left-15" *appPermissions="item.permission">
                     {{item.label | translate}}
+                </h4>
+            </div>
+
+            <!--  -->
+            <div *ngIf="item.keyValue">
+                <h4 class="text-small text-mutted marg-left-15" *appPermissions="item.permission">
+                    {{item.label | translate}} <code>{{item.value | translate}}</code>
                 </h4>
             </div>
         </ng-template>
     </mat-drawer>
 
-    <div class="padd-h-80 padd-v-30">
+    <div class="padd-h-40 padd-v-30">
         <ng-content></ng-content>
     </div>
 </mat-drawer-container>
