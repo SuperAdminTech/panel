@@ -8,7 +8,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
-import { MSessionActive, MSessionExpired } from './testing/mocks/session.mock';
 
 const SessionCheckerMock = {
   initCheckIdle() {},
@@ -17,7 +16,9 @@ const SessionCheckerMock = {
 describe('AppComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, AppModule],
       providers: [
@@ -28,12 +29,6 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
-
-  // afterEach(() => {
-    TestBed.resetTestingModule();
-  }); beforeEach(() => {
-  //   localStorage.removeItem(AuthService.SESSION_KEY);
-  // });
 
   it('should create the app', () => {
     localStorage.removeItem(AuthService.SESSION_KEY);

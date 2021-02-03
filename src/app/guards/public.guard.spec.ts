@@ -11,7 +11,9 @@ import { QEventsService } from 'src/app/services/events.service';
 describe('PublicGuard', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() =>
+  });
+
+  beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [AuthService, UserService, QEventsService, PublicGuard],
