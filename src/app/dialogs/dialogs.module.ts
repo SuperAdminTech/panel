@@ -6,6 +6,7 @@ import { CreateApplicationComponent } from './create-application/create-applicat
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { CreatePermissionComponent } from './create-permission/create-permission.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const dialogs = [
   IdleNotificationComponent,
@@ -13,6 +14,7 @@ const dialogs = [
   DeleteConfirmationComponent,
   CreatePermissionComponent,
   CreateAccountComponent,
+  CreateUserComponent,
 ];
 
 @NgModule({
