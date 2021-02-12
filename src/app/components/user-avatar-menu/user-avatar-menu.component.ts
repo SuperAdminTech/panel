@@ -1,7 +1,7 @@
-import { PermissionAdmin } from './../../permissions/index';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { PermissionAdmin } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-user-avatar-menu',

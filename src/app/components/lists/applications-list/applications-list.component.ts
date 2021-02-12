@@ -3,9 +3,9 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CasteApplicationService,
   Application,
+  PermissionAdmin,
 } from '@qbitartifacts/caste-client-ng';
 import { TableBase } from 'src/app/base/table.page';
-import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 

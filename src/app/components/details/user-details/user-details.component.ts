@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService, User } from '@qbitartifacts/caste-client-ng';
 import { mapUser } from 'src/app/pipes/map-user';
-import { User } from 'src/app/entities/user';
 import { DetailsBaseComponent } from 'src/app/base/details.base';
 
 @Component({
@@ -16,7 +15,7 @@ export class UserDetailsComponent extends DetailsBaseComponent<User> {
     super();
   }
 
-  getDetailsObservable(){
+  getDetailsObservable() {
     return this.users$.getOne(this.id).pipe(mapUser);
   }
 }

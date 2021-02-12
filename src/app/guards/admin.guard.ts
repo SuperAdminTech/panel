@@ -1,4 +1,3 @@
-import { PermissionAdmin } from '../permissions/index';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -9,6 +8,7 @@ import {
 } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { PermissionAdmin } from '@qbitartifacts/caste-client-ng';
 
 @Injectable({
   providedIn: 'root',

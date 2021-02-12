@@ -37,7 +37,8 @@ export class CreateAccountComponent implements OnInit, LoadableComponent {
         {
           name: this.name.value,
           permissions: [],
-        },
+          application: '',
+        } as any,
         'admin'
       )
       .subscribe(

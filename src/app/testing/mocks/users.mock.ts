@@ -1,14 +1,16 @@
-import { IUser } from './../../entities/user';
-import { RoleAdmin, RoleUser, RoleReadonly } from './../../roles/index';
-import { User } from 'src/app/entities/user';
+import {
+  RoleAdmin,
+  RoleReadonly,
+  RoleUser,
+  User,
+} from '@qbitartifacts/caste-client-ng';
 
-const baseUserData: IUser = {
-  name: 'Manolo',
-  lastnames: 'Edge Tejero',
+const baseUserData: any = {
+  username: 'Manolo',
   email: 'test@test.com',
-  birthDate: '',
   id: 'test',
   roles: [],
+  permissions: [],
 };
 
 // Admin user

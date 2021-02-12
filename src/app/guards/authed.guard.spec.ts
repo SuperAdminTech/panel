@@ -3,18 +3,19 @@ import { AuthedGuard } from './authed.guard';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { User } from '../entities/user';
 import { Session } from '../entities/session';
 import { UrlTree } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
+import { User } from '@qbitartifacts/caste-client-ng';
+import { AppModule } from '../app.module';
 
 describe('AuthedGuard', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() =>
+  });
+  beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      providers: [AuthedGuard, AuthService, UserService, QEventsService],
+      imports: [AppModule],
     })
   );
 
@@ -25,7 +26,9 @@ describe('AuthedGuard', () => {
 
   it('should not activate by default (if no session and user are present)', () => {
     const guard: AuthedGuard = TestBed.get(AuthedGuard);
-    expect(guard.canActivate({} as any, {} as any) instanceof UrlTree).toEqual(true);
+    expect(guard.canActivate({} as any, {} as any) instanceof UrlTree).toEqual(
+      true
+    );
   });
 
   it('should activate if session present', () => {

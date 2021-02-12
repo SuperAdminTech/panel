@@ -1,7 +1,6 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PermissionUser } from './permissions/index';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -17,9 +16,12 @@ import {
 } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from 'src/app/services/events.service';
 import { DebugScreenComponent } from '@qbitartifacts/qbit-debug-screen';
-import { CasteAuthService } from '@qbitartifacts/caste-client-ng';
-import { User } from './entities/user';
-import { castRoles } from './roles';
+import {
+  CasteAuthService,
+  castRoles,
+  PermissionUser,
+  User,
+} from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-root',
@@ -153,10 +155,10 @@ export class AppComponent implements OnInit, OnDestroy {
     if (validSession) {
       this.auth$.setSession(savedSession);
 
-      const tokenData = CasteAuthService.decodeToken(savedSession.token);
+      const tokenData: any = CasteAuthService.decodeToken(savedSession.token);
 
       const user = new User()
-        .fromJson({ name: tokenData.username, id: tokenData.id })
+        .fromJson(tokenData)
         .setRoles(castRoles(tokenData.roles));
 
       this.user$.setUser(user);

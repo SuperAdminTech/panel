@@ -1,12 +1,12 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, AfterContentInit } from '@angular/core';
-import { Permission } from './../entities/permission';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { InternalPermission } from '@qbitartifacts/caste-client-ng';
 
 @Component({ template: '' })
 export abstract class PageBaseComponent implements AfterContentInit {
-  static permissions: Permission[] = [];
+  static permissions: InternalPermission[] = [];
   abstract title: string;
   public environment = environment;
   public appName = environment.brand.title;

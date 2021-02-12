@@ -3,10 +3,11 @@ import { PublicGuard } from './public.guard';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { User } from '../entities/user';
 import { Session } from '../entities/session';
 import { UrlTree } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
+import { User } from '@qbitartifacts/caste-client-ng';
+import { AppModule } from '../app.module';
 
 describe('PublicGuard', () => {
   afterEach(() => {
@@ -15,8 +16,7 @@ describe('PublicGuard', () => {
 
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      providers: [AuthService, UserService, QEventsService, PublicGuard],
+      imports: [AppModule],
     })
   );
 

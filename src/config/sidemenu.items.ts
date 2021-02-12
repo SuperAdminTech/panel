@@ -1,9 +1,4 @@
-import {
-  PermissionAdmin,
-  PermissionSuperAdmin,
-  PermissionUser,
-} from '../app/permissions/index';
-import { Permission } from 'src/app/entities/permission';
+import { InternalPermission, PermissionAdmin, PermissionSuperAdmin, PermissionUser } from '@qbitartifacts/caste-client-ng';
 import { environment } from 'src/environments/environment';
 
 export interface SidemenuItem {
@@ -12,7 +7,7 @@ export interface SidemenuItem {
   route?: string;
   separator?: boolean;
   action?: (...args: any[]) => any;
-  permission: Permission;
+  permission: InternalPermission;
   isExternal?: boolean;
   keyValue?: boolean;
   value?: any;

@@ -1,4 +1,3 @@
-import { PermissionSuperAdmin, PermissionUser } from './../../permissions/index';
 import { AuthedGuard } from '../../guards/authed.guard';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { Component, AfterContentInit, OnInit } from '@angular/core';
@@ -7,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppService } from 'src/app/services/app.service';
 import { UserService } from 'src/app/services/user.service';
 import { StatsService } from 'src/app/services/stats.service';
+import { PermissionSuperAdmin, PermissionUser } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-dashboard',

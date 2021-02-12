@@ -38,7 +38,7 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
         {
           name: this.name.value,
           realm: this.realm.value,
-        },
+        } as any,
         'sadmin'
       )
       .subscribe(

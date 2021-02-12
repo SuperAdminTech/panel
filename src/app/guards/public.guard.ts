@@ -8,8 +8,6 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { Permission } from '../entities/permission';
 
 @Injectable()
 export class PublicGuard implements CanActivate {
