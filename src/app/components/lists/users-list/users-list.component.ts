@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { mapUsers } from 'src/app/pipes/map-users';
-import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { User } from 'src/app/entities/user';
-import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService, PermissionAdmin, User } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-users-list',

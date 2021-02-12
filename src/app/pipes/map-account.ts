@@ -1,6 +1,6 @@
 import { map } from 'rxjs/internal/operators/map';
-import { AccountResponse } from '@qbitartifacts/caste-client-ng';
+import { Account } from '@qbitartifacts/caste-client-ng';
 
-export const mapAccount = map((account: AccountResponse) => {
+export const mapAccount = map((account: Account) => {
   return account;
 });

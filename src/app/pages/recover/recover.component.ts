@@ -56,6 +56,7 @@ export class RecoverComponent
     return this.form.get('password');
   }
 
+  /* istanbul ignore next */
   public onSubmit(): boolean {
     if (this.form.invalid) {
       return false;

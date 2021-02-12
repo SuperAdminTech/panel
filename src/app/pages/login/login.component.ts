@@ -4,18 +4,17 @@ import { AuthService } from './../../services/auth.service';
 import { Component, AfterContentInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { PublicGuard } from './../../guards/public.guard';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { TranslateService } from '@ngx-translate/core';
 import {
   CasteAuthService,
+  castRoles,
   LoginResponse,
+  User,
 } from '@qbitartifacts/caste-client-ng';
 import { Session } from 'src/app/entities/session';
-import { User } from 'src/app/entities/user';
-import { castRoles } from 'src/app/roles';
 
 @Component({
   selector: 'caste-login',
@@ -71,10 +70,12 @@ export class LoginComponent
     return this.loginForm.get('password');
   }
 
+  /* istanbul ignore next */
   public setIsLoading(loading: boolean): void {
     this.isLoading = loading;
   }
 
+  /* istanbul ignore next */
   public onSubmit(): boolean {
     this.submitted = true;
 
@@ -110,7 +111,7 @@ export class LoginComponent
     this.qbitAuth.saveToken(resp.token);
 
     const user = new User()
-      .fromJson({ name: resp.username })
+      .fromJson(resp as any)
       .setRoles(castRoles(resp.roles));
 
     this.user$.setUser(user);

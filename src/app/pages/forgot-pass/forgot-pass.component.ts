@@ -39,6 +39,7 @@ export class ForgotPassComponent
     });
   }
 
+  /* istanbul ignore next */
   public setIsLoading(loading: boolean): void {
     this.isLoading = loading;
   }
@@ -47,6 +48,7 @@ export class ForgotPassComponent
     return this.form.get('username');
   }
 
+  /* istanbul ignore next */
   public onSubmit(): boolean {
     if (this.form.invalid) {
       return false;
@@ -62,6 +64,7 @@ export class ForgotPassComponent
     return true;
   }
 
+  /* istanbul ignore next */
   private loginError(error) {
     console.log(error);
     this.form.setErrors({
@@ -70,6 +73,7 @@ export class ForgotPassComponent
     this.setIsLoading(false);
   }
 
+  /* istanbul ignore next */
   loginSuccess(resp) {
     this.sentRecoveryMail = true;
     this.setIsLoading(false);

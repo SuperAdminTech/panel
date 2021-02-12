@@ -11,7 +11,7 @@ import { QEventsService } from 'src/app/services/events.service';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { AppService } from 'src/app/services/app.service';
-import { PermissionUser } from 'src/app/permissions';
+import { PermissionUser } from '@qbitartifacts/caste-client-ng';
 
 @Component({
   selector: 'caste-sidemenu',

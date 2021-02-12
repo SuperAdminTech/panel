@@ -47,7 +47,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
           account: `/user/accounts/${this.account.id}`,
           user: `/user/users/${this.user.id}`,
           grants: this.grants.value,
-        },
+        } as any,
         'sadmin'
       )
       .subscribe(

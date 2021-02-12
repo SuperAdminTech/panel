@@ -1,21 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CastePermissionsService,
-  PermissionResponse,
+  Permission,
+  PermissionAdmin,
+  PermissionSuperAdmin,
 } from '@qbitartifacts/caste-client-ng';
 import { TableBase } from 'src/app/base/table.page';
-import { PermissionAdmin, PermissionSuperAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 
 @Component({
   selector: 'caste-permissions-list',
   templateUrl: './permissions-list.component.html',
   styleUrls: ['./permissions-list.component.scss'],
 })
-export class PermissionsListComponent extends TableBase<PermissionResponse> {
+export class PermissionsListComponent extends TableBase<Permission> {
   public displayedColumns: string[] = [
     'user',
     'account',

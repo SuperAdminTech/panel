@@ -1,28 +1,32 @@
-import { Permission } from 'src/app/entities/permission';
+import {
+  InternalPermission,
+  PermissionAdmin,
+  PermissionUser,
+} from '@qbitartifacts/caste-client-ng';
 import {
   MUserUser,
   MUserReadOnly,
   MUserAdmin,
 } from './../testing/mocks/users.mock';
 import { UserService } from './../services/user.service';
-import { PermissionUser, PermissionAdmin } from './../permissions/index';
 import { PermissionsDirective } from './permissions.directive';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, TemplateRef, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { AppModule } from '../app.module';
 
 @Component({
   template: `<input id="element" type="text" *appPermissions="perm" />`,
 })
 class TestPermissionsUserComponent {
-  public perm: Permission = PermissionUser;
+  public perm: InternalPermission = PermissionUser;
 }
 
 @Component({
   template: `<input id="element" type="text" *appPermissions="perm" />`,
 })
 class TestPermissionsAdminComponent {
-  public perm: Permission = PermissionAdmin;
+  public perm: InternalPermission = PermissionAdmin;
 }
 
 describe('PermissionsDirective', () => {
@@ -34,14 +38,15 @@ describe('PermissionsDirective', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [AppModule],
       declarations: [
         PermissionsDirective,
         TestPermissionsAdminComponent,
         TestPermissionsUserComponent,
       ],
-      providers: [TemplateRef, UserService],
     });
 
     fixtureUser = TestBed.createComponent(TestPermissionsUserComponent);
@@ -50,7 +55,7 @@ describe('PermissionsDirective', () => {
     fixtureAdmin = TestBed.createComponent(TestPermissionsAdminComponent);
     componentAdmin = fixtureAdmin.componentInstance;
 
-    user$ = TestBed.get(UserService);
+    user$ = TestBed.inject(UserService);
   });
 
   it('should create an instance', () => {

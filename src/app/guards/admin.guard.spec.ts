@@ -7,14 +7,15 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { UrlTree } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
+import { AppModule } from '../app.module';
 
 describe('AdminGuard', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() =>
+  });
+  beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      providers: [AdminGuard, AuthService, UserService, QEventsService],
+      imports: [AppModule],
     })
   );
 

@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  CasteAccountsService,
-  AccountResponse,
-} from '@qbitartifacts/caste-client-ng';
+import { CasteAccountsService, Account } from '@qbitartifacts/caste-client-ng';
 import { DetailsBaseComponent } from 'src/app/base/details.base';
 import { mapAccount } from 'src/app/pipes/map-account';
 
@@ -11,9 +8,7 @@ import { mapAccount } from 'src/app/pipes/map-account';
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.scss'],
 })
-export class AccountDetailsComponent extends DetailsBaseComponent<
-  AccountResponse
-> {
+export class AccountDetailsComponent extends DetailsBaseComponent<Account> {
   @Input() id: string;
 
   constructor(private accounts$: CasteAccountsService) {

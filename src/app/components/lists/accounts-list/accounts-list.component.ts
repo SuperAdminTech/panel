@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TableBase } from 'src/app/base/table.page';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
+  Account,
   CasteAccountsService,
-  AccountResponse,
+  PermissionAdmin,
 } from '@qbitartifacts/caste-client-ng';
-import { PermissionAdmin } from 'src/app/permissions';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 
@@ -14,7 +14,7 @@ import { MySnackBarService } from 'src/app/services/mysnackbar.service';
   templateUrl: './accounts-list.component.html',
   styleUrls: ['./accounts-list.component.scss'],
 })
-export class AccountsListComponent extends TableBase<AccountResponse> {
+export class AccountsListComponent extends TableBase<Account> {
   public displayedColumns: string[] = [
     'name',
     'created_at',
