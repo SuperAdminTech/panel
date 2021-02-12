@@ -1,10 +1,5 @@
-import {
-  RoleUser,
-  RoleAdmin,
-  RoleSuperadmin,
-  RoleReadonly,
-} from '../roles/index';
-import { Role } from '../entities/role';
+import { Role, RoleUser, RoleAdmin, RoleSuperadmin, RoleReadonly } from '@qbitartifacts/caste-client-ng';
+
 
 const NAMES: string[] = [
   'Maia',
