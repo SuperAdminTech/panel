@@ -103,5 +103,7 @@
   "LIST_OF_DEFAULT_GRANTS": "Default grants",
   "DEFAULT_GRANTS": "Default Grants",
   "GRANTS": "Grants",
-  "HOME": "Home"
+  "HOME": "Home",
+  "NO_ITEMS": "There are no items",
+  "SIGNING_UP": "Signing up"
 }

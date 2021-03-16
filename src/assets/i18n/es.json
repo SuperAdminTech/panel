@@ -103,5 +103,7 @@
   "LIST_OF_DEFAULT_GRANTS": "Lista de concesiones por defecto",
   "DEFAULT_GRANTS": "Grants Por Defecto",
   "GRANTS": "Grants",
-  "HOME": "Inicio"
+  "HOME": "Inicio",
+  "NO_ITEMS": "No hay elementos",
+  "SIGNING_UP": "Registrando"
 }
