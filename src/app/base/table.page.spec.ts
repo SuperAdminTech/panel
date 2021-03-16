@@ -7,6 +7,9 @@ import { Observable, of } from 'rxjs';
 import { DialogsService } from '../services/dialogs.service';
 import { MySnackBarService } from '../services/mysnackbar.service';
 import { CreateDialogStatus } from '../enums/create-dialog-status';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from '../services/app.service';
+import { QEventsService } from '../services/events.service';
 
 @Component({
   template: '',
@@ -17,9 +20,13 @@ class TestPage extends TableBase<any> {
   constructor(
     public hotkeys: HotkeysService,
     public dialogs: DialogsService,
-    public snackbar: MySnackBarService
+    public snackbar: MySnackBarService,
+    public events: QEventsService,
+    public app: AppService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
-    super(hotkeys, snackbar, dialogs);
+    super(hotkeys, snackbar, dialogs, events, app, router, route);
   }
 
   public getSearchObservable(queryParams: {
@@ -32,18 +39,19 @@ class TestPage extends TableBase<any> {
     return of('test');
   }
 
-  public onSearch(): void {}
+  public async onSearch(searchParams?: any, owner?: string) {}
 }
 
 describe('PageBaseComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       declarations: [TestPage],
     }).compileComponents();
-  }));
+  });
 
   it('should create', () => {
     const fixture = TestBed.createComponent(TestPage);
@@ -75,7 +83,7 @@ describe('PageBaseComponent', () => {
     const fixture = TestBed.createComponent(TestPage);
     const component = fixture.componentInstance;
 
-    component.onSearch = () => {};
+    component.onSearch = async (searchParams?: any, owner?: string) => {};
 
     spyOn(component, 'onSearch');
 
@@ -88,12 +96,32 @@ describe('PageBaseComponent', () => {
     const fixture = TestBed.createComponent(TestPage);
     const component = fixture.componentInstance;
 
-    component.onSearch = () => {};
+    component.onSearch = async (searchParams?: any, owner?: string) => {};
 
     spyOn(component, 'onSearch');
 
     component.onNewItemAdded(CreateDialogStatus.CANCELED);
 
     expect(component.onSearch).not.toHaveBeenCalled();
+  });
+
+  it('getSortParams works with sortId', () => {
+    const fixture = TestBed.createComponent(TestPage);
+    const component = fixture.componentInstance;
+
+    component.sortId = 'id';
+    component.sortDir = 'asc';
+
+    expect(component.getSortParams()).toEqual({ [`order[id]`]: 'asc' });
+  });
+
+  it('getSortParams works with no sortId', () => {
+    const fixture = TestBed.createComponent(TestPage);
+    const component = fixture.componentInstance;
+
+    component.sortId = null;
+    component.sortDir = 'asc';
+
+    expect(component.getSortParams()).toEqual({});
   });
 });

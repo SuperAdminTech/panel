@@ -3,6 +3,7 @@ import { Title, BrowserModule, By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupComponent } from './signup.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -10,12 +11,13 @@ describe('SignupComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       providers: [{ provide: Title, useClass: Title }],
     }).compileComponents();
-  }));
+  });
 
   it('should create', () => {
     fixture = TestBed.createComponent(SignupComponent);

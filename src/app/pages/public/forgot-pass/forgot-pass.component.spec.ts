@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgotPassComponent } from './forgot-pass.component';
 import { PageBaseComponent } from 'src/app/base/page.base';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ForgotPassComponent', () => {
   let component: ForgotPassComponent;
@@ -10,15 +11,17 @@ describe('ForgotPassComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(ForgotPassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -4,6 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { PageBaseComponent } from 'src/app/base/page.base';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -11,12 +12,13 @@ describe('LoginComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       providers: [{ provide: Title, useClass: Title }],
     }).compileComponents();
-  }));
+  });
 
   it('should create', () => {
     fixture = TestBed.createComponent(LoginComponent);

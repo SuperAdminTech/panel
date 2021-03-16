@@ -45,7 +45,8 @@ class FakeHttpClient {
 describe('PageBaseComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       providers: [
@@ -54,7 +55,7 @@ describe('PageBaseComponent', () => {
         { provide: HttpClient, useClass: FakeHttpClient },
       ],
     }).compileComponents();
-  }));
+  });
 
   it('should be created', () => {
     const testService$: CrudTestService = TestBed.get(CrudTestService);

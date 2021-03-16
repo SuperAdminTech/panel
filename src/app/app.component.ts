@@ -59,6 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  /* istanbul ignore next*/
   ngOnInit() {
     if (this.auth$.isSessionSaved()) {
       this.recoverSessionAndUser();
@@ -96,6 +97,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  /* istanbul ignore next*/
   private setupEvents() {
     this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {});
 

@@ -73,6 +73,7 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
       .subscribe(this.onAccountChanged.bind(this));
   }
 
+  /* istanbul ignore next*/
   public setUpTimer() {
     createTimer(
       this.getOnSearchObservable.bind(this),
@@ -86,6 +87,7 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
     });
   }
 
+  /* istanbul ignore next*/
   ngOnInit() {
     if (!this.listType) this.listType = this.userType;
     if (!this.createType) this.createType = this.userType;
@@ -209,14 +211,17 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
     });
   }
 
+  /* istanbul ignore next*/
   public setIsLoading(loading: boolean): void {
     this.isLoading = loading;
   }
 
+  /* istanbul ignore next*/
   public setData(data: T[]) {
     this.dataSource = new MatTableDataSource(data);
   }
 
+  /* istanbul ignore next*/
   public registerHotkeys() {
     this.hotkeys
       .addShortcut(SHORTCUTS.table.nextPage)
@@ -290,6 +295,7 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
     return {};
   }
 
+  /* istanbul ignore next */
   public sortChanged($event: Sort) {
     this.sortId = $event.active;
     this.sortDir = $event.direction;
@@ -301,6 +307,7 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
     this.onSearch();
   }
 
+  /* istanbul ignore next */
   private addToQueryParams(data: Params) {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -309,6 +316,7 @@ export abstract class TableBase<T> implements LoadableComponent, OnInit {
     });
   }
 
+  /* istanbul ignore next */
   public trackById(index, item: any) {
     return item.id;
   }
