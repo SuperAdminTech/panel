@@ -7,6 +7,8 @@ export const IDLE_REFRESH = 1e3; // (milliseconds)
 //
 export const IDLE_CHECK_ENABLED = false;
 
+export const REFRESH_TABLE_INTERVAL_MS = 60e3;
+
 export const LOCALES = {
   es: 'es',
   en: 'en',

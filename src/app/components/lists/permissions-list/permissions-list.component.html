@@ -1,5 +1,5 @@
 <mat-card class="no-padding">
-    <caste-table-header title="PERMISSIONS" [searchMapping]="searchMapping" [query]="query"
+    <caste-table-header [showBreadcrumbs]="showBreadcrumbs" title="PERMISSIONS" [searchMapping]="searchMapping" [query]="query"
         (onSearch)="onSearch($event)" [searching]="isLoading">
         <add-button (add)="addPermission()" *appPermissions="permissionForAdding"></add-button>
     </caste-table-header>

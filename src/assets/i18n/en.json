@@ -102,5 +102,10 @@
   "APPLICATION_DETAILS": "Application Details",
   "LIST_OF_DEFAULT_GRANTS": "Default grants",
   "DEFAULT_GRANTS": "Default Grants",
-  "GRANTS": "Grants"
+  "GRANTS": "Grants",
+  "HOME": "Home",
+  "NO_ITEMS": "There are no items",
+  "SIGNING_UP": "Signing up",
+  "CREATED_ACCOUNT_OK": "Account created succesfully",
+  "REMOVED_ITEM": "Item removed"
 }

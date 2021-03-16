@@ -1,6 +1,6 @@
 <mat-card class="no-padding">
-    <caste-table-header title="USERS" [searchMapping]="searchMapping" [query]="query" (onSearch)="onSearch($event)"
-        [searching]="isLoading">
+    <caste-table-header title="USERS" [searchMapping]="searchMapping" [query]="query"
+        [showBreadcrumbs]="showBreadcrumbs" [searching]="isLoading" (onSearch)="onSearch($event)">
         <add-button (add)="addUser()" *appPermissions="permissionForAdding"></add-button>
     </caste-table-header>
 
@@ -8,7 +8,7 @@
         [matSortDirection]="sortDir" [matSortActive]="sortId">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'NAME'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.username}} </td>
         </ng-container>
 
         <ng-container matColumnDef="roles">

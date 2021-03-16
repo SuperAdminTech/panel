@@ -4,7 +4,14 @@ import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { mapUsers } from 'src/app/pipes/map-users';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
-import { CasteUsersService, PermissionAdmin, User } from '@qbitartifacts/caste-client-ng';
+import {
+  CasteUsersService,
+  PermissionAdmin,
+  User,
+} from '@qbitartifacts/caste-client-ng';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { QEventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'caste-users-list',
@@ -27,9 +34,13 @@ export class UsersListComponent extends TableBase<User> {
     public hotkeys: HotkeysService,
     public users$: CasteUsersService,
     public dialogs: DialogsService,
-    public snackbar: MySnackBarService
+    public snackbar: MySnackBarService,
+    public events: QEventsService,
+    public app: AppService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
-    super(hotkeys, snackbar, dialogs);
+    super(hotkeys, snackbar, dialogs, events, app, router, route);
   }
 
   public getSearchObservable(queryParams) {

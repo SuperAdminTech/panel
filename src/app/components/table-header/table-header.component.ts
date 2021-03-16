@@ -45,8 +45,9 @@ export class TableHeaderComponent implements OnInit {
   @Input() public newItemText = '';
   @Input() public newItemIcon = 'fa-plus';
   @Input() public searching = false;
-
   @Input() public searchMapping = [];
+  @Input() public showBreadcrumbs = true;
+  @Input() public doInitialSearch = false;
 
   @Output() public onSearch: EventEmitter<any>;
   @Output() public queryChange: EventEmitter<any>;
@@ -72,7 +73,9 @@ export class TableHeaderComponent implements OnInit {
         this.setupDebouncedSearch(this.searchElement.nativeElement);
       }
 
-      this.search();
+      if (this.doInitialSearch) {
+        this.search();
+      }
     });
   }
 

@@ -8,6 +8,9 @@ import {
 import { TableBase } from 'src/app/base/table.page';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { QEventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'caste-applications-list',
@@ -29,9 +32,13 @@ export class ApplicationsListComponent extends TableBase<Application> {
     public hotkeys: HotkeysService,
     public applications$: CasteApplicationService,
     public dialogs: DialogsService,
-    public snackbar: MySnackBarService
+    public snackbar: MySnackBarService,
+    public events: QEventsService,
+    public app: AppService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
-    super(hotkeys, snackbar, dialogs);
+    super(hotkeys, snackbar, dialogs, events, app, router, route);
   }
 
   public getSearchObservable(queryParams) {

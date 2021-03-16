@@ -1,0 +1,4 @@
+<caste-account-details [id]="itemId"></caste-account-details>
+<div class="marg-top-20" *ngIf="itemId">
+    <caste-permissions-list [showBreadcrumbs]="false" [searchFilters]="{ account_id: itemId }"></caste-permissions-list>
+</div>

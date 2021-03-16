@@ -8,6 +8,8 @@
                     {{'CREATE_ACCOUNT' | translate}}
                 </h4>
 
+                <caste-application-selector [(application)]="application"></caste-application-selector>
+
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
                     <input id="name" matInput placeholder="Enter your name" formControlName="name">

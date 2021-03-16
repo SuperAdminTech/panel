@@ -5,6 +5,7 @@ import { PageBaseComponent } from 'src/app/base/page.base';
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   template: '',
@@ -12,15 +13,20 @@ import { TranslateService } from '@ngx-translate/core';
 class TestPage extends PageBaseComponent {
   title = 'DASHBOARD';
 
-  constructor(title: Title, public translate$: TranslateService) {
-    super(title, translate$);
+  constructor(
+    title: Title,
+    translate: TranslateService,
+    route: ActivatedRoute
+  ) {
+    super(title, translate, route);
   }
 }
 
 describe('PageBaseComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule],
       declarations: [TestPage],

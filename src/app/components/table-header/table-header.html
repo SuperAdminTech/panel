@@ -1,7 +1,8 @@
 <div class="flex-row bordered-bottom center space-between padd-h-20" style="height: 45px; position: relative;">
-    <b class="no-margin no-padding table-title">
+    <b class="no-margin no-padding table-title" *ngIf="!showBreadcrumbs">
         {{title|translate}}
     </b>
+    <qbit-breadcrumbs *ngIf="showBreadcrumbs"></qbit-breadcrumbs>
 
     <div class="flex-row center search-input-wrapper"
         style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)">

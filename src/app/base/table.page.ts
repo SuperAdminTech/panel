@@ -1,32 +1,46 @@
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { LoadableComponent } from './loadable.page';
-import { Component, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
-import { Observable } from 'rxjs';
+import { Observable, Subject, timer } from 'rxjs';
 import { DialogsService } from '../services/dialogs.service';
 import { DeleteDialogStatus } from '../enums/delete-dialog-status';
 import { CreateDialogStatus } from '../enums/create-dialog-status';
+import { QEventsService } from 'src/app/services/events.service';
+import { AppService } from '../services/app.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { createTimer } from '../rxjs/create-timer';
 
 @Component({
   template: '',
 })
 // tslint:disable-next-line: component-class-suffix
-export abstract class TableBase<T> implements LoadableComponent {
+export abstract class TableBase<T> implements LoadableComponent, OnInit {
   abstract displayedColumns: string[] = [];
+  public searchableColumns: string[] = [];
   public dataSource: MatTableDataSource<T>;
   public isLoading = false;
   public query = '';
   public searchPipes: any[] = [];
   public hasData = false;
   public searchMapping = [];
+  public tableOptions = {};
 
-  // Input properties
-  @Input() searchFilters: any = {};
-  @Input() showAdd: boolean = true;
+  @Input() public filterByOwner = false;
+  @Input() public owner = null;
+  @Input() public userType = 'user';
+  @Input() public listType;
+  @Input() public createType;
+  @Input() public deleteType;
+  @Input() public searchFilters = {};
+  @Input() public showBreadcrumbs = true;
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   // Paginator inputs
   public totalItems = 10;
@@ -34,29 +48,98 @@ export abstract class TableBase<T> implements LoadableComponent {
   public pageIndex = 0;
   public pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  // Sort params
-  public sortId = '';
-  public sortDir = 'asc';
+  // Sort
+  public sortId = 'created_at';
+  public sortDir: SortDirection = 'desc';
+
+  public isTrader = false;
+  public isInvestor = false;
+  public isAdmin = false;
+
+  private stopPolling = new Subject();
 
   constructor(
     public hotkeys: HotkeysService,
     public snackbar: MySnackBarService,
-    public dialogs: DialogsService
+    public dialogs: DialogsService,
+    public events: QEventsService,
+    public app: AppService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
     this.registerHotkeys();
+    this.events
+      .on('account:changed')
+      .subscribe(this.onAccountChanged.bind(this));
   }
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  /* istanbul ignore next*/
+  public setUpTimer() {
+    createTimer(
+      this.getOnSearchObservable.bind(this),
+      this.stopPolling
+    ).subscribe({
+      next: this.onGotSearchData.bind(this),
+      error: (error) => {
+        this.hasData = false;
+        this.setIsLoading(false);
+      },
+    });
+  }
 
-  abstract getSearchObservable(queryParams: {
-    [key: string]: string;
-  }): Observable<any>;
+  /* istanbul ignore next*/
+  ngOnInit() {
+    if (!this.listType) this.listType = this.userType;
+    if (!this.createType) this.createType = this.userType;
+    if (!this.deleteType) this.deleteType = this.userType;
 
-  abstract getRemoveItemObservable(id: string): Observable<any>;
+    this.route.queryParams.subscribe((params) => {
+      if (params.pageIndex !== undefined) {
+        this.pageIndex = Number(params.pageIndex);
+      }
+      if (params.pageSize !== undefined) {
+        this.pageSize = Number(params.pageSize);
+      }
+      if (params.sortDir !== undefined) {
+        this.sortDir = params.sortDir;
+      }
+      if (params.sortId !== undefined) {
+        this.sortId = params.sortId;
+      }
+
+      this.sort.direction = this.sortDir;
+      this.sort.active = this.sortId;
+      this.paginator.pageIndex = this.pageIndex;
+      this.paginator.pageSize = this.pageSize;
+    });
+
+    this.onSearch();
+    this.setUpTimer();
+  }
+
+  ngOnDestroy() {
+    this.stopPolling.next();
+  }
+
+  abstract getSearchObservable(
+    queryParams: {
+      [key: string]: string;
+    },
+    userType?: string
+  ): Observable<any>;
+
+  abstract getRemoveItemObservable(
+    id: string,
+    userType?: string
+  ): Observable<any>;
 
   /* istanbul ignore next */
-  public onSearch(searchParams?: any): void {
+  public onAccountChanged() {
+    this.onSearch();
+  }
+
+  /* istanbul ignore next */
+  public getOnSearchObservable(searchParams?: any, owner?: string) {
     this.setIsLoading(true);
 
     const params: any = {
@@ -66,7 +149,13 @@ export abstract class TableBase<T> implements LoadableComponent {
       ...this.searchFilters,
     };
 
-    let searchObservable = this.getSearchObservable(params);
+    if (this.owner) {
+      params.account_id = this.owner;
+    } else if (owner) {
+      params.account_id = owner;
+    }
+
+    let searchObservable = this.getSearchObservable(params, this.listType);
     const applyPipe = (pipe) =>
       (searchObservable = searchObservable.pipe(pipe));
 
@@ -74,28 +163,35 @@ export abstract class TableBase<T> implements LoadableComponent {
       this.searchPipes.forEach(applyPipe);
     }
 
-    searchObservable.subscribe(
-      (resp) => {
-        console.log('data', resp);
-        this.setData(resp.data);
-        this.totalItems = resp.total;
-        this.hasData = resp.total > 0;
-
-        // Only set mapping on first load
-        if (!this.searchMapping.length) {
-          this.searchMapping = resp.search;
-        }
-
-        this.setIsLoading(false);
-      },
-      (error) => {
-        console.log('err', error);
-        this.hasData = false;
-        this.setIsLoading(false);
-      }
-    );
+    return searchObservable;
   }
 
+  /* istanbul ignore next */
+  public async onSearch(searchParams?: any, owner?: string) {
+    this.getOnSearchObservable(searchParams, owner).subscribe({
+      next: this.onGotSearchData.bind(this),
+      error: (error) => {
+        this.hasData = false;
+        this.setIsLoading(false);
+      },
+    });
+  }
+
+  /* istanbul ignore next */
+  private onGotSearchData(resp) {
+    this.totalItems = resp.total || 0;
+    this.hasData = this.totalItems > 0;
+
+    // Only set mapping on first load
+    if (!this.searchMapping.length) {
+      this.searchMapping = resp.search;
+    }
+
+    this.setData(resp.data || []);
+    this.setIsLoading(false);
+  }
+
+  /* istanbul ignore next */
   public openRemoveConfirmation(id: string) {
     this.dialogs
       .openConfirmDelete()
@@ -107,21 +203,25 @@ export abstract class TableBase<T> implements LoadableComponent {
       });
   }
 
+  /* istanbul ignore next */
   private removeItem(id: string) {
-    this.getRemoveItemObservable(id).subscribe({
+    this.getRemoveItemObservable(id, this.deleteType).subscribe({
       next: this.onItemRemoved.bind(this),
       error: this.onItemRemoveError.bind(this),
     });
   }
 
+  /* istanbul ignore next*/
   public setIsLoading(loading: boolean): void {
     this.isLoading = loading;
   }
 
+  /* istanbul ignore next*/
   public setData(data: T[]) {
     this.dataSource = new MatTableDataSource(data);
   }
 
+  /* istanbul ignore next*/
   public registerHotkeys() {
     this.hotkeys
       .addShortcut(SHORTCUTS.table.nextPage)
@@ -157,6 +257,7 @@ export abstract class TableBase<T> implements LoadableComponent {
     this.snackbar.open(err.message || err.detail);
   }
 
+  /* istanbul ignore next */
   public onNewItemAdded(resp) {
     if (resp === CreateDialogStatus.CREATED) {
       this.onSearch(this.query);
@@ -167,6 +268,11 @@ export abstract class TableBase<T> implements LoadableComponent {
   public pageChanged($event: PageEvent) {
     this.pageSize = $event.pageSize;
     this.pageIndex = $event.pageIndex;
+
+    this.addToQueryParams({
+      pageIndex: this.pageIndex,
+      pageSize: this.pageSize,
+    });
     this.onSearch();
   }
 
@@ -189,9 +295,29 @@ export abstract class TableBase<T> implements LoadableComponent {
     return {};
   }
 
+  /* istanbul ignore next */
   public sortChanged($event: Sort) {
     this.sortId = $event.active;
     this.sortDir = $event.direction;
+
+    this.addToQueryParams({
+      sortId: this.sortId,
+      sortDir: this.sortDir,
+    });
     this.onSearch();
+  }
+
+  /* istanbul ignore next */
+  private addToQueryParams(data: Params) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: data,
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  /* istanbul ignore next */
+  public trackById(index, item: any) {
+    return item.id;
   }
 }

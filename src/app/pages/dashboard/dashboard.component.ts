@@ -6,19 +6,24 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppService } from 'src/app/services/app.service';
 import { UserService } from 'src/app/services/user.service';
 import { StatsService } from 'src/app/services/stats.service';
-import { PermissionSuperAdmin, PermissionUser } from '@qbitartifacts/caste-client-ng';
+import {
+  PermissionSuperAdmin,
+  PermissionUser,
+} from '@qbitartifacts/caste-client-ng';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'caste-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent extends PageBaseComponent
+export class DashboardComponent
+  extends PageBaseComponent
   implements AfterContentInit, OnInit {
   static guards: any[] = [AuthedGuard];
   public title = 'DASHBOARD';
   public permission = PermissionUser;
-  public permissionShowUsers = PermissionSuperAdmin
+  public permissionShowUsers = PermissionSuperAdmin;
 
   public userType = '';
 
@@ -28,12 +33,13 @@ export class DashboardComponent extends PageBaseComponent
 
   constructor(
     title: Title,
+    route: ActivatedRoute,
     public translate$: TranslateService,
     public app$: AppService,
-    public user$: UserService, 
+    public user$: UserService,
     public stats$: StatsService
   ) {
-    super(title, translate$);
+    super(title, translate$, route);
   }
 
   ngOnInit() {

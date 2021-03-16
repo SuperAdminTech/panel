@@ -25,6 +25,7 @@ import { PermissionsDetailsComponent } from './details/permission-details/permis
 import { ListLoadingComponent } from './list-loading/list-loading.component';
 import { AccountSelectorComponent } from './selectors/account-selector/account-selector.component';
 import { UserSelectorComponent } from './selectors/user-selector/user-selector.component';
+import { ApplicationSelectorComponent } from './selectors/application-selector/application-selector.component';
 
 const components = [
   AddButtonComponent,
@@ -60,6 +61,7 @@ const components = [
   // Selectors
   AccountSelectorComponent,
   UserSelectorComponent,
+  ApplicationSelectorComponent,
 ];
 
 @NgModule({

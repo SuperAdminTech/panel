@@ -15,7 +15,6 @@ import {
   HotkeysDialogComponent,
 } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from 'src/app/services/events.service';
-import { DebugScreenComponent } from '@qbitartifacts/qbit-debug-screen';
 import {
   CasteAuthService,
   castRoles,
@@ -32,7 +31,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private hotkeysSubscriptions: Subscription[] = [];
   public title = environment.brand.title;
   public permissionUser = PermissionUser;
-  public debugModal: MatDialogRef<DebugScreenComponent>;
   public hotkeysModal: MatDialogRef<HotkeysDialogComponent>;
   public IDLE_CHECK_ENABLED = IDLE_CHECK_ENABLED;
 
@@ -61,6 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  /* istanbul ignore next*/
   ngOnInit() {
     if (this.auth$.isSessionSaved()) {
       this.recoverSessionAndUser();
@@ -85,15 +84,6 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe(this.toggleHotkeysHelp.bind(this))
     );
 
-    // Register other shortcuts
-    if (environment.debug) {
-      this.hotkeysSubscriptions.push(
-        this.hotkeys
-          .addShortcut(SHORTCUTS.debugScreen)
-          .subscribe(this.toggleDebugDialog.bind(this))
-      );
-    }
-
     this.hotkeysSubscriptions.push(
       this.hotkeys
         .addShortcut(SHORTCUTS.navigation.back)
@@ -107,6 +97,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  /* istanbul ignore next*/
   private setupEvents() {
     this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {});
 
@@ -116,22 +107,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigate(['/login']);
       localStorage.removeItem(SessionCheckerService.LS_IDLE_KEY);
     });
-  }
-
-  /* istanbul ignore next */
-  private toggleDebugDialog() {
-    if (!this.debugModal) {
-      this.debugModal = this.dialog.open(DebugScreenComponent, {
-        width: '500px',
-        hasBackdrop: false,
-        position: {
-          bottom: '0',
-        },
-      });
-    } else {
-      this.debugModal.close();
-      this.debugModal = null;
-    }
   }
 
   /* istanbul ignore next */
