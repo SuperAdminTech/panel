@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-lg-8 col-md-6 col-sm-12">
-            <caste-accounts-list *ngIf="item" [showAdd]="false" [searchFilters]="{application: item['@id']}">
+            <caste-accounts-list [showBreadcrumbs]="false" *ngIf="item" [searchFilters]="{application: item['@id']}">
             </caste-accounts-list>
         </div>
     </div>

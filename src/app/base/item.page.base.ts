@@ -13,7 +13,7 @@ export abstract class ItemPageBaseComponent extends PageBaseComponent {
     public translate$: TranslateService,
     public route: ActivatedRoute
   ) {
-    super(title$, translate$);
+    super(title$, translate$, route);
     this.route.params.subscribe((params) => {
       this.itemId = params.id;
     });

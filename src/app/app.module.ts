@@ -26,7 +26,6 @@ import { DialogsService } from './services/dialogs.service';
 
 import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from 'src/app/services/events.service';
-import { DebugScreenModule } from '@qbitartifacts/qbit-debug-screen';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
 import { PagesModule } from './pages/pages.module';
@@ -48,14 +47,13 @@ const modules = [
   AppRoutingModule,
   BrowserAnimationsModule,
   ReactiveFormsModule,
-  HotkeysModule,
   SharedModule,
   HttpClientModule,
-  DebugScreenModule,
   ComponentsModule,
   PagesModule,
   TranslationsModule,
   DialogsModule,
+  HotkeysModule,
 
   // Caste modules
   CasteAuthModule,

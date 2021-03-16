@@ -14,6 +14,7 @@ import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
 export class CreateAccountComponent implements OnInit, LoadableComponent {
   public accountDetailsForm: FormGroup;
   public isLoading: boolean;
+  public application = null;
 
   constructor(
     public dialogRef: MatDialogRef<CreateAccountComponent>,

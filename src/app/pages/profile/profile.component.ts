@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services/user.service';
 import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'caste-profile',
@@ -18,10 +19,11 @@ export class ProfileComponent extends PageBaseComponent implements OnInit {
   constructor(
     title: Title,
     translate$: TranslateService,
+    route: ActivatedRoute,
     private user$: UserService,
     private users$: CasteUsersService
   ) {
-    super(title, translate$);
+    super(title, translate$, route);
 
     console.log(user$.user);
   }

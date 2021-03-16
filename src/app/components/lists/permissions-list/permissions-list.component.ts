@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CastePermissionsService,
+  CasteUsersService,
   Permission,
   PermissionAdmin,
   PermissionSuperAdmin,
@@ -9,6 +10,9 @@ import {
 import { TableBase } from 'src/app/base/table.page';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MySnackBarService } from 'src/app/services/mysnackbar.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { QEventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'caste-permissions-list',
@@ -26,14 +30,21 @@ export class PermissionsListComponent extends TableBase<Permission> {
   public searchableColumns = [];
   public permissionForAdding = PermissionAdmin;
   public permissionForRemoving = PermissionSuperAdmin;
+  
+  @Input() public showBreadcrumbs = true;
 
   constructor(
     public hotkeys: HotkeysService,
     public permissions$: CastePermissionsService,
+    public users$: CasteUsersService,
     public dialogs: DialogsService,
-    public snackbar: MySnackBarService
+    public snackbar: MySnackBarService,
+    public events: QEventsService,
+    public app: AppService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
-    super(hotkeys, snackbar, dialogs);
+    super(hotkeys, snackbar, dialogs, events, app, router, route);
   }
 
   public getSearchObservable(queryParams) {
@@ -41,7 +52,7 @@ export class PermissionsListComponent extends TableBase<Permission> {
   }
 
   public getRemoveItemObservable(id: string) {
-    return this.permissions$.remove(id, 'sadmin');
+    return this.permissions$.remove(id, 'user');
   }
 
   addPermission() {

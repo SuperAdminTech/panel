@@ -3,6 +3,7 @@ import { Component, AfterContentInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { InternalPermission } from '@qbitartifacts/caste-client-ng';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({ template: '' })
 export abstract class PageBaseComponent implements AfterContentInit {
@@ -11,8 +12,11 @@ export abstract class PageBaseComponent implements AfterContentInit {
   public environment = environment;
   public appName = environment.brand.title;
 
-
-  constructor(public title$: Title, public translate$: TranslateService) {}
+  constructor(
+    public title$: Title,
+    public translate$: TranslateService,
+    public route: ActivatedRoute
+  ) {}
 
   public ngAfterContentInit() {
     // This was needed here, as TranslateLoader takes some time to have the translations available
@@ -30,5 +34,4 @@ export abstract class PageBaseComponent implements AfterContentInit {
       this.translate$.instant(this.title) + ' | ' + this.environment.brand.title
     );
   }
-  
 }
