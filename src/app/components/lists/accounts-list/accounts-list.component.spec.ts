@@ -7,7 +7,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 class DialogsServiceMock {
   openAddAccount() {
-    console.log('openAddAccount');
     return {
       afterClosed() {
         return of('test');

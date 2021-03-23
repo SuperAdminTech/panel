@@ -32,7 +32,6 @@ export class CreateApplicationComponent implements OnInit, LoadableComponent {
     this.setIsLoading(true);
     this.dialogRef.disableClose = true;
 
-    console.log('Data', this.applicationDetailsForm.value);
     this.applications$
       .create(
         {

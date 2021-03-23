@@ -40,7 +40,6 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
     this.setIsLoading(true);
     this.dialogRef.disableClose = true;
 
-    console.log('Data', this.permissionDetailsForm.value);
     this.permissions$
       .create(
         {

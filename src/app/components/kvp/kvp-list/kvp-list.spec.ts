@@ -30,7 +30,6 @@ describe('KeyValuePair', () => {
     const expected = [0, 4, 1, 2, 3];
 
     array_move(arr, -1, 1);
-    console.log(arr);
 
     expect(arr).toEqual(expected);
   });
@@ -40,7 +39,6 @@ describe('KeyValuePair', () => {
     const expected = [1, 2, 3, 4, 0];
 
     array_move(arr, 0, -1);
-    console.log(arr);
 
     expect(arr).toEqual(expected);
   });
@@ -50,7 +48,6 @@ describe('KeyValuePair', () => {
     const expected = [1, 2, 3, 4, undefined, undefined, 0];
 
     array_move(arr, 0, 6);
-    console.log(arr);
 
     expect(arr).toEqual(expected);
   });

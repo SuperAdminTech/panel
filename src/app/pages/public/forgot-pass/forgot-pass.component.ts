@@ -67,7 +67,6 @@ export class ForgotPassComponent
 
   /* istanbul ignore next */
   private loginError(error) {
-    console.log(error);
     this.form.setErrors({
       error: error.message,
     });

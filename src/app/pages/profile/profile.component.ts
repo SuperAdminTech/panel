@@ -24,17 +24,13 @@ export class ProfileComponent extends PageBaseComponent implements OnInit {
     private users$: CasteUsersService
   ) {
     super(title, translate$, route);
-
-    console.log(user$.user);
   }
 
   /* istanbul ignore next */
   ngOnInit() {
     if (this.user$.hasUser()) {
       this.users$.getOne(this.user$.user.id).subscribe(
-        (resp) => {
-          console.log(resp);
-        },
+        (resp) => {},
         (error) => {}
       );
     }

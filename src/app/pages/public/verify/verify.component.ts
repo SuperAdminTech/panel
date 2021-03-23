@@ -57,7 +57,6 @@ export class VerifyComponent
 
   /* istanbul ignore next */
   public verifiedError(err) {
-    console.log(err);
     this.error = err.message || err['hydra:description'];
     this.verified = false;
     this.setIsLoading(false);

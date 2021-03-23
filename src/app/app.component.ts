@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
   }
 
   private onParams(params) {
-    console.log(params);
     if (params.realm) {
       localStorage.setItem('realm', params.realm);
     }

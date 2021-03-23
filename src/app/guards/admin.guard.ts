@@ -24,7 +24,6 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    console.log('adminGuard');
     if (route && route.queryParams && route.queryParams.realm) {
       localStorage.setItem('realm', route.queryParams.realm);
     }

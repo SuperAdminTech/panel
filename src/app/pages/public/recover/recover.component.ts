@@ -82,7 +82,6 @@ export class RecoverComponent
 
   /* istanbul ignore next */
   public recoveredError(err) {
-    console.log(err);
     this.form.setErrors({
       error: err.message,
     });

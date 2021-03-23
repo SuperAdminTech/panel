@@ -36,11 +36,6 @@ export class AppService extends BaseService {
   }
 
   public setUpLang() {
-    /* istanbul ignore next */
-    if (environment.debug) {
-      console.log('Setting up language: ' + this.lang);
-    }
-
     // this language will be used as a fallback when a translation isn't found in the current language
     this.translate$.setDefaultLang(LOCALES.default);
 
