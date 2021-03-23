@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QSidemenuService } from '@qbitartifacts/qbit-kit-ng';
-import { QEventsService } from 'src/app/services/events.service';
+import { QEventsService, QSidemenuService } from '@qbitartifacts/qbit-kit-ng';
 import { environment } from 'src/environments/environment';
 
 @Component({

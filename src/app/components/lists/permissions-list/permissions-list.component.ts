@@ -9,8 +9,7 @@ import {
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService } from 'src/app/services/events.service';
-import { QTableBase, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+import { QTableBase, QSnackBar, QEventsService } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-permissions-list',

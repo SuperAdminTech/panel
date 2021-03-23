@@ -8,14 +8,13 @@ import { AppService } from './services/app.service';
 import { SessionCheckerService } from './services/session-checker.service';
 import { IDLE_CHECK_ENABLED } from './consts';
 import { Location } from '@angular/common';
-import { QEventsService } from 'src/app/services/events.service';
 import {
   CasteAuthService,
   castRoles,
   PermissionUser,
   User,
 } from '@qbitartifacts/caste-client-ng';
-import { QSidemenuService } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService, QSidemenuService } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-root',
