@@ -7,8 +7,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
-import { QEventsService } from 'src/app/services/events.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 
 const SessionCheckerMock = {
   initCheckIdle() {},
@@ -47,7 +47,7 @@ describe('AppComponent', () => {
 
   it(`should not setup events if not logged login`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
 
     localStorage.removeItem(AuthService.SESSION_KEY);
     auth$.removeSession();
@@ -55,7 +55,7 @@ describe('AppComponent', () => {
     const app: AppComponent = fixture.debugElement.componentInstance;
     app.IDLE_CHECK_ENABLED = true;
 
-    const checker: SessionCheckerService = TestBed.get(SessionCheckerService);
+    const checker: SessionCheckerService = TestBed.inject(SessionCheckerService);
 
     spyOn(checker, 'initCheckIdle');
 
@@ -67,10 +67,10 @@ describe('AppComponent', () => {
     localStorage.removeItem(AuthService.SESSION_KEY);
     const fixture = TestBed.createComponent(AppComponent);
     const app: AppComponent = fixture.debugElement.componentInstance;
-    const user$: UserService = TestBed.get(UserService);
-    const auth$: AuthService = TestBed.get(AuthService);
-    const router$: Router = TestBed.get(Router);
-    const events$: QEventsService = TestBed.get(QEventsService);
+    const user$: UserService = TestBed.inject(UserService);
+    const auth$: AuthService = TestBed.inject(AuthService);
+    const router$: Router = TestBed.inject(Router);
+    const events$: QEventsService = TestBed.inject(QEventsService);
 
     spyOn(user$, 'setUser');
     spyOn(auth$, 'removeSession');

@@ -5,7 +5,7 @@ import { MSessionActive } from './../testing/mocks/session.mock';
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
-import { QEventsService } from 'src/app/services/events.service';
+import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 
 describe('AuthService', () => {
   afterEach(() => {
@@ -19,12 +19,12 @@ describe('AuthService', () => {
   });
 
   it('should be created', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     expect(auth$).toBeTruthy();
   });
 
   it('.isSessionSaved with session', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     const sess = MSessionActive;
 
     localStorage.setItem(AuthService.SESSION_KEY, JSON.stringify(sess));
@@ -35,14 +35,14 @@ describe('AuthService', () => {
   });
 
   it('.isSessionSaved without session', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     const sessionSaved = auth$.isSessionSaved();
 
     expect(sessionSaved).toEqual(false);
   });
 
   it('.recoverSession', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     const sess = new Session().fromJson({
       expireDate: new Date('10/6/2020'),
       token: 'test',
@@ -57,14 +57,14 @@ describe('AuthService', () => {
   });
 
   it('.recoverSession with no session saved', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     const sessionSaved = auth$.recoverSession();
 
     expect(sessionSaved).toEqual(null);
   });
 
   it('.saveSession', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     const sess = new Session().fromJson({
       expireDate: new Date('10/6/2020'),
       token: 'test',
@@ -79,7 +79,7 @@ describe('AuthService', () => {
   });
 
   it('.isSessionSaved', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     localStorage.setItem(
       AuthService.SESSION_KEY,
       JSON.stringify(MSessionActive.toJson())
@@ -89,7 +89,7 @@ describe('AuthService', () => {
   });
 
   it('.recoverSession', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     localStorage.setItem(
       AuthService.SESSION_KEY,
       JSON.stringify(MSessionActive.toJson())
@@ -99,7 +99,7 @@ describe('AuthService', () => {
   });
 
   it('.removeSession', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
+    const auth$: AuthService = TestBed.inject(AuthService);
     auth$.setSession(MSessionActive);
     auth$.removeSession();
 
@@ -107,8 +107,8 @@ describe('AuthService', () => {
   });
 
   it('logout should emit event', () => {
-    const auth$: AuthService = TestBed.get(AuthService);
-    const events$: QEventsService = TestBed.get(QEventsService);
+    const auth$: AuthService = TestBed.inject(AuthService);
+    const events$: QEventsService = TestBed.inject(QEventsService);
 
     spyOn(events$, 'fire');
     auth$.logout();
