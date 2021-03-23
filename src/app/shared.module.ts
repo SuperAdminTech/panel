@@ -21,6 +21,8 @@ import {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+
+    // QbitKitNg modules
     QBreadcrumbsModule,
     QSnackBarModule,
     QbitKitBaseModule,

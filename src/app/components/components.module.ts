@@ -6,7 +6,6 @@ import { LoadableButtonComponent } from './loadable-button/loadable-button.compo
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DialogHeaderComponent } from './dialog-header/dialog-header.component';
 import { PlayStopComponent } from './play-stop/play-stop.component';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { UserAvatarMenuComponent } from './user-avatar-menu/user-avatar-menu.component';
 import { UserDetailsComponent } from './details/user-details/user-details.component';
@@ -34,7 +33,6 @@ const components = [
   DialogHeaderComponent,
   NotFoundComponent,
   PlayStopComponent,
-  SidemenuComponent,
   ToolbarComponent,
   UserAvatarMenuComponent,
   DashChart,

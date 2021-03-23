@@ -22,7 +22,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
-
 import { QEventsService } from 'src/app/services/events.service';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
@@ -36,6 +35,11 @@ import {
 } from '@qbitartifacts/caste-client-ng';
 import { DetailsBaseComponent } from './base/details.base';
 import { StatsService } from './services/stats.service';
+import {
+  QBIT_SIDEMENU_ITEMS,
+  QSidemenuModule,
+} from '@qbitartifacts/qbit-kit-ng';
+import { SIDEMENU_ITEMS } from './sidemenu.items';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -50,6 +54,9 @@ const modules = [
   PagesModule,
   TranslationsModule,
   DialogsModule,
+
+  // QbitKit modules
+  QSidemenuModule,
 
   // Caste modules
   CasteAuthModule,
@@ -88,6 +95,10 @@ const qbitAuthConfigProvider = {
       useClass: CustomMatPaginatorIntl,
     },
     qbitAuthConfigProvider,
+    {
+      provide: QBIT_SIDEMENU_ITEMS,
+      useValue: SIDEMENU_ITEMS,
+    },
   ],
   bootstrap: [AppComponent],
 })
