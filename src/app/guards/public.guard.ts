@@ -21,7 +21,6 @@ export class PublicGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    console.log('publicGuard');
     const userIsPresent = this.user$.hasUser();
     const hasSession = this.auth$.hasSession();
     const sessionActive = this.auth$.sessionActive();

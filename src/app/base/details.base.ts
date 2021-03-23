@@ -30,10 +30,7 @@ export abstract class DetailsBaseComponent<T>
   onGotData(item: T) {
     this.item = item;
     this.setIsLoading(false);
-    console.log('got item', item);
   }
 
-  onError(err) {
-    console.log('got item err', err);
-  }
+  onError(err) {}
 }

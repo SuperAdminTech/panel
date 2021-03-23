@@ -1,8 +1,9 @@
 <mat-card class="no-padding">
-    <caste-table-header [showBreadcrumbs]="showBreadcrumbs" title="PERMISSIONS" [searchMapping]="searchMapping" [query]="query"
-        (onSearch)="onSearch($event)" [searching]="isLoading">
+    <qbit-table-header [showBreadcrumbs]="showBreadcrumbs" title="PERMISSIONS" [searchMapping]="searchMapping"
+        [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading" [doInitialSearch]="false"
+        [options]="tableOptions">
         <add-button (add)="addPermission()" *appPermissions="permissionForAdding"></add-button>
-    </caste-table-header>
+    </qbit-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
         [matSortDirection]="sortDir" [matSortActive]="sortId">
@@ -27,7 +28,8 @@
             <td mat-cell *matCellDef="let row">
                 <mat-chip-list>
                     <mat-chip class="mat-chip mat-primary mat-standard-chip" *ngFor="let grant of row.grants">
-                        <span class="text-extra-small">{{grant|translate}}</span></mat-chip>
+                        <span class="text-extra-small">{{grant|translate}}</span>
+                    </mat-chip>
                 </mat-chip-list>
             </td>
         </ng-container>

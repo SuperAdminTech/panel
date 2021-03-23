@@ -34,10 +34,6 @@ export class SessionCheckerService {
 
   /* istanbul ignore next */
   public initCheckIdle(): void {
-    if (environment.debug) {
-      console.log('initCheckIdle');
-    }
-
     // Bind action to document events
     document.onclick = this.idleOnAction.bind(this);
     document.onmousemove = this.idleOnAction.bind(this);

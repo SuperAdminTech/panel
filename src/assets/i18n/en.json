@@ -107,5 +107,8 @@
   "NO_ITEMS": "There are no items",
   "SIGNING_UP": "Signing up",
   "CREATED_ACCOUNT_OK": "Account created succesfully",
-  "REMOVED_ITEM": "Item removed"
+  "REMOVED_ITEM": "Item removed",
+  "SELECT_USER": "Select a user",
+  "SELECT_ACCOUNT": "Select an account",
+  "SELECT_APPLICATION": "Select an application"
 }

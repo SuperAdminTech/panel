@@ -5,9 +5,6 @@ import { LangSelectorComponent } from './lang-selector/lang.selector';
 import { LoadableButtonComponent } from './loadable-button/loadable-button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DialogHeaderComponent } from './dialog-header/dialog-header.component';
-import { PlayStopComponent } from './play-stop/play-stop.component';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { TableHeaderComponent } from './table-header/table-header.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { UserAvatarMenuComponent } from './user-avatar-menu/user-avatar-menu.component';
 import { UserDetailsComponent } from './details/user-details/user-details.component';
@@ -23,9 +20,6 @@ import { AccountDetailsComponent } from './details/account-details/account-detai
 import { ApplicationDetailsComponent } from './details/application-details/application-details.component';
 import { PermissionsDetailsComponent } from './details/permission-details/permission-details.component';
 import { ListLoadingComponent } from './list-loading/list-loading.component';
-import { AccountSelectorComponent } from './selectors/account-selector/account-selector.component';
-import { UserSelectorComponent } from './selectors/user-selector/user-selector.component';
-import { ApplicationSelectorComponent } from './selectors/application-selector/application-selector.component';
 
 const components = [
   AddButtonComponent,
@@ -34,9 +28,6 @@ const components = [
   LoadableButtonComponent,
   DialogHeaderComponent,
   NotFoundComponent,
-  PlayStopComponent,
-  SidemenuComponent,
-  TableHeaderComponent,
   ToolbarComponent,
   UserAvatarMenuComponent,
   DashChart,
@@ -57,11 +48,6 @@ const components = [
   ApplicationsListComponent,
   PermissionsListComponent,
   AccountsListComponent,
-
-  // Selectors
-  AccountSelectorComponent,
-  UserSelectorComponent,
-  ApplicationSelectorComponent,
 ];
 
 @NgModule({

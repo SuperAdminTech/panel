@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 import { QEventsService } from 'src/app/services/events.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 const SessionCheckerMock = {
   initCheckIdle() {},
@@ -20,7 +21,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, AppModule],
+      imports: [RouterTestingModule, AppModule, HttpClientTestingModule],
       providers: [
         {
           provide: SessionCheckerService,

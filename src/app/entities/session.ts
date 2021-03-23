@@ -15,11 +15,7 @@ export class Session implements SerializableEntity, ISession {
 
     const now = Date.now();
     const expires = this.expireDate.getTime();
-    console.log('now', now);
-    console.log('expires', expires);
-
     const difference = expires - now;
-    console.log('difference', difference);
     return difference >= 1000;
   }
 

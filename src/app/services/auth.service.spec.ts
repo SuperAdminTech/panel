@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppModule } from 'src/app/app.module';
 import { Session } from './../entities/session';
 import { MSessionActive } from './../testing/mocks/session.mock';
@@ -9,9 +10,10 @@ import { QEventsService } from 'src/app/services/events.service';
 describe('AuthService', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     });
     localStorage.clear();
   });

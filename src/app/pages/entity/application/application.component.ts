@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.scss'],
 })
-export class ApplicationComponent extends ItemPageBaseComponent
+export class ApplicationComponent
+  extends ItemPageBaseComponent
   implements AfterContentInit, OnInit {
   static guards: any[] = [AuthedGuard, AdminGuard];
   public title = 'APPLICATION';
@@ -25,7 +26,5 @@ export class ApplicationComponent extends ItemPageBaseComponent
     super(title$, translate$, route);
   }
 
-  ngOnInit() {
-    console.log('id: ', this.itemId);
-  }
+  ngOnInit() {}
 }

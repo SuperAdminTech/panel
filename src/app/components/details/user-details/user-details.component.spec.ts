@@ -1,7 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';
 import { AppModule } from 'src/app/app.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -9,16 +10,17 @@ describe('UserDetailsComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
-    })
-    .compileComponents();
-  }));
+      imports: [AppModule, HttpClientTestingModule],
+    }).compileComponents();
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(UserDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

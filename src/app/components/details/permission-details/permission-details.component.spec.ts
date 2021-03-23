@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PermissionsDetailsComponent } from './permission-details.component';
 import { AppModule } from 'src/app/app.module';
@@ -9,15 +10,17 @@ describe('PermissionsDetailsComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(PermissionsDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApplicationDetailsComponent } from './application-details.component';
 import { AppModule } from 'src/app/app.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ApplicationDetailsComponent', () => {
   let component: ApplicationDetailsComponent;
@@ -9,16 +10,17 @@ describe('ApplicationDetailsComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
-    })
-    .compileComponents();
-  }));
+      imports: [AppModule, HttpClientTestingModule],
+    }).compileComponents();
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(ApplicationDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

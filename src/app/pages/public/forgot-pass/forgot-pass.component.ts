@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
-import { CasteUserService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { PublicGuard } from 'src/app/guards/public.guard';
@@ -27,8 +26,8 @@ export class ForgotPassComponent
     title: Title,
     route: ActivatedRoute,
     public translate$: TranslateService,
-    private user$: CasteUserService,
-    private formBuilder: FormBuilder,
+    private users$: CasteUsersService,
+    private formBuilder: FormBuilder
   ) {
     super(title, translate$, route);
   }
@@ -58,7 +57,7 @@ export class ForgotPassComponent
 
     this.setIsLoading(true);
 
-    this.user$.requestPasswordRecovery(this.username.value).subscribe({
+    this.users$.requestPasswordRecovery(this.username.value).subscribe({
       next: this.loginSuccess.bind(this),
       error: this.loginError.bind(this),
     });
@@ -68,7 +67,6 @@ export class ForgotPassComponent
 
   /* istanbul ignore next */
   private loginError(error) {
-    console.log(error);
     this.form.setErrors({
       error: error.message,
     });

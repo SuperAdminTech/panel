@@ -19,12 +19,9 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomMatPaginatorIntl } from './md-i18n';
 import { SessionCheckerService } from './services/session-checker.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TableBase } from './base/table.page';
 import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
-
-import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from 'src/app/services/events.service';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
@@ -36,9 +33,13 @@ import {
   CasteManagementModule,
   CASTE_AUTH_CONFIG,
 } from '@qbitartifacts/caste-client-ng';
-import { MySnackBarService } from './services/mysnackbar.service';
 import { DetailsBaseComponent } from './base/details.base';
 import { StatsService } from './services/stats.service';
+import {
+  QBIT_SIDEMENU_ITEMS,
+  QSidemenuModule,
+} from '@qbitartifacts/qbit-kit-ng';
+import { SIDEMENU_ITEMS } from './sidemenu.items';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);
@@ -53,7 +54,9 @@ const modules = [
   PagesModule,
   TranslationsModule,
   DialogsModule,
-  HotkeysModule,
+
+  // QbitKit modules
+  QSidemenuModule,
 
   // Caste modules
   CasteAuthModule,
@@ -77,7 +80,6 @@ const qbitAuthConfigProvider = {
     PageBaseComponent as any,
     ItemPageBaseComponent as any,
     DetailsBaseComponent as any,
-    TableBase as any,
   ],
   imports: modules,
   providers: [
@@ -86,7 +88,6 @@ const qbitAuthConfigProvider = {
     QEventsService,
     SessionCheckerService,
     DialogsService,
-    MySnackBarService,
     StatsService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     {
@@ -94,6 +95,10 @@ const qbitAuthConfigProvider = {
       useClass: CustomMatPaginatorIntl,
     },
     qbitAuthConfigProvider,
+    {
+      provide: QBIT_SIDEMENU_ITEMS,
+      useValue: SIDEMENU_ITEMS,
+    },
   ],
   bootstrap: [AppComponent],
 })

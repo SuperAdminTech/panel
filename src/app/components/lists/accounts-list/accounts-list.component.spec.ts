@@ -1,12 +1,12 @@
 import { AppModule } from 'src/app/app.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccountsListComponent } from './accounts-list.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 class DialogsServiceMock {
   openAddAccount() {
-    console.log('openAddAccount');
     return {
       afterClosed() {
         return of('test');
@@ -21,16 +21,18 @@ describe('AccountsListComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       providers: [{ provide: DialogsService, useClass: DialogsServiceMock }],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(AccountsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

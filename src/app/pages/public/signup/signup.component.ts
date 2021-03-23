@@ -99,13 +99,11 @@ export class SignupComponent
 
   /* istanbul ignore next */
   private signupSuccess(resp: SignupResponse) {
-    console.log('Signup ok', resp);
     this.signUpSuccess = true;
   }
 
   /* istanbul ignore next */
   private signupError(error) {
-    console.log('error: ', error);
     this.signUpForm.setErrors({
       invalidCredentials: error.detail,
     });

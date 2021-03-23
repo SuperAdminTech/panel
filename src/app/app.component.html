@@ -1,10 +1,14 @@
 <!-- The following components only render if user is logged in and has User Permissions -->
 <div *ngIf="user$.hasUser()" style="height: calc(100vh - 50px)">
     <caste-toolbar *appPermissions="permissionUser"></caste-toolbar>
-    <caste-sidemenu *appPermissions="permissionUser">
+    <qbit-sidemenu *appPermissions="permissionUser">
         <router-outlet></router-outlet>
-    </caste-sidemenu>
+    </qbit-sidemenu>
 </div>
 
 <!-- This router outlet only used when user is not logged in (for public routes) -->
-<router-outlet *ngIf="!user$.hasUser()"></router-outlet>
+<div *ngIf="!user$.hasUser()">
+    <ng-container>
+        <router-outlet></router-outlet>
+    </ng-container>
+</div>
