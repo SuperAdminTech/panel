@@ -2,7 +2,7 @@ import { Component, AfterContentInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { CasteUserService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { zip } from 'rxjs';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
@@ -27,7 +27,7 @@ export class VerifyComponent
     public translate$: TranslateService,
     public events: QEventsService,
     public activeRoute: ActivatedRoute,
-    public userService: CasteUserService,
+    public users$: CasteUsersService,
     public snackbar: QSnackBar,
     public route: ActivatedRoute
   ) {
@@ -42,7 +42,7 @@ export class VerifyComponent
   /* istanbul ignore next */
   public verify(userId: string, token: string) {
     this.setIsLoading(true);
-    this.userService.verifyEmail(userId, token).subscribe({
+    this.users$.verifyEmail(userId, token).subscribe({
       next: this.verifiedOk.bind(this),
       error: this.verifiedError.bind(this),
     });

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   Account,
   CasteAccountsService,
@@ -27,13 +26,12 @@ export class AccountsListComponent extends QTableBase<Account> {
   ];
 
   public permissionForAdding = PermissionAdmin;
-  
+
   @Input() public showAdd = true;
   @Input() public showBreadcrumbs = true;
   @Input() public searchFilters = {};
 
   constructor(
-    public hotkeys: HotkeysService,
     public accounts$: CasteAccountsService,
     public applications$: CasteApplicationService,
     public dialogs: DialogsService,

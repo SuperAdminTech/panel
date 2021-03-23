@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CastePermissionsService,
   CasteUsersService,
@@ -33,7 +32,6 @@ export class PermissionsListComponent extends QTableBase<Permission> {
   @Input() public showBreadcrumbs = true;
 
   constructor(
-    public hotkeys: HotkeysService,
     public permissions$: CastePermissionsService,
     public users$: CasteUsersService,
     public dialogs: DialogsService,

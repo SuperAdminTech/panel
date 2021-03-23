@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { CasteUserService } from '@qbitartifacts/caste-client-ng';
+import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
 import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { zip } from 'rxjs';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
@@ -31,7 +31,7 @@ export class RecoverComponent
     public translate$: TranslateService,
     public events: QEventsService,
     public activeRoute: ActivatedRoute,
-    public userService: CasteUserService,
+    public users$: CasteUsersService,
     public snackbar: QSnackBar,
     public formBuilder: FormBuilder,
     public route: ActivatedRoute
@@ -68,7 +68,7 @@ export class RecoverComponent
   /* istanbul ignore next */
   public recover(userId: string, token: string, newPassword) {
     this.setIsLoading(true);
-    this.userService.recoverPassword(userId, token, newPassword).subscribe({
+    this.users$.recoverPassword(userId, token, newPassword).subscribe({
       next: this.recoveredOk.bind(this),
       error: this.recoveredError.bind(this),
     });

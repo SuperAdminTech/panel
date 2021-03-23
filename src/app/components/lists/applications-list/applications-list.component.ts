@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import {
   CasteApplicationService,
   Application,
@@ -28,7 +27,6 @@ export class ApplicationsListComponent extends QTableBase<Application> {
   public permissionForAdding = PermissionAdmin;
 
   constructor(
-    public hotkeys: HotkeysService,
     public applications$: CasteApplicationService,
     public dialogs: DialogsService,
     public snackbar: QSnackBar,

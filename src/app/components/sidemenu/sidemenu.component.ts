@@ -8,7 +8,6 @@ import {
 import { MatDrawer } from '@angular/material/sidenav';
 import { SIDEMENU_ITEMS, SidemenuItem } from '../../../config/sidemenu.items';
 import { QEventsService } from 'src/app/services/events.service';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { SHORTCUTS } from 'src/config/shortcuts';
 import { AppService } from 'src/app/services/app.service';
 import { PermissionUser } from '@qbitartifacts/caste-client-ng';
@@ -31,7 +30,6 @@ export class SidemenuComponent implements OnInit, OnDestroy {
 
   constructor(
     public events: QEventsService,
-    public hotkeys: HotkeysService,
     public app$: AppService
   ) {
     this.recoverStateFromStorage();
@@ -83,10 +81,5 @@ export class SidemenuComponent implements OnInit, OnDestroy {
         permission: PermissionUser,
       });
     }
-  }
-
-  /* istanbul ignore next */
-  openShortcutHelp() {
-    this.hotkeys.dispatchShortcut(SHORTCUTS.hotkeysHelp);
   }
 }

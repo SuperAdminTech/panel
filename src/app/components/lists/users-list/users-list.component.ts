@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HotkeysService } from '@qbitartifacts/qbit-hotkeys';
 import { mapUsers } from 'src/app/pipes/map-users';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import {
@@ -30,7 +29,6 @@ export class UsersListComponent extends QTableBase<User> {
   public permissionForAdding = PermissionAdmin;
 
   constructor(
-    public hotkeys: HotkeysService,
     public users$: CasteUsersService,
     public dialogs: DialogsService,
     public snackbar: QSnackBar,

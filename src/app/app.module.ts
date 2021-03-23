@@ -23,7 +23,6 @@ import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
 
-import { HotkeysModule } from '@qbitartifacts/qbit-hotkeys';
 import { QEventsService } from 'src/app/services/events.service';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
@@ -51,7 +50,6 @@ const modules = [
   PagesModule,
   TranslationsModule,
   DialogsModule,
-  HotkeysModule,
 
   // Caste modules
   CasteAuthModule,
