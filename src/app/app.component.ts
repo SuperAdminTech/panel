@@ -15,6 +15,7 @@ import {
   PermissionUser,
   User,
 } from '@qbitartifacts/caste-client-ng';
+import { QSidemenuService } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-root',
@@ -35,7 +36,8 @@ export class AppComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public dialog: MatDialog,
-    public location: Location
+    public location: Location,
+    public sidemenu$: QSidemenuService
   ) {
     this.setupEvents();
     route.queryParams.subscribe(this.onParams.bind(this));
@@ -60,7 +62,9 @@ export class AppComponent implements OnInit {
 
   /* istanbul ignore next*/
   private setupEvents() {
-    this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {});
+    this.events.on(AuthService.LOGIN_EVENT).subscribe((resp) => {
+      this.addApiVersionItem();
+    });
 
     this.events.on(AuthService.LOGOUT_EVENT).subscribe((resp) => {
       this.auth$.removeSession();
@@ -89,5 +93,11 @@ export class AppComponent implements OnInit {
     } else {
       this.events.fire(AuthService.LOGOUT_EVENT);
     }
+  }
+
+  private async addApiVersionItem() {
+    await this.app$.getApiVersion().subscribe({
+      next: (resp) => this.sidemenu$.addApiVersionItem(resp.code),
+    });
   }
 }
