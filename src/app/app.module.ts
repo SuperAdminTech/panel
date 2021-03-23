@@ -22,7 +22,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
-import { QEventsService } from 'src/app/services/events.service';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared.module';
 import { PagesModule } from './pages/pages.module';
@@ -85,7 +84,6 @@ const qbitAuthConfigProvider = {
   providers: [
     PublicGuard,
     AuthedGuard,
-    QEventsService,
     SessionCheckerService,
     DialogsService,
     StatsService,

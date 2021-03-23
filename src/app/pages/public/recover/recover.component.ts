@@ -4,11 +4,10 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CasteUsersService } from '@qbitartifacts/caste-client-ng';
-import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { zip } from 'rxjs';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { PageBaseComponent } from 'src/app/base/page.base';
-import { QEventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'caste-recover',

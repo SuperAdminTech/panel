@@ -7,8 +7,7 @@ import {
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService } from 'src/app/services/events.service';
-import { QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
+import { QEventsService, QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-applications-list',

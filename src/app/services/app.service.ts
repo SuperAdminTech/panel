@@ -6,8 +6,8 @@ import { BaseService, DEFAULT_CONFIG } from '@qbitartifacts/caste-client-ng';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { QEventsService } from './events.service';
 import { UserService } from './user.service';
+import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
 
 @Injectable({
   providedIn: 'root',

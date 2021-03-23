@@ -3,8 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
 import { Application, CasteUsersService } from '@qbitartifacts/caste-client-ng';
-import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
-import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-create-user',
