@@ -1,6 +1,7 @@
 import { AppModule } from 'src/app/app.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PermissionsListComponent } from './permissions-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PermissionsListComponent', () => {
   let component: PermissionsListComponent;
@@ -8,15 +9,17 @@ describe('PermissionsListComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(PermissionsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

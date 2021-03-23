@@ -1,7 +1,8 @@
 import { AppModule } from 'src/app/app.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApplicationsListComponent } from './applications-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ApplicationsListComponent', () => {
   let component: ApplicationsListComponent;
@@ -9,15 +10,17 @@ describe('ApplicationsListComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(ApplicationsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

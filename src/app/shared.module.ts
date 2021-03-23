@@ -3,17 +3,16 @@ import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-import { PermissionsDirective } from './directives/permissions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   QbitKitBaseModule,
   QBreadcrumbsModule,
   QSnackBarModule,
   QTableHeaderModule,
+  SaComponentsModule,
 } from '@qbitartifacts/qbit-kit-ng';
 
 @NgModule({
-  declarations: [PermissionsDirective],
   imports: [
     MaterialModule,
     BrowserModule,
@@ -27,19 +26,20 @@ import {
     QSnackBarModule,
     QbitKitBaseModule,
     QTableHeaderModule,
+    SaComponentsModule,
   ],
   exports: [
     MaterialModule,
     BrowserModule,
     TranslateModule,
     RouterModule,
-    PermissionsDirective,
     FormsModule,
     ReactiveFormsModule,
     QBreadcrumbsModule,
     QSnackBarModule,
     QbitKitBaseModule,
     QTableHeaderModule,
+    SaComponentsModule,
   ],
 })
 export class SharedModule {}

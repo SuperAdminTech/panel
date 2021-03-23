@@ -3,13 +3,14 @@ import { LOCALES } from './../consts';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppService } from './app.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppService', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
   }); beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
     })
   );
 

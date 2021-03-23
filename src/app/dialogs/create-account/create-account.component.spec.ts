@@ -1,5 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMatRef } from '../idle-notification/idle.dia.spec';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateAccountComponent } from './create-account.component';
 import { AppModule } from 'src/app/app.module';
@@ -11,16 +12,18 @@ describe('CreateAccountComponent', () => {
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(async(() => {
+  });
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();
-  }); beforeEach(() => {
+  });
+  beforeEach(() => {
     fixture = TestBed.createComponent(CreateAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

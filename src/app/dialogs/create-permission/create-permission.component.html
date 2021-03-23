@@ -9,8 +9,8 @@
                 </h4>
                 <p class="text-mid">{{'CREATE_PERMISSION_DESC'|translate}}</p>
 
-                <caste-user-selector [(user)]="user"></caste-user-selector>
-                <caste-account-selector [(account)]="account"></caste-account-selector>
+                <sa-user-selector [(item)]="user"></sa-user-selector>
+                <sa-admin-account-selector [(item)]="account"></sa-admin-account-selector>
 
                 <mat-form-field>
                     <mat-label>{{'GRANTS'|translate}}</mat-label>
@@ -20,7 +20,8 @@
                 </mat-form-field>
 
                 <div class="flex-row end">
-                    <app-loadable-button [id]="'createPermission'" [disabled]="permissionDetailsForm.invalid || isLoading"
+                    <app-loadable-button [id]="'createPermission'"
+                        [disabled]="permissionDetailsForm.invalid || !user || !account || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </app-loadable-button>

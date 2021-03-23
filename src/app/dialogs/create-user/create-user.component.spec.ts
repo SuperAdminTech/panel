@@ -1,9 +1,10 @@
 import { MockMatRef } from '../idle-notification/idle.dia.spec';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateUserComponent } from './create-user.component';
 import { AppModule } from 'src/app/app.module';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CreateUserComponent', () => {
   let component: CreateUserComponent;
@@ -12,12 +13,12 @@ describe('CreateUserComponent', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
   });
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       providers: [{ provide: MatDialogRef, useValue: MockMatRef }],
     }).compileComponents();
-  }));
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();

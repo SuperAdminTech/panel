@@ -14,7 +14,6 @@ import { QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
 @Component({
   selector: 'caste-accounts-list',
   templateUrl: './accounts-list.component.html',
-  styleUrls: ['./accounts-list.component.scss'],
 })
 export class AccountsListComponent extends QTableBase<Account> {
   public displayedColumns: string[] = [
