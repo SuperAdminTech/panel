@@ -5,7 +5,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { PermissionsDirective } from './directives/permissions.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QBreadcrumbsModule } from '@qbitartifacts/qbit-kit-ng';
+import {
+  QbitKitBaseModule,
+  QBreadcrumbsModule,
+  QSnackBarModule,
+  QTableHeaderModule,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @NgModule({
   declarations: [PermissionsDirective],
@@ -17,6 +22,9 @@ import { QBreadcrumbsModule } from '@qbitartifacts/qbit-kit-ng';
     FormsModule,
     ReactiveFormsModule,
     QBreadcrumbsModule,
+    QSnackBarModule,
+    QbitKitBaseModule,
+    QTableHeaderModule,
   ],
   exports: [
     MaterialModule,
@@ -27,6 +35,9 @@ import { QBreadcrumbsModule } from '@qbitartifacts/qbit-kit-ng';
     FormsModule,
     ReactiveFormsModule,
     QBreadcrumbsModule,
+    QSnackBarModule,
+    QbitKitBaseModule,
+    QTableHeaderModule,
   ],
 })
 export class SharedModule {}

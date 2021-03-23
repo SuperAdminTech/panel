@@ -3,8 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
 import { CastePermissionsService } from '@qbitartifacts/caste-client-ng';
-import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 import { CreateDialogStatus } from 'src/app/enums/create-dialog-status';
+import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-create-permission',
@@ -28,7 +28,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private permissions$: CastePermissionsService,
-    private snackbar: MySnackBarService
+    private snackbar: QSnackBar
   ) {}
 
   /* istanbul ignore next */

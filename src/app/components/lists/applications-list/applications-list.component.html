@@ -1,8 +1,8 @@
 <mat-card class="no-padding">
-    <caste-table-header [showBreadcrumbs]="showBreadcrumbs" title="APPLICATIONS" [searchMapping]="searchMapping" [query]=" query"
-        (onSearch)="onSearch($event)" [searching]="isLoading">
+    <qbit-table-header [showBreadcrumbs]="showBreadcrumbs" title="APPLICATIONS" [searchMapping]="searchMapping"
+        [query]=" query" (onSearch)="onSearch($event)" [searching]="isLoading" [doInitialSearch]="false" [options]="tableOptions">
         <add-button (add)="addApplication()" *appPermissions="permissionForAdding"></add-button>
-    </caste-table-header>
+    </qbit-table-header>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
         [matSortDirection]="sortDir" [matSortActive]="sortId">

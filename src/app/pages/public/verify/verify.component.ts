@@ -3,11 +3,11 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CasteUserService } from '@qbitartifacts/caste-client-ng';
+import { QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { zip } from 'rxjs';
 import { LoadablePageComponent } from 'src/app/base/loadable.page';
 import { PageBaseComponent } from 'src/app/base/page.base';
 import { QEventsService } from 'src/app/services/events.service';
-import { MySnackBarService } from 'src/app/services/mysnackbar.service';
 
 @Component({
   selector: 'caste-verify',
@@ -28,7 +28,7 @@ export class VerifyComponent
     public events: QEventsService,
     public activeRoute: ActivatedRoute,
     public userService: CasteUserService,
-    public snackbar: MySnackBarService,
+    public snackbar: QSnackBar,
     public route: ActivatedRoute
   ) {
     super(title, translate$, route);

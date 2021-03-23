@@ -19,7 +19,6 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomMatPaginatorIntl } from './md-i18n';
 import { SessionCheckerService } from './services/session-checker.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TableBase } from './base/table.page';
 import { PageBaseComponent } from './base/page.base';
 import { ItemPageBaseComponent } from './base/item.page.base';
 import { DialogsService } from './services/dialogs.service';
@@ -36,7 +35,6 @@ import {
   CasteManagementModule,
   CASTE_AUTH_CONFIG,
 } from '@qbitartifacts/caste-client-ng';
-import { MySnackBarService } from './services/mysnackbar.service';
 import { DetailsBaseComponent } from './base/details.base';
 import { StatsService } from './services/stats.service';
 
@@ -77,7 +75,6 @@ const qbitAuthConfigProvider = {
     PageBaseComponent as any,
     ItemPageBaseComponent as any,
     DetailsBaseComponent as any,
-    TableBase as any,
   ],
   imports: modules,
   providers: [
@@ -86,7 +83,6 @@ const qbitAuthConfigProvider = {
     QEventsService,
     SessionCheckerService,
     DialogsService,
-    MySnackBarService,
     StatsService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     {
