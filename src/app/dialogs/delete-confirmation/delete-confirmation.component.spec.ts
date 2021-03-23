@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeleteConfirmationComponent } from './delete-confirmation.component';
 import { AppModule } from 'src/app/app.module';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DeleteDialogStatus } from 'src/app/enums/delete-dialog-status';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DeleteDialogStatus } from '@qbitartifacts/qbit-kit-ng';
 
 describe('DeleteConfirmationComponent', () => {
   let component: DeleteConfirmationComponent;

@@ -6,7 +6,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { UrlTree } from '@angular/router';
-import { QEventsService } from 'src/app/services/events.service';
 import { AppModule } from '../app.module';
 
 describe('AdminGuard', () => {
@@ -25,7 +24,7 @@ describe('AdminGuard', () => {
   });
 
   it('should not activate by default (if no session and user are present)', () => {
-    const guard: AdminGuard = TestBed.get(AdminGuard);
+    const guard: AdminGuard = TestBed.inject(AdminGuard);
     const result = guard.canActivate({} as any, {} as any);
 
     expect(result instanceof UrlTree).toEqual(true);
@@ -33,24 +32,24 @@ describe('AdminGuard', () => {
   });
 
   it('should activate if user is admin', () => {
-    const user$: UserService = TestBed.get(UserService);
-    const auth$: AuthService = TestBed.get(AuthService);
+    const user$: UserService = TestBed.inject(UserService);
+    const auth$: AuthService = TestBed.inject(AuthService);
 
     user$.setUser(MUserAdmin);
     auth$.setSession(MSessionActive);
 
-    const guard: AdminGuard = TestBed.get(AdminGuard);
+    const guard: AdminGuard = TestBed.inject(AdminGuard);
     expect(guard.canActivate({} as any, {} as any)).toEqual(true);
   });
 
   it('should not activate if user is not admin', () => {
-    const user$: UserService = TestBed.get(UserService);
-    const auth$: AuthService = TestBed.get(AuthService);
+    const user$: UserService = TestBed.inject(UserService);
+    const auth$: AuthService = TestBed.inject(AuthService);
 
     user$.setUser(MUserUser);
     auth$.setSession(MSessionActive);
 
-    const guard: AdminGuard = TestBed.get(AdminGuard);
+    const guard: AdminGuard = TestBed.inject(AdminGuard);
     const result = guard.canActivate({} as any, {} as any);
 
     expect(result instanceof UrlTree).toEqual(true);
