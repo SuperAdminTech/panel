@@ -1,4 +1,4 @@
-<caste-dialog-header title="{{'CREATE_PERMISSION'|translate}}" (click)="close()"></caste-dialog-header>
+<qbit-dialog-header title="{{'CREATE_PERMISSION'|translate}}" (click)="close()"></qbit-dialog-header>
 
 <div class="bootstrap-wrapper">
     <form class="padd-20" [formGroup]="permissionDetailsForm" (ngSubmit)="addPermission()">
@@ -20,11 +20,11 @@
                 </mat-form-field>
 
                 <div class="flex-row end">
-                    <app-loadable-button [id]="'createPermission'"
+                    <qbit-loadable-button [id]="'createPermission'"
                         [disabled]="permissionDetailsForm.invalid || !user || !account || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
-                    </app-loadable-button>
+                    </qbit-loadable-button>
                 </div>
             </div>
         </div>

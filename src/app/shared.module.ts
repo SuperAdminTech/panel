@@ -7,10 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   QbitKitBaseModule,
   QBreadcrumbsModule,
+  QDialogHeaderModule,
+  QLoadableButtonModule,
   QSnackBarModule,
+  QTableFiltersModule,
   QTableHeaderModule,
   SaComponentsModule,
 } from '@qbitartifacts/qbit-kit-ng';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
   imports: [
@@ -20,12 +24,16 @@ import {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    AvatarModule,
 
     // QbitKitNg modules
     QBreadcrumbsModule,
     QSnackBarModule,
     QbitKitBaseModule,
     QTableHeaderModule,
+    QDialogHeaderModule,
+    QLoadableButtonModule,
+    QTableFiltersModule,
     SaComponentsModule,
   ],
   exports: [
@@ -35,10 +43,15 @@ import {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    AvatarModule,
+
     QBreadcrumbsModule,
     QSnackBarModule,
     QbitKitBaseModule,
+    QDialogHeaderModule,
     QTableHeaderModule,
+    QLoadableButtonModule,
+    QTableFiltersModule,
     SaComponentsModule,
   ],
 })

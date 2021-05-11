@@ -25,6 +25,10 @@ export class ApplicationsListComponent extends QTableBase<Application> {
   ];
   public searchableColumns = ['name', 'id'];
   public permissionForAdding = PermissionAdmin;
+  public tableOptions = {
+    input: false,
+    searchBy: false,
+  };
 
   constructor(
     public applications$: CasteApplicationService,
@@ -39,11 +43,11 @@ export class ApplicationsListComponent extends QTableBase<Application> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(queryParams, 'admin');
+    return this.applications$.listAll(queryParams, 'sadmin');
   }
 
   public getRemoveItemObservable(id: string) {
-    return this.applications$.remove(id, 'admin');
+    return this.applications$.remove(id, 'sadmin');
   }
 
   public getRemoveItemDialog(id: string) {

@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { AddButtonComponent } from './add-button/add-button.component';
 import { AggregateComponent } from './aggregate/aggregate.component';
 import { LangSelectorComponent } from './lang-selector/lang.selector';
-import { LoadableButtonComponent } from './loadable-button/loadable-button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { DialogHeaderComponent } from './dialog-header/dialog-header.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { UserAvatarMenuComponent } from './user-avatar-menu/user-avatar-menu.component';
 import { UserDetailsComponent } from './details/user-details/user-details.component';
@@ -25,8 +23,6 @@ const components = [
   AddButtonComponent,
   AggregateComponent,
   LangSelectorComponent,
-  LoadableButtonComponent,
-  DialogHeaderComponent,
   NotFoundComponent,
   ToolbarComponent,
   UserAvatarMenuComponent,

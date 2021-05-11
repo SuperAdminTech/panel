@@ -30,6 +30,11 @@ export class AccountsListComponent extends QTableBase<Account> {
   @Input() public showBreadcrumbs = true;
   @Input() public searchFilters = {};
 
+  public tableOptions = {
+    input: false,
+    searchBy: false,
+  };
+
   constructor(
     public accounts$: CasteAccountsService,
     public applications$: CasteApplicationService,

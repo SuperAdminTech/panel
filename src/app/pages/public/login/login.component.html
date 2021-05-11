@@ -43,9 +43,9 @@
                         </mat-error>
                     </div>
 
-                    <app-loadable-button [id]="'login'" [disabled]="loginForm.invalid" [loading]="isLoading">
+                    <qbit-loadable-button [id]="'login'" [disabled]="loginForm.invalid" [loading]="isLoading">
                         {{(isLoading ? 'LOGIN_IN': 'LOGIN') |translate}}
-                    </app-loadable-button>
+                    </qbit-loadable-button>
 
                     <p class="text-subtitle">{{'OR'|translate}}</p>
 

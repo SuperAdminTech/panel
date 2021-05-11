@@ -1,9 +1,0 @@
-<button [id]="id" type="submit" class="button-100 marg-top-40" [disabled]="disabled" mat-raised-button color="{{color}}"
-    (click)="onClick()">
-    <div class="loadable-btn">
-        <mat-spinner diameter="20" class="black-spinner" *ngIf="loading"></mat-spinner>
-        <div class="marg-left-10 button-content">
-            <ng-content></ng-content>
-        </div>
-    </div>
-</button>

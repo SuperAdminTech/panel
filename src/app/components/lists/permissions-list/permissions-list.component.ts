@@ -28,6 +28,10 @@ export class PermissionsListComponent extends QTableBase<Permission> {
   public searchableColumns = [];
   public permissionForAdding = PermissionAdmin;
   public permissionForRemoving = PermissionSuperAdmin;
+  public tableOptions = {
+    input: false,
+    searchBy: false,
+  };
 
   @Input() public showBreadcrumbs = true;
 

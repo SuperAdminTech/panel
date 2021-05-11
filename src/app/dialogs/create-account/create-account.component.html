@@ -1,4 +1,4 @@
-<caste-dialog-header title="{{'CREATE_ACCOUNT'|translate}}" (click)="close()"></caste-dialog-header>
+<qbit-dialog-header title="{{'CREATE_ACCOUNT'|translate}}" (click)="close()"></qbit-dialog-header>
 
 <div class="bootstrap-wrapper">
     <form class="padd-20" [formGroup]="accountDetailsForm" (ngSubmit)="addAccount()">
@@ -19,10 +19,10 @@
                 </mat-form-field>
 
                 <div class="flex-row end">
-                    <app-loadable-button [id]="'createAccount'" [disabled]="accountDetailsForm.invalid || isLoading"
+                    <qbit-loadable-button [id]="'createAccount'" [disabled]="accountDetailsForm.invalid || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
-                    </app-loadable-button>
+                    </qbit-loadable-button>
                 </div>
             </div>
         </div>

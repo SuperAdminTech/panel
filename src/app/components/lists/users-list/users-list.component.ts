@@ -27,6 +27,10 @@ export class UsersListComponent extends QTableBase<User> {
   public searchableColumns = ['name', 'id'];
   public searchPipes = [mapUsers];
   public permissionForAdding = PermissionAdmin;
+  public tableOptions = {
+    input: false,
+    searchBy: false,
+  };
 
   constructor(
     public users$: CasteUsersService,

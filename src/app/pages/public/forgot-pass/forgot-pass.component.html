@@ -25,9 +25,9 @@
                         <span class="text-small">{{form.errors.error | translate}}</span>
                     </mat-error>
 
-                    <app-loadable-button [id]="'proceed'" [disabled]="form.invalid" [loading]="isLoading">
+                    <qbit-loadable-button [id]="'proceed'" [disabled]="form.invalid" [loading]="isLoading">
                         {{'PROCEED' |translate}}
-                    </app-loadable-button>
+                    </qbit-loadable-button>
 
                     <a routerLink="/login" class="link-mutted marg-top-15">{{'BACK_TO_LOGIN'|translate}}</a>
                 </div>

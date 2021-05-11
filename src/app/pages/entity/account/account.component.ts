@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { ItemPageBaseComponent } from 'src/app/base/item.page.base';
 import { ActivatedRoute } from '@angular/router';
+import { QBreadcrumbsService } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-account',
@@ -19,6 +20,7 @@ export class AccountComponent extends ItemPageBaseComponent {
   constructor(
     public title$: Title,
     public translate$: TranslateService,
+    public breadcrumbs$: QBreadcrumbsService,
     public route: ActivatedRoute
   ) {
     super(title$, translate$, route);

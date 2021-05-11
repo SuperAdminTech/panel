@@ -4,6 +4,9 @@
         [options]="tableOptions">
         <add-button (add)="addPermission()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
+    
+    <qbit-table-filters [searchMapping]="searchMapping" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+    </qbit-table-filters>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
         [matSortDirection]="sortDir" [matSortActive]="sortId">

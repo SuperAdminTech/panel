@@ -1,5 +1,5 @@
 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
-    <img src="https://avatars1.githubusercontent.com/u/17043260?s=60&v=4" aria-label="User avatar" class="avatar">
+    <ngx-avatar *ngIf="user$.user" size="35" [name]="user$.user.username"></ngx-avatar>
 </button>
 <mat-menu #menu="matMenu">
     <div class="padd-h-20 padd-v-15 column center" *ngIf="user$.user">

@@ -4,11 +4,19 @@
         <add-button (add)="addUser()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
 
+    <qbit-table-filters [searchMapping]="searchMapping" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+    </qbit-table-filters>
+
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
         [matSortDirection]="sortDir" [matSortActive]="sortId">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'NAME'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+            <td mat-cell *matCellDef="let row">
+                <div class="flex-row center">
+                    <ngx-avatar size="25" [name]="row.username"></ngx-avatar>
+                    <span class="marg-left-10">{{row.username}}</span>
+                </div>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="roles">
