@@ -11,7 +11,7 @@
 
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="centered">
-                    <div>
+                    <div class="marg-bottom-15">
                         <mat-form-field appearance="legacy">
                             <mat-label>{{'USERNAME' | translate}}</mat-label>
                             <input id="username" matInput placeholder="Enter your username" formControlName="username">
@@ -37,7 +37,7 @@
 
                         <a routerLink="/forgot-password" class="link-mutted">{{'FORGOT_PASSWORD'|translate}}</a>
 
-                        <mat-error class="marg-top-15"
+                        <mat-error class="marg-t-15"
                             *ngIf="loginForm.invalid && loginForm.errors && loginForm.errors.invalidCredentials">
                             <span class="text-small">{{loginForm.errors.invalidCredentials | translate}}</span>
                         </mat-error>
