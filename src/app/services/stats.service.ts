@@ -31,6 +31,6 @@ export class StatsService {
   }
 
   getTotalApplications() {
-    return this.getTotalFromRequest(this.applications$.listAll(null, 'admin'));
+    return this.getTotalFromRequest(this.applications$.listAll(null, 'sadmin'));
   }
 }
