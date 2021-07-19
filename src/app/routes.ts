@@ -105,7 +105,7 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'users/:id',
+        path: ':id',
         component: UserComponent,
         canActivate: UserComponent.guards,
         data: {
