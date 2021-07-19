@@ -23,7 +23,8 @@ import { Session } from 'src/app/entities/session';
 })
 export class LoginComponent
   extends PageBaseComponent
-  implements AfterContentInit, LoadablePageComponent {
+  implements AfterContentInit, LoadablePageComponent
+{
   static guards: any[] = [PublicGuard];
   public title = 'Login';
   public hidePass = true;
@@ -31,6 +32,8 @@ export class LoginComponent
 
   public loginForm: FormGroup;
   public submitted = false;
+  public hasRealm = false;
+  public realm: string;
 
   constructor(
     title: Title,
@@ -45,9 +48,12 @@ export class LoginComponent
     super(title, translate$, route);
   }
 
+  public ngOnInit() {
+    this.setRealm();
+  }
+
   public ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.setRealm();
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -60,7 +66,16 @@ export class LoginComponent
     const realmSaved = localStorage.getItem('realm');
     if (realmSaved) {
       this.qbitAuth.addConfig('realm', realmSaved);
+      this.hasRealm = true;
+      this.realm = realmSaved;
     }
+  }
+
+  public unsetRealm() {
+    this.qbitAuth.removeConfig('realm');
+    this.hasRealm = false;
+    this.realm = '';
+    this.router.navigate([], { queryParams: {},});
   }
 
   get username() {
@@ -130,5 +145,10 @@ export class LoginComponent
       invalidCredentials: error.message,
     });
     this.setIsLoading(false);
+  }
+
+  removeRealm() {
+    localStorage.removeItem('realm');
+    this.unsetRealm();
   }
 }

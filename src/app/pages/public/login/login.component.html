@@ -1,8 +1,19 @@
 <div class="header"></div>
 <div class="page-centered">
     <div class="content">
+        <mat-card *ngIf="hasRealm" class="marg-bottom-10 no-padding">
+            <div class="flex-row center space-between padd-left-15">
+                <span class="text-light align-center">
+                    {{'Realm'|translate}}: {{realm}}
+                </span>
+                <button mat-icon-button (click)="removeRealm()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </mat-card>
+
         <mat-card class="padd-v-20 padd-h-15">
-            <h4 class="text-title align-center">
+            <h4 class="text-title align-center" style="margin-bottom: 0!important;">
                 {{'LOGIN'|translate}}
             </h4>
             <p class="text-light align-center marg-bottom-20">

@@ -46,6 +46,10 @@ body {
   background: $bg;
 }
 
+.admin-badge {
+  background-color: $primary!important;
+}
+
 .svg .mat-progress-spinner circle,
 .mat-spinner circle {
   stroke: inherit;
