@@ -75,7 +75,9 @@ export class LoginComponent
     this.qbitAuth.removeConfig('realm');
     this.hasRealm = false;
     this.realm = '';
-    this.router.navigate([], { queryParams: {},});
+    this.router.navigate([], { 
+      queryParams: {},
+    });
   }
 
   get username() {
