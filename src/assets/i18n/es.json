@@ -35,6 +35,7 @@
   "ROLE_USER": "Normal",
   "ROLE_READONLY": "Solo Lectura",
   "ROLE_SUPERADMIN": "Super Admin",
+  "ROLE_SUPPORT": "Soporte",
   "SEARCH": "Busca...",
   "BOT": "Bot",
   "USER": "Usuario",
@@ -59,7 +60,9 @@
   "SINGUP": "Registrarse",
   "SIGNUP_SUCCESS_DESC": "Registro completado correctamente, revise su correo para verificar tu cuenta",
   "SIGNUP_SUCCESS": "Registro Completo",
-  "CREATE_INSTANCE": "Crear Nueva Instancia",
+  "CREATE_USER": "Crear Nuevo Usuario",
+  "CREATE_USER_DESC": "Rellena los datos siguientes, para crear un nuevo usuario",
+  "CREATE_ACCOUNT_DESC": "Rellena los datos siguientes, para crear una nueva cuenta",
   "ACCOUNTS": "Cuentas",
   "APPLICATIONS": "Aplicaciones",
   "PERMISSIONS": "Permisos",
@@ -110,5 +113,31 @@
   "REMOVED_ITEM": "Elemento eliminado",
   "SELECT_USER": "Selecciona un usuario",
   "SELECT_ACCOUNT": "Selecciona una cuenta ",
-  "SELECT_APPLICATION": "Selecciona una applicacion"
+  "SELECT_APPLICATION": "Selecciona una applicacion",
+  "SELECT_ROLES": "Selecciona roles",
+  "NEW_ROLE": "Nuevo role",
+
+
+
+  "id": "ID",
+  "name": "Nombre",
+  "application.id": "ID de applicación",
+  "application.name": "Nombre de applicación",
+  "account.id": "ID de cuenta",
+  "account.name": "Nombre de cuenta",
+  "user.id": "ID de usuario",
+  "user.name": "No,bre de usuario",
+
+  "ACCOUNT_WORKER": "Worker",
+  "ACCOUNT_MANAGER": "Manager",
+  "ACCOUNT_TRADER": "Trader",
+  "ACCOUNT_INVESTOR": "Investor",
+  "ACCOUNT_DRIVER": "Driver",
+
+  "EDIT_ACCOUNT": "Editar cuenta",
+  "EDIT_ACCOUNT_DESC": "Modifique los campos para editar la cuenta",
+  "EDITED_ACCOUNT_OK": "Cuenta editada correctamente",
+  "EDIT": "Editar",
+  "EDITING": "Editando",
+  "ACCOUNT_ENABLED": "Cuenta habilitada"
 }

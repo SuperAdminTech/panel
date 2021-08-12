@@ -9,7 +9,12 @@ import {
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QTableBase, QSnackBar, QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import {
+  QTableBase,
+  QSnackBar,
+  QEventsService,
+  QTableListHeaderOptions,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-permissions-list',
@@ -27,12 +32,13 @@ export class PermissionsListComponent extends QTableBase<Permission> {
   public searchableColumns = [];
   public permissionForAdding = PermissionAdmin;
   public permissionForRemoving = PermissionSuperAdmin;
-  public tableOptions = {
-    input: false,
-    searchBy: false,
+  
+  @Input() public tableOptions: QTableListHeaderOptions = {
+    showLoading: true,
+    showBreadcrumbs: true,
   };
-
-  @Input() public showBreadcrumbs = true;
+  @Input() public searchFilters = {};
+  @Input() public hiddenFilters = [];
 
   constructor(
     public permissions$: CastePermissionsService,
@@ -45,10 +51,22 @@ export class PermissionsListComponent extends QTableBase<Permission> {
     public route: ActivatedRoute
   ) {
     super(snackbar, events, router, route);
+    this.initialSearch = true;
+    this.autoRefresh = true;
+  }
+
+  ngOnInit() {
+    this.hiddenFilters = Object.keys(this.searchFilters);
+    console.log('hidden filters:', this.hiddenFilters)
+    super.ngOnInit();
   }
 
   public getSearchObservable(queryParams) {
-    return this.permissions$.listAll(queryParams, 'sadmin');
+    console.log('jklasdjasdklasdjkl');
+    return this.permissions$.listAll(
+      { ...queryParams, ...this.searchFilters },
+      'sadmin'
+    );
   }
 
   public getRemoveItemObservable(id: string) {

@@ -12,6 +12,7 @@ import {
   QEventsService,
   QSnackBar,
   QTableBase,
+  QTableListHeaderOptions,
 } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
@@ -30,9 +31,9 @@ export class UsersListComponent extends QTableBase<User> {
   public searchableColumns = ['name', 'id'];
   public searchPipes = [mapUsers];
   public permissionForAdding = PermissionAdmin;
-  public tableOptions = {
-    input: false,
-    searchBy: false,
+  public tableOptions: QTableListHeaderOptions = {
+    showLoading: true,
+    showBreadcrumbs: true,
   };
 
   constructor(
@@ -45,6 +46,8 @@ export class UsersListComponent extends QTableBase<User> {
     public route: ActivatedRoute
   ) {
     super(snackbar, events, router, route);
+    this.initialSearch = true;
+    this.autoRefresh = false;
   }
 
   public getSearchObservable(queryParams) {

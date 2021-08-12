@@ -7,7 +7,12 @@ import {
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService, QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
+import {
+  QEventsService,
+  QSnackBar,
+  QTableBase,
+  QTableListHeaderOptions,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-applications-list',
@@ -24,9 +29,9 @@ export class ApplicationsListComponent extends QTableBase<Application> {
   ];
   public searchableColumns = ['name', 'id'];
   public permissionForAdding = PermissionAdmin;
-  public tableOptions = {
-    input: false,
-    searchBy: false,
+  public tableOptions: QTableListHeaderOptions = {
+    showLoading: true,
+    showBreadcrumbs: true,
   };
 
   constructor(
@@ -39,6 +44,8 @@ export class ApplicationsListComponent extends QTableBase<Application> {
     public route: ActivatedRoute
   ) {
     super(snackbar, events, router, route);
+    this.initialSearch = true;
+    this.autoRefresh = false;
   }
 
   public getSearchObservable(queryParams) {

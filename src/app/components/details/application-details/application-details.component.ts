@@ -6,6 +6,9 @@ import {
   CasteApplicationService,
 } from '@qbitartifacts/caste-client-ng';
 import { DetailsBaseComponent } from 'src/app/base/details.base';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'caste-application-details',
@@ -13,11 +16,21 @@ import { DetailsBaseComponent } from 'src/app/base/details.base';
   styleUrls: ['./application-details.component.scss'],
 })
 export class ApplicationDetailsComponent extends DetailsBaseComponent<any> {
-  constructor(public applications$: CasteApplicationService) {
+  constructor(
+    public applications$: CasteApplicationService,
+    public title$: Title,
+  ) {
     super();
   }
 
   getDetailsObservable(): Observable<Application> {
     return this.applications$.getOne(this.id, 'admin');
+  }
+
+  onGotData(data){
+    this.title$.setTitle(
+      data.name + ' | ' + environment.brand.title
+    )
+    super.onGotData(data);
   }
 }

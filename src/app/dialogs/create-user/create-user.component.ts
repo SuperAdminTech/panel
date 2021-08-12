@@ -44,7 +44,12 @@ export class CreateUserComponent implements OnInit, LoadableComponent {
     this.setIsLoading(true);
     this.dialogRef.disableClose = true;
 
-    this.users$.create({} as any, 'admin').subscribe(
+    this.users$.create({
+      name: this.name.value,
+      application: this.application['@id'],
+      account: this.account['@id'],
+      roles: this.roles,
+    } as any, 'admin').subscribe(
       (resp) => {
         this.snackbar.open('CREATED_USER_OK');
         this.close(CreateDialogStatus.CREATED);

@@ -16,6 +16,11 @@ export class UserComponent extends ItemPageBaseComponent {
   static guards: any[] = [AuthedGuard, AdminGuard];
   public title = 'USER';
 
+  public permissionTableOptions = {
+    showLoading: true,
+    showBreadcrumbs: false,
+  };
+
   constructor(
     public title$: Title,
     public translate$: TranslateService,

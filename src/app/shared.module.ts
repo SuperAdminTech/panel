@@ -5,10 +5,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+  QAddButtonModule,
   QbitKitBaseModule,
   QBreadcrumbsModule,
+  QChipsModule,
+  QDebouncedInputModule,
   QDialogHeaderModule,
+  QLangSelectorModule,
+  QListLoadingModule,
   QLoadableButtonModule,
+  QNotFoundModule,
   QSnackBarModule,
   QTableFiltersModule,
   QTableHeaderModule,
@@ -31,8 +37,15 @@ import { AvatarModule } from 'ngx-avatar';
     QSnackBarModule,
     QbitKitBaseModule,
     QTableHeaderModule,
-    QDialogHeaderModule,
+    SaComponentsModule,
+    QAddButtonModule,
+    QNotFoundModule,
+
+    QLangSelectorModule,
     QLoadableButtonModule,
+    QListLoadingModule,
+    QDialogHeaderModule,
+    QDebouncedInputModule,
     QTableFiltersModule,
     SaComponentsModule,
   ],
@@ -52,6 +65,7 @@ import { AvatarModule } from 'ngx-avatar';
     QTableHeaderModule,
     QLoadableButtonModule,
     QTableFiltersModule,
+    QChipsModule,
     SaComponentsModule,
   ],
 })

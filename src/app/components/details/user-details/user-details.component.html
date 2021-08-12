@@ -1,4 +1,4 @@
-<mat-card style="width: 450px; padding: 0">
+<mat-card style="padding: 0; height: 100%;">
     <mat-card-header class="padd-15" style="margin: 0">
         <mat-card-title style="margin: 0">
             <div class="flex-row center">
@@ -23,9 +23,17 @@
                 <div>
                     <mat-chip-list>
                         <mat-chip class="mat-chip mat-primary mat-standard-chip {{role.className}}"
-                            *ngFor="let role of item.roles">{{role.name|translate}}</mat-chip>
+                            *ngFor="let role of item.roles">
+                            {{role.name|translate}}
+                        </mat-chip>
                     </mat-chip-list>
                 </div>
+            </div>
+            <div class="text-mid flex-row center space-between marg-bottom-15">
+                <span>{{'APPLICATION'|translate}}</span>
+                <qbit-chip-link link="/applications/{{item.application.id}}" icon="apps"
+                    [label]="item.application.name">
+                </qbit-chip-link>
             </div>
         </div>
     </mat-card-content>

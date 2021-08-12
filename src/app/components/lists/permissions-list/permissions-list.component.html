@@ -1,11 +1,10 @@
 <mat-card class="no-padding">
-    <qbit-table-header [showBreadcrumbs]="showBreadcrumbs" title="PERMISSIONS" [searchMapping]="searchMapping"
-        [query]="query" (onSearch)="onSearch($event)" [searching]="isLoading" [doInitialSearch]="false"
-        [options]="tableOptions">
+    <qbit-table-header title="PERMISSIONS" [options]="tableOptions">
         <add-button (add)="addPermission()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
-    
-    <qbit-table-filters [searchMapping]="searchMapping" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+        [hiddenFilters]="hiddenFilters" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
     </qbit-table-filters>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
@@ -13,16 +12,18 @@
         <ng-container matColumnDef="user">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'USER'|translate}} </th>
             <td mat-cell *matCellDef="let row">
-                <a class="mat-chip mat-primary mat-standard-chip"
-                    routerLink="/users/{{row.user && row.user.id}}">{{row.user && row.user.username || 'not-set'}}</a>
+                <qbit-chip-link link="/users/{{row.user && row.user.id}}" icon="person"
+                    [label]="row.user && row.user.username || 'not-set'">
+                </qbit-chip-link>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="account">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'ACCOUNT'|translate}} </th>
             <td mat-cell *matCellDef="let row">
-                <a class="mat-chip mat-primary mat-standard-chip"
-                    routerLink="/accounts/{{row.account && row.account.id}}">{{row.account && row.account.name || 'not-set'}}</a>
+                <qbit-chip-link link="/accounts/{{row.account && row.account.id}}" icon="group"
+                    [label]="row.account && row.account.name || 'not-set'">
+                </qbit-chip-link>
             </td>
         </ng-container>
 
@@ -31,7 +32,7 @@
             <td mat-cell *matCellDef="let row">
                 <mat-chip-list>
                     <mat-chip class="mat-chip mat-primary mat-standard-chip" *ngFor="let grant of row.grants">
-                        <span class="text-extra-small">{{grant|translate}}</span>
+                        <span class="text-extra-small">{{grant | translate}}</span>
                     </mat-chip>
                 </mat-chip-list>
             </td>

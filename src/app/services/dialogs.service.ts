@@ -5,6 +5,10 @@ import { CreateApplicationComponent } from '../dialogs/create-application/create
 import { DeleteConfirmationComponent } from '../dialogs/delete-confirmation/delete-confirmation.component';
 import { CreatePermissionComponent } from '../dialogs/create-permission/create-permission.component';
 import { CreateAccountComponent } from '../dialogs/create-account/create-account.component';
+import {
+  EditAccountComponent,
+  EditAccountData,
+} from '../dialogs/edit-account/edit-account.component';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +62,12 @@ export class DialogsService {
 
   openAddUser(options?: Partial<MatDialogConfig>) {
     return this.openDialog(CreateUserComponent, {}, options);
+  }
+
+  openEditAccount(data: EditAccountData, options?: Partial<MatDialogConfig>) {
+    return this.openDialog(EditAccountComponent, data, {
+      ...options,
+      width: '300px',
+    });
   }
 }
