@@ -1,0 +1,19 @@
+<mat-form-field class="example-chip-list">
+    <mat-label>{{ 'SELECT_ROLES' | translate }}</mat-label>
+    <mat-chip-list #chipList aria-label="Role selection">
+        <mat-chip *ngFor="let role of roles" [selectable]="selectable" [removable]="removable" (removed)="remove(role)">
+            {{role}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="{{ 'NEW_ROLE' | translate }}..." #roleInput [formControl]="roleFormControl"
+            [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <ng-container *ngFor="let role of allRoles">
+            <mat-option *ngIf="!roles.includes(role)" [value]="role">
+                {{role}}
+            </mat-option>
+        </ng-container>
+    </mat-autocomplete>
+</mat-form-field>

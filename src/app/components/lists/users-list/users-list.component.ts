@@ -8,7 +8,11 @@ import {
 } from '@qbitartifacts/caste-client-ng';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService, QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
+import {
+  QEventsService,
+  QSnackBar,
+  QTableBase,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-users-list',
@@ -60,5 +64,7 @@ export class UsersListComponent extends QTableBase<User> {
   }
 
   /* istanbul ignore next */
-  addUser() {}
+  addUser() {
+    this.dialogs.openAddUser();
+  }
 }

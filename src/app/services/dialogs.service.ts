@@ -1,3 +1,4 @@
+import { CreateUserComponent } from './../dialogs/create-user/create-user.component';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateApplicationComponent } from '../dialogs/create-application/create-application.component';
@@ -53,5 +54,9 @@ export class DialogsService {
       {},
       { ...options, width: '300px' }
     );
+  }
+
+  openAddUser(options?: Partial<MatDialogConfig>) {
+    return this.openDialog(CreateUserComponent, {}, options);
   }
 }

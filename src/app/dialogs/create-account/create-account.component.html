@@ -4,11 +4,11 @@
     <form class="padd-20" [formGroup]="accountDetailsForm" (ngSubmit)="addAccount()">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="title-lg marg-bottom-20">
-                    {{'CREATE_ACCOUNT' | translate}}
-                </h4>
+                <p class="text-small">
+                    {{'CREATE_ACCOUNT_DESC' | translate}}
+                </p>
 
-                <sa-application-selector userType="admin" [(item)]="application"></sa-application-selector>
+                <sa-application-selector userType="sadmin" [(item)]="application"></sa-application-selector>
 
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
