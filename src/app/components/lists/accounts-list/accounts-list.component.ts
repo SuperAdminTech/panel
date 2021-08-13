@@ -8,7 +8,12 @@ import {
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService, QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
+import {
+  QEventsService,
+  QSnackBar,
+  QTableBase,
+  QTableListHeaderOptions,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-accounts-list',
@@ -29,9 +34,9 @@ export class AccountsListComponent extends QTableBase<Account> {
   @Input() public showBreadcrumbs = true;
   @Input() public searchFilters = {};
 
-  public tableOptions = {
-    input: false,
-    searchBy: false,
+  public tableOptions: QTableListHeaderOptions = {
+    showLoading: true,
+    showBreadcrumbs: true,
   };
 
   constructor(
@@ -45,10 +50,16 @@ export class AccountsListComponent extends QTableBase<Account> {
     public route: ActivatedRoute
   ) {
     super(snackbar, events, router, route);
+    this.tableOptions.showBreadcrumbs = this.showBreadcrumbs;
+    this.initialSearch = true;
+    this.autoRefresh = false;
   }
 
   public getSearchObservable(queryParams) {
-    return this.accounts$.listAll(queryParams, 'admin');
+    return this.accounts$.listAll(
+      { ...queryParams, ...this.searchFilters },
+      'admin'
+    );
   }
 
   public getRemoveItemObservable(id: string) {
@@ -66,6 +77,13 @@ export class AccountsListComponent extends QTableBase<Account> {
   public addAccount() {
     this.dialogs
       .openAddAccount()
+      .afterClosed()
+      .subscribe(this.onNewItemAdded.bind(this));
+  }
+
+  public editAccount(account) {
+    this.dialogs
+      .openEditAccount({ account: account })
       .afterClosed()
       .subscribe(this.onNewItemAdded.bind(this));
   }

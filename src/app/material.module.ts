@@ -19,6 +19,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const modules = [
   MatIconModule,
@@ -41,6 +42,7 @@ const modules = [
   MatCheckboxModule,
   MatSelectModule,
   MatListModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

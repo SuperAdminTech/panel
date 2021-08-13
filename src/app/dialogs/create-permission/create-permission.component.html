@@ -4,24 +4,15 @@
     <form class="padd-20" [formGroup]="permissionDetailsForm" (ngSubmit)="addPermission()">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="title-lg marg-bottom-20">
-                    {{'CREATE_PERMISSION' | translate}}
-                </h4>
                 <p class="text-mid">{{'CREATE_PERMISSION_DESC'|translate}}</p>
 
                 <sa-user-selector [(item)]="user"></sa-user-selector>
                 <sa-admin-account-selector [(item)]="account"></sa-admin-account-selector>
-
-                <mat-form-field>
-                    <mat-label>{{'GRANTS'|translate}}</mat-label>
-                    <mat-select formControlName="grants" multiple>
-                        <mat-option *ngFor="let grant of availableGrants" [value]="grant">{{grant}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <caste-autocomplete-list-input label="SELECT_GRANTS" newItemLabel="NEW_GRANT" [allValues]="availableGrants" [(value)]="grants"></caste-autocomplete-list-input>
 
                 <div class="flex-row end">
                     <qbit-loadable-button [id]="'createPermission'"
-                        [disabled]="permissionDetailsForm.invalid || !user || !account || isLoading"
+                        [disabled]="permissionDetailsForm.invalid || !user || !account || grants.length <= 0 || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </qbit-loadable-button>

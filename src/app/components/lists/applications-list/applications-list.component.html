@@ -1,11 +1,11 @@
+
 <mat-card class="no-padding">
-    <qbit-table-header [showBreadcrumbs]="showBreadcrumbs" title="APPLICATIONS" [searchMapping]="searchMapping"
-        [query]=" query" (onSearch)="onSearch($event)" [searching]="isLoading" [doInitialSearch]="false"
-        [options]="tableOptions">
+    <qbit-table-header title="APPLICATIONS" [options]="tableOptions">
         <add-button (add)="addApplication()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
 
-    <qbit-table-filters [searchMapping]="searchMapping" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+        (filtersChanged)="onSearch($event)" [filters]="searchParams" label="SEARCH_BY">
     </qbit-table-filters>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"
@@ -27,7 +27,7 @@
 
         <ng-container matColumnDef="realm">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'REALM'|translate}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.realm}} </td>
+            <td mat-cell *matCellDef="let row"> <code>{{row.realm}}</code> </td>
         </ng-container>
 
         <ng-container matColumnDef="created_at">

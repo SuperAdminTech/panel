@@ -6,8 +6,13 @@
                 <span class="title text-mid marg-left-10">{{item ? item.name: '...'}}</span>
             </div>
         </mat-card-title>
-        <button mat-icon-button class="abs-center-right">
-            <mat-icon>edit</mat-icon>
-        </button>
+        <div class="flex-row center h v abs-center-right">
+            <qbit-chip-link *ngIf="item && item.application" link="/applications/{{item.application.id}}" icon="apps" [label]="item.application.name">
+            </qbit-chip-link>
+
+            <button mat-icon-button class="marg-left-10" (click)="editAccount()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
     </mat-card-header>
 </mat-card>

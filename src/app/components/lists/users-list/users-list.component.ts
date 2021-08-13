@@ -8,7 +8,13 @@ import {
 } from '@qbitartifacts/caste-client-ng';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { QEventsService, QSnackBar, QTableBase } from '@qbitartifacts/qbit-kit-ng';
+import {
+  CreateDialogStatus,
+  QEventsService,
+  QSnackBar,
+  QTableBase,
+  QTableListHeaderOptions,
+} from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-users-list',
@@ -26,9 +32,9 @@ export class UsersListComponent extends QTableBase<User> {
   public searchableColumns = ['name', 'id'];
   public searchPipes = [mapUsers];
   public permissionForAdding = PermissionAdmin;
-  public tableOptions = {
-    input: false,
-    searchBy: false,
+  public tableOptions: QTableListHeaderOptions = {
+    showLoading: true,
+    showBreadcrumbs: true,
   };
 
   constructor(
@@ -41,10 +47,12 @@ export class UsersListComponent extends QTableBase<User> {
     public route: ActivatedRoute
   ) {
     super(snackbar, events, router, route);
+    this.initialSearch = true;
+    this.autoRefresh = false;
   }
 
   public getSearchObservable(queryParams) {
-    return this.users$.listAll(queryParams, 'sadmin');
+    return this.users$.listAll({...queryParams, ...this.searchParams}, 'sadmin');
   }
 
   public getRemoveItemObservable(id: string) {
@@ -60,5 +68,20 @@ export class UsersListComponent extends QTableBase<User> {
   }
 
   /* istanbul ignore next */
-  addUser() {}
+  addUser() {
+    this.dialogs.openAddUser();
+  }
+
+  public editUser(user: User) {
+    this.dialogs
+      .openEditUser(user)
+      .afterClosed()
+      .subscribe(this.onNewItemAdded.bind(this));
+  }
+
+  public onNewItemAdded(resp) {
+    if (resp === CreateDialogStatus.CREATED) {
+      this.onSearch(this.searchParams);
+    }
+  }
 }

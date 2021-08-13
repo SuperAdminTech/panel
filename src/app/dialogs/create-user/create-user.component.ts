@@ -2,8 +2,18 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
-import { Application, CasteUsersService } from '@qbitartifacts/caste-client-ng';
+import { Account, Application, CasteUsersService, RoleUser } from '@qbitartifacts/caste-client-ng';
 import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+
+// "username": "string",
+//   "account": "string",
+//   "application": "string",
+//   "permissions": [
+//     "string"
+//   ],
+//   "roles": [
+//     "string"
+//   ]
 
 @Component({
   selector: 'caste-create-user',
@@ -14,6 +24,8 @@ export class CreateUserComponent implements OnInit, LoadableComponent {
   public userForm: FormGroup;
   public isLoading: boolean;
   public application: Application;
+  public account: Account;
+  public roles: String[] = [RoleUser.name];
 
   constructor(
     public dialogRef: MatDialogRef<CreateUserComponent>,
@@ -32,7 +44,12 @@ export class CreateUserComponent implements OnInit, LoadableComponent {
     this.setIsLoading(true);
     this.dialogRef.disableClose = true;
 
-    this.users$.create({} as any, 'admin').subscribe(
+    this.users$.create({
+      name: this.name.value,
+      application: this.application['@id'],
+      account: this.account['@id'],
+      roles: this.roles,
+    } as any, 'admin').subscribe(
       (resp) => {
         this.snackbar.open('CREATED_USER_OK');
         this.close(CreateDialogStatus.CREATED);

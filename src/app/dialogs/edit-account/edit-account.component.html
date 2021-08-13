@@ -1,11 +1,11 @@
-<qbit-dialog-header title="{{'CREATE_ACCOUNT'|translate}}" (click)="close()"></qbit-dialog-header>
+<qbit-dialog-header title="{{'EDIT_ACCOUNT'|translate}}" (click)="close()"></qbit-dialog-header>
 
 <div class="bootstrap-wrapper">
     <form class="padd-20" [formGroup]="accountDetailsForm" (ngSubmit)="addAccount()">
         <div class="row">
             <div class="col-lg-12">
-                <p class="text-small">
-                    {{'CREATE_ACCOUNT_DESC' | translate}}
+                <p class="text-small" style="margin: 0 0 15px 0">
+                    {{'EDIT_ACCOUNT_DESC' | translate}}
                 </p>
 
                 <sa-application-selector userType="sadmin" [(item)]="application"></sa-application-selector>
@@ -18,10 +18,15 @@
                     </mat-error>
                 </mat-form-field>
 
+                <div style="margin: 0 0 15px 0">
+                    <mat-checkbox formControlName="enabled">{{ 'ACCOUNT_ENABLED' | translate }}</mat-checkbox>
+                </div>
+
                 <div class="flex-row end">
-                    <qbit-loadable-button [id]="'createAccount'" [disabled]="accountDetailsForm.invalid || !application || isLoading"
+                    <qbit-loadable-button [id]="'editAccount'"
+                        [disabled]="accountDetailsForm.invalid || !application || isLoading || !hasEdit"
                         [loading]="isLoading">
-                        {{(isLoading ? 'ADDING': 'ADD') |translate}}
+                        {{(isLoading ? 'EDITING': 'EDIT') |translate}}
                     </qbit-loadable-button>
                 </div>
             </div>

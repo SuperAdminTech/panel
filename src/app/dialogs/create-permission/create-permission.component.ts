@@ -21,6 +21,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   ];
   public account = null;
   public user = null;
+  public grants = ['ACCOUNT_WORKER'];
 
   constructor(
     public dialogRef: MatDialogRef<CreatePermissionComponent>,
@@ -44,13 +45,13 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
         {
           account: `/user/accounts/${this.account.id}`,
           user: `/user/users/${this.user.id}`,
-          grants: this.grants.value,
+          grants: this.grants,
         } as any,
         'sadmin'
       )
       .subscribe(
         (resp) => {
-          this.snackbar.open('CREATED_APP_OK');
+          this.snackbar.open('CREATED_PERMISSION_OK');
           this.dialogRef.disableClose = false;
           this.close(CreateDialogStatus.CREATED);
         },
@@ -63,13 +64,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   }
 
   ngOnInit() {
-    this.permissionDetailsForm = this.formBuilder.group({
-      grants: ['', Validators.required],
-    });
-  }
-
-  get grants() {
-    return this.permissionDetailsForm.get('grants');
+    this.permissionDetailsForm = this.formBuilder.group({});
   }
 
   setIsLoading(loading: boolean): void {
