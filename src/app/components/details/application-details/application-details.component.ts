@@ -27,6 +27,7 @@ export class ApplicationDetailsComponent extends DetailsBaseComponent<any> {
     return this.applications$.getOne(this.id, 'admin');
   }
 
+  /* istanbul ignore next */
   onGotData(data){
     this.title$.setTitle(
       data.name + ' | ' + environment.brand.title

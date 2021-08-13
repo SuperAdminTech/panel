@@ -9,6 +9,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import {
+  CreateDialogStatus,
   QEventsService,
   QSnackBar,
   QTableBase,
@@ -51,7 +52,7 @@ export class UsersListComponent extends QTableBase<User> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.users$.listAll(queryParams, 'sadmin');
+    return this.users$.listAll({...queryParams, ...this.searchParams}, 'sadmin');
   }
 
   public getRemoveItemObservable(id: string) {
@@ -69,5 +70,18 @@ export class UsersListComponent extends QTableBase<User> {
   /* istanbul ignore next */
   addUser() {
     this.dialogs.openAddUser();
+  }
+
+  public editUser(user: User) {
+    this.dialogs
+      .openEditUser(user)
+      .afterClosed()
+      .subscribe(this.onNewItemAdded.bind(this));
+  }
+
+  public onNewItemAdded(resp) {
+    if (resp === CreateDialogStatus.CREATED) {
+      this.onSearch(this.searchParams);
+    }
   }
 }

@@ -5,7 +5,7 @@
         </ng-container>
     </qbit-table-header>
 
-    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping" [filters]="searchParams"
         (filtersChanged)="onSearch($event)" label="SEARCH_BY">
     </qbit-table-filters>
 

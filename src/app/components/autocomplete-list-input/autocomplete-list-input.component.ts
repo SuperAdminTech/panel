@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  MatAutocomplete,
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger,
 } from '@angular/material/autocomplete';
@@ -55,13 +54,13 @@ export class AutocompleteListInputComponent {
       map((fruit: string | null) => {
         const filtered = fruit ? this._filter(fruit) : this.allValues.slice();
 
-        this.filteredValues = filtered;
-
-        return filtered;
+        return this.filteredValues = filtered;
       })
     );
   }
 
+  // we can ignore this as _addValue is already tested
+  /* istanbul ignore next */
   add(event: MatChipInputEvent): void {
     this._addValue((event.value || '').trim());
   }
@@ -75,6 +74,8 @@ export class AutocompleteListInputComponent {
     }
   }
 
+  // we can ignore this as _addValue is already tested
+  /* istanbul ignore next */
   selected(event: MatAutocompleteSelectedEvent): void {
     this._addValue(event.option.value);
   }
@@ -88,8 +89,12 @@ export class AutocompleteListInputComponent {
     }
   }
 
-  private _addValue(value: string) {
-    if (value && this.allValues.includes(value)&& !this.value.includes(value)) {
+  _addValue(value: string) {
+    if (
+      value &&
+      this.allValues.includes(value) &&
+      !this.value.includes(value)
+    ) {
       this.value.push(value);
       this.roleInput.nativeElement.value = '';
       this.valueChanged.emit(this.value);
@@ -99,11 +104,13 @@ export class AutocompleteListInputComponent {
     }
   }
 
-  private _filter(currentValue: string): string[] {
+  _filter(currentValue: string): string[] {
     const filterValue = currentValue.toLowerCase();
 
-    return this.allValues.filter((value) =>
-      value.toLowerCase().includes(filterValue) || this.translations.instant(value).toLowerCase().includes(filterValue)
+    return this.allValues.filter(
+      (value) =>
+        value.toLowerCase().includes(filterValue) ||
+        this.translations.instant(value).toLowerCase().includes(filterValue)
     );
   }
 }

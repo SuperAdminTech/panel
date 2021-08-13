@@ -3,7 +3,7 @@
         <add-button (add)="addUser()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
 
-    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping" [filters]="searchParams"
         (filtersChanged)="onSearch($event)" label="SEARCH_BY">
     </qbit-table-filters>
 
@@ -52,6 +52,10 @@
                     <button mat-menu-item class="col-error" (click)="openRemoveConfirmation(row.id)">
                         <mat-icon class="mat-icon material-icons mat-icon-small">delete</mat-icon>
                         <span>{{'REMOVE'|translate}}</span>
+                    </button>
+                    <button mat-menu-item (click)="editUser(row)">
+                        <mat-icon class="mat-icon material-icons mat-icon-small">edit</mat-icon>
+                        <span>{{'EDIT'|translate}}</span>
                     </button>
                 </mat-menu>
             </td>

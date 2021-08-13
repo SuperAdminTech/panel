@@ -139,6 +139,11 @@
   "EDIT_ACCOUNT": "Editar cuenta",
   "EDIT_ACCOUNT_DESC": "Modifique los campos para editar la cuenta",
   "EDITED_ACCOUNT_OK": "Cuenta editada correctamente",
+
+  "EDIT_USER": "Editar usuario",
+  "EDIT_USER_DESC": "Modifique los campos para editar el usuario",
+  "EDITED_USER_OK": "Usuario editado correctamente",
+
   "EDIT": "Editar",
   "EDITING": "Editando",
   "ACCOUNT_ENABLED": "Cuenta habilitada",

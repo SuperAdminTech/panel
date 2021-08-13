@@ -1,14 +1,14 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMatRef } from '../idle-notification/idle.dia.spec';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditAccountComponent } from './edit-account.component';
+import { EditUserComponent } from './edit-user.component';
 import { AppModule } from 'src/app/app.module';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('CreateAccountComponent', () => {
-  let component: EditAccountComponent;
-  let fixture: ComponentFixture<EditAccountComponent>;
+describe('CreateUserComponent', () => {
+  let component: EditUserComponent;
+  let fixture: ComponentFixture<EditUserComponent>;
 
   afterEach(() => {
     TestBed.resetTestingModule();
@@ -21,8 +21,8 @@ describe('CreateAccountComponent', () => {
         {
           provide: MAT_DIALOG_DATA,
           useValue: {
-            account: {
-              application: {},
+            user: {
+              roles: [],
             },
           },
         },
@@ -34,7 +34,7 @@ describe('CreateAccountComponent', () => {
     TestBed.resetTestingModule();
   });
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditAccountComponent);
+    fixture = TestBed.createComponent(EditUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -46,13 +46,6 @@ describe('CreateAccountComponent', () => {
   it('is loading', () => {
     component.setIsLoading(true);
     expect(component.isLoading).toEqual(true);
-  });
-
-
-  it('hasEdit', () => {
-    expect(component.hasEdit).toEqual(false);
-    component.accountDetailsForm.get('name').setValue('Test changed name');
-    expect(component.hasEdit).toEqual(true);
   });
 
   it('close', () => {

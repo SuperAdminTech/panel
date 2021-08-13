@@ -8,6 +8,7 @@ import { CreatePermissionComponent } from './create-permission/create-permission
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const dialogs = [
   IdleNotificationComponent,
@@ -17,6 +18,7 @@ const dialogs = [
   CreateAccountComponent,
   EditAccountComponent,
   CreateUserComponent,
+  EditUserComponent,
 ];
 
 @NgModule({

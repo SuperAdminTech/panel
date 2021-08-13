@@ -25,6 +25,7 @@ export class AccountDetailsComponent extends DetailsBaseComponent<Account> {
     return this.accounts$.getOne(this.id).pipe(mapAccount);
   }
 
+  /* istanbul ignore next */
   public editAccount() {
     this.dialogs
       .openEditAccount({ account: this.item })
