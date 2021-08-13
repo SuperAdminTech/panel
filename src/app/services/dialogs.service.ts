@@ -40,7 +40,7 @@ export class DialogsService {
     return this.openDialog(
       DeleteConfirmationComponent,
       {},
-      { ...options, width: '400px' }
+      { ...options, width: '45%' }
     );
   }
 
@@ -48,7 +48,7 @@ export class DialogsService {
     return this.openDialog(
       CreatePermissionComponent,
       {},
-      { ...options, width: '300px' }
+      { ...options, width: '45%' }
     );
   }
 
@@ -56,7 +56,7 @@ export class DialogsService {
     return this.openDialog(
       CreateAccountComponent,
       {},
-      { ...options, width: '300px' }
+      { ...options, width: '45%' }
     );
   }
 

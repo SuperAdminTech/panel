@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoleInputComponent } from './role-input.component';
+import { AutocompleteListInputComponent } from './autocomplete-list-input.component';
 
 describe('RoleInputComponent', () => {
-  let component: RoleInputComponent;
-  let fixture: ComponentFixture<RoleInputComponent>;
+  let component: AutocompleteListInputComponent;
+  let fixture: ComponentFixture<AutocompleteListInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoleInputComponent ]
+      declarations: [ AutocompleteListInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoleInputComponent);
+    fixture = TestBed.createComponent(AutocompleteListInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

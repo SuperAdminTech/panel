@@ -1,9 +1,11 @@
+
 <mat-card class="no-padding">
     <qbit-table-header title="APPLICATIONS" [options]="tableOptions">
         <add-button (add)="addApplication()" *appPermissions="permissionForAdding"></add-button>
     </qbit-table-header>
 
-    <qbit-table-filters [searchMapping]="searchMapping" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+        (filtersChanged)="onSearch($event)" label="SEARCH_BY">
     </qbit-table-filters>
 
     <table mat-table [dataSource]="dataSource" matSort class="hoverable" (matSortChange)="sortChanged($event)"

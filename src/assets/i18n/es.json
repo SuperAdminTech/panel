@@ -122,11 +122,13 @@
   "id": "ID",
   "name": "Nombre",
   "application.id": "ID de applicación",
+  "permissions.account.application.id": "ID de applicación",
   "application.name": "Nombre de applicación",
   "account.id": "ID de cuenta",
   "account.name": "Nombre de cuenta",
   "user.id": "ID de usuario",
-  "user.name": "No,bre de usuario",
+  "user.name": "Nombre de usuario",
+  "username": "Nombre de usuario",
 
   "ACCOUNT_WORKER": "Worker",
   "ACCOUNT_MANAGER": "Manager",
@@ -139,5 +141,7 @@
   "EDITED_ACCOUNT_OK": "Cuenta editada correctamente",
   "EDIT": "Editar",
   "EDITING": "Editando",
-  "ACCOUNT_ENABLED": "Cuenta habilitada"
+  "ACCOUNT_ENABLED": "Cuenta habilitada",
+  "SELECT_GRANTS": "Selecciona Grants",
+  "NEW_GRANT": "Nuevo Grant"
 }

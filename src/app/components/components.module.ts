@@ -18,7 +18,7 @@ import { AccountDetailsComponent } from './details/account-details/account-detai
 import { ApplicationDetailsComponent } from './details/application-details/application-details.component';
 import { PermissionsDetailsComponent } from './details/permission-details/permission-details.component';
 import { ListLoadingComponent } from './list-loading/list-loading.component';
-import { RoleInputComponent } from './role-input/role-input.component';
+import { AutocompleteListInputComponent } from './autocomplete-list-input/autocomplete-list-input.component';
 
 const components = [
   AddButtonComponent,
@@ -47,7 +47,7 @@ const components = [
   AccountsListComponent,
 
   // Inputs
-  RoleInputComponent,
+  AutocompleteListInputComponent,
 ];
 
 @NgModule({

@@ -57,12 +57,10 @@ export class PermissionsListComponent extends QTableBase<Permission> {
 
   ngOnInit() {
     this.hiddenFilters = Object.keys(this.searchFilters);
-    console.log('hidden filters:', this.hiddenFilters)
     super.ngOnInit();
   }
 
   public getSearchObservable(queryParams) {
-    console.log('jklasdjasdklasdjkl');
     return this.permissions$.listAll(
       { ...queryParams, ...this.searchFilters },
       'sadmin'

@@ -38,7 +38,7 @@ import {
   QBIT_SIDEMENU_ITEMS,
   QSidemenuModule,
 } from '@qbitartifacts/qbit-kit-ng';
-import { SIDEMENU_ITEMS } from './sidemenu.items';
+import { SIDEMENU_ITEMS } from './config/sidemenu.items';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeEs);

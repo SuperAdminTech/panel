@@ -1,0 +1,20 @@
+<mat-form-field class="example-chip-list">
+    <mat-label>{{ label | translate }}</mat-label>
+    <mat-chip-list #chipList aria-label="Value selection">
+        <mat-chip *ngFor="let role of value" [selectable]="selectable" [removable]="removable" (removed)="remove(role)">
+            {{role | translate}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="{{ newItemLabel | translate }}..." #roleInput [formControl]="roleFormControl"
+            #trigger="matAutocompleteTrigger" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+            (keydown.tab)="onTab($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <ng-container *ngFor="let item of filteredValuesObs | async">
+            <mat-option *ngIf="!value.includes(item)" [value]="item">
+                {{item | translate}}
+            </mat-option>
+        </ng-container>
+    </mat-autocomplete>
+</mat-form-field>

@@ -12,8 +12,7 @@
 
                 <sa-admin-account-selector userType="admin" [(item)]="account"></sa-admin-account-selector>
                 
-                <caste-role-input [(roles)]="roles"></caste-role-input>
-
+                <caste-autocomplete-list-input [(value)]="roles"></caste-autocomplete-list-input>
 
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
