@@ -103,4 +103,7 @@ function writeBadges(badges) {
 
     // Log result
     console.log('Added badges to "' + readmePath + '"');
+    console.log('--------------------------------\n');
+    console.log('Run: git commit -m "chore(docs): updated badges"');
+    console.log('\n--------------------------------\n');
 }
