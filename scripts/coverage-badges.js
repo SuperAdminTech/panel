@@ -76,7 +76,7 @@ function coverageBadgeFomObject(title, data) {
         titleCapitalized,
         createBadgeUrl(
             titleCapitalized,
-            `${data.covered}/${data.total} (${data.pct})`,
+            `${data.covered}/${data.total} (${data.pct}%)`,
             getColorForCoverage(data.pct)
         )
     );

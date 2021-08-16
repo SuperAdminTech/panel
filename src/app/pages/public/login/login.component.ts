@@ -64,6 +64,7 @@ export class LoginComponent
   /* istanbul ignore next */
   public setRealm() {
     const realmSaved = localStorage.getItem('realm');
+    
     if (realmSaved) {
       this.qbitAuth.addConfig('realm', realmSaved);
       this.hasRealm = true;
@@ -73,9 +74,11 @@ export class LoginComponent
 
   public unsetRealm() {
     this.qbitAuth.removeConfig('realm');
+    this.qbitAuth.addConfig('realm', 'default');
+
     this.hasRealm = false;
     this.realm = '';
-    this.router.navigate([], { 
+    this.router.navigate([], {
       queryParams: {},
     });
   }
