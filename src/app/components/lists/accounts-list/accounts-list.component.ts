@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   Account,
   CasteAccountsService,
@@ -11,15 +11,15 @@ import { AppService } from 'src/app/services/app.service';
 import {
   QEventsService,
   QSnackBar,
-  QTableBase,
   QTableListHeaderOptions,
 } from '@qbitartifacts/qbit-kit-ng';
+import { TablePageBase } from 'src/app/base/table-base.service';
 
 @Component({
   selector: 'caste-accounts-list',
   templateUrl: './accounts-list.component.html',
 })
-export class AccountsListComponent extends QTableBase<Account> {
+export class AccountsListComponent extends TablePageBase<Account> {
   public displayedColumns: string[] = [
     'name',
     'application',
@@ -49,7 +49,7 @@ export class AccountsListComponent extends QTableBase<Account> {
     public router: Router,
     public route: ActivatedRoute
   ) {
-    super(snackbar, events, router, route);
+    super(app, snackbar, events, router, route);
     this.tableOptions.showBreadcrumbs = this.showBreadcrumbs;
     this.initialSearch = true;
     this.autoRefresh = false;

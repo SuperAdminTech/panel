@@ -31,6 +31,10 @@ export class AppService extends BaseService {
     this.lang = localStorage.getItem(LOCALES.storageKey) || LOCALES.default;
   }
 
+  public getUserRequestRole() {
+    return this.user$.isAdmin() ? 'admin' : 'sadmin';
+  }
+
   protected getToken() {
     return this.auth.session && this.auth.session.token;
   }

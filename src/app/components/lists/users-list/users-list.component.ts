@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { mapUsers } from 'src/app/pipes/map-users';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import {
-  CasteUserService,
   CasteUsersService,
   PermissionAdmin,
   User,
@@ -16,13 +15,14 @@ import {
   QTableBase,
   QTableListHeaderOptions,
 } from '@qbitartifacts/qbit-kit-ng';
+import { TablePageBase } from 'src/app/base/table-base.service';
 
 @Component({
   selector: 'caste-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
 })
-export class UsersListComponent extends QTableBase<User> {
+export class UsersListComponent extends TablePageBase<User> {
   public displayedColumns: string[] = [
     'name',
     'roles',
@@ -45,19 +45,17 @@ export class UsersListComponent extends QTableBase<User> {
     public events: QEventsService,
     public app: AppService,
     public router: Router,
-    public route: ActivatedRoute,
-    public casteUser: CasteUserService
+    public route: ActivatedRoute
   ) {
-    super(snackbar, events, router, route);
+    super(app, snackbar, events, router, route);
     this.initialSearch = true;
     this.autoRefresh = false;
   }
 
   public getSearchObservable(queryParams) {
-    const role = this.casteUser.isAdmin() ? 'admin' : 'sadmin';
     return this.users$.listAll(
       { ...queryParams, ...this.searchParams },
-      role
+      this.app.getUserRequestRole()
     );
   }
 
