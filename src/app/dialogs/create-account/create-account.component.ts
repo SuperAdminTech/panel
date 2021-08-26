@@ -2,7 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
-import { CasteAccountsService } from '@qbitartifacts/caste-client-ng';
+import {
+  CasteAccountsService,
+  CasteUserService,
+} from '@qbitartifacts/caste-client-ng';
 import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
@@ -14,14 +17,18 @@ export class CreateAccountComponent implements OnInit, LoadableComponent {
   public accountDetailsForm: FormGroup;
   public isLoading: boolean;
   public application = null;
+  public userRole = 'sadmin';
 
   constructor(
     public dialogRef: MatDialogRef<CreateAccountComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private accounts$: CasteAccountsService,
-    private snackbar: QSnackBar
-  ) {}
+    private snackbar: QSnackBar,
+    public casteUser: CasteUserService
+  ) {
+    this.userRole = this.casteUser.isAdmin() ? 'admin' : 'sadmin';
+  }
 
   /* istanbul ignore next */
   addAccount() {

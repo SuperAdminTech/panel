@@ -8,17 +8,20 @@
                     {{'CREATE_USER_DESC' | translate}}
                 </p>
                 
-                <sa-application-selector userType="sadmin" [(item)]="application"></sa-application-selector>
+                <sa-application-selector [userType]="userRole" [(item)]="application"></sa-application-selector>
 
-                <sa-admin-account-selector userType="admin" [(item)]="account"></sa-admin-account-selector>
+                <sa-admin-account-selector [userType]="userRole" [(item)]="account"></sa-admin-account-selector>
                 
                 <caste-autocomplete-list-input [(value)]="roles"></caste-autocomplete-list-input>
 
                 <mat-form-field>
-                    <mat-label>{{'NAME' | translate}}</mat-label>
-                    <input id="name" matInput placeholder="Enter your name" formControlName="name">
-                    <mat-error *ngIf="name.invalid && (name.dirty) && name.errors.required">
+                    <mat-label>{{'USERNAME' | translate}}</mat-label>
+                    <input id="username" matInput placeholder="Enter Username" formControlName="username">
+                    <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.required">
                         {{'NAME_REQUIRED' | translate}}
+                    </mat-error>
+                    <mat-error *ngIf="username.invalid && (username.dirty) && username.errors.email">
+                        {{'INVALID_EMAIL' | translate}}
                     </mat-error>
                 </mat-form-field>
 

@@ -4,6 +4,7 @@ import {
   CasteAccountsService,
   CasteApplicationService,
 } from '@qbitartifacts/caste-client-ng';
+import { UserType } from '@qbitartifacts/caste-client-ng/lib/types';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { countTotal } from '../pipes/count-total';
@@ -22,15 +23,15 @@ export class StatsService {
     return request.pipe(countTotal);
   }
 
-  getTotalUsers() {
-    return this.getTotalFromRequest(this.users$.listAll(null, 'sadmin'));
+  getTotalUsers(type: UserType = 'sadmin') {
+    return this.getTotalFromRequest(this.users$.listAll(null, type));
   }
 
-  getTotalAccounts() {
-    return this.getTotalFromRequest(this.accounts$.listAll(null, 'admin'));
+  getTotalAccounts(type: UserType = 'admin') {
+    return this.getTotalFromRequest(this.accounts$.listAll(null, type));
   }
 
-  getTotalApplications() {
-    return this.getTotalFromRequest(this.applications$.listAll(null, 'sadmin'));
+  getTotalApplications(type: UserType = 'sadmin') {
+    return this.getTotalFromRequest(this.applications$.listAll(null, type));
   }
 }

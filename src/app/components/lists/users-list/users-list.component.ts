@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { mapUsers } from 'src/app/pipes/map-users';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import {
+  CasteUserService,
   CasteUsersService,
   PermissionAdmin,
   User,
@@ -44,7 +45,8 @@ export class UsersListComponent extends QTableBase<User> {
     public events: QEventsService,
     public app: AppService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public casteUser: CasteUserService
   ) {
     super(snackbar, events, router, route);
     this.initialSearch = true;
@@ -52,7 +54,11 @@ export class UsersListComponent extends QTableBase<User> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.users$.listAll({...queryParams, ...this.searchParams}, 'sadmin');
+    const role = this.casteUser.isAdmin() ? 'admin' : 'sadmin';
+    return this.users$.listAll(
+      { ...queryParams, ...this.searchParams },
+      role
+    );
   }
 
   public getRemoveItemObservable(id: string) {

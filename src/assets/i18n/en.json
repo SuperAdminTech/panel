@@ -110,5 +110,7 @@
   "REMOVED_ITEM": "Item removed",
   "SELECT_USER": "Select a user",
   "SELECT_ACCOUNT": "Select an account",
-  "SELECT_APPLICATION": "Select an application"
+  "SELECT_APPLICATION": "Select an application",
+  "INVALID_EMAIL": "Invalid email format",
+  "CREATED_USER_OK": "User created succesfully"
 }

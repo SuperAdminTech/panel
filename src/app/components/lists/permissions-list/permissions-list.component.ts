@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {
   CastePermissionsService,
+  CasteUserService,
   CasteUsersService,
   Permission,
   PermissionAdmin,
@@ -48,11 +49,16 @@ export class PermissionsListComponent extends QTableBase<Permission> {
     public events: QEventsService,
     public app: AppService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public casteUser: CasteUserService
   ) {
     super(snackbar, events, router, route);
     this.initialSearch = true;
     this.autoRefresh = true;
+  }
+
+  public getUserRole() {
+    return this.casteUser.isAdmin() ? 'admin' : 'sadmin';
   }
 
   ngOnInit() {
@@ -63,7 +69,7 @@ export class PermissionsListComponent extends QTableBase<Permission> {
   public getSearchObservable(queryParams) {
     return this.permissions$.listAll(
       { ...queryParams, ...this.searchFilters },
-      'sadmin'
+      this.getUserRole(),
     );
   }
 

@@ -19,7 +19,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent
   extends PageBaseComponent
-  implements AfterContentInit, OnInit {
+  implements AfterContentInit, OnInit
+{
   static guards: any[] = [AuthedGuard];
   public title = 'DASHBOARD';
   public permission = PermissionUser;
@@ -44,9 +45,12 @@ export class DashboardComponent
 
   ngOnInit() {
     this.userType = this.user$.user ? this.user$.user.getType() : '...';
-    this.usersCount = this.stats$.getTotalUsers();
-    this.accountsCount = this.stats$.getTotalAccounts();
-    this.applicationsCount = this.stats$.getTotalApplications();
+
+    const userRole = this.user$.isAdmin() ? 'admin' : 'sadmin';
+
+    this.usersCount = this.stats$.getTotalUsers(userRole);
+    this.accountsCount = this.stats$.getTotalAccounts(userRole);
+    this.applicationsCount = this.stats$.getTotalApplications(userRole);
   }
 
   ngAfterContentInit() {

@@ -3,6 +3,7 @@ import {
   CasteApplicationService,
   Application,
   PermissionAdmin,
+  CasteUserService,
 } from '@qbitartifacts/caste-client-ng';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -41,15 +42,20 @@ export class ApplicationsListComponent extends QTableBase<Application> {
     public events: QEventsService,
     public app: AppService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public casteUser: CasteUserService
   ) {
     super(snackbar, events, router, route);
     this.initialSearch = true;
     this.autoRefresh = false;
   }
 
+  public getUserRole() {
+    return this.casteUser.isAdmin() ? 'admin' : 'sadmin';
+  }
+
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(queryParams, 'sadmin');
+    return this.applications$.listAll(queryParams, this.getUserRole());
   }
 
   public getRemoveItemObservable(id: string) {

@@ -148,5 +148,8 @@
   "EDITING": "Editando",
   "ACCOUNT_ENABLED": "Cuenta habilitada",
   "SELECT_GRANTS": "Selecciona Grants",
-  "NEW_GRANT": "Nuevo Grant"
+  "NEW_GRANT": "Nuevo Grant",
+
+  "INVALID_EMAIL": "Formato de correo incorrecto",
+  "CREATED_USER_OK": "Usuario creado correctamente"
 }
