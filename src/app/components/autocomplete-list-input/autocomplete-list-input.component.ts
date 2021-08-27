@@ -4,7 +4,9 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import {
@@ -26,7 +28,7 @@ import { Observable } from 'rxjs/internal/Observable';
   templateUrl: './autocomplete-list-input.component.html',
   styleUrls: ['./autocomplete-list-input.component.scss'],
 })
-export class AutocompleteListInputComponent {
+export class AutocompleteListInputComponent implements OnChanges {
   @Input() label = 'SELECT_ROLES';
   @Input() newItemLabel = 'NEW_ROLE';
 
@@ -51,12 +53,28 @@ export class AutocompleteListInputComponent {
   ) {
     this.filteredValuesObs = this.roleFormControl.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) => {
-        const filtered = fruit ? this._filter(fruit) : this.allValues.slice();
+      map((value: string | null) => {
+        const filtered = value ? this._filter(value) : this.allValues.slice();
 
-        return this.filteredValues = filtered;
+        return (this.filteredValues = filtered);
       })
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('allValues' in changes) {
+      this.filteredValues = this.allValues.slice();
+      this.roleFormControl.setValue('');
+      
+      if (this.roleInput) this.roleInput.nativeElement.value = '';
+
+      // Remove invalid values
+      for (let item in this.value) {
+        if (!this.allValues.includes(item)) {
+          this.remove(item);
+        }
+      }
+    }
   }
 
   // we can ignore this as _addValue is already tested
@@ -96,9 +114,9 @@ export class AutocompleteListInputComponent {
       !this.value.includes(value)
     ) {
       this.value.push(value);
-      this.roleInput.nativeElement.value = '';
       this.valueChanged.emit(this.value);
 
+      this.roleInput.nativeElement.value = '';
       this.roleFormControl.setValue('');
       this.trigger.openPanel();
     }

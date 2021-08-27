@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CasteUsersService, User } from '@qbitartifacts/caste-client-ng';
 import { mapUser } from 'src/app/pipes/map-user';
 import { DetailsBaseComponent } from 'src/app/base/details.base';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'caste-user-details',
@@ -16,6 +17,11 @@ export class UserDetailsComponent extends DetailsBaseComponent<User> {
   }
 
   getDetailsObservable() {
-    return this.users$.getOne(this.id).pipe(mapUser);
+    return this.users$.getOne(this.id).pipe(
+      mapUser,
+      tap((data) => {
+        console.log('data', data);
+      })
+    );
   }
 }

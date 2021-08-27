@@ -63,7 +63,7 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
   public getSearchObservable(queryParams) {
     return this.permissions$.listAll(
       { ...queryParams, ...this.searchFilters },
-      this.app.getUserRequestRole()
+      this.app.getUserType()
     );
   }
 

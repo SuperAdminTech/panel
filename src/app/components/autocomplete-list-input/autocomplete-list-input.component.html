@@ -2,7 +2,7 @@
     <mat-label>{{ label | translate }}</mat-label>
     <mat-chip-list #chipList aria-label="Value selection">
         <mat-chip *ngFor="let role of value" [selectable]="selectable" [removable]="removable" (removed)="remove(role)">
-            {{role | translate}}
+            {{role}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
         <input placeholder="{{ newItemLabel | translate }}..." #roleInput [formControl]="roleFormControl"
@@ -13,7 +13,7 @@
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
         <ng-container *ngFor="let item of filteredValuesObs | async">
             <mat-option *ngIf="!value.includes(item)" [value]="item">
-                {{item | translate}}
+                {{item}}
             </mat-option>
         </ng-container>
     </mat-autocomplete>

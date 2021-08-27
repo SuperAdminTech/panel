@@ -55,7 +55,7 @@ export class UsersListComponent extends TablePageBase<User> {
   public getSearchObservable(queryParams) {
     return this.users$.listAll(
       { ...queryParams, ...this.searchParams },
-      this.app.getUserRequestRole()
+      this.app.getUserType()
     );
   }
 

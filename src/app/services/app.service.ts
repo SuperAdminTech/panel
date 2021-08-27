@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { QEventsService } from '@qbitartifacts/qbit-kit-ng';
+import { UserType } from '@qbitartifacts/caste-client-ng/lib/types';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,8 @@ export class AppService extends BaseService {
     this.lang = localStorage.getItem(LOCALES.storageKey) || LOCALES.default;
   }
 
-  public getUserRequestRole() {
-    return this.user$.isAdmin() ? 'admin' : 'sadmin';
+  public getUserType(): UserType {
+    return this.user$.isSuperadmin() ? 'sadmin' : 'admin';
   }
 
   protected getToken() {

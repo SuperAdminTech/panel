@@ -51,7 +51,7 @@ export class ApplicationsListComponent extends TablePageBase<Application> {
   public getSearchObservable(queryParams) {
     return this.applications$.listAll(
       queryParams,
-      this.app.getUserRequestRole()
+      this.app.getUserType()
     );
   }
 
