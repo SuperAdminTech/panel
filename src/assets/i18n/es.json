@@ -34,7 +34,7 @@
   "ROLE_ADMIN": "Admin",
   "ROLE_USER": "Normal",
   "ROLE_READONLY": "Solo Lectura",
-  "ROLE_SUPERADMIN": "Super Admin",
+  "ROLE_SUPER_ADMIN": "Super Admin",
   "ROLE_SUPPORT": "Soporte",
   "SEARCH": "Busca...",
   "BOT": "Bot",
