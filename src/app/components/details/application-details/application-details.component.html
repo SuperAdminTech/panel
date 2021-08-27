@@ -1,7 +1,7 @@
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12">
-            <mat-card class="no-padding" style="height:auto; min-height: 150px">
+            <mat-card class="no-padding" style="height: 100%; min-height: 150px">
                 <mat-card-header style="margin: 0; height: 45px;">
                     <mat-card-title style="margin: 0 0 0 15px;">
                         <div class="flex-row center" style="height: 45px;">
@@ -9,7 +9,7 @@
                                 class="marg-left-10">{{item ? item.realm: '...'}}</code>
                         </div>
                     </mat-card-title>
-                    <button mat-icon-button class="abs-center-right">
+                    <button mat-icon-button class="abs-center-right" (click)="edit()">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </mat-card-header>
@@ -17,27 +17,36 @@
                 <mat-card-content class="no-padding">
                     <div class="padd-15 column">
                         <div class="flex-row space-between center marg-bottom-10 ">
-                            <b class="title">{{'DEFAULT_GRANTS'|translate}}</b>
-                            <button class="small-icon-button" mat-icon-button>
-                                <mat-icon>add</mat-icon>
-                            </button>
+                            <b class="title">{{'GRANTS'|translate}}</b>
                         </div>
                         <mat-chip-list *ngIf="item">
-                            <mat-chip *ngFor="let grant of item.default_grants" [removable]="true">
+                            <mat-chip *ngFor="let grant of item.grants">
                                 <span class="text-extra-small">
                                     {{grant}}
                                 </span>
-
-                                <mat-icon matChipRemove>cancel</mat-icon>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
                 </mat-card-content>
+
+                <div class="padd-15 column">
+                    <div class="flex-row space-between center marg-bottom-10 ">
+                        <b class="title">{{'DEFAULT_GRANTS'|translate}}</b>
+                    </div>
+                    <mat-chip-list *ngIf="item">
+                        <mat-chip *ngFor="let grant of item.default_grants">
+                            <span class="text-extra-small">
+                                {{grant}}
+                            </span>
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
             </mat-card>
         </div>
 
         <div class="col-lg-8 col-md-6 col-sm-12">
-            <caste-accounts-list [showBreadcrumbs]="false" *ngIf="item" [searchFilters]="{ 'application.id': item['id'] }">
+            <caste-accounts-list [showBreadcrumbs]="false" [hiddenColumns]="['application']" *ngIf="item"
+                [searchFilters]="{ 'application.id': item['id'] }">
             </caste-accounts-list>
         </div>
     </div>

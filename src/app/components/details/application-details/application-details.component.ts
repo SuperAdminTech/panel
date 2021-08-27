@@ -9,6 +9,8 @@ import { DetailsBaseComponent } from 'src/app/base/details.base';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { DialogsService } from 'src/app/services/dialogs.service';
+import { CreateDialogStatus } from '@qbitartifacts/qbit-kit-ng';
 
 @Component({
   selector: 'caste-application-details',
@@ -19,6 +21,7 @@ export class ApplicationDetailsComponent extends DetailsBaseComponent<any> {
   constructor(
     public applications$: CasteApplicationService,
     public title$: Title,
+    private readonly dialogs: DialogsService
   ) {
     super();
   }
@@ -28,10 +31,19 @@ export class ApplicationDetailsComponent extends DetailsBaseComponent<any> {
   }
 
   /* istanbul ignore next */
-  onGotData(data){
-    this.title$.setTitle(
-      data.name + ' | ' + environment.brand.title
-    )
+  onGotData(data) {
+    this.title$.setTitle(data.name + ' | ' + environment.brand.title);
     super.onGotData(data);
+  }
+
+  edit() {
+    this.dialogs
+      .openEditApplication(this.item)
+      .afterClosed()
+      .subscribe((data) => {
+        if (data == CreateDialogStatus.CREATED) {
+          this.getDetails();
+        }
+      });
   }
 }

@@ -3,6 +3,7 @@ import {
   CasteApplicationService,
   Application,
   PermissionAdmin,
+  IApplication,
 } from '@qbitartifacts/caste-client-ng';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -49,10 +50,7 @@ export class ApplicationsListComponent extends TablePageBase<Application> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(
-      queryParams,
-      this.app.getUserType()
-    );
+    return this.applications$.listAll(queryParams, this.app.getUserType());
   }
 
   public getRemoveItemObservable(id: string) {
@@ -61,6 +59,10 @@ export class ApplicationsListComponent extends TablePageBase<Application> {
 
   public getRemoveItemDialog(id: string) {
     return this.dialogs.openConfirmDelete();
+  }
+
+  public openEditApplication(application: IApplication) {
+    return this.dialogs.openEditApplication(application);
   }
 
   public getOwner(): string {

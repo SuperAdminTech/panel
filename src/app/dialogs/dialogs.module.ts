@@ -9,6 +9,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditApplicationComponent } from './edit-application/edit-application.component';
 
 const dialogs = [
   IdleNotificationComponent,
@@ -19,6 +20,7 @@ const dialogs = [
   EditAccountComponent,
   CreateUserComponent,
   EditUserComponent,
+  EditApplicationComponent,
 ];
 
 @NgModule({

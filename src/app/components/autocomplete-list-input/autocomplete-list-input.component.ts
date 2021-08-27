@@ -65,7 +65,7 @@ export class AutocompleteListInputComponent implements OnChanges {
     if ('allValues' in changes) {
       this.filteredValues = this.allValues.slice();
       this.roleFormControl.setValue('');
-      
+
       if (this.roleInput) this.roleInput.nativeElement.value = '';
 
       // Remove invalid values
@@ -99,10 +99,9 @@ export class AutocompleteListInputComponent implements OnChanges {
   }
 
   onTab(event) {
-    event.preventDefault();
-
     const lastValue = this.filteredValues[0];
     if (this.roleFormControl.value && lastValue) {
+      event.preventDefault();
       this._addValue(lastValue);
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {
   QEventsService,
@@ -12,6 +12,8 @@ import { AppService } from '../services/app.service';
   template: '',
 })
 export abstract class TablePageBase<T> extends QTableBase<T> {
+  @Input() public hiddenColumns = [];
+
   isSuperadmin: boolean = false;
 
   constructor(
@@ -25,10 +27,14 @@ export abstract class TablePageBase<T> extends QTableBase<T> {
   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.isAdmin = this.app.user$.isAdmin();
     this.isInvestor = this.app.user$.isInvestor();
     this.isTrader = this.app.user$.isTrader();
     this.isSuperadmin = this.app.user$.isSuperadmin();
-    super.ngOnInit();
+
+    this.displayedColumns = this.displayedColumns.filter(
+      (column) => !this.hiddenColumns.includes(column)
+    );
   }
 }

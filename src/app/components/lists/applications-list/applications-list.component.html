@@ -48,6 +48,10 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openEditApplication(row)">
+                        <mat-icon class="mat-icon material-icons mat-icon-small">edit</mat-icon>
+                        <span>{{'EDIT'|translate}}</span>
+                    </button>
                     <button mat-menu-item class="col-error" (click)="openRemoveConfirmation(row.id)">
                         <mat-icon class="mat-icon material-icons mat-icon-small">delete</mat-icon>
                         <span>{{'REMOVE'|translate}}</span>

@@ -10,6 +10,7 @@
                 <sa-admin-account-selector [(item)]="account"></sa-admin-account-selector>
                 <caste-autocomplete-list-input label="SELECT_GRANTS" newItemLabel="NEW_GRANT"
                     [allValues]="availableGrants" [(value)]="grants"></caste-autocomplete-list-input>
+                    
                 <div class="flex-row end">
                     <qbit-loadable-button [id]="'createPermission'"
                         [disabled]="permissionDetailsForm.invalid || !user || !account || grants.length <= 0 || isLoading"

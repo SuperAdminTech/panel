@@ -50,9 +50,13 @@ export class AccountsListComponent extends TablePageBase<Account> {
     public route: ActivatedRoute
   ) {
     super(app, snackbar, events, router, route);
-    this.tableOptions.showBreadcrumbs = this.showBreadcrumbs;
     this.initialSearch = true;
     this.autoRefresh = false;
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.tableOptions.showBreadcrumbs = this.showBreadcrumbs;
   }
 
   public getSearchObservable(queryParams) {

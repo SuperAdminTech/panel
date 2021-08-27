@@ -9,8 +9,9 @@ import {
   EditAccountComponent,
   EditAccountData,
 } from '../dialogs/edit-account/edit-account.component';
-import { User } from '@qbitartifacts/caste-client-ng';
+import { IApplication, User } from '@qbitartifacts/caste-client-ng';
 import { EditUserComponent } from '../dialogs/edit-user/edit-user.component';
+import { EditApplicationComponent } from '../dialogs/edit-application/edit-application.component';
 
 @Injectable({
   providedIn: 'root',
@@ -76,7 +77,21 @@ export class DialogsService {
   openEditUser(user: User, options?: Partial<MatDialogConfig>) {
     return this.openDialog(
       EditUserComponent,
-      { user },
+      { user: Object.assign({}, user) },
+      {
+        ...options,
+        width: '45%',
+      }
+    );
+  }
+
+  openEditApplication(
+    application: IApplication,
+    options?: Partial<MatDialogConfig>
+  ) {
+    return this.openDialog(
+      EditApplicationComponent,
+      Object.assign({}, application),
       {
         ...options,
         width: '45%',

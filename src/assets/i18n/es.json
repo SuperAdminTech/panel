@@ -151,5 +151,11 @@
   "NEW_GRANT": "Nuevo Grant",
 
   "INVALID_EMAIL": "Formato de correo incorrecto",
-  "CREATED_USER_OK": "Usuario creado correctamente"
+  "CREATED_USER_OK": "Usuario creado correctamente",
+  "EDIT_APPLICATION": "Editar aplicacion",
+
+
+  "DEFAULT_GRANT_HINT": "Estos permisos se añadiran por defecto a cada usuario creado en esta applicacion",
+  "SELECT_DEFAULT_GRANTS": "Selecciona grants por defecto",
+  "UPDATED_APP_OK": "Applicacion actualizada correctamente"
 }
