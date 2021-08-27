@@ -10,17 +10,19 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditApplicationComponent } from './edit-application/edit-application.component';
+import { EditPermissionComponent } from './edit-permission/edit-permission.component';
 
 const dialogs = [
   IdleNotificationComponent,
-  CreateApplicationComponent,
   DeleteConfirmationComponent,
+  CreateApplicationComponent,
   CreatePermissionComponent,
   CreateAccountComponent,
-  EditAccountComponent,
   CreateUserComponent,
+  EditAccountComponent,
   EditUserComponent,
   EditApplicationComponent,
+  EditPermissionComponent,
 ];
 
 @NgModule({

@@ -9,9 +9,14 @@ import {
   EditAccountComponent,
   EditAccountData,
 } from '../dialogs/edit-account/edit-account.component';
-import { IApplication, User } from '@qbitartifacts/caste-client-ng';
+import {
+  IApplication,
+  IPermission,
+  User,
+} from '@qbitartifacts/caste-client-ng';
 import { EditUserComponent } from '../dialogs/edit-user/edit-user.component';
 import { EditApplicationComponent } from '../dialogs/edit-application/edit-application.component';
+import { EditPermissionComponent } from '../dialogs/edit-permission/edit-permission.component';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +58,16 @@ export class DialogsService {
       {},
       { ...options, width: '45%' }
     );
+  }
+
+  openEditPermission(
+    permission: IPermission,
+    options?: Partial<MatDialogConfig>
+  ) {
+    return this.openDialog(EditPermissionComponent, permission, {
+      ...options,
+      width: '45%',
+    });
   }
 
   openAddAccount(options?: Partial<MatDialogConfig>) {

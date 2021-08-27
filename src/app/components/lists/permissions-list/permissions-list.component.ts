@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import {
   CastePermissionsService,
   CasteUsersService,
+  IPermission,
   Permission,
   PermissionAdmin,
   PermissionSuperAdmin,
@@ -77,6 +78,13 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
 
   public getOwner(): string {
     return null;
+  }
+
+  public permissionClicked(permission: IPermission) {
+    this.dialogs
+      .openEditPermission(permission)
+      .afterClosed()
+      .subscribe(this.onNewItemAdded.bind(this));
   }
 
   public addPermission() {
