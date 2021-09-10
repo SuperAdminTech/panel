@@ -5,8 +5,14 @@ import { LoadableComponent } from 'src/app/base/loadable.page';
 import {
   CasteAccountsService,
   CasteUserService,
+  IApplication,
 } from '@qbitartifacts/caste-client-ng';
 import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+
+export interface CreateAccountData {
+  application_id?: string;
+  application?: IApplication;
+}
 
 @Component({
   selector: 'caste-create-account',
@@ -16,18 +22,30 @@ import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 export class CreateAccountComponent implements OnInit, LoadableComponent {
   public accountDetailsForm: FormGroup;
   public isLoading: boolean;
-  public application = null;
+  public application: IApplication = null;
+  public disableApplicationSelector = false;
   public userRole = 'sadmin';
 
   constructor(
     public dialogRef: MatDialogRef<CreateAccountComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: CreateAccountData,
     private formBuilder: FormBuilder,
     private accounts$: CasteAccountsService,
     private snackbar: QSnackBar,
     public casteUser: CasteUserService
   ) {
     this.userRole = this.casteUser.isAdmin() ? 'admin' : 'sadmin';
+  }
+
+  ngOnInit() {
+    if (this.data.application) {
+      this.application = this.data.application;
+      this.disableApplicationSelector = true;
+    }
+
+    this.accountDetailsForm = this.formBuilder.group({
+      name: ['', Validators.required],
+    });
   }
 
   /* istanbul ignore next */
@@ -59,12 +77,6 @@ export class CreateAccountComponent implements OnInit, LoadableComponent {
           this.dialogRef.disableClose = false;
         }
       );
-  }
-
-  ngOnInit() {
-    this.accountDetailsForm = this.formBuilder.group({
-      name: ['', Validators.required],
-    });
   }
 
   get name() {

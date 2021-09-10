@@ -10,6 +10,12 @@ import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { AppService } from 'src/app/services/app.service';
 import { UserType } from '@qbitartifacts/caste-client-ng/lib/types';
 
+export interface EditPermissionData {
+  permission: IPermission;
+  account_id?: string;
+  availableGrants?: string[];
+}
+
 @Component({
   selector: 'caste-edit-permission',
   templateUrl: './edit-permission.component.html',
@@ -26,7 +32,7 @@ export class EditPermissionComponent implements OnInit, LoadableComponent {
 
   constructor(
     public dialogRef: MatDialogRef<EditPermissionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IPermission,
+    @Inject(MAT_DIALOG_DATA) public data: EditPermissionData,
     private formBuilder: FormBuilder,
     private permissions$: CastePermissionsService,
     private snackbar: QSnackBar,
@@ -37,9 +43,9 @@ export class EditPermissionComponent implements OnInit, LoadableComponent {
 
   ngOnInit() {
     this.permissionDetailsForm = this.formBuilder.group({});
-    this.account = this.data.account;
-    this.user = this.data.user;
-    this.grants = this.data.grants;
+    this.account = this.data.permission.account;
+    this.user = this.data.permission.user;
+    this.grants = this.data.permission.grants;
   }
 
   get availableGrants() {
@@ -59,7 +65,7 @@ export class EditPermissionComponent implements OnInit, LoadableComponent {
 
     this.permissions$
       .update(
-        this.data.id,
+        this.data.permission.id,
         {
           account: `/user/accounts/${this.account.id}`,
           user: `/user/users/${this.user.id}`,

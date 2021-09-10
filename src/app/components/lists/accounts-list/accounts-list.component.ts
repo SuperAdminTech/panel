@@ -3,6 +3,7 @@ import {
   Account,
   CasteAccountsService,
   CasteApplicationService,
+  IApplication,
   PermissionAdmin,
 } from '@qbitartifacts/caste-client-ng';
 import { DialogsService } from 'src/app/services/dialogs.service';
@@ -33,6 +34,7 @@ export class AccountsListComponent extends TablePageBase<Account> {
   @Input() public showAdd = true;
   @Input() public showBreadcrumbs = true;
   @Input() public searchFilters = {};
+  @Input() public parentApplication: IApplication;
 
   public tableOptions: QTableListHeaderOptions = {
     showLoading: true,
@@ -80,7 +82,9 @@ export class AccountsListComponent extends TablePageBase<Account> {
 
   public addAccount() {
     this.dialogs
-      .openAddAccount()
+      .openAddAccount({
+        application: this.parentApplication,
+      })
       .afterClosed()
       .subscribe(this.onNewItemAdded.bind(this));
   }

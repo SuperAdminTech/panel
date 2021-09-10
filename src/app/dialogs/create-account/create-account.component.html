@@ -8,7 +8,7 @@
                     {{'CREATE_ACCOUNT_DESC' | translate}}
                 </p>
 
-                <sa-application-selector [userType]="userRole" [(item)]="application"></sa-application-selector>
+                <sa-application-selector [userType]="userRole" [(item)]="application" [disabled]="disableApplicationSelector"></sa-application-selector>
 
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
