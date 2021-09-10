@@ -40,6 +40,7 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
   };
   @Input() public searchFilters = {};
   @Input() public hiddenFilters = [];
+  @Input() public parentAccount = null;
 
   constructor(
     public permissions$: CastePermissionsService,
@@ -82,14 +83,25 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
 
   public permissionClicked(permission: IPermission) {
     this.dialogs
-      .openEditPermission(permission)
+      .openEditPermission({
+        permission: permission,
+        account_id: this.parentAccount ? this.parentAccount.id : null,
+        availableGrants: this.parentAccount
+          ? this.parentAccount.application.grants
+          : null,
+      })
       .afterClosed()
       .subscribe(this.onNewItemAdded.bind(this));
   }
 
   public addPermission() {
     this.dialogs
-      .openAddPermission()
+      .openAddPermission({
+        account_id: this.parentAccount ? this.parentAccount.id : null,
+        availableGrants: this.parentAccount
+          ? this.parentAccount.application.grants
+          : null,
+      })
       .afterClosed()
       .subscribe(this.onNewItemAdded.bind(this));
   }

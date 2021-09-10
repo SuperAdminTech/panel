@@ -7,6 +7,11 @@ import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { AppService } from 'src/app/services/app.service';
 import { UserType } from '@qbitartifacts/caste-client-ng/lib/types';
 
+export interface CreatePermissionData {
+  account_id?: string;
+  availableGrants?: string[];
+}
+
 @Component({
   selector: 'caste-create-permission',
   templateUrl: './create-permission.component.html',
@@ -23,7 +28,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CreatePermissionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: CreatePermissionData,
     private formBuilder: FormBuilder,
     private permissions$: CastePermissionsService,
     private snackbar: QSnackBar,
@@ -33,7 +38,16 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   }
 
   get availableGrants() {
-    return this.account ? this.account.application.grants : this.defaultGrants;
+    return (
+      this.data.availableGrants ||
+      (this.account ? this.account.application.grants : this.defaultGrants) ||
+      this.defaultGrants
+    );
+  }
+
+  ngOnInit() {
+    console.log(this.data);
+    this.permissionDetailsForm = this.formBuilder.group({});
   }
 
   /* istanbul ignore next */
@@ -48,7 +62,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
     this.permissions$
       .create(
         {
-          account: `/user/accounts/${this.account.id}`,
+          account: `/user/accounts/${this.data.account_id || this.account.id}`,
           user: `/user/users/${this.user.id}`,
           grants: this.grants,
         } as any,
@@ -66,10 +80,6 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
           this.dialogRef.disableClose = false;
         }
       );
-  }
-
-  ngOnInit() {
-    this.permissionDetailsForm = this.formBuilder.group({});
   }
 
   setIsLoading(loading: boolean): void {

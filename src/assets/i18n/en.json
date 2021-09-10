@@ -112,5 +112,7 @@
   "SELECT_ACCOUNT": "Select an account",
   "SELECT_APPLICATION": "Select an application",
   "INVALID_EMAIL": "Invalid email format",
-  "CREATED_USER_OK": "User created succesfully"
+  "CREATED_USER_OK": "User created succesfully",
+  "CREATED_PERMISSION_OK": "Permision created correctly"
+
 }

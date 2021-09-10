@@ -7,13 +7,14 @@
                 <p class="text-mid">{{'CREATE_PERMISSION_DESC'|translate}}</p>
 
                 <sa-user-selector [userType]="userType" [(item)]="user"></sa-user-selector>
-                <sa-admin-account-selector [(item)]="account"></sa-admin-account-selector>
+                <sa-admin-account-selector *ngIf="!data || !data.account_id" [(item)]="account">
+                </sa-admin-account-selector>
                 <caste-autocomplete-list-input label="SELECT_GRANTS" newItemLabel="NEW_GRANT"
                     [allValues]="availableGrants" [(value)]="grants"></caste-autocomplete-list-input>
-                    
+
                 <div class="flex-row end">
                     <qbit-loadable-button [id]="'createPermission'"
-                        [disabled]="permissionDetailsForm.invalid || !user || !account || grants.length <= 0 || isLoading"
+                        [disabled]="permissionDetailsForm.invalid || !user || (!account && !data.account_id) || grants.length <= 0 || isLoading"
                         [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </qbit-loadable-button>

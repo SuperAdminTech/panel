@@ -3,8 +3,14 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateApplicationComponent } from '../dialogs/create-application/create-application.component';
 import { DeleteConfirmationComponent } from '../dialogs/delete-confirmation/delete-confirmation.component';
-import { CreatePermissionComponent } from '../dialogs/create-permission/create-permission.component';
-import { CreateAccountComponent } from '../dialogs/create-account/create-account.component';
+import {
+  CreatePermissionComponent,
+  CreatePermissionData,
+} from '../dialogs/create-permission/create-permission.component';
+import {
+  CreateAccountComponent,
+  CreateAccountData,
+} from '../dialogs/create-account/create-account.component';
 import {
   EditAccountComponent,
   EditAccountData,
@@ -16,7 +22,10 @@ import {
 } from '@qbitartifacts/caste-client-ng';
 import { EditUserComponent } from '../dialogs/edit-user/edit-user.component';
 import { EditApplicationComponent } from '../dialogs/edit-application/edit-application.component';
-import { EditPermissionComponent } from '../dialogs/edit-permission/edit-permission.component';
+import {
+  EditPermissionComponent,
+  EditPermissionData,
+} from '../dialogs/edit-permission/edit-permission.component';
 
 @Injectable({
   providedIn: 'root',
@@ -52,16 +61,18 @@ export class DialogsService {
     );
   }
 
-  openAddPermission(options?: Partial<MatDialogConfig>) {
-    return this.openDialog(
-      CreatePermissionComponent,
-      {},
-      { ...options, width: '45%' }
-    );
+  openAddPermission(
+    data?: CreatePermissionData,
+    options?: Partial<MatDialogConfig>
+  ) {
+    return this.openDialog(CreatePermissionComponent, data, {
+      ...options,
+      width: '45%',
+    });
   }
 
   openEditPermission(
-    permission: IPermission,
+    permission: EditPermissionData,
     options?: Partial<MatDialogConfig>
   ) {
     return this.openDialog(EditPermissionComponent, permission, {
@@ -70,12 +81,14 @@ export class DialogsService {
     });
   }
 
-  openAddAccount(options?: Partial<MatDialogConfig>) {
-    return this.openDialog(
-      CreateAccountComponent,
-      {},
-      { ...options, width: '45%' }
-    );
+  openAddAccount(
+    data: CreateAccountData = {},
+    options?: Partial<MatDialogConfig>
+  ) {
+    return this.openDialog(CreateAccountComponent, data, {
+      ...options,
+      width: '45%',
+    });
   }
 
   openAddUser(options?: Partial<MatDialogConfig>) {
