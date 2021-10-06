@@ -9,7 +9,7 @@
     </div>
     <div *ngIf="!hidden" class="kvp-list-container">
         <div *ngIf="showHidding" style="border-bottom: 1px solid #ddd" class="center v padd-10">
-            <p class="small-text">{{'KVP_ITEMS_SHOWN'|translate}}</p>
+            <p class="small-text">{{title|translate}}</p>
             <button mat-button matTooltip="Show and edit items" (click)="hide()" style="margin-right: 10px">
                 <span class="center h v">
                     <i class="fas fa-eye-slash"></i><span class="small-text">{{'HIDE'|translate}}</span>
@@ -26,11 +26,11 @@
         </kvp-item>
 
         <div class="center v" *ngIf="showActions">
-            <button mat-button (click)="reset()" [disabled]="loading"
+            <button mat-button (click)="reset()" [disabled]="loading" type="button"
                 style="height: 100%;width: 50%; padding: 10px 0; margin:0">
                 <span class="center h v">{{'RESET_DEFAULTS'|translate}}</span>
             </button>
-            <button mat-button (click)="newItem()" style="height: 100%;width: 50%; padding: 10px 0; margin:0">
+            <button mat-button (click)="newItem()" style="height: 100%;width: 50%; padding: 10px 0; margin:0" type="button">
                 <span class="center h v"><i class="fas fa-plus"></i> {{'ADD'|translate}}</span>
             </button>
         </div>

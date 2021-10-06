@@ -23,15 +23,15 @@ export class StatsService {
     return request.pipe(countTotal);
   }
 
-  getTotalUsers(type: UserType = 'sadmin') {
-    return this.getTotalFromRequest(this.users$.listAll(null, type));
+  getTotalUsers(type: UserType = 'sadmin', params: any = {}) {
+    return this.getTotalFromRequest(this.users$.listAll(params, type));
   }
 
-  getTotalAccounts(type: UserType = 'admin') {
-    return this.getTotalFromRequest(this.accounts$.listAll(null, type));
+  getTotalAccounts(type: UserType = 'admin', params: any = {}) {
+    return this.getTotalFromRequest(this.accounts$.listAll(params, type));
   }
 
-  getTotalApplications(type: UserType = 'sadmin') {
-    return this.getTotalFromRequest(this.applications$.listAll(null, type));
+  getTotalApplications(type: UserType = 'sadmin', params: any = {}) {
+    return this.getTotalFromRequest(this.applications$.listAll(params, type));
   }
 }

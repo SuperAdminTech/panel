@@ -20,6 +20,11 @@
                     </mat-error>
                 </mat-form-field>
 
+                <kvp-list title="{{'USER_DATA' | translate}}" [items]="userData" (onReset)="reset()" (onChange)="changedItems($event)"></kvp-list>
+
+                <br>
+                <br>
+
                 <div class="flex-row end">
                     <qbit-loadable-button [id]="'createUserBtn'" [disabled]="userForm.invalid || isLoading"
                         [loading]="isLoading">

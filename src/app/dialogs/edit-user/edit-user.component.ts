@@ -9,6 +9,7 @@ import {
   User,
 } from '@qbitartifacts/caste-client-ng';
 import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
+import { KvpItem } from 'src/app/components/kvp/kvp-list/kvp-list';
 
 @Component({
   selector: 'caste-edit-user',
@@ -18,13 +19,20 @@ import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 export class EditUserComponent implements OnInit, LoadableComponent {
   public userForm: FormGroup;
   public isLoading: boolean;
-  public user: User;
+  public user: User & { data: any };
   public application: Application;
   public roles: string[] = [RoleUser.name];
+  public userData: KvpItem[] = [
+    {
+      key: '',
+      value: '',
+      active: true,
+    },
+  ];
 
   constructor(
     public dialogRef: MatDialogRef<EditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { user: User },
+    @Inject(MAT_DIALOG_DATA) public data: { user: User & { data: any } },
     private formBuilder: FormBuilder,
     private users$: CasteUsersService,
     private snackbar: QSnackBar
@@ -32,6 +40,17 @@ export class EditUserComponent implements OnInit, LoadableComponent {
     this.user = data.user;
     this.application = this.user.application;
     this.roles = this.user.roles.map((role) => role.name);
+    this.userData = [];
+
+    if(this.user.data) {
+      for(let key in this.user.data){
+        this.userData.push({
+          key: key,
+          value: this.user.data[key],
+          active: true,
+        });
+      }
+    }
   }
 
   /* istanbul ignore next */
@@ -50,6 +69,7 @@ export class EditUserComponent implements OnInit, LoadableComponent {
           username: this.username.value,
           application: this.application['@id'],
           roles: this.roles,
+          data: this.getFieldMap(),
         } as any,
         'user'
       )
@@ -76,8 +96,26 @@ export class EditUserComponent implements OnInit, LoadableComponent {
     return this.userForm.get('username');
   }
 
+  public getFieldMap() {
+    const map = {};
+    for (const entry of this.userData) {
+      if (entry && entry.active && entry.key) {
+        map[entry.key] = entry.value;
+      }
+    }
+    return map;
+  }
+
   setIsLoading(loading: boolean): void {
     this.isLoading = loading;
+  }
+
+  reset() {
+    this.userData = [];
+  }
+
+  changedItems($event) {
+    console.log($event);
   }
 
   close(status: CreateDialogStatus = CreateDialogStatus.CANCELED) {

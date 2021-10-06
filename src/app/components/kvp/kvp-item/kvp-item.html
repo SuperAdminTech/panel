@@ -1,7 +1,7 @@
 <div class="kvp-item" [ngClass]="{'inactive': !active}">
-  <div class="kvp-checkbox" *ngIf="showCheckbox">
+  <!-- <div class="kvp-checkbox" *ngIf="showCheckbox">
     <mat-checkbox [(ngModel)]="active" (change)="changedActive()" color="primary"></mat-checkbox>
-  </div>
+  </div> -->
   <div class="kvp-key">
     <input class="input" type="text" *ngIf="editKey" [(ngModel)]="key" (change)="changedKey()" autofocus>
     <span class="label" *ngIf="!editKey">{{key}}</span>

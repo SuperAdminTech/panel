@@ -45,6 +45,7 @@ export class KeyValuePair {
   @Input() public showActions = true;
   @Input() public editKeys = true;
   @Input() public editValues = true;
+  @Input() public title = 'KVP_ITEMS_SHOWN';
 
 
   // tslint:disable-next-line: no-output-on-prefix

@@ -113,6 +113,10 @@
   "SELECT_APPLICATION": "Select an application",
   "INVALID_EMAIL": "Invalid email format",
   "CREATED_USER_OK": "User created succesfully",
-  "CREATED_PERMISSION_OK": "Permision created correctly"
+  "CREATED_PERMISSION_OK": "Permision created correctly",
+  "USER_DATA": "User data",
+  "HIDE": "Hide",
+  "RESET_DEFAULTS": "Reset"
+
 
 }

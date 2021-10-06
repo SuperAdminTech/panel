@@ -6,9 +6,12 @@
             <div class="col-lg-12">
                 <p class="text-mid">{{'CREATE_PERMISSION_DESC'|translate}}</p>
 
-                <sa-user-selector [userType]="userType" [(item)]="user"></sa-user-selector>
                 <sa-admin-account-selector *ngIf="!data || !data.account_id" [(item)]="account">
                 </sa-admin-account-selector>
+
+                <sa-user-selector [userType]="userType" [(item)]="user" [filters]="{account_id: account && account.id}">
+                </sa-user-selector>
+
                 <caste-autocomplete-list-input label="SELECT_GRANTS" newItemLabel="NEW_GRANT"
                     [allValues]="availableGrants" [(value)]="grants"></caste-autocomplete-list-input>
 

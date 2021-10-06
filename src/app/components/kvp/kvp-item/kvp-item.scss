@@ -46,13 +46,11 @@
 .kvp-key {
   width: 40%;
   border-right: thin solid $borderColor;
-  text-transform: capitalize;
   font-weight: bold;
 }
 
 .kvp-item .label,
 .kvp-value .label {
-  text-transform: capitalize;
   font-weight: bold;
   font-size: 12px;
   padding: 10px 15px;
@@ -62,7 +60,6 @@
 
 .kvp-key .input {
   border-right: none;
-  text-transform: capitalize;
   font-weight: bold;
 }
 

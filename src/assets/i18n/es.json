@@ -117,8 +117,6 @@
   "SELECT_ROLES": "Selecciona roles",
   "NEW_ROLE": "Nuevo role",
 
-
-
   "id": "ID",
   "name": "Nombre",
   "application.id": "ID de applicación",
@@ -154,11 +152,14 @@
   "CREATED_USER_OK": "Usuario creado correctamente",
   "EDIT_APPLICATION": "Editar aplicacion",
 
-
   "DEFAULT_GRANT_HINT": "Estos permisos se añadiran por defecto a cada usuario creado en esta applicacion",
   "SELECT_DEFAULT_GRANTS": "Selecciona grants por defecto",
   "UPDATED_APP_OK": "Applicacion actualizada correctamente",
   "CREATED_PERMISSION_OK": "Permiso creado correctamente",
   "EDIT_PERMISSION": "Editar permiso",
-  "EDIT_PERMISSION_DESC": "Permiso de un usuario sobre una cuenta"
+  "EDIT_PERMISSION_DESC": "Permiso de un usuario sobre una cuenta",
+
+  "USER_DATA": "Datos de usuario",
+  "HIDE": "Esconder",
+  "RESET_DEFAULTS": "Resetear"
 }

@@ -25,6 +25,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   public user = null;
   public grants = ['ACCOUNT_WORKER'];
   public userType: UserType = 'sadmin';
+  public userSelectorFilters = {};
 
   constructor(
     public dialogRef: MatDialogRef<CreatePermissionComponent>,

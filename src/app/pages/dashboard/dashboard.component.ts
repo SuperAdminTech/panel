@@ -47,10 +47,13 @@ export class DashboardComponent
     this.userType = this.user$.user ? this.user$.user.getType() : '...';
 
     const userRole = this.user$.isAdmin() ? 'admin' : 'sadmin';
+    const params = {
+      account_id: this.user$.getAccountId(),
+    };
 
-    this.usersCount = this.stats$.getTotalUsers(userRole);
-    this.accountsCount = this.stats$.getTotalAccounts(userRole);
-    this.applicationsCount = this.stats$.getTotalApplications(userRole);
+    this.usersCount = this.stats$.getTotalUsers(userRole, params);
+    this.accountsCount = this.stats$.getTotalAccounts(userRole, {});
+    this.applicationsCount = this.stats$.getTotalApplications(userRole, params);
   }
 
   ngAfterContentInit() {

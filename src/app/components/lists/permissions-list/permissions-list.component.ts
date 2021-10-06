@@ -16,6 +16,7 @@ import {
   QTableListHeaderOptions,
 } from '@qbitartifacts/qbit-kit-ng';
 import { TablePageBase } from 'src/app/base/table-base.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'caste-permissions-list',
@@ -50,7 +51,8 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
     public events: QEventsService,
     public app: AppService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public user$: UserService,
   ) {
     super(app, snackbar, events, router, route);
     this.initialSearch = true;
@@ -65,7 +67,7 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
   public getSearchObservable(queryParams) {
     return this.permissions$.listAll(
       { ...queryParams, ...this.searchFilters },
-      this.app.getUserType()
+      this.user$.isSuperadmin() ? 'sadmin': 'user',
     );
   }
 
