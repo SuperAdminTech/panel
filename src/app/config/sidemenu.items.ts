@@ -11,13 +11,13 @@ export const SIDEMENU_ITEMS: QSidemenuItem[] = [
     route: '/dashboard',
     permission: PermissionUser,
   },
-  {
-    name: 'profile',
-    icon: 'face',
-    label: 'PROFILE',
-    route: '/profile',
-    permission: PermissionUser,
-  },
+  // {
+  //   name: 'profile',
+  //   icon: 'face',
+  //   label: 'PROFILE',
+  //   route: '/profile',
+  //   permission: PermissionUser,
+  // },
   // Admin items after separator
   {
     name: 'separator_admin',
