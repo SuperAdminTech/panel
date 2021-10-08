@@ -21,7 +21,7 @@ export abstract class PageBaseComponent implements AfterContentInit {
   public ngAfterContentInit() {
     // This was needed here, as TranslateLoader takes some time to have the translations available
     // NOT the best alternative, could be changed if better solution is found
-    setTimeout(this.updateTitle.bind(this));
+    setTimeout(this.updateTitle.bind(this), 200);
   }
 
   public setTitle(title: string) {
