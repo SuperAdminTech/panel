@@ -50,7 +50,7 @@ export class ApplicationsListComponent extends TablePageBase<Application> {
   }
 
   public getSearchObservable(queryParams) {
-    return this.applications$.listAll(queryParams, this.app.getUserType());
+    return this.applications$.listAll(queryParams, 'admin');
   }
 
   public getRemoveItemObservable(id: string) {

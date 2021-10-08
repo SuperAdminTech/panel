@@ -24,7 +24,7 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   public account = null;
   public user = null;
   public grants = ['ACCOUNT_WORKER'];
-  public userType: UserType = 'sadmin';
+  public userType: UserType = 'admin';
   public userSelectorFilters = {};
 
   constructor(

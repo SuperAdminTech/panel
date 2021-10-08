@@ -28,7 +28,7 @@ export class EditPermissionComponent implements OnInit, LoadableComponent {
   public account = null;
   public user = null;
   public grants = ['ACCOUNT_WORKER'];
-  public userType: UserType = 'sadmin';
+  public userType: UserType = 'user';
 
   constructor(
     public dialogRef: MatDialogRef<EditPermissionComponent>,

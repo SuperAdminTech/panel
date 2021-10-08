@@ -27,7 +27,7 @@ export class AdminGuard implements CanActivate {
     if (route && route.queryParams && route.queryParams.realm) {
       localStorage.setItem('realm', route.queryParams.realm);
     }
-    const hasPermission = PermissionAdmin.canActivate(this.user$.user);
+    const hasPermission = PermissionAdmin.canActivate(this.user$.user, this.user$);
 
     if (hasPermission) {
       return true;
