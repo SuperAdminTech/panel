@@ -62,7 +62,7 @@ export class CreateUserComponent implements OnInit, LoadableComponent {
           account: this.account['@id'],
           roles: this.roles,
         } as any,
-        this.userRole as any,
+        'admin',
       )
       .subscribe(
         (resp) => {

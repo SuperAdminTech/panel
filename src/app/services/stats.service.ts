@@ -23,7 +23,7 @@ export class StatsService {
     return request.pipe(countTotal);
   }
 
-  getTotalUsers(type: UserType = 'sadmin', params: any = {}) {
+  getTotalUsers(type: UserType = 'admin', params: any = {}) {
     return this.getTotalFromRequest(this.users$.listAll(params, type));
   }
 
@@ -31,7 +31,7 @@ export class StatsService {
     return this.getTotalFromRequest(this.accounts$.listAll(params, type));
   }
 
-  getTotalApplications(type: UserType = 'sadmin', params: any = {}) {
+  getTotalApplications(type: UserType = 'admin', params: any = {}) {
     return this.getTotalFromRequest(this.applications$.listAll(params, type));
   }
 }
