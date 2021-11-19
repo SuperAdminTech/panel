@@ -17,11 +17,6 @@ export class UserDetailsComponent extends DetailsBaseComponent<User> {
   }
 
   getDetailsObservable() {
-    return this.users$.getOne(this.id).pipe(
-      mapUser,
-      tap((data) => {
-        console.log('data', data);
-      })
-    );
+    return this.users$.getOne(this.id).pipe(mapUser);
   }
 }

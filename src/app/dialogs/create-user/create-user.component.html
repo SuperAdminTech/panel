@@ -7,11 +7,20 @@
                 <p class="text-small marg-bottom-20">
                     {{'CREATE_USER_DESC' | translate}}
                 </p>
-                
-                <sa-application-selector [userType]="userRole" [(item)]="application"></sa-application-selector>
 
-                <sa-admin-account-selector [userType]="userRole" [(item)]="account"></sa-admin-account-selector>
-                
+                <sa-application-selector *ngIf="application | asyncp as app" userType="admin" [userType]="userRole"
+                    (itemChange)="application = $event;">
+                </sa-application-selector>
+
+                <sa-application-selector *ngIf="!application" [userType]="userRole" [(item)]="application">
+                </sa-application-selector>
+
+                <sa-admin-account-selector *ngIf="account | asyncp as acc" [userType]="userRole" [item]="acc"
+                    (itemChange)="account = $event"></sa-admin-account-selector>
+                    
+                <sa-admin-account-selector *ngIf="!account" [userType]="userRole" [(item)]="account">
+                </sa-admin-account-selector>
+
                 <caste-autocomplete-list-input [(value)]="roles"></caste-autocomplete-list-input>
 
                 <mat-form-field>

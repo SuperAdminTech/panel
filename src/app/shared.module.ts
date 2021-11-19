@@ -21,8 +21,10 @@ import {
   SaComponentsModule,
 } from '@qbitartifacts/qbit-kit-ng';
 import { AvatarModule } from 'ngx-avatar';
+import { AsyncPlusPipe } from './pipes/async-plus';
 
 @NgModule({
+  declarations: [AsyncPlusPipe],
   imports: [
     MaterialModule,
     BrowserModule,
@@ -67,6 +69,7 @@ import { AvatarModule } from 'ngx-avatar';
     QTableFiltersModule,
     QChipsModule,
     SaComponentsModule,
+    AsyncPlusPipe,
   ],
 })
 export class SharedModule {}

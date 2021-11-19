@@ -2,13 +2,16 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadableComponent } from 'src/app/base/loadable.page';
-import { CastePermissionsService } from '@qbitartifacts/caste-client-ng';
+import { Account, CastePermissionsService, User } from '@qbitartifacts/caste-client-ng';
 import { CreateDialogStatus, QSnackBar } from '@qbitartifacts/qbit-kit-ng';
 import { AppService } from 'src/app/services/app.service';
 import { UserType } from '@qbitartifacts/caste-client-ng/lib/types';
 
 export interface CreatePermissionData {
+  user: User;
+  account: Account;
   account_id?: string;
+  user_id?: string;
   availableGrants?: string[];
 }
 
@@ -47,8 +50,9 @@ export class CreatePermissionComponent implements OnInit, LoadableComponent {
   }
 
   ngOnInit() {
-    console.log(this.data);
     this.permissionDetailsForm = this.formBuilder.group({});
+    this.user = this.data.user;
+    this.account = this.data.account;
   }
 
   /* istanbul ignore next */

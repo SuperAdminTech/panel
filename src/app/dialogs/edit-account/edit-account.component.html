@@ -8,8 +8,12 @@
                     {{'EDIT_ACCOUNT_DESC' | translate}}
                 </p>
 
-                <sa-application-selector userType="admin" [(item)]="application"></sa-application-selector>
+                <sa-application-selector *ngIf="application | asyncp as app" userType="admin" [item]="app"
+                    (itemChange)="application = $event;"></sa-application-selector>
 
+                <sa-application-selector *ngIf="!application" userType="admin" [(item)]="application">
+                </sa-application-selector>
+                
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
                     <input id="name" matInput placeholder="Enter your name" formControlName="name">

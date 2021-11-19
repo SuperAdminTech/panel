@@ -5,8 +5,8 @@
         </ng-container>
     </qbit-table-header>
 
-    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping" [filters]="searchParams"
-        (filtersChanged)="onSearch($event)" label="SEARCH_BY">
+    <qbit-table-filters *ngIf="searchMapping && searchMapping.length" [searchMapping]="searchMapping"
+        [filters]="searchParams" (filtersChanged)="onSearch($event)" label="SEARCH_BY">
     </qbit-table-filters>
 
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChanged($event)"
@@ -34,7 +34,8 @@
         <ng-container matColumnDef="application">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'APPLICATION'|translate}} </th>
             <td mat-cell *matCellDef="let row">
-                <qbit-chip-link link="/applications/{{row.application.id}}" icon="apps" [label]="row.application.name">
+                <qbit-chip-link *ngIf="row.application | asyncp as application" link="/applications/{{application.id}}"
+                    icon="apps" [label]="application.name">
                 </qbit-chip-link>
             </td>
         </ng-container>

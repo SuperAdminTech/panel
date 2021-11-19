@@ -8,7 +8,13 @@
                     {{'CREATE_ACCOUNT_DESC' | translate}}
                 </p>
 
-                <sa-application-selector [userType]="userRole" [(item)]="application" [disabled]="disableApplicationSelector"></sa-application-selector>
+                <sa-application-selector *ngIf="application | asyncp as app" userType="admin" [userType]="userRole"
+                    (itemChange)="application = $event;" [disabled]="disableApplicationSelector">
+                </sa-application-selector>
+
+                <sa-application-selector *ngIf="!application" [userType]="userRole" [(item)]="application"
+                    [disabled]="disableApplicationSelector">
+                </sa-application-selector>
 
                 <mat-form-field>
                     <mat-label>{{'NAME' | translate}}</mat-label>
@@ -19,8 +25,8 @@
                 </mat-form-field>
 
                 <div class="flex-row end">
-                    <qbit-loadable-button [id]="'createAccount'" [disabled]="accountDetailsForm.invalid || !application || isLoading"
-                        [loading]="isLoading">
+                    <qbit-loadable-button [id]="'createAccount'"
+                        [disabled]="accountDetailsForm.invalid || !application || isLoading" [loading]="isLoading">
                         {{(isLoading ? 'ADDING': 'ADD') |translate}}
                     </qbit-loadable-button>
                 </div>

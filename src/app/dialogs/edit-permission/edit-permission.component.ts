@@ -46,6 +46,7 @@ export class EditPermissionComponent implements OnInit, LoadableComponent {
     this.account = this.data.permission.account;
     this.user = this.data.permission.user;
     this.grants = this.data.permission.grants;
+    console.log(this);
   }
 
   get availableGrants() {

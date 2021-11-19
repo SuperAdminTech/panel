@@ -4,7 +4,8 @@
             <caste-user-details [id]="itemId"></caste-user-details>
         </div>
         <div class="col-lg-8 col-md-6 col-sm-12">
-            <caste-permissions-list [tableOptions]="permissionTableOptions" [hiddenColumns]="['user']" [searchFilters]="{ 'user.id': itemId }">
+            <caste-permissions-list [parentUser]="user | asyncp" [tableOptions]="permissionTableOptions"
+                [hiddenColumns]="['user']" [searchFilters]="{ 'user.id': itemId }">
             </caste-permissions-list>
         </div>
     </div>
