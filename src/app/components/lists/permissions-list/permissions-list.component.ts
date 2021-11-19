@@ -42,6 +42,8 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
   @Input() public searchFilters = {};
   @Input() public hiddenFilters = [];
   @Input() public parentAccount = null;
+  @Input() public parentUser = null;
+  @Input() public parentApplication = null;
 
   constructor(
     public permissions$: CastePermissionsService,
@@ -99,7 +101,8 @@ export class PermissionsListComponent extends TablePageBase<Permission> {
   public addPermission() {
     this.dialogs
       .openAddPermission({
-        account_id: this.parentAccount ? this.parentAccount.id : null,
+        account: this.parentAccount,
+        user: this.parentUser,
         availableGrants: this.parentAccount
           ? this.parentAccount.application.grants
           : null,

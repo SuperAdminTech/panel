@@ -43,29 +43,4 @@ export abstract class CrudBaseService<T = any> extends BaseService<
   public remove(id: string): Observable<any> {
     return this.delete(`/${this.opts.endpoint}/${id}`);
   }
-
-  /* istanbul ignore next */
-  public extractData(res: any) {
-    if (res && res['hydra:member']) {
-      const data = res['hydra:member'];
-
-      return {
-        data,
-        total: res['hydra:totalItems'],
-      };
-    }
-
-    return res;
-  }
-
-  /* istanbul ignore next */
-  public handleError(err) {
-    const error = err.originalError || err.error || err;
-
-    if (error['hydra:description']) {
-      error.message = error['hydra:description'];
-    }
-
-    return throwError(error);
-  }
 }

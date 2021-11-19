@@ -29,10 +29,10 @@
                     </mat-chip-list>
                 </div>
             </div>
-            <div class="text-mid flex-row center space-between marg-bottom-15">
+            <div *ngIf="item.application | asyncp as application"
+                class="text-mid flex-row center space-between marg-bottom-15">
                 <span>{{'APPLICATION'|translate}}</span>
-                <qbit-chip-link link="/applications/{{item.application.id}}" icon="apps"
-                    [label]="item.application.name">
+                <qbit-chip-link link="/applications/{{application.id}}" icon="apps" [label]="application.name">
                 </qbit-chip-link>
             </div>
         </div>
