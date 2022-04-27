@@ -1,6 +1,6 @@
 <caste-account-details [id]="itemId"></caste-account-details>
 
 <div class="marg-top-20" *ngIf="itemId">
-    <caste-permissions-list [parentAccount]="account | async" [tableOptions]="permissionTableOptions"
+    <caste-permissions-list [parentAccount]="account | asyncp" [tableOptions]="permissionTableOptions"
         [hiddenColumns]="['account']" [searchFilters]="{ 'account.id': itemId }"></caste-permissions-list>
 </div>
